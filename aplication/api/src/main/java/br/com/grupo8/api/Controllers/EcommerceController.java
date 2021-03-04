@@ -18,7 +18,7 @@ public class EcommerceController {
             return "Valores inválidos";
         }
 
-        ecommerces.add(ecommerce);
+        this.ecommerces.add(ecommerce);
         return "Ecommerc cadastrado! :)";
     }
 
