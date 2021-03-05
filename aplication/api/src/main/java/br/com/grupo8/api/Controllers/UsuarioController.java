@@ -24,23 +24,23 @@ public class UsuarioController {
         return "Cadastrado com sucesso";
     }
 
-    @PutMapping("/{index}")
+    @PutMapping("/{idUsuario}")
     public String updateUsuario(@RequestBody Usuario u,
-                                @PathVariable int index){
-        if(index <= 0 || index > this.usuarios.size()){
+                                @PathVariable int idUsuario){
+        if(idUsuario <= 0 || idUsuario > this.usuarios.size()){
             return "Usuario nao encontrado";
         }else{
-            this.usuarios.set(index, u);
+            this.usuarios.set(idUsuario, u);
             return "Usuario Atualizado";
         }
     }
 
-    @DeleteMapping("/{index}")
-    public String deleteUsuario(@PathVariable int index){
-        if(index <= 0 || index > this.usuarios.size()){
+    @DeleteMapping("/{idUsuario}")
+    public String deleteUsuario(@PathVariable int idUsuario){
+        if(idUsuario <= 0 || idUsuario > this.usuarios.size()){
             return "Usuario nao encontrado";
         }else{
-            this.usuarios.remove(index);
+            this.usuarios.remove(idUsuario);
             return "Usuario deletado";
         }
     }
