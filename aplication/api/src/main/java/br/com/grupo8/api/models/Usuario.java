@@ -4,7 +4,7 @@ public class Usuario {
     private Integer idUsuario;
     private String login;
     private String senha;
-    private Ecommerce ecommerce;
+    private Integer ecommerce;
 
     public Usuario(Integer idUsuario, String login, String senha, Ecommerce ecommerce) {
         this.idUsuario = idUsuario;

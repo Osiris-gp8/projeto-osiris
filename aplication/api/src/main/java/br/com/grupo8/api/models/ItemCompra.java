@@ -5,7 +5,7 @@ import java.util.List;
 public class ItemCompra {
     private Integer idIntemCompra;
     private Compra compra;
-    private Produto produto;
+    private Integer produto;
 
     public ItemCompra(Integer idIntemCompra, Compra compra, Produto produto) {
         this.idIntemCompra = idIntemCompra;

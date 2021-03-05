@@ -4,7 +4,7 @@ public class Compra {
     private Integer idCompra;
     private Integer pontos;
     private Double total;
-    private Consumidor consumidor;
+    private Integer consumidor;
 
     public Compra(Integer idCompra, Integer pontos, Double total, Consumidor consumidor) {
         this.idCompra = idCompra;

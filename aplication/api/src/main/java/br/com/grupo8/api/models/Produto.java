@@ -7,7 +7,7 @@ public class Produto {
     private String nome;
     private Double preco;
     private Ecommerce ecommerce;
-    private List<Categoria> categorias;
+    private Integer categorias;
 
     public Produto(Integer idProduto, String nome, Double preco, Ecommerce ecommerce, List<Categoria> categorias) {
         this.idProduto = idProduto;

@@ -5,7 +5,7 @@ public class Consumidor {
     private String cpf;
     private String nome;
     private Short sexo;
-    private Ecommerce ecommerce;
+    private Integer ecommerce;
 
     public Consumidor(Integer idConsumidor, String cpf, String nome, Short sexo, Ecommerce ecommerce) {
         this.idConsumidor = idConsumidor;
