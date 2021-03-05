@@ -13,7 +13,7 @@ public class EcommerceController {
     private List<Ecommerce> ecommerces = new ArrayList<Ecommerce>();
 
     @PostMapping
-    public String cadastrarEcommerce(@RequestBody Ecommerce ecommerce){
+    public String addEcommerce(@RequestBody Ecommerce ecommerce){
         if(ecommerce.getCnpj() == null || ecommerce.getNome() == null){
             return "Valores inválidos";
         }
@@ -43,7 +43,7 @@ public class EcommerceController {
     }
 
     @PutMapping("/{idEcommerce}")
-    public String atualizarEcommerce(@RequestBody Ecommerce ecommerce,
+    public String updateEcommerce(@RequestBody Ecommerce ecommerce,
                                      @PathVariable Integer idEcommerce){
         ecommerces.set(idEcommerce, ecommerce);
         return "Ecommerce atualizado com sucesso";
