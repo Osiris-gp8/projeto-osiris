@@ -47,11 +47,10 @@ public class UsuarioController {
     }
 
     @PostMapping("/login")
-    public Usuario loginUsuario(@RequestBody String login,
-                                @RequestBody String senha){
+    public Usuario loginUsuario(@RequestBody Usuario user){
         Usuario uLogado = null;
         for (Usuario u : this.usuarios) {
-            if(u.getLogin().equals(login) && u.getSenha().equals(senha)){
+            if(u.getLogin().equals(user.getLogin()) && u.getSenha().equals(user.getSenha())){
                 uLogado = u;
                 sessoes.add(u);
             }
@@ -74,4 +73,8 @@ public class UsuarioController {
         return "Sessão não foi encontrada";
     }
 
+    @GetMapping("/sessoes")
+    public List<Usuario> getSessoes() {
+        return sessoes;
+    }
 }
