@@ -64,10 +64,14 @@ public class UsuarioController {
         }
     }
 
-    @GetMapping("/{idSessao}")
-    public String logoff(@PathVariable idSessao){
-        sessoes.remove(idSessao);
-        return "Sessão finalizada";
+    @DeleteMapping("/logoff/{idSessao}")
+    public String logoff(@PathVariable int idSessao){
+        if (idSessao >= 0 || idSessao > sessoes.size()){
+            sessoes.remove(idSessao);
+            return "Sessão finalizada";
+        }
+
+        return "Sessão não foi encontrada";
     }
 
 }
