@@ -64,4 +64,10 @@ public class UsuarioController {
         }
     }
 
+    @GetMapping("/{idSessao}")
+    public String logoff(@PathVariable idSessao){
+        sessoes.remove(idSessao);
+        return "Sessão finalizada";
+    }
+
 }
