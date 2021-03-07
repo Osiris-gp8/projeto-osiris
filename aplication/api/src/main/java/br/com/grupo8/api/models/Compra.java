@@ -6,7 +6,7 @@ public class Compra {
     private Double total;
     private Integer consumidor;
 
-    public Compra(Integer idCompra, Integer pontos, Double total, Consumidor consumidor) {
+    public Compra(Integer idCompra, Integer pontos, Double total, Integer consumidor) {
         this.idCompra = idCompra;
         this.pontos = pontos;
         this.total = total;
@@ -37,11 +37,11 @@ public class Compra {
         this.total = total;
     }
 
-    public Consumidor getConsumidor() {
+    public Integer getConsumidor() {
         return consumidor;
     }
 
-    public void setConsumidor(Consumidor consumidor) {
+    public void setConsumidor(Integer consumidor) {
         this.consumidor = consumidor;
     }
 }

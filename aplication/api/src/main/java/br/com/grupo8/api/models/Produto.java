@@ -9,7 +9,7 @@ public class Produto {
     private Ecommerce ecommerce;
     private Integer categorias;
 
-    public Produto(Integer idProduto, String nome, Double preco, Ecommerce ecommerce, List<Categoria> categorias) {
+    public Produto(Integer idProduto, String nome, Double preco, Ecommerce ecommerce, Integer categorias) {
         this.idProduto = idProduto;
         this.nome = nome;
         this.preco = preco;
@@ -49,11 +49,11 @@ public class Produto {
         this.ecommerce = ecommerce;
     }
 
-    public List<Categoria> getCategorias() {
+    public Integer getCategorias() {
         return categorias;
     }
 
-    public void setCategorias(List<Categoria> categorias) {
+    public void setCategorias(Integer categorias) {
         this.categorias = categorias;
     }
 }

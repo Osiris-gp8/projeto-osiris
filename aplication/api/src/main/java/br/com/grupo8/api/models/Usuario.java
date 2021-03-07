@@ -6,7 +6,7 @@ public class Usuario {
     private String senha;
     private Integer ecommerce;
 
-    public Usuario(Integer idUsuario, String login, String senha, Ecommerce ecommerce) {
+    public Usuario(Integer idUsuario, String login, String senha, Integer ecommerce) {
         this.idUsuario = idUsuario;
         this.login = login;
         this.senha = senha;
@@ -37,11 +37,11 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public Ecommerce getEcommerce() {
+    public Integer getEcommerce() {
         return ecommerce;
     }
 
-    public void setEcommerce(Ecommerce ecommerce) {
+    public void setEcommerce(Integer ecommerce) {
         this.ecommerce = ecommerce;
     }
 }

@@ -7,7 +7,7 @@ public class Consumidor {
     private Short sexo;
     private Integer ecommerce;
 
-    public Consumidor(Integer idConsumidor, String cpf, String nome, Short sexo, Ecommerce ecommerce) {
+    public Consumidor(Integer idConsumidor, String cpf, String nome, Short sexo, Integer ecommerce) {
         this.idConsumidor = idConsumidor;
         this.cpf = cpf;
         this.nome = nome;
@@ -47,11 +47,11 @@ public class Consumidor {
         this.sexo = sexo;
     }
 
-    public Ecommerce getEcommerce() {
+    public Integer getEcommerce() {
         return ecommerce;
     }
 
-    public void setEcommerce(Ecommerce ecommerce) {
+    public void setEcommerce(Integer ecommerce) {
         this.ecommerce = ecommerce;
     }
 }

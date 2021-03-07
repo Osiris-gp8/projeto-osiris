@@ -7,7 +7,7 @@ public class ItemCompra {
     private Compra compra;
     private Integer produto;
 
-    public ItemCompra(Integer idIntemCompra, Compra compra, Produto produto) {
+    public ItemCompra(Integer idIntemCompra, Compra compra, Integer produto) {
         this.idIntemCompra = idIntemCompra;
         this.compra = compra;
         this.produto = produto;
@@ -29,11 +29,11 @@ public class ItemCompra {
         this.compra = compra;
     }
 
-    public Produto getProduto() {
+    public Integer getProduto() {
         return produto;
     }
 
-    public void setProduto(Produto produto) {
+    public void setProduto(Integer produto) {
         this.produto = produto;
     }
 }
