@@ -10,6 +10,7 @@ import java.util.List;
 @RequestMapping("/clientes")
 public class UsuarioController {
     private List<Usuario> usuarios = new ArrayList<Usuario>();
+    private List<Usuario> sessoes = new ArrayList<Usuario>();
     private boolean init = false;
 
     @GetMapping
@@ -52,6 +53,7 @@ public class UsuarioController {
         for (Usuario u : this.usuarios) {
             if(u.getLogin().equals(login) && u.getSenha().equals(senha)){
                 uLogado = u;
+                sessoes.add(u);
             }
         }
 
@@ -60,7 +62,6 @@ public class UsuarioController {
         }else{
             return uLogado;
         }
-
     }
 
 }
