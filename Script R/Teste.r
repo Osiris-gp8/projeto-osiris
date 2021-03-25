@@ -15,7 +15,7 @@ popular <- function(qtd, textos){
 
  
 
-idade <- abs(round(rnorm(n, 37, 10),0))
+# idade <- abs(round(rnorm(n, 37, 10),0))
 
 preco <-  abs(round(rnorm(n, 2000, 300),2))
 
@@ -50,7 +50,6 @@ for(i in 1:n){
 
 dataCalcados = data.frame(id = 1:n,
                           idConsumidor, 
-                          idade,
                           preco,
                           nome,
                           categoria,
