@@ -1,3 +1,8 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+# Datasource local storage ignored files
+/../../../../../../../../../../../:\Users\kaiob\OneDrive\Documentos\bandtec\terceiro-semestre\grupo-08-testes\calculo-metricas\calculo-metricas\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
