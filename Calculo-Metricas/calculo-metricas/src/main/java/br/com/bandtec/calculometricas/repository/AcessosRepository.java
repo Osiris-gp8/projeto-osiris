@@ -8,4 +8,5 @@ public interface AcessosRepository extends JpaRepository<Acessos, Integer> {
     @Query(value = "select count(id_acessos) as quantidade from acessos where inicio_acesso " +
             "between current_date()-7 and current_date()", nativeQuery = true)
     Integer countAcessosSemana();
+
 }
