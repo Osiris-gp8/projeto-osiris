@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 public class Acessos {
@@ -15,9 +15,9 @@ public class Acessos {
 
     private Integer idConsumidorEcommerce;
 
-    private LocalDate inicioAcesso;
+    private LocalDateTime inicioAcesso;
 
-    private LocalDate fimAcesso;
+    private LocalDateTime fimAcesso;
 
     public Integer getIdAcessos() {
         return idAcessos;
@@ -35,19 +35,19 @@ public class Acessos {
         this.idConsumidorEcommerce = idConsumidorEcommerce;
     }
 
-    public LocalDate getInicioAcesso() {
+    public LocalDateTime getInicioAcesso() {
         return inicioAcesso;
     }
 
-    public void setInicioAcesso(LocalDate inicioAcesso) {
+    public void setInicioAcesso(LocalDateTime inicioAcesso) {
         this.inicioAcesso = inicioAcesso;
     }
 
-    public LocalDate getFimAcesso() {
+    public LocalDateTime getFimAcesso() {
         return fimAcesso;
     }
 
-    public void setFimAcesso(LocalDate fimAcesso) {
+    public void setFimAcesso(LocalDateTime fimAcesso) {
         this.fimAcesso = fimAcesso;
     }
 }

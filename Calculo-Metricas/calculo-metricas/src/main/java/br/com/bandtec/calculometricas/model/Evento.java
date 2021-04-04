@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 public class Evento {
@@ -16,7 +16,7 @@ public class Evento {
     private String nomeProduto;
     private Double preco;
     private String nomeCategoria;
-    private LocalDate dataCompra;
+    private LocalDateTime dataCompra;
     private String cupom;
     private Integer fkEcommerce;
     private Integer fkCupom;
@@ -62,11 +62,11 @@ public class Evento {
         this.nomeCategoria = nomeCategoria;
     }
 
-    public LocalDate getDataCompra() {
+    public LocalDateTime getDataCompra() {
         return dataCompra;
     }
 
-    public void setDataCompra(LocalDate dataCompra) {
+    public void setDataCompra(LocalDateTime dataCompra) {
         this.dataCompra = dataCompra;
     }
 
