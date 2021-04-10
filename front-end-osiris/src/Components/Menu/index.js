@@ -1,7 +1,6 @@
-import './style'
 import { Container, Contrast, Item, WelcomeText } from './style'
 // npm install --save-dev @iconify/react @iconify-icons/bx
-import { Icon, InlineIcon } from '@iconify/react';
+import { Icon } from '@iconify/react';
 import bxHome from '@iconify-icons/bx/bx-home';
 import lineChartOutlined from '@iconify-icons/ant-design/line-chart-outlined';
 import peopleIcon from '@iconify-icons/bi/people';

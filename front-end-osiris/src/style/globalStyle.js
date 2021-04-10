@@ -3,7 +3,8 @@ import { createGlobalStyle} from 'styled-components'
 export default createGlobalStyle`
 
     :root{
-        --primary:#666BC2
+        --primary:#666BC2;
+        --background-div:#ECF0F7;
     }
 
     html, body, div, span, applet, object, iframe,
@@ -52,6 +53,7 @@ export default createGlobalStyle`
 
     body{
         background: #D9E2F0;
+        font-family:Roboto
     }
 
     body::before{

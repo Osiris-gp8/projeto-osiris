@@ -1,18 +1,17 @@
 import styled from 'styled-components'
-import { Icon, InlineIcon } from '@iconify/react';
 
 export const Container = styled.div`
-    position: absolute;
-    width: 500px;
-    height: 90vh;
+    /* position: absolute; */
+    width: 400px;
+    height: 88vh;
     left: 6vw;
     top: 4vh;
     display:flex;
     flex-direction:column;
-    background: #ECF0F7;
+    background: var(--background-div);
     padding:15px;
     border-bottom:  1px solid  #EaF0F7;
-
+    z-index:1;
     & > div{
         flex-basis:80%;
     }
@@ -20,7 +19,6 @@ export const Container = styled.div`
 
 export const WelcomeText = styled.p`
     font-size: 40px;
-    font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     line-height: 37px;
@@ -29,7 +27,6 @@ export const WelcomeText = styled.p`
 export const Contrast = styled.span`
     color: var(--primary);
     font-size: 40px;
-    font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     line-height: 37px;

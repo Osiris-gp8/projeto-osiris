@@ -1,9 +1,9 @@
-import Login from './Pages/Cadastro'
+import Settings from './Pages/Setting'
 
 function App() {
   return (
     <div className="App">
-      <Login/>
+      <Settings/>
     </div>
   );
 }
