@@ -1,7 +1,9 @@
+import Login from './Pages/Cadastro'
+
 function App() {
   return (
     <div className="App">
-      <h1>Osiris</h1>
+      <Login/>
     </div>
   );
 }
