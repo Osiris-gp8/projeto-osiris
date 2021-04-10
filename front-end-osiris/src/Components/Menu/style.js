@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Icon, InlineIcon } from '@iconify/react';
 
 export const Container = styled.div`
     position: absolute;
@@ -9,6 +10,12 @@ export const Container = styled.div`
     display:flex;
     flex-direction:column;
     background: #ECF0F7;
+    padding:15px;
+    border-bottom:  1px solid  #EaF0F7;
+
+    & > div{
+        flex-basis:80%;
+    }
 `
 
 export const WelcomeText = styled.p`
@@ -36,7 +43,37 @@ export const Item = styled.button`
     background:none;
     border:none;
     outline:none;
+    /* align-self:end; */
     margin-top: ${props => props.first && '50px'};
     cursor:pointer;
+    display:flex;
+    justify-content:flex-start;
+    align-self: flex-end;
+    
+    &:hover{
+        background-color:var(--primary);
+    }
+
+    &:hover > svg{ 
+        color:white;
+        
+    }
+
+    &:hover > p{ 
+        color:white;
+    }
+
+    & > svg {
+        color:var(--primary);
+        font-size:40px;
+        margin-right: 7px;
+        align-self:center;
+    }
+
+    & > p{
+        font-size: 30px;
+        align-self:center;
+    }
 `
+
 
