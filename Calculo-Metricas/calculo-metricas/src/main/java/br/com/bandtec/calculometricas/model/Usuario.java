@@ -1,10 +1,17 @@
 package br.com.bandtec.calculometricas.model;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,36 +20,4 @@ public class Usuario {
     private String login;
     private String senha;
     private Integer fkEcommerce;
-
-    public Integer getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public Integer getFkEcommerce() {
-        return fkEcommerce;
-    }
-
-    public void setFkEcommerce(Integer fkEcommerce) {
-        this.fkEcommerce = fkEcommerce;
-    }
 }

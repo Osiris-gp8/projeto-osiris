@@ -2,6 +2,7 @@ package br.com.bandtec.calculometricas.controller;
 
 import br.com.bandtec.calculometricas.model.Acessos;
 import br.com.bandtec.calculometricas.repository.AcessosRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,10 +11,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/acessos")
+@AllArgsConstructor
 public class AcessosController {
 
-    @Autowired
-    AcessosRepository ar;
+    private final AcessosRepository ar;
 
     @GetMapping
     public ResponseEntity getAcessos() {

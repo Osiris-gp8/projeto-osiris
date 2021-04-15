@@ -1,6 +1,7 @@
 package br.com.bandtec.calculometricas.controller;
 import br.com.bandtec.calculometricas.model.Ecommerce;
 import br.com.bandtec.calculometricas.repository.EcommerceRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,10 +10,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/ecommerces")
+@AllArgsConstructor
 public class EcommerceController {
 
-    @Autowired
-    EcommerceRepository ecr;
+    private final EcommerceRepository ecr;
 
     @GetMapping
     public ResponseEntity getEcommerce() {

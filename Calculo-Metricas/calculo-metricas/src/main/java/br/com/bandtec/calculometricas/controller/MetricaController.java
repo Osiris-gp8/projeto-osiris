@@ -3,6 +3,7 @@ package br.com.bandtec.calculometricas.controller;
 import br.com.bandtec.calculometricas.model.Evento;
 import br.com.bandtec.calculometricas.repository.AcessosRepository;
 import br.com.bandtec.calculometricas.repository.EventoRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.http.ResponseEntity;
@@ -15,13 +16,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/metricas")
+@AllArgsConstructor
 public class MetricaController {
 
-    @Autowired
-    AcessosRepository ar;
-
-    @Autowired
-    EventoRepository er;
+    private final AcessosRepository ar;
+    private final EventoRepository er;
 
     @GetMapping("/ultimaSemana")
     public ResponseEntity getUltimaSemana() {
