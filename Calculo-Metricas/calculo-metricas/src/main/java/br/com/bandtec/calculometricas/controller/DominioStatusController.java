@@ -25,9 +25,4 @@ public class DominioStatusController {
         }
     }
 
-    @PostMapping
-    public ResponseEntity postDominioStatus(@RequestBody DominioStatus novoDominio) {
-        dsr.save(novoDominio);
-        return ResponseEntity.status(201).build();
-    }
 }
