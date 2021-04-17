@@ -15,4 +15,7 @@ public interface EventoRepository extends JpaRepository<Evento, Integer> {
     @Query(value = "select * from evento where id_consumidor_ecommerce = ?",nativeQuery = true)
     List<Evento> findAllByIdConsumidorEcommerce(Integer consumidor);
 
+    @Query(value = "select * from evento where idConsumidorEcommerce = ? and fkCupom is null", nativeQuery = true)
+    List<Evento> findByConsumidorEcommerWithoutCupom(Integer consumidor);
+
 }

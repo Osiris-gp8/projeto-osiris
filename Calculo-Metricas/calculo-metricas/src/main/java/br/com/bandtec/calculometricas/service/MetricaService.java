@@ -1,10 +1,13 @@
 package br.com.bandtec.calculometricas.service;
 
+import br.com.bandtec.calculometricas.model.Evento;
 import br.com.bandtec.calculometricas.repository.AcessosRepository;
 import br.com.bandtec.calculometricas.repository.EventoRepository;
 import br.com.bandtec.calculometricas.repository.MetaRepository;
 import br.com.bandtec.calculometricas.repository.UsuarioRepository;
 import lombok.AllArgsConstructor;
+
+import java.util.List;
 
 @AllArgsConstructor
 public class MetricaService {
@@ -14,5 +17,7 @@ public class MetricaService {
     private final MetaRepository metaRepository;
     private final UsuarioRepository usuarioRepository;
 
-    
+    public List<Evento> comprasSemCupom(Integer consumidor){
+        return eventoRepository.findByConsumidorEcommerWithoutCupom(consumidor);
+    }
 }
