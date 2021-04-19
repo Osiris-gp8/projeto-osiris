@@ -1,6 +1,7 @@
 package br.com.bandtec.calculometricas.controller;
 
 import br.com.bandtec.calculometricas.model.Evento;
+import br.com.bandtec.calculometricas.views.CupomMaisUsado;
 import br.com.bandtec.calculometricas.repository.AcessosRepository;
 import br.com.bandtec.calculometricas.repository.EventoRepository;
 import lombok.AllArgsConstructor;
@@ -43,6 +44,12 @@ public class MetricaController {
         return ResponseEntity.status(200).body(ranque);
     }
 
+    @GetMapping("/maisUsado")
+    public ResponseEntity getCupomMaisUsado(){
+        List<CupomMaisUsado> cupomMaisUsado = er.cupomMaisUsado();
+        if (cupomMaisUsado.isEmpty()) return ResponseEntity.status(204).build();
+        return ResponseEntity.status(200).body(cupomMaisUsado);
+    }
 
     @GetMapping("/{idConsumidorEcommerce}")
     public ResponseEntity getComprasProduto(@PathVariable Integer idConsumidorEcommerce){

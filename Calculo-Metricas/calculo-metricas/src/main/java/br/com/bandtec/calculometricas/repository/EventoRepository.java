@@ -1,6 +1,7 @@
 package br.com.bandtec.calculometricas.repository;
 
 import br.com.bandtec.calculometricas.model.Evento;
+import br.com.bandtec.calculometricas.views.CupomMaisUsado;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import java.lang.Integer;
@@ -17,5 +18,10 @@ public interface EventoRepository extends JpaRepository<Evento, Integer> {
 
     @Query(value = "select * from evento where idConsumidorEcommerce = ? and fkCupom is null", nativeQuery = true)
     List<Evento> findByConsumidorEcommerWithoutCupom(Integer consumidor);
+
+    @Query(value = "select fk_cupom as cupom, count(*) as quantidades FROM evento GROUP BY fk_cupom HAVING quantidades > 0 order by quantidades" +
+            " desc", nativeQuery = true)
+    List<CupomMaisUsado> cupomMaisUsado();
+
 
 }
