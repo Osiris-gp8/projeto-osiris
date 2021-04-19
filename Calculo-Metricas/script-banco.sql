@@ -10,15 +10,15 @@ CREATE SCHEMA IF NOT EXISTS `osiris` DEFAULT CHARACTER SET utf8 ;
 USE `osiris` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`Ecommerce`
+-- Table `mydb`.`ecommerce`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `osiris`.`Ecommerce` ;
+DROP TABLE IF EXISTS `osiris`.`ecommerce` ;
 
-CREATE TABLE IF NOT EXISTS `osiris`.`Ecommerce` (
-  `idEcommerce` INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `osiris`.`ecommerce` (
+  `id_ecommerce` INT NOT NULL AUTO_INCREMENT,
   `cnpj` CHAR(14) NOT NULL,
   `nome` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idEcommerce`)
+  PRIMARY KEY (`id_ecommerce`)
   );
 
 insert into ecommerce values
@@ -26,19 +26,19 @@ insert into ecommerce values
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Usuario`
+-- Table `mydb`.`usuario`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `osiris`.`Usuario` ;
+DROP TABLE IF EXISTS `osiris`.`usuario` ;
 
-CREATE TABLE IF NOT EXISTS `osiris`.`Usuario` (
-  `idUsuario` INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `osiris`.`usuario` (
+  `id_usuario` INT NOT NULL AUTO_INCREMENT,
   `login` VARCHAR(45) NOT NULL,
   `senha` VARCHAR(45) NOT NULL,
-  `fkEcommerce` INT NOT NULL,
-  PRIMARY KEY (`idUsuario`),
-  CONSTRAINT `fk_Usuario_Ecommerce`
-  FOREIGN KEY (`fkEcommerce`)
-  REFERENCES `osiris`.`Ecommerce` (`idEcommerce`)
+  `fk_ecommerce` INT NOT NULL,
+  PRIMARY KEY (`id_usuario`),
+  CONSTRAINT `fk_usuario_ecommerce`
+  FOREIGN KEY (`fk_ecommerce`)
+  REFERENCES `osiris`.`ecommerce` (`id_ecommerce`)
 );
 
 insert into usuario values
@@ -51,15 +51,15 @@ insert into usuario values
 DROP TABLE IF EXISTS `osiris`.`cupom` ;
 
 CREATE TABLE IF NOT EXISTS `osiris`.`cupom` (
-  `idCupom` INT NOT NULL AUTO_INCREMENT,
-  `nomeCupom` VARCHAR(45) NOT NULL,
+  `id_cupom` INT NOT NULL AUTO_INCREMENT,
+  `nome_cupom` VARCHAR(45) NOT NULL,
   `valor` DECIMAL(3,2) NOT NULL,
-  `dataEmitido` DATETIME NOT NULL,
-  `dataValidado` DATETIME NOT NULL,
-  `cupomEcommerce` BOOLEAN NOT NULL,
-  `idConsumidorEcommerce` INT NOT NULL,
+  `data_emitido` DATETIME NOT NULL,
+  `data_validado` DATETIME NOT NULL,
+  `cupom_ecommerce` BOOLEAN NOT NULL,
+  `id_consumidor_ecommerce` INT NOT NULL,
   `usado` BOOLEAN NOT NULL,
-  PRIMARY KEY (`idCupom`)
+  PRIMARY KEY (`id_cupom`)
 );
 
 insert into cupom values
@@ -72,15 +72,15 @@ insert into cupom values
 -- -----------------------------------------------------
 -- Table `mydb`.`dominioStatus`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `osiris`.`dominioStatus` ;
+DROP TABLE IF EXISTS `osiris`.`dominio_status` ;
 
-CREATE TABLE IF NOT EXISTS `osiris`.`dominioStatus` (
-  `idDominioStatus` INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `osiris`.`dominio_status` (
+  `id_dominio_status` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idDominioStatus`)
+  PRIMARY KEY (`id_dominio_status`)
 );
 
-insert into dominioStatus values
+insert into dominio_status values
 (null, "Cancelada"),
 (null, "Finalizada");
 
@@ -91,26 +91,26 @@ insert into dominioStatus values
 DROP TABLE IF EXISTS `osiris`.`evento` ;
 
 CREATE TABLE IF NOT EXISTS `osiris`.`evento` (
-  `idcompra` INT NOT NULL AUTO_INCREMENT,
-  `idConsumidorEcommerce` INT NOT NULL,
-  `nomeProduto` VARCHAR(45) NOT NULL,
+  `id_compra` INT NOT NULL AUTO_INCREMENT,
+  `id_consumidor_ecommerce` INT NOT NULL,
+  `nome_produto` VARCHAR(45) NOT NULL,
   `preco` DECIMAL(6,2) NOT NULL,
-  `nomeCategoria` VARCHAR(45) NOT NULL,
-  `dataCompra` DATETIME NOT NULL,
+  `nome_categoria` VARCHAR(45) NOT NULL,
+  `data_compra` DATETIME NOT NULL,
   `cupom` VARCHAR(45) NULL,
-  `fkEcommerce` INT NOT NULL,
-  `fkCupom` INT NOT NULL,
-  `fkStatus` INT NOT NULL,
-  PRIMARY KEY (`idcompra`),
-  CONSTRAINT `fk_compra_Ecommerce`
-    FOREIGN KEY (`fkEcommerce`)
-    REFERENCES `osiris`.`Ecommerce` (`idEcommerce`),
+  `fk_ecommerce` INT NOT NULL,
+  `fk_cupom` INT NOT NULL,
+  `fk_status` INT NOT NULL,
+  PRIMARY KEY (`id_compra`),
+  CONSTRAINT `fk_compra_ecommerce`
+    FOREIGN KEY (`fk_ecommerce`)
+    REFERENCES `osiris`.`ecommerce` (`id_ecommerce`),
   CONSTRAINT `fk_compra_cupom`
-    FOREIGN KEY (`fkCupom`)
-    REFERENCES `osiris`.`cupom` (`idCupom`),
-  CONSTRAINT `fk_evento_dominioStatus`
-    FOREIGN KEY (`fkStatus`)
-    REFERENCES `osiris`.`dominioStatus` (`idDominioStatus`)
+    FOREIGN KEY (`fk_cupom`)
+    REFERENCES `osiris`.`cupom` (`id_cupom`),
+  CONSTRAINT `fk_evento_dominio_status`
+    FOREIGN KEY (`fk_status`)
+    REFERENCES `osiris`.`dominio_status` (`id_dominio_status`)
 );
 
 insert into evento values
@@ -127,11 +127,11 @@ insert into evento values
 DROP TABLE IF EXISTS `osiris`.`acesso` ;
 
 CREATE TABLE IF NOT EXISTS `osiris`.`acesso` (
-  `idAcesso` INT NOT NULL AUTO_INCREMENT,
-  `idConsumidorEcommerce` INT NOT NULL,
-  `inicioAcesso` DATETIME NOT NULL,
-  `fimAcesso` DATETIME NOT NULL,
-  PRIMARY KEY (`idAcesso`)
+  `id_acesso` INT NOT NULL AUTO_INCREMENT,
+  `id_consumidor_ecommerce` INT NOT NULL,
+  `inicio_acesso` DATETIME NOT NULL,
+  `fim_acesso` DATETIME NOT NULL,
+  PRIMARY KEY (`id_acesso`)
 );
 
 insert into acesso values
@@ -145,10 +145,10 @@ insert into acesso values
 DROP TABLE IF EXISTS `osiris`.`cluster` ;
 
 CREATE TABLE IF NOT EXISTS `osiris`.`cluster` (
-  `idCluster` INT NOT NULL AUTO_INCREMENT,
-  `idUsuario` INT NOT NULL,
-  `nomeCluster` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idCluster`)
+  `id_cluster` INT NOT NULL AUTO_INCREMENT,
+  `id_usuario` INT NOT NULL,
+  `nome_cluster` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_cluster`)
 ); 
 
 -- -----------------------------------------------------
@@ -158,15 +158,15 @@ CREATE TABLE IF NOT EXISTS `osiris`.`cluster` (
 DROP TABLE IF EXISTS `osiris`.`meta` ;
 
 CREATE TABLE IF NOT EXISTS `osiris`.`meta` (
-  `idMeta` INT NOT NULL AUTO_INCREMENT,
-  `dataInicio` DATETIME NOT NULL,
-  `dataFim` DATETIME NOT NULL,
+  `id_meta` INT NOT NULL AUTO_INCREMENT,
+  `data_inicio` DATETIME NOT NULL,
+  `data_fim` DATETIME NOT NULL,
   `valor` DECIMAL(9,2) NOT NULL,
-  `fkEcommerce` INT NOT NULL,
-  PRIMARY KEY (`idMeta`),
+  `fk_ecommerce` INT NOT NULL,
+  PRIMARY KEY (`id_meta`),
   CONSTRAINT `fk_meta_ecommerce`
-  FOREIGN KEY (`fkEcommerce`)
-  REFERENCES `osiris`.`ecommerce` (`idEcommerce`)
+  FOREIGN KEY (`fk_ecommerce`)
+  REFERENCES `osiris`.`ecommerce` (`id_ecommerce`)
 ); 
   
   insert into meta values
@@ -176,9 +176,9 @@ select * from acesso;
 
 select * from evento where id_consumidor_ecommerce = 203 group by nome_produto;
 
-select count(id_acessos) as quantidade from acessos where inicio_acesso between current_date()-7 and current_date();
+select count(id_acesso) as quantidade from acesso where inicio_acesso between current_date()-7 and current_date();
 select count(id_compra) as quantidade from evento;
-select count(id_acessos) as quantidade from acessos;
+select count(id_acesso) as quantidade from acesso;
 select nome_categoria, count(id_compra) as quantidade from evento group by nome_categoria order by quantidade desc limit 5;
 
 select count(id_compra) as quantidade from evento where id_consumidor_ecommerce = 203;
