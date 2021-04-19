@@ -1,7 +1,7 @@
 package br.com.bandtec.calculometricas.controller;
-import br.com.bandtec.calculometricas.model.Cupom;
+import br.com.bandtec.calculometricas.domain.Cupom;
 import br.com.bandtec.calculometricas.repository.CupomRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,10 +9,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/cupons")
+@AllArgsConstructor
 public class CupomController {
 
-    @Autowired
-    CupomRepository cr;
+    private final CupomRepository cr;
 
     @GetMapping
     public ResponseEntity getCupom() {

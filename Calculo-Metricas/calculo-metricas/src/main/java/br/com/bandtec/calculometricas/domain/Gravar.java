@@ -1,4 +1,4 @@
-package br.com.bandtec.calculometricas.model;
+package br.com.bandtec.calculometricas.domain;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

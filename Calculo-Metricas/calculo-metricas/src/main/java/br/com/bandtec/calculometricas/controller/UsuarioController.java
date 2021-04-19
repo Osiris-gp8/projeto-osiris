@@ -1,7 +1,7 @@
 package br.com.bandtec.calculometricas.controller;
-import br.com.bandtec.calculometricas.model.Usuario;
+import br.com.bandtec.calculometricas.domain.Usuario;
 import br.com.bandtec.calculometricas.repository.UsuarioRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,10 +9,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/usuarios")
+@AllArgsConstructor
 public class UsuarioController {
 
-    @Autowired
-    UsuarioRepository ur;
+    private final UsuarioRepository ur;
 
     @GetMapping
     public ResponseEntity getUsuario() {

@@ -1,4 +1,4 @@
-package br.com.bandtec.calculometricas.model;
+package br.com.bandtec.calculometricas.domain;
 
 public class ListaObj <T>{
     private T[] vetor;

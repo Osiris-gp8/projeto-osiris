@@ -1,6 +1,6 @@
 package br.com.bandtec.calculometricas.repository;
 
-import br.com.bandtec.calculometricas.model.Acessos;
+import br.com.bandtec.calculometricas.domain.Acessos;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
