@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a26ad647-bb37-4051-9972-1ad75b65b6af" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aplication/api/src/main/java/br/com/grupo8/api/Controllers/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/aplication/api/src/main/java/br/com/grupo8/api/Controllers/UsuarioController.java" afterDir="false" />
-    </list>
+    <list default="true" id="a26ad647-bb37-4051-9972-1ad75b65b6af" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="ProjectId" id="1pGrwxOEovCQD892EYFT2cQa3TS" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
