@@ -1,6 +1,6 @@
 package br.com.bandtec.calculometricas.service;
 
-import br.com.bandtec.calculometricas.model.Evento;
+import br.com.bandtec.calculometricas.domain.Evento;
 import br.com.bandtec.calculometricas.repository.AcessosRepository;
 import br.com.bandtec.calculometricas.repository.EventoRepository;
 import br.com.bandtec.calculometricas.repository.MetaRepository;

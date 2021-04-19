@@ -1,4 +1,5 @@
-package br.com.bandtec.calculometricas.model;
+package br.com.bandtec.calculometricas.domain;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -7,17 +8,22 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-public class Usuario {
+public class Acessos {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idAcessos;
 
-    private Integer idUsuario;
-    private String login;
-    private String senha;
-    private Integer fkEcommerce;
+    private Integer idConsumidorEcommerce;
+
+    private LocalDateTime inicioAcesso;
+
+    private LocalDateTime fimAcesso;
 }
+

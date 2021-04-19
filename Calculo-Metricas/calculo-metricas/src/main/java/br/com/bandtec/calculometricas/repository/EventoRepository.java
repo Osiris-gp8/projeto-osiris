@@ -1,6 +1,6 @@
 package br.com.bandtec.calculometricas.repository;
 
-import br.com.bandtec.calculometricas.model.Evento;
+import br.com.bandtec.calculometricas.domain.Evento;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import java.lang.Integer;
@@ -12,7 +12,7 @@ public interface EventoRepository extends JpaRepository<Evento, Integer> {
             "group by nome_categoria order by quantidade", nativeQuery = true)
     List<String> ranque();
 
-    @Query(value = "select * from evento where id_consumidor_ecommerce = ?",nativeQuery = true)
+    @Query(value = "select * from evento where id_consumidor_ecommerce = ?", nativeQuery = true)
     List<Evento> findAllByIdConsumidorEcommerce(Integer consumidor);
 
     @Query(value = "select * from evento where idConsumidorEcommerce = ? and fkCupom is null", nativeQuery = true)

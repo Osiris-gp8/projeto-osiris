@@ -1,10 +1,8 @@
 package br.com.bandtec.calculometricas.controller;
 
-import br.com.bandtec.calculometricas.model.Evento;
+import br.com.bandtec.calculometricas.domain.Evento;
 import br.com.bandtec.calculometricas.repository.EventoRepository;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
