@@ -1,8 +1,7 @@
 package br.com.bandtec.calculometricas.controller;
-import br.com.bandtec.calculometricas.model.DominioStatus;
+import br.com.bandtec.calculometricas.domain.DominioStatus;
 import br.com.bandtec.calculometricas.repository.DominioStatusRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

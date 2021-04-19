@@ -1,12 +1,14 @@
 package br.com.bandtec.calculometricas.controller;
 
+<<<<<<< HEAD
 import br.com.bandtec.calculometricas.model.Evento;
 import br.com.bandtec.calculometricas.views.CupomMaisUsado;
+=======
+import br.com.bandtec.calculometricas.domain.Evento;
+>>>>>>> c7192594667ae8fd86f261a9d5575537a8dab637
 import br.com.bandtec.calculometricas.repository.AcessosRepository;
 import br.com.bandtec.calculometricas.repository.EventoRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

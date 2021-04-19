@@ -1,5 +1,4 @@
-package br.com.bandtec.calculometricas.model;
-
+package br.com.bandtec.calculometricas.domain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,11 +13,11 @@ import javax.persistence.Id;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Ecommerce {
+public class DominioStatus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idEcommerce;
-    private String cnpj;
+    private Integer idDominioStatus;
+
     private String nome;
 
 }

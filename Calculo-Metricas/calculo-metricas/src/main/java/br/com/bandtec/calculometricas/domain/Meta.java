@@ -1,6 +1,5 @@
-package br.com.bandtec.calculometricas.model;
+package br.com.bandtec.calculometricas.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,16 +14,18 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Acessos {
+public class Meta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idAcessos;
+    private Integer idMeta;
 
-    private Integer idConsumidorEcommerce;
+    private LocalDateTime dataInicio;
 
-    private LocalDateTime inicioAcesso;
+    private LocalDateTime dataFim;
 
-    private LocalDateTime fimAcesso;
+    private Double valor;
+
+    private Integer fkEcommerce;
+
 }
-
