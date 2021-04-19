@@ -1,11 +1,7 @@
 package br.com.bandtec.calculometricas.repository;
 
-<<<<<<< HEAD
-import br.com.bandtec.calculometricas.model.Evento;
 import br.com.bandtec.calculometricas.views.CupomMaisUsado;
-=======
 import br.com.bandtec.calculometricas.domain.Evento;
->>>>>>> c7192594667ae8fd86f261a9d5575537a8dab637
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import java.lang.Integer;
