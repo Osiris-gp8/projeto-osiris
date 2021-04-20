@@ -19,6 +19,9 @@ public class Cupom {
     private Integer idCupom;
     private String nomeCupom;
     private Double valor;
-    private LocalDateTime dataExpirado;
+    private LocalDateTime dataEmitido;
     private LocalDateTime dataValidado;
+    private Boolean cupomEcommerce;
+    private Integer idConsumidorEcommerce;
+    private Boolean usado;
 }
