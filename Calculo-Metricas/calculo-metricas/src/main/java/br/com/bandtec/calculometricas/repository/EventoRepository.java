@@ -19,8 +19,7 @@ public interface EventoRepository extends JpaRepository<Evento, Integer> {
     @Query(value = "select * from evento where idConsumidorEcommerce = ? and fkCupom is null", nativeQuery = true)
     List<Evento> findByConsumidorEcommerWithoutCupom(Integer consumidor);
 
-    @Query(value = "select fk_cupom as cupom, count(*) as quantidades FROM evento GROUP BY fk_cupom HAVING quantidades > 0 order by quantidades" +
-            " desc", nativeQuery = true)
+    @Query(value = "select nome_cupom as nome, fk_cupom as cupom,count(*) as quantidades FROM evento GROUP BY fk_cupom order by quantidades desc", nativeQuery = true)
     List<CupomMaisUsado> cupomMaisUsado();
 
 
