@@ -1,4 +1,6 @@
 target/
+<<<<<<< HEAD
+=======
 .idea
 *.class
 *.log
@@ -12,6 +14,7 @@ target/
 *.tar.gz
 *.rar
 hs_err_pid*
+>>>>>>> main
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
@@ -20,4 +23,10 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
+<<<<<<< HEAD
+# https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
+/node_modules
+=======
+.mvn/wrapper/maven-wrapper.jar
+>>>>>>> main
