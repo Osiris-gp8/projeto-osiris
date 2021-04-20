@@ -3,6 +3,7 @@ import br.com.bandtec.calculometricas.domain.Evento;
 import br.com.bandtec.calculometricas.views.CupomMaisUsado;
 import br.com.bandtec.calculometricas.repository.AcessosRepository;
 import br.com.bandtec.calculometricas.repository.EventoRepository;
+import br.com.bandtec.calculometricas.views.RanqueCategoria;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,9 +35,9 @@ public class MetricaController {
         return ResponseEntity.status(200).body(media);
     }
 
-    @GetMapping("/ranque")
-    public ResponseEntity getRanque() {
-        List<String> ranque = er.ranque();
+    @GetMapping("/ranqueCategoria")
+    public ResponseEntity getRanqueCategoria() {
+        List<RanqueCategoria> ranque = er.ranque();
         if (ranque.isEmpty()) return ResponseEntity.status(204).build();
         return ResponseEntity.status(200).body(ranque);
     }
