@@ -2,7 +2,16 @@ package br.com.bandtec.calculometricas.repository;
 
 import br.com.bandtec.calculometricas.domain.Cupom;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
 
 public interface CupomRepository extends JpaRepository<Cupom, Integer> {
+    @Query(nativeQuery = true, value = "select * from cupom where usado = false " +
+            "and data_validado < current_timestamp()")
+    List<Cupom> findAllByUsadoIsFalseAndDataValidadoLessThanTodayNow();
 
+    @Query(value = "select count(*) from cupom where usado = false " +
+            "and data_validado < current_timestamp()", nativeQuery = true)
+    Integer countAllByUsadoIsFalseAndDataValidadoLessThanTodayNow();
 }
