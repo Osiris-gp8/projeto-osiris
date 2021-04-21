@@ -1,5 +1,7 @@
 package br.com.bandtec.calculometricas.domain;
 
+import br.com.bandtec.calculometricas.layout.LayoutEvento;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -9,7 +11,7 @@ import java.util.Formatter;
 import java.util.FormatterClosedException;
 
 public class Gravar {
-    public static void gravarCsv(ListaObj<Layout> lista, String nomeArquivo){
+    public static void gravarCsv(ListaObj<LayoutEvento> lista, String nomeArquivo){
         FileWriter arquivo = null;
         Formatter saida = null;
         boolean erro = false;
@@ -27,7 +29,7 @@ public class Gravar {
 
         try{
             for (int i = 0; i < lista.getTamanho(); i++) {
-                Layout registro = lista.getElemento(i);
+                LayoutEvento registro = lista.getElemento(i);
 
                 SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
                 saida.format("%d;%d;%s;%.2f;%s;%s;%s;s;%.2f;%s",
@@ -55,7 +57,7 @@ public class Gravar {
         }
     }
 
-    public static void gravarTxt(ListaObj<Layout> lista, String nomeArquivo){
+    public static void gravarTxt(ListaObj<LayoutEvento> lista, String nomeArquivo){
         BufferedWriter saida = null;
         nomeArquivo += ".txt";
         try{
@@ -77,7 +79,7 @@ public class Gravar {
             saida.append(header + "\n");
 
             for (int i = 0; i < lista.getTamanho(); i++) {
-                Layout registro = lista.getElemento(i);
+                LayoutEvento registro = lista.getElemento(i);
                 corpo = "02";
                 corpo += String.format("%05d", registro.getIdCompra());
                 corpo += String.format("%05d", registro.getIdConsumidor());
