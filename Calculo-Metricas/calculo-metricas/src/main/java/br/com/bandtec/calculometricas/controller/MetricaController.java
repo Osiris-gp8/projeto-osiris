@@ -1,7 +1,9 @@
 package br.com.bandtec.calculometricas.controller;
+import br.com.bandtec.calculometricas.domain.Cupom;
 import br.com.bandtec.calculometricas.domain.Evento;
+import br.com.bandtec.calculometricas.repository.CupomRepository;
 import br.com.bandtec.calculometricas.views.CupomMaisUsado;
-import br.com.bandtec.calculometricas.repository.AcessosRepository;
+import br.com.bandtec.calculometricas.repository.AcessoRepository;
 import br.com.bandtec.calculometricas.repository.EventoRepository;
 import br.com.bandtec.calculometricas.views.RanqueCategoria;
 import lombok.AllArgsConstructor;
@@ -18,8 +20,9 @@ import java.util.List;
 @AllArgsConstructor
 public class MetricaController {
 
-    private final AcessosRepository ar;
+    private final AcessoRepository ar;
     private final EventoRepository er;
+    private final CupomRepository cr;
 
     @GetMapping("/ultimaSemana")
     public ResponseEntity getUltimaSemana() {
@@ -51,9 +54,37 @@ public class MetricaController {
 
     @GetMapping("/{idConsumidorEcommerce}")
     public ResponseEntity getComprasProduto(@PathVariable Integer idConsumidorEcommerce){
-        List<Evento> teste = er.findAllByIdConsumidorEcommerce(idConsumidorEcommerce);
-        if (teste.isEmpty()) return ResponseEntity.status(204).build();
-        return ResponseEntity.status(200).body(teste);
+        List<Evento> compras = er.findAllByIdConsumidorEcommerce(idConsumidorEcommerce);
+        if (compras.isEmpty()) return ResponseEntity.status(204).build();
+        return ResponseEntity.status(200).body(compras);
+    }
+
+    @GetMapping("/listaCupomExpirado")
+    public ResponseEntity getListaCupomExpirado(){
+        List<Cupom> lista = cr.findAllByUsadoIsFalseAndDataValidadoLessThanTodayNow();
+        if (lista.isEmpty()) return ResponseEntity.status(204).build();
+        return ResponseEntity.status(200).body(lista);
+    }
+
+    @GetMapping("/contagemCupomExpirado")
+    public ResponseEntity getContagemCupomExpirado(){
+        Integer total = cr.countAllByUsadoIsFalseAndDataValidadoLessThanTodayNow();
+        if (total == null) return ResponseEntity.status(204).build();
+        return ResponseEntity.status(200).body(total);
+    }
+
+    @GetMapping("/listaCompraCupomNaoUsado")
+    public ResponseEntity getListaCompraCupomNaoUsado(){
+        List<Evento> lista = er.findAllByCupomAndEventoAndUsadoIsFalseAndFkStatus();
+        if (lista.isEmpty()) return ResponseEntity.status(204).build();
+        return ResponseEntity.status(200).body(lista);
+    }
+
+    @GetMapping("/contagemCompraCupomNaoUsado")
+    public ResponseEntity getContagemCompraCupomNaoUsado(){
+        Integer total = er.countAllByCupomAndEventoAndUsadoIsFalseAndFkStatus();
+        if (total == null) return ResponseEntity.status(204).build();
+        return ResponseEntity.status(200).body(total);
     }
 
 }
