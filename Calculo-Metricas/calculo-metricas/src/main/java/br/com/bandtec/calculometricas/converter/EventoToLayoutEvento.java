@@ -20,6 +20,19 @@ public class EventoToLayoutEvento implements Converter<Evento, LayoutEvento> {
 
     @Override
     public LayoutEvento convert(Evento evento) {
+
+        ecommerceRepository.findById(evento.getFkEcommerce()).orElseThrow( () -> {
+            throw new RuntimeException("Id ecommerce não existe");
+        });
+
+        cupomRepository.findById( evento.getFkCupom()).orElseThrow( () -> {
+           throw new RuntimeException("Id cupom não existe");
+        });
+
+        dominioStatusRepository.findById(evento.getFkStatus()).orElseThrow( () -> {
+           throw new RuntimeException("Id status não existe");
+        });
+
         LayoutEvento layout = LayoutEvento.builder()
                 .IdCompra( evento.getIdCompra() )
                 .IdConsumidor( evento.getIdConsumidorEcommerce() )
@@ -27,20 +40,11 @@ public class EventoToLayoutEvento implements Converter<Evento, LayoutEvento> {
                 .precoProduto( evento.getPreco() )
                 .categoriaProduto( evento.getNomeCategoria() )
                 .dataCompra( evento.getDataCompra() )
-                // ...
-
+                .nomeEcommerce( ecommerceRepository.findById(evento.getFkEcommerce()).get().getNome())
+                .nomeCupom( cupomRepository.findById(evento.getFkCupom()).get().getNomeCupom())
+                .valorCupom( cupomRepository.findById(evento.getFkCupom()).get().getValor())
+                .status( dominioStatusRepository.findById(evento.getFkStatus()).get().getNome())
                 .build();
-        Optional<Ecommerce> opt = ecommerceRepository.findById( evento.getFkEcommerce() );
-        opt.orElseThrow(
-                () -> {
-                    throw new RuntimeException("Id ecommerce não existe");
-                }
-        );
-
-//        if(!opt.isPresent()){
-//            throw  new RuntimeException("");
-//        }
-        layout.setNomeEcommerce( opt.get().getNome() );
 
         return layout;
 
