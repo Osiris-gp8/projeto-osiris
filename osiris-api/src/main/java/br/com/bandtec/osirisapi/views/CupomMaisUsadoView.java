@@ -2,7 +2,7 @@ package br.com.bandtec.osirisapi.views;
 
 import org.springframework.beans.factory.annotation.Value;
 
-public interface CupomMaisUsado {
+public interface CupomMaisUsadoView {
 
     @Value("#{target.nome}")
     String getNome();
