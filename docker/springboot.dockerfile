@@ -5,7 +5,7 @@ FROM openjdk:8-jdk-alpine
 LABEL maintainer="Kaio Baleeiro"
 
 #Copiando o projeto pra dentro do container
-COPY ../osiris-api /var/www
+COPY /osiris-api /var/www
 
 #Diretório de trabalho (onde ele roda comandos como mvnw clean install)
 WORKDIR /var/www
