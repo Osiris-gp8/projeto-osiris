@@ -1,5 +1,5 @@
 #Imagem base
-FROM Openjdk:8-jdk-alpine
+FROM openjdk:8-jdk-alpine
 
 #Criador do Dockerfile
 LABEL maintainer="Kaio Baleeiro"
