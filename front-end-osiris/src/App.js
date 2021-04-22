@@ -1,10 +1,10 @@
-import Settings from './Pages/Setting'
-import Dashboard from './Pages/Dashboard'
+import Routes from './routes'
+
 
 function App() {
   return (
-    <div className="App">
-      <Dashboard/>
+    <div className="app">
+      <Routes />
     </div>
   );
 }
