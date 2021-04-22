@@ -1,54 +1,36 @@
 package br.com.bandtec.calculometricas.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Positive;
 import java.time.LocalDate;
 
 @Entity
+@Getter
+@Setter
 public class Acessos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idAcessos;
 
+    @NotNull
+    @Positive
     private Integer idConsumidorEcommerce;
 
+    @NotNull
+    @PastOrPresent
     private LocalDate inicioAcesso;
 
+    @NotNull
+    @PastOrPresent
     private LocalDate fimAcesso;
-
-    public Integer getIdAcessos() {
-        return idAcessos;
-    }
-
-    public void setIdAcessos(Integer idAcessos) {
-        this.idAcessos = idAcessos;
-    }
-
-    public Integer getIdConsumidorEcommerce() {
-        return idConsumidorEcommerce;
-    }
-
-    public void setIdConsumidorEcommerce(Integer idConsumidorEcommerce) {
-        this.idConsumidorEcommerce = idConsumidorEcommerce;
-    }
-
-    public LocalDate getInicioAcesso() {
-        return inicioAcesso;
-    }
-
-    public void setInicioAcesso(LocalDate inicioAcesso) {
-        this.inicioAcesso = inicioAcesso;
-    }
-
-    public LocalDate getFimAcesso() {
-        return fimAcesso;
-    }
-
-    public void setFimAcesso(LocalDate fimAcesso) {
-        this.fimAcesso = fimAcesso;
-    }
 }
 
