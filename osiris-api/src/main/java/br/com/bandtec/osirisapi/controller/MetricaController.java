@@ -5,8 +5,8 @@ import br.com.bandtec.osirisapi.domain.Evento;
 import br.com.bandtec.osirisapi.repository.AcessoRepository;
 import br.com.bandtec.osirisapi.repository.CupomRepository;
 import br.com.bandtec.osirisapi.repository.EventoRepository;
-import br.com.bandtec.osirisapi.views.CupomMaisUsado;
-import br.com.bandtec.osirisapi.views.RanqueCategoria;
+import br.com.bandtec.osirisapi.views.CupomMaisUsadoView;
+import br.com.bandtec.osirisapi.views.RanqueCategoriaView;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,16 +41,16 @@ public class MetricaController {
 
     @GetMapping("/ranqueCategoria")
     public ResponseEntity getRanqueCategoria() {
-        List<RanqueCategoria> ranque = er.ranque();
+        List<RanqueCategoriaView> ranque = er.ranque();
         if (ranque.isEmpty()) return ResponseEntity.status(204).build();
         return ResponseEntity.status(200).body(ranque);
     }
 
     @GetMapping("/maisUsado")
     public ResponseEntity getCupomMaisUsado(){
-        List<CupomMaisUsado> cupomMaisUsado = er.cupomMaisUsado();
-        if (cupomMaisUsado.isEmpty()) return ResponseEntity.status(204).build();
-        return ResponseEntity.status(200).body(cupomMaisUsado);
+        List<CupomMaisUsadoView> cupomMaisUsadoView = er.cupomMaisUsado();
+        if (cupomMaisUsadoView.isEmpty()) return ResponseEntity.status(204).build();
+        return ResponseEntity.status(200).body(cupomMaisUsadoView);
     }
 
     @GetMapping("/{idConsumidorEcommerce}")
