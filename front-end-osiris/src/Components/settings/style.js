@@ -2,7 +2,7 @@ import styled from "styled-components"
 import React from "react"
 
 const Container = styled.form`
-    width: 50vw;
+    width: 60vw;
     background-color: var(--background-div);
     /* position:absolute; */
     height: 88vh;

@@ -1,9 +1,10 @@
 import Settings from './Pages/Setting'
+import Dashboard from './Pages/Dashboard'
 
 function App() {
   return (
     <div className="App">
-      <Settings/>
+      <Dashboard/>
     </div>
   );
 }

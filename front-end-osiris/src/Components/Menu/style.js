@@ -2,11 +2,13 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
     /* position: absolute; */
-    width: 400px;
+    width: 30vw;
     height: 88vh;
     left: 6vw;
     top: 4vh;
     display:flex;
+    min-height: 700px;
+    min-width: 400px;
     flex-direction:column;
     background: var(--background-div);
     padding:15px;
@@ -18,7 +20,7 @@ export const Container = styled.div`
 `
 
 export const WelcomeText = styled.p`
-    font-size: 40px;
+    font-size: 2em;
     font-style: normal;
     font-weight: normal;
     line-height: 37px;
