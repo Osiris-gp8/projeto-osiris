@@ -1,3 +1,4 @@
+import { Icon } from '@iconify/react';
 import styled from 'styled-components'
 
 export const Container = styled.div`
@@ -33,29 +34,39 @@ export const Contrast = styled.span`
     font-weight: normal;
     line-height: 37px;
     word-break:keep-all;
+`;
+
+export const IconChildren = styled(Icon)`
+
 `
 
 export const Item = styled.button`
     width:100%;
     font-size:30px;
     height: 70px;
-    background:none;
+    background:${props => props.active && 'var(--primary)'};
+    
     border:none;
     outline:none;
     /* align-self:end; */
     margin-top: ${props => props.first && '50px'};
+    color:${props => props.active?'white':'black'};
     cursor:pointer;
     display:flex;
     justify-content:flex-start;
     align-self: flex-end;
+    text-decoration: none;
     
+    ${IconChildren}{
+        color:${props => props.active ?'white':'Black'};
+    }
+
     &:hover{
         background-color:var(--primary);
     }
 
     &:hover > svg{ 
-        color:white;
-        
+        color:white;        
     }
 
     &:hover > p{ 
@@ -67,6 +78,7 @@ export const Item = styled.button`
         font-size:40px;
         margin-right: 7px;
         align-self:center;
+        margin-left: 10px;
     }
 
     & > p{
