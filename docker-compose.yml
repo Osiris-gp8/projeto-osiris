@@ -1,0 +1,30 @@
+version: '3'
+
+networks: 
+    osiris-network:
+        driver: bridge
+
+services: 
+    front:
+        build: 
+            dockerfile: ./docker/react.dockerfile
+            context: .
+        image: osiris/front-end
+        container_name: osiris-front-end
+        ports:
+            - "3000:3000"
+        networks: 
+            - osiris-network
+        depends_on: 
+            - springboot
+
+    springboot:
+        build: 
+            dockerfile: ./docker/springboot.dockerfile
+            context: .
+        image: osiris/springboot-api
+        container_name: osiris-api
+        ports: 
+            - "8080:8080"
+        networks: 
+            - osiris-network
