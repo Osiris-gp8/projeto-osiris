@@ -21,17 +21,24 @@ public class EventoToLayoutEvento implements Converter<Evento, LayoutEvento> {
     @Override
     public LayoutEvento convert(Evento evento) {
 
-        ecommerceRepository.findById(evento.getFkEcommerce()).orElseThrow( () -> {
-            throw new RuntimeException("Id ecommerce não existe");
-        });
+        try {
+            ecommerceRepository.findById(evento.getFkEcommerce()).orElseThrow( () -> {
+                throw new RuntimeException("Id ecommerce não existe");
+            });
 
-        cupomRepository.findById( evento.getFkCupom()).orElseThrow( () -> {
-           throw new RuntimeException("Id cupom não existe");
-        });
+            cupomRepository.findById( evento.getFkCupom()).orElseThrow( () -> {
+                throw new RuntimeException("Id cupom não existe");
+            });
 
-        dominioStatusRepository.findById(evento.getFkStatus()).orElseThrow( () -> {
-           throw new RuntimeException("Id status não existe");
-        });
+            dominioStatusRepository.findById(evento.getFkStatus()).orElseThrow( () -> {
+                throw new RuntimeException("Id status não existe");
+            });
+        } catch (RuntimeException e) {
+            System.err.println(e.getMessage());
+        }  catch (Throwable e){
+            System.err.println(e.getMessage());
+        }
+
 
         LayoutEvento layout = LayoutEvento.builder()
                 .IdCompra( evento.getIdCompra() )

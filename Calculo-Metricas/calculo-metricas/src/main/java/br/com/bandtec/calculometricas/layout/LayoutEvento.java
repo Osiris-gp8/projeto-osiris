@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 @Getter
@@ -58,29 +59,30 @@ public class LayoutEvento implements Layout {
 
     @Override
     public String toCSV() {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-        return String.format("%d;%d;%s;%.2f;%s;%s;%s;s;%.2f;%s%n",
+//        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        return String.format("%d;%d;%s;%.2f;%s;%s;%s;%s;%.2f;%s%n",
                 this.getIdCompra(), this.getIdConsumidor(), this.getNomeProduto(),
-                this.getPrecoProduto(), this.getCategoriaProduto(), formatter.format(this.getDataCompra()),
+                this.getPrecoProduto(), this.getCategoriaProduto(), this.getDataCompra().format(formatter),
                 this.getNomeEcommerce(), this.getNomeCupom(), this.getValorCupom(),
                 this.getStatus());
     }
 
     @Override
     public String toTXT() {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         String corpo = "";
 
         corpo = "02";
         corpo += String.format("%05d", this.getIdCompra());
         corpo += String.format("%05d", this.getIdConsumidor());
         corpo += String.format("%-45s", this.getNomeProduto());
-        corpo += String.format("%.2f", this.getPrecoProduto());
+        corpo += String.format("R$%9.2f", this.getPrecoProduto());
         corpo += String.format("%-45s", this.getCategoriaProduto());
-        corpo += String.format("%-19s", formatter.format(this.getDataCompra()));
+        corpo += String.format("%-19s", this.getDataCompra().format(formatter));
         corpo += String.format("%-45s", this.getNomeEcommerce());
         corpo += String.format("%-45s", this.getNomeCupom());
-        corpo += String.format("%.2f", this.getValorCupom());
+        corpo += String.format("%7.2f", this.getValorCupom());
         corpo += String.format("%-45s%n", this.getStatus());
 
         return corpo;
