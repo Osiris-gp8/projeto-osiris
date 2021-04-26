@@ -39,4 +39,14 @@ public class EcommerceController {
             return ResponseEntity.status(404).build();
         }
     }
+
+    @PutMapping("/{idEcommerce}")
+    public ResponseEntity atualizarEcommerce(@RequestBody Ecommerce ecommerce){
+        if (ecr.findById(ecommerce.getIdEcommerce()).isPresent()){
+            ecr.save(ecommerce);
+            return ResponseEntity.status(200).build();
+        }else {
+            return ResponseEntity.status(404).build();
+        }
+    }
 }

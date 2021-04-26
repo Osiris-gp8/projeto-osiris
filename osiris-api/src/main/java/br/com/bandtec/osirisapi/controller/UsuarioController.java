@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -13,6 +14,7 @@ import java.util.List;
 public class UsuarioController {
 
     private final UsuarioRepository ur;
+    private List<Usuario> sessoes;
 
     @GetMapping
     public ResponseEntity getUsuario() {
@@ -24,7 +26,7 @@ public class UsuarioController {
         }
     }
 
-    @PostMapping
+    @PostMapping("/cadastro")
     public ResponseEntity postUsuario(@RequestBody Usuario novoUsuario) {
         ur.save(novoUsuario);
         return ResponseEntity.status(201).build();
@@ -38,5 +40,19 @@ public class UsuarioController {
         } else {
             return ResponseEntity.status(404).build();
         }
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity loginUsuario(@RequestBody String login,
+                                @RequestBody String senha){
+        Usuario uLogado = null;
+        for (Usuario u : this.sessoes) {
+            if(u.getLogin().equals(login) && u.getSenha().equals(senha)){
+                uLogado = u;
+                return ResponseEntity.status(400).body("Usuário já logado");
+            }
+        }
+        //TODO adicionar verificação
+        return ResponseEntity.status(200).build();
     }
 }
