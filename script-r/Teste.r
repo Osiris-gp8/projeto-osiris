@@ -1,21 +1,21 @@
 library(jsonlite)
 
-set.seed(9999)
+set.seed(500)
 n = 1000
 
 popular <- function(qtd, textos){
   elemento.pop <- rep(0:qtd,n)
-  elemento.n <- sample(categoria.pop,n)
-  elemento <- factor(categoria.n,
-                      levels = c(0:qtd),
-                      labels = textos,
-                      ordered = TRUE) 
+  elemento.n <- sample(elemento.pop,n)
+  elemento <- factor(elemento.n,
+                     levels = c(0:qtd),
+                     labels = textos,
+                     ordered = TRUE) 
   return(elemento)
 }
 
- 
 
-# idade <- abs(round(rnorm(n, 37, 10),0))
+
+#idade <- abs(round(rnorm(n, 37, 10),0))
 
 preco <-  abs(round(rnorm(n, 2000, 300),2))
 
@@ -27,10 +27,7 @@ nome <- popular(4, c("Nike","Adidas",
                      "Oakley", "Lacoste",
                      "Versace"))
 
-cupom <- popular(4, c(
-  "", "OSI10", "0SI20",
-  "MERCADO10", "SUPERDESCONTO"
-))
+fkcupom <- popular(4, c(0:4))
 
 status <- rbinom(n,4,0.5) + 1
 
@@ -50,18 +47,19 @@ for(i in 1:n){
 
 dataCalcados = data.frame(id = 1:n,
                           idConsumidor, 
+                          idade,
                           preco,
                           nome,
                           categoria,
-                          cupom,
+                          fkcupom,
                           status,
                           fkEcommerce=1,
                           dataCompra = dataHora[1:n])
 
-x <- toJSON(dataCalcados,pretty = T)
+x <- toJSON(dataCalcados, pretty = T)
 
 
-write(x, "./test.json")
+write(x, "dado.json")
 
 
 
