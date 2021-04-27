@@ -56,12 +56,28 @@ public class ArquivosController {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Disposition", "attachment; filename=exportacao.txt");
 
+        List<Evento> eventos = er.findAll();
+
+        if(eventos.isEmpty()){
+            return ResponseEntity.status(204).build();
+        }
+
+        ListaObj<LayoutEvento> listaLayout = new ListaObj<LayoutEvento>(eventos.size());
+
         String txt = "";
-        LayoutEvento le = new LayoutEvento(1, 1, "teste", 100.0,
-                "teste", LocalDateTime.now(), "teste", "teste", 100.0, "teste");
+        String corpo = "";
+        eventos.forEach( evento -> {
+            listaLayout.adicionar(converter.convert(evento));
+        });
+
+        for (int i = 0; i < listaLayout.getTamanho(); i++) {
+            corpo += listaLayout.getElemento(i).toTXT();
+        }
+
         txt += LayoutEvento.header();
-        txt += le.toTXT();
-        txt += LayoutEvento.trailer(1);
+        txt += corpo;
+        txt += LayoutEvento.trailer(eventos.size());
+
         return ResponseEntity.status(200).headers(headers).body(txt);
     }
 
