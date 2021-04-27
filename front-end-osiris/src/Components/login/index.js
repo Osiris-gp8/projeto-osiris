@@ -1,7 +1,8 @@
 import {React, useState} from 'react';
+import ReactInputMask from "react-input-mask";
 import leftblob from '../../Images/left-blob.svg'
 import rightblob from '../../Images/right-blob.svg'
-import { Container, Form, ContainerForm, Button} from './style';
+import { Container, Form, ContainerForm, Button , MaskedInput} from './style';
 import {Link,useHistory} from 'react-router-dom';
 
 
@@ -27,9 +28,9 @@ export default () => {
                     <h2>Login</h2>
                     <div>
                         <label for='cnpj'>CNPJ/Usuário</label>
-                        <input id='cnpj' value={cnpj} 
+                        <ReactInputMask mask="99.999.999/9999-99" id="cnpj" value={cnpj}
                         onChange={(e) => setCNPJ(e.target.value)} 
-                        placeholder='00.000.000/0000-00'/>
+                        placeholder='00.000.000/0000-00' />
                     </div>
                     <div>
                         <label for='senha'>Senha</label>
