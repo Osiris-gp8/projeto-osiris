@@ -2,7 +2,7 @@ import {React, useState} from 'react';
 import ReactInputMask from "react-input-mask";
 import leftblob from '../../Images/left-blob.svg'
 import rightblob from '../../Images/right-blob.svg'
-import { Container, Form, ContainerForm, Button , MaskedInput} from './style';
+import { Container, Form, ContainerForm, Button } from './style';
 import {Link,useHistory} from 'react-router-dom';
 
 

@@ -2,7 +2,7 @@ import { React, useState } from 'react';
 import ReactInputMask from "react-input-mask";
 import leftblob from '../../Images/left-blob.svg'
 import rightblob from '../../Images/right-blob.svg'
-import { Button, Container, ContainerForm, Form , RadioBox, RadioButton, MaskedInput } from './style';
+import { Button, Container, ContainerForm, Form , RadioBox, RadioButton } from './style';
 import { Link } from 'react-router-dom';
 
 
