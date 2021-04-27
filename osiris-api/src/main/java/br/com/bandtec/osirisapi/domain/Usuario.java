@@ -1,4 +1,5 @@
 package br.com.bandtec.osirisapi.domain;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,7 +25,6 @@ public class Usuario {
     private String login;
 
     @NotBlank
-    @Min(8)
     private String senha;
 
     @NotBlank
