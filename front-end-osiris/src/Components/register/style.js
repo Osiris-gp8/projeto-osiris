@@ -48,3 +48,5 @@ export const Button = styled(BTN)`
 
 `
 
+export const MaskedInput = styled.input``
+

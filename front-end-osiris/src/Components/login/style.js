@@ -89,3 +89,5 @@ export const Button = styled.button`
     font-size: 34px;
     line-height: 40px;
 `
+
+export const MaskedInput = styled.input``
