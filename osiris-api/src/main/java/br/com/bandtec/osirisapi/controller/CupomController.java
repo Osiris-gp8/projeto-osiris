@@ -40,7 +40,7 @@ public class CupomController {
         }
     }
 
-    @PutMapping("{id}")
+    @PutMapping
     public ResponseEntity putCupom(@RequestBody Cupom cupom){
         if(cr.findById(cupom.getIdCupom()).isPresent()){
             cr.save(cupom);

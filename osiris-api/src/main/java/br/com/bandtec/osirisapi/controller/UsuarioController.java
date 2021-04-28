@@ -49,7 +49,7 @@ public class UsuarioController {
         }
     }
 
-    @PutMapping("/{idUsuario}")
+    @PutMapping
     public ResponseEntity putUsuario(@RequestBody Usuario usuario){
         if(ur.findById(usuario.getIdUsuario()).isPresent()){
             ur.save(usuario);

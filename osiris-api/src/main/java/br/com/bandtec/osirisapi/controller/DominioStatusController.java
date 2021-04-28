@@ -43,7 +43,7 @@ public class DominioStatusController {
         }
     }
 
-    @PutMapping("/{idEcommerce}")
+    @PutMapping
     public ResponseEntity atualizarDominioStatus(@RequestBody DominioStatus dominioStatus){
         if (dsr.findById(dominioStatus.getIdDominioStatus()).isPresent()){
             dsr.save(dominioStatus);

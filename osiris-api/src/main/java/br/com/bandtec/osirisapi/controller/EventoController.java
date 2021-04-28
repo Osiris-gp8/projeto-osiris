@@ -42,7 +42,7 @@ public class EventoController {
         }
     }
 
-    @PutMapping("/{idEvento}")
+    @PutMapping
     public ResponseEntity atualizarEvento(@RequestBody Evento evento){
         if (er.findById(evento.getIdCompra()).isPresent()){
             er.save(evento);
