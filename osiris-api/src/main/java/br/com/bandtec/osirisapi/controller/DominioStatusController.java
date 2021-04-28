@@ -33,7 +33,7 @@ public class DominioStatusController {
         return ResponseEntity.status(201).build();
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{idDominioStatus}")
     public ResponseEntity deleteDominioStatus(@PathVariable int idDominioStatus) {
         if (dsr.existsById(idDominioStatus)) {
             dsr.deleteById(idDominioStatus);

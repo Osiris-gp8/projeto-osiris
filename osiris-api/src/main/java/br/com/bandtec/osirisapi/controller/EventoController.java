@@ -32,7 +32,7 @@ public class EventoController {
         return ResponseEntity.status(201).build();
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{idEvento}")
     public ResponseEntity deleteEvento(@PathVariable int idEvento) {
         if (er.existsById(idEvento)) {
             er.deleteById(idEvento);

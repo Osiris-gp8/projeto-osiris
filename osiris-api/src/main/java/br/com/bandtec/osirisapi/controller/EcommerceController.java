@@ -30,7 +30,7 @@ public class EcommerceController {
         return ResponseEntity.status(201).build();
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{idEcommerce}")
     public ResponseEntity deleteEcommerce(@PathVariable int idEcommerce) {
         if (ecr.existsById(idEcommerce)) {
             ecr.deleteById(idEcommerce);

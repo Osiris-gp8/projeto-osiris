@@ -30,7 +30,7 @@ public class CupomController {
         return ResponseEntity.status(201).build();
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{idCupom}")
     public ResponseEntity deleteCupom(@PathVariable int idCupom) {
         if (cr.existsById(idCupom)) {
             cr.deleteById(idCupom);
