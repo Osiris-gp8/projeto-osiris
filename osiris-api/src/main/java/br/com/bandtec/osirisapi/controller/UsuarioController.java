@@ -49,6 +49,16 @@ public class UsuarioController {
         }
     }
 
+    @PutMapping
+    public ResponseEntity putUsuario(@RequestBody Usuario usuario){
+        if(ur.findById(usuario.getIdUsuario()).isPresent()){
+            ur.save(usuario);
+            return ResponseEntity.status(200).build();
+        }else{
+            return ResponseEntity.status(404).build();
+        }
+    }
+
     @PostMapping("/login")
     public ResponseEntity loginUsuario(@RequestBody UsuarioAcessoRequest request){
         String login = request.getLogin();

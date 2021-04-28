@@ -39,4 +39,14 @@ public class CupomController {
             return ResponseEntity.status(404).build();
         }
     }
+
+    @PutMapping
+    public ResponseEntity putCupom(@RequestBody Cupom cupom){
+        if(cr.findById(cupom.getIdCupom()).isPresent()){
+            cr.save(cupom);
+            return ResponseEntity.status(200).build();
+        }else{
+            return ResponseEntity.status(404).build();
+        }
+    }
 }

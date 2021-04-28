@@ -40,7 +40,7 @@ public class EcommerceController {
         }
     }
 
-    @PutMapping("/{idEcommerce}")
+    @PutMapping
     public ResponseEntity atualizarEcommerce(@RequestBody Ecommerce ecommerce){
         if (ecr.findById(ecommerce.getIdEcommerce()).isPresent()){
             ecr.save(ecommerce);
