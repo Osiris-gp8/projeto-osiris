@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,12 +15,13 @@ import java.util.Optional;
 @AllArgsConstructor
 public class UsuarioController {
 
-    private final UsuarioRepository ur;
+
+    private final UsuarioRepository usuarioRepository;
     private List<Usuario> sessoes;
 
     @GetMapping
     public ResponseEntity getUsuario() {
-        List<Usuario> usuarios = ur.findAll();
+        List<Usuario> usuarios = usuarioRepository.findAll();
         if (usuarios.isEmpty()) {
             return ResponseEntity.status(204).build();
         } else {
@@ -31,18 +31,18 @@ public class UsuarioController {
 
     @PostMapping("/cadastro")
     public ResponseEntity postUsuario(@RequestBody @Valid Usuario novoUsuario) {
-        if (ur.findByLoginEqualsAndSenhaEquals( novoUsuario.getLogin(), novoUsuario.getSenha() ).isPresent()){
+        if (usuarioRepository.findByLoginEqualsAndSenhaEquals( novoUsuario.getLogin(), novoUsuario.getSenha() ).isPresent()){
             return ResponseEntity.status(400).body("Usuário já existe");
         }else {
-            ur.save(novoUsuario);
+            usuarioRepository.save(novoUsuario);
             return ResponseEntity.status(201).build();
         }
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity deleteUsuario(@PathVariable int idUsuario) {
-        if (ur.existsById(idUsuario)) {
-            ur.deleteById(idUsuario);
+        if (usuarioRepository.existsById(idUsuario)) {
+            usuarioRepository.deleteById(idUsuario);
             return ResponseEntity.status(200).build();
         } else {
             return ResponseEntity.status(404).build();
@@ -51,8 +51,8 @@ public class UsuarioController {
 
     @PutMapping
     public ResponseEntity putUsuario(@RequestBody Usuario usuario){
-        if(ur.findById(usuario.getIdUsuario()).isPresent()){
-            ur.save(usuario);
+        if(usuarioRepository.findById(usuario.getIdUsuario()).isPresent()){
+            usuarioRepository.save(usuario);
             return ResponseEntity.status(200).build();
         }else{
             return ResponseEntity.status(404).build();
@@ -72,7 +72,7 @@ public class UsuarioController {
             }
         }
 
-        Optional<Usuario> usuario = ur.findByLoginEqualsAndSenhaEquals( login, senha );
+        Optional<Usuario> usuario = usuarioRepository.findByLoginEqualsAndSenhaEquals( login, senha );
         if (!usuario.isPresent()){
             return ResponseEntity.status(404).build();
         }else {

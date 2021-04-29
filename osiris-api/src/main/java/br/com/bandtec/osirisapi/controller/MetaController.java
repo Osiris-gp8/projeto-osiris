@@ -13,11 +13,11 @@ import java.util.List;
 @AllArgsConstructor
 public class MetaController {
 
-    private final MetaRepository mr;
+    private final MetaRepository metaRepository;
 
     @GetMapping
     public ResponseEntity getMetas() {
-        List<Meta> metas = mr.findAll();
+        List<Meta> metas = metaRepository.findAll();
         if (metas.isEmpty()) {
             return ResponseEntity.status(204).build();
         } else {
@@ -27,7 +27,7 @@ public class MetaController {
 
     @PostMapping
     public ResponseEntity postAcesso(@RequestBody Meta novaMeta) {
-        mr.save(novaMeta);
+        metaRepository.save(novaMeta);
         return ResponseEntity.status(201).build();
     }
 }

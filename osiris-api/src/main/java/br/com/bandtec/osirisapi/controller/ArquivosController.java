@@ -22,7 +22,7 @@ import java.util.List;
 @AllArgsConstructor
 public class ArquivosController {
 
-    private final EventoRepository er;
+    private final EventoRepository eventoRepository;
     private final EventoToLayoutEvento converter;
 
     @GetMapping(value = "/relatorio-csv", produces = "text/csv")
@@ -31,7 +31,7 @@ public class ArquivosController {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Disposition", "attachment; filename=exportacao.csv");
 
-        List<Evento> eventos = er.findAll();
+        List<Evento> eventos = eventoRepository.findAll();
 
         if(eventos.isEmpty()){
             return ResponseEntity.status(204).build();
@@ -56,7 +56,7 @@ public class ArquivosController {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Disposition", "attachment; filename=exportacao.txt");
 
-        List<Evento> eventos = er.findAll();
+        List<Evento> eventos = eventoRepository.findAll();
 
         if(eventos.isEmpty()){
             return ResponseEntity.status(204).build();

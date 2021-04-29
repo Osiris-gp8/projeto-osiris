@@ -1,12 +1,10 @@
 package br.com.bandtec.osirisapi.controller;
 
 import br.com.bandtec.osirisapi.domain.DominioStatus;
-import br.com.bandtec.osirisapi.domain.Ecommerce;
 import br.com.bandtec.osirisapi.repository.DominioStatusRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import springfox.documentation.service.ResponseMessage;
 
 import java.util.List;
 
@@ -15,11 +13,11 @@ import java.util.List;
 @AllArgsConstructor
 public class DominioStatusController {
 
-    private final DominioStatusRepository dsr;
+    private final DominioStatusRepository dominioStatusRepository;
 
     @GetMapping
     public ResponseEntity getDominioStatus() {
-        List<DominioStatus> dominios = dsr.findAll();
+        List<DominioStatus> dominios = dominioStatusRepository.findAll();
         if (dominios.isEmpty()) {
             return ResponseEntity.status(204).build();
         } else {
@@ -29,14 +27,14 @@ public class DominioStatusController {
 
     @PostMapping
     public ResponseEntity postDominioStatus(@RequestBody DominioStatus dominioStatus){
-        dsr.save(dominioStatus);
+        dominioStatusRepository.save(dominioStatus);
         return ResponseEntity.status(201).build();
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity deleteDominioStatus(@PathVariable int idDominioStatus) {
-        if (dsr.existsById(idDominioStatus)) {
-            dsr.deleteById(idDominioStatus);
+        if (dominioStatusRepository.existsById(idDominioStatus)) {
+            dominioStatusRepository.deleteById(idDominioStatus);
             return ResponseEntity.status(200).build();
         } else {
             return ResponseEntity.status(404).build();
@@ -45,8 +43,8 @@ public class DominioStatusController {
 
     @PutMapping
     public ResponseEntity atualizarDominioStatus(@RequestBody DominioStatus dominioStatus){
-        if (dsr.findById(dominioStatus.getIdDominioStatus()).isPresent()){
-            dsr.save(dominioStatus);
+        if (dominioStatusRepository.findById(dominioStatus.getIdDominioStatus()).isPresent()){
+            dominioStatusRepository.save(dominioStatus);
             return ResponseEntity.status(200).build();
         }else {
             return ResponseEntity.status(404).build();

@@ -12,11 +12,11 @@ import java.util.List;
 @AllArgsConstructor
 public class EcommerceController {
 
-    private final EcommerceRepository ecr;
+    private final EcommerceRepository ecommerceRepository;
 
     @GetMapping
     public ResponseEntity getEcommerce() {
-        List<Ecommerce> ecommerces = ecr.findAll();
+        List<Ecommerce> ecommerces = ecommerceRepository.findAll();
         if (ecommerces.isEmpty()) {
             return ResponseEntity.status(204).build();
         } else {
@@ -26,14 +26,14 @@ public class EcommerceController {
 
     @PostMapping
     public ResponseEntity postEcommerce(@RequestBody Ecommerce novoEcommerce) {
-        ecr.save(novoEcommerce);
+        ecommerceRepository.save(novoEcommerce);
         return ResponseEntity.status(201).build();
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity deleteEcommerce(@PathVariable int idEcommerce) {
-        if (ecr.existsById(idEcommerce)) {
-            ecr.deleteById(idEcommerce);
+        if (ecommerceRepository.existsById(idEcommerce)) {
+            ecommerceRepository.deleteById(idEcommerce);
             return ResponseEntity.status(200).build();
         } else {
             return ResponseEntity.status(404).build();
@@ -42,8 +42,8 @@ public class EcommerceController {
 
     @PutMapping
     public ResponseEntity atualizarEcommerce(@RequestBody Ecommerce ecommerce){
-        if (ecr.findById(ecommerce.getIdEcommerce()).isPresent()){
-            ecr.save(ecommerce);
+        if (ecommerceRepository.findById(ecommerce.getIdEcommerce()).isPresent()){
+            ecommerceRepository.save(ecommerce);
             return ResponseEntity.status(200).build();
         }else {
             return ResponseEntity.status(404).build();

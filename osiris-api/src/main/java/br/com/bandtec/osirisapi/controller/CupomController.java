@@ -12,11 +12,11 @@ import java.util.List;
 @AllArgsConstructor
 public class CupomController {
 
-    private final CupomRepository cr;
+    private final CupomRepository cupomRepository;
 
     @GetMapping
     public ResponseEntity getCupom() {
-        List<Cupom> cupons = cr.findAll();
+        List<Cupom> cupons = cupomRepository.findAll();
         if (cupons.isEmpty()) {
             return ResponseEntity.status(204).build();
         } else {
@@ -26,14 +26,14 @@ public class CupomController {
 
     @PostMapping
     public ResponseEntity postCupom(@RequestBody Cupom novoCupom) {
-        cr.save(novoCupom);
+        cupomRepository.save(novoCupom);
         return ResponseEntity.status(201).build();
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity deleteCupom(@PathVariable int idCupom) {
-        if (cr.existsById(idCupom)) {
-            cr.deleteById(idCupom);
+        if (cupomRepository.existsById(idCupom)) {
+            cupomRepository.deleteById(idCupom);
             return ResponseEntity.status(200).build();
         } else {
             return ResponseEntity.status(404).build();
@@ -42,8 +42,8 @@ public class CupomController {
 
     @PutMapping
     public ResponseEntity putCupom(@RequestBody Cupom cupom){
-        if(cr.findById(cupom.getIdCupom()).isPresent()){
-            cr.save(cupom);
+        if(cupomRepository.findById(cupom.getIdCupom()).isPresent()){
+            cupomRepository.save(cupom);
             return ResponseEntity.status(200).build();
         }else{
             return ResponseEntity.status(404).build();

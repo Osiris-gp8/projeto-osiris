@@ -13,11 +13,11 @@ import java.util.List;
 @AllArgsConstructor
 public class AcessoController {
 
-    private final AcessoRepository ar;
+    private final AcessoRepository acessoRepository;
 
     @GetMapping
     public ResponseEntity getAcessos() {
-        List<Acesso> acessos = ar.findAll();
+        List<Acesso> acessos = acessoRepository.findAll();
         if (acessos.isEmpty()) {
             return ResponseEntity.status(204).build();
         } else {
@@ -27,7 +27,7 @@ public class AcessoController {
 
     @PostMapping
     public ResponseEntity postAcesso(@RequestBody Acesso novoAcesso) {
-        ar.save(novoAcesso);
+        acessoRepository.save(novoAcesso);
         return ResponseEntity.status(201).build();
     }
 

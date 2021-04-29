@@ -1,6 +1,5 @@
 package br.com.bandtec.osirisapi.controller;
 
-import br.com.bandtec.osirisapi.domain.Ecommerce;
 import br.com.bandtec.osirisapi.domain.Evento;
 import br.com.bandtec.osirisapi.repository.EventoRepository;
 import lombok.AllArgsConstructor;
@@ -14,11 +13,11 @@ import java.util.List;
 @AllArgsConstructor
 public class EventoController {
 
-    private final EventoRepository er;
+    private final EventoRepository eventoRepository;
 
     @GetMapping
     public ResponseEntity getEvento() {
-        List<Evento> eventos = er.findAll();
+        List<Evento> eventos = eventoRepository.findAll();
         if (eventos.isEmpty()) {
             return ResponseEntity.status(204).build();
         } else {
@@ -28,14 +27,14 @@ public class EventoController {
 
     @PostMapping
     public ResponseEntity postEvento(@RequestBody Evento novoEvento) {
-        er.save(novoEvento);
+        eventoRepository.save(novoEvento);
         return ResponseEntity.status(201).build();
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity deleteEvento(@PathVariable int idEvento) {
-        if (er.existsById(idEvento)) {
-            er.deleteById(idEvento);
+        if (eventoRepository.existsById(idEvento)) {
+            eventoRepository.deleteById(idEvento);
             return ResponseEntity.status(200).build();
         } else {
             return ResponseEntity.status(404).build();
@@ -44,8 +43,8 @@ public class EventoController {
 
     @PutMapping
     public ResponseEntity atualizarEvento(@RequestBody Evento evento){
-        if (er.findById(evento.getIdCompra()).isPresent()){
-            er.save(evento);
+        if (eventoRepository.findById(evento.getIdCompra()).isPresent()){
+            eventoRepository.save(evento);
             return ResponseEntity.status(200).build();
         }else {
             return ResponseEntity.status(404).build();
