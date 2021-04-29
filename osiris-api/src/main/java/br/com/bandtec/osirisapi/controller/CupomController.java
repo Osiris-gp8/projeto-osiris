@@ -20,27 +20,38 @@ public class CupomController {
     private final CupomService cupomService;
 
     @GetMapping
-    public ResponseEntity getCupom() {
-        List<Cupom> cupons = cupomRepository.findAll();
-        if (cupons.isEmpty()) {
-            return ResponseEntity.status(204).build();
-        } else {
-            return ResponseEntity.status(200).body(cupons);
+    public ResponseEntity getCupons() {
+
+        try{
+            return ResponseEntity.status(200).body(cupomService.buscarCupons());
+        }catch (NotFoundException e){
+            return ResponseEntity.status(404).build();
+        }
+    }
+
+    @GetMapping("/{idCupom}")
+    public ResponseEntity getCupom(@PathVariable Integer idCupom){
+
+        try {
+            return ResponseEntity.status(200).body(cupomService.buscarCupom(idCupom));
+        }catch (NotFoundException e){
+            return ResponseEntity.status(404).build();
         }
     }
 
     @PostMapping
     public ResponseEntity postCupom(@RequestBody Cupom novoCupom) {
-        cupomRepository.save(novoCupom);
+        cupomService.inserirCupom(novoCupom);
         return ResponseEntity.status(201).build();
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity deleteCupom(@PathVariable int idCupom) {
-        if (cupomRepository.existsById(idCupom)) {
-            cupomRepository.deleteById(idCupom);
+
+        try {
+            cupomService.deleteCupom(idCupom);
             return ResponseEntity.status(200).build();
-        } else {
+        } catch (NotFoundException e){
             return ResponseEntity.status(404).build();
         }
     }

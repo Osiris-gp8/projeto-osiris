@@ -6,6 +6,7 @@ import javassist.NotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -13,6 +14,29 @@ import java.util.Optional;
 public class CupomService {
 
     private final CupomRepository cupomRepository;
+
+    public void deleteCupom(int idCupom) throws NotFoundException{
+
+        Optional<Cupom> cupomOptional = cupomRepository.findById(idCupom);
+        if (!cupomOptional.isPresent()){
+            throw new NotFoundException("Cupom não existe");
+        }
+
+        cupomRepository.deleteById(idCupom);
+    }
+
+    public List<Cupom> buscarCupons() throws NotFoundException{
+
+        if (cupomRepository.findAll().isEmpty()){
+            throw new NotFoundException("Não existem cupons");
+        }
+
+        return cupomRepository.findAll();
+    }
+
+    public Cupom inserirCupom(Cupom cupom){
+        return cupomRepository.save(cupom);
+    }
 
     public Cupom atualizarCupom(Integer idCupom, Cupom cupomAtualizar) throws NotFoundException {
 
@@ -34,4 +58,13 @@ public class CupomService {
         return cupom;
     }
 
+    public Cupom buscarCupom(Integer idCupom) throws NotFoundException {
+
+        Optional<Cupom> cupomOptional = cupomRepository.findById(idCupom);
+        if (!cupomOptional.isPresent()){
+            throw new NotFoundException("Cupom não existe");
+        }
+
+        return cupomOptional.get();
+    }
 }
