@@ -1,11 +1,15 @@
 package br.com.bandtec.osirisapi.controller;
 import br.com.bandtec.osirisapi.domain.Cupom;
 import br.com.bandtec.osirisapi.repository.CupomRepository;
+import br.com.bandtec.osirisapi.service.CupomService;
+import javassist.NotFoundException;
+import javassist.tools.web.BadHttpRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/cupons")
@@ -13,6 +17,7 @@ import java.util.List;
 public class CupomController {
 
     private final CupomRepository cupomRepository;
+    private final CupomService cupomService;
 
     @GetMapping
     public ResponseEntity getCupom() {
@@ -40,12 +45,14 @@ public class CupomController {
         }
     }
 
-    @PutMapping
-    public ResponseEntity putCupom(@RequestBody Cupom cupom){
-        if(cupomRepository.findById(cupom.getIdCupom()).isPresent()){
-            cupomRepository.save(cupom);
-            return ResponseEntity.status(200).build();
-        }else{
+    @PutMapping("/{idCupom}")
+    public ResponseEntity putCupom(
+            @PathVariable Integer idCupom,
+            @RequestBody Cupom cupomAtualizar){
+
+        try {
+            return ResponseEntity.status(200).body(cupomService.atualizarCupom(idCupom, cupomAtualizar));
+        } catch (NotFoundException e){
             return ResponseEntity.status(404).build();
         }
     }
