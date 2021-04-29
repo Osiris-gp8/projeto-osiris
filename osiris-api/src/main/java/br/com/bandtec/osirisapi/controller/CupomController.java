@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,12 +41,12 @@ public class CupomController {
     }
 
     @PostMapping
-    public ResponseEntity postCupom(@RequestBody Cupom novoCupom) {
+    public ResponseEntity postCupom(@RequestBody @Valid Cupom novoCupom) {
         cupomService.inserirCupom(novoCupom);
         return ResponseEntity.status(201).build();
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{idCupom}")
     public ResponseEntity deleteCupom(@PathVariable int idCupom) {
 
         try {
@@ -59,7 +60,7 @@ public class CupomController {
     @PutMapping("/{idCupom}")
     public ResponseEntity putCupom(
             @PathVariable Integer idCupom,
-            @RequestBody Cupom cupomAtualizar){
+            @RequestBody @Valid Cupom cupomAtualizar){
 
         try {
             return ResponseEntity.status(200).body(cupomService.atualizarCupom(idCupom, cupomAtualizar));
