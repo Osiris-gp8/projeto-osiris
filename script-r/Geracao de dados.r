@@ -1,4 +1,5 @@
 library(jsonlite)
+library(RMariaDB)
 
 set.seed(500)
 n = 1000
@@ -15,7 +16,7 @@ popular <- function(qtd, textos){
 
 
 
-#idade <- abs(round(rnorm(n, 37, 10),0))
+idade <- abs(round(rnorm(n, 37, 10),0))
 
 preco <-  abs(round(rnorm(n, 2000, 300),2))
 
@@ -39,6 +40,7 @@ idConsumidor <- abs(round(rnorm(n, 500, 500),0))
 
 
 datasGerais = seq(as.Date('2020/12/30'), Sys.Date(), by="day")
+dataHora <- vector(length = n)
 
 for(i in 1:n){
   data.pop <- sample(1:length(datasGerais),1)
@@ -55,11 +57,26 @@ dataCalcados = data.frame(id = 1:n,
                           status,
                           fkEcommerce=1,
                           dataCompra = dataHora[1:n])
-
+print(dataCalcados)
 x <- toJSON(dataCalcados, pretty = T)
 
 
 write(x, "dado.json")
 
+processamentoDb <- dbConnect(RMariaDB::MariaDB(), user='root', password='bandtec', 
+                             dbname='processamento_db', host='localhost')
 
+dbListTables(processamentoDb)
 
+for(i in 1:nrow(dataCalcados)){
+  sql <- paste("INSERT INTO eventos(idConsumidor, idade, preco, nome, categoria, fkCupom, statusEvento, fkEcommerce,
+  dataCompra) VALUES(",dataCalcados[i, 2],", ",dataCalcados[i, 3],", "
+  ,dataCalcados[i, 4],", '",dataCalcados[i, 5],"', '",dataCalcados[i, 6],"', "
+  ,dataCalcados[i, 7],", ",dataCalcados[i, 8],", ",dataCalcados[i, 9],", ",dataCalcados[i, 10],")")
+  print(sql)
+  
+  insert<-dbSendQuery(processamentoDb, sql)
+  dbClearResult(insert)
+}
+
+dbDisconnect(processamentoDb)
