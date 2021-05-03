@@ -4,7 +4,6 @@ import br.com.bandtec.osirisapi.domain.Acesso;
 import br.com.bandtec.osirisapi.repository.AcessoRepository;
 import javassist.NotFoundException;
 import lombok.AllArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,14 +1,11 @@
 package br.com.bandtec.osirisapi.controller;
 
 import br.com.bandtec.osirisapi.domain.Acesso;
-import br.com.bandtec.osirisapi.repository.AcessoRepository;
 import br.com.bandtec.osirisapi.service.AcessoService;
 import javassist.NotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/acessos")

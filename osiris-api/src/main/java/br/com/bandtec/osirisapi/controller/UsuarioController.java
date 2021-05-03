@@ -1,7 +1,7 @@
 package br.com.bandtec.osirisapi.controller;
+
 import br.com.bandtec.osirisapi.domain.Usuario;
 import br.com.bandtec.osirisapi.dto.UsuarioAcessoRequest;
-import br.com.bandtec.osirisapi.repository.UsuarioRepository;
 import br.com.bandtec.osirisapi.service.UsuarioService;
 import javassist.NotFoundException;
 import javassist.tools.web.BadHttpRequest;
@@ -10,8 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/usuarios")
