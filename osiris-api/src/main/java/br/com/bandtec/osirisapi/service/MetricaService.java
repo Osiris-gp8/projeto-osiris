@@ -1,11 +1,12 @@
 package br.com.bandtec.osirisapi.service;
 
+import br.com.bandtec.osirisapi.domain.Cupom;
 import br.com.bandtec.osirisapi.domain.Evento;
-import br.com.bandtec.osirisapi.repository.AcessoRepository;
-import br.com.bandtec.osirisapi.repository.EventoRepository;
-import br.com.bandtec.osirisapi.repository.MetaRepository;
-import br.com.bandtec.osirisapi.repository.UsuarioRepository;
+import br.com.bandtec.osirisapi.repository.*;
+import br.com.bandtec.osirisapi.views.CupomMaisUsadoView;
+import br.com.bandtec.osirisapi.views.RanqueCategoriaView;
 import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -14,10 +15,39 @@ public class MetricaService {
 
     private final EventoRepository eventoRepository;
     private final AcessoRepository acessoRepository;
-    private final MetaRepository metaRepository;
-    private final UsuarioRepository usuarioRepository;
+    private final CupomRepository cupomRepository;
 
-    public List<Evento> comprasSemCupom(Integer consumidor){
-        return eventoRepository.findByConsumidorEcommerceWithoutCupom(consumidor);
+    public Integer getUltimaSemana(){
+
+        return acessoRepository.countAcessosSemana();
+    }
+
+    public Double getVendasPorAcesso(){
+
+        return (double) acessoRepository.count() / eventoRepository.count();
+    }
+
+    public List<RanqueCategoriaView> getRanqueCategoriaView(){
+
+        return eventoRepository.ranque();
+    }
+
+    public List<CupomMaisUsadoView> getCupomMaisUsadoView(){
+
+        return eventoRepository.cupomMaisUsado();
+    }
+
+    public List<Evento> getComprasPorConsumidor(@PathVariable Integer idConsumidorEcommerce){
+        return eventoRepository.findAllByIdConsumidorEcommerce(idConsumidorEcommerce);
+    }
+
+    public List<Cupom> getCuponsExpirados(){
+
+        return cupomRepository.findAllByUsadoIsFalseAndDataValidadoLessThanTodayNow();
+    }
+
+    public List<Evento> getComprasSemCupom() {
+
+        return eventoRepository.findAllByCupomAndEventoAndUsadoIsFalseAndFkStatus();
     }
 }
