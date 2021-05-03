@@ -2,6 +2,8 @@ package br.com.bandtec.osirisapi.controller;
 
 import br.com.bandtec.osirisapi.domain.Evento;
 import br.com.bandtec.osirisapi.repository.EventoRepository;
+import br.com.bandtec.osirisapi.service.EventoService;
+import javassist.NotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,42 +15,30 @@ import java.util.List;
 @AllArgsConstructor
 public class EventoController {
 
-    private final EventoRepository eventoRepository;
+    private final EventoService eventoService;
 
     @GetMapping
-    public ResponseEntity getEvento() {
-        List<Evento> eventos = eventoRepository.findAll();
-        if (eventos.isEmpty()) {
-            return ResponseEntity.status(204).build();
-        } else {
-            return ResponseEntity.status(200).body(eventos);
-        }
+    public ResponseEntity getEventos() throws NotFoundException {
+        return ResponseEntity.status(200).body(eventoService.getEventos());
     }
 
     @PostMapping
     public ResponseEntity postEvento(@RequestBody Evento novoEvento) {
-        eventoRepository.save(novoEvento);
-        return ResponseEntity.status(201).build();
+
+        return ResponseEntity.status(201).body(eventoService.inserirEvento(novoEvento));
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity deleteEvento(@PathVariable int idEvento) {
-        if (eventoRepository.existsById(idEvento)) {
-            eventoRepository.deleteById(idEvento);
-            return ResponseEntity.status(200).build();
-        } else {
-            return ResponseEntity.status(404).build();
-        }
+    @DeleteMapping("/{idEvento}")
+    public ResponseEntity deleteEvento(@PathVariable int idEvento) throws NotFoundException {
+        eventoService.deletarEvento(idEvento);
+        return ResponseEntity.status(200).build();
     }
 
-    @PutMapping
-    public ResponseEntity atualizarEvento(@RequestBody Evento evento){
-        if (eventoRepository.findById(evento.getIdCompra()).isPresent()){
-            eventoRepository.save(evento);
-            return ResponseEntity.status(200).build();
-        }else {
-            return ResponseEntity.status(404).build();
-        }
+    @PutMapping("/{idEvento}")
+    public ResponseEntity atualizarEvento(
+            @PathVariable Integer idEvento,
+            @RequestBody Evento evento) throws NotFoundException {
+        return ResponseEntity.status(200).body(eventoService.atualizarEvento(idEvento, evento));
     }
 
 }
