@@ -2,6 +2,8 @@ package br.com.bandtec.osirisapi.controller;
 
 import br.com.bandtec.osirisapi.domain.Acesso;
 import br.com.bandtec.osirisapi.repository.AcessoRepository;
+import br.com.bandtec.osirisapi.service.AcessoService;
+import javassist.NotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,21 +15,16 @@ import java.util.List;
 @AllArgsConstructor
 public class AcessoController {
 
-    private final AcessoRepository acessoRepository;
+    private final AcessoService acessoService;
 
     @GetMapping
-    public ResponseEntity getAcessos() {
-        List<Acesso> acessos = acessoRepository.findAll();
-        if (acessos.isEmpty()) {
-            return ResponseEntity.status(204).build();
-        } else {
-            return ResponseEntity.status(200).body(acessos);
-        }
+    public ResponseEntity getAcessos() throws NotFoundException {
+        return ResponseEntity.status(200).body(acessoService.getAcessos());
     }
 
     @PostMapping
     public ResponseEntity postAcesso(@RequestBody Acesso novoAcesso) {
-        acessoRepository.save(novoAcesso);
+        acessoService.inserirAcesso(novoAcesso);
         return ResponseEntity.status(201).build();
     }
 
