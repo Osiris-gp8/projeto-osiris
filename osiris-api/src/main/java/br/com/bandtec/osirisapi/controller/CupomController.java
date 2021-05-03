@@ -19,23 +19,16 @@ public class CupomController {
     private final CupomService cupomService;
 
     @GetMapping
-    public ResponseEntity getCupons() {
+    public ResponseEntity getCupons() throws NotFoundException {
 
-        try{
-            return ResponseEntity.status(200).body(cupomService.buscarCupons());
-        }catch (NotFoundException e){
-            return ResponseEntity.status(404).build();
-        }
+        return ResponseEntity.status(200).body(cupomService.buscarCupons());
+
     }
 
     @GetMapping("/{idCupom}")
-    public ResponseEntity getCupom(@PathVariable Integer idCupom){
+    public ResponseEntity getCupom(@PathVariable Integer idCupom) throws NotFoundException {
 
-        try {
-            return ResponseEntity.status(200).body(cupomService.buscarCupom(idCupom));
-        }catch (NotFoundException e){
-            return ResponseEntity.status(404).build();
-        }
+        return ResponseEntity.status(200).body(cupomService.buscarCupom(idCupom));
     }
 
     @PostMapping
@@ -45,25 +38,18 @@ public class CupomController {
     }
 
     @DeleteMapping("/{idCupom}")
-    public ResponseEntity deleteCupom(@PathVariable int idCupom) {
+    public ResponseEntity deleteCupom(@PathVariable int idCupom) throws NotFoundException {
 
-        try {
-            cupomService.deleteCupom(idCupom);
-            return ResponseEntity.status(200).build();
-        } catch (NotFoundException e){
-            return ResponseEntity.status(404).build();
-        }
+        cupomService.deleteCupom(idCupom);
+        return ResponseEntity.status(200).build();
     }
 
     @PutMapping("/{idCupom}")
     public ResponseEntity putCupom(
             @PathVariable Integer idCupom,
-            @RequestBody @Valid Cupom cupomAtualizar){
+            @RequestBody @Valid Cupom cupomAtualizar) throws NotFoundException {
 
-        try {
             return ResponseEntity.status(200).body(cupomService.atualizarCupom(idCupom, cupomAtualizar));
-        } catch (NotFoundException e){
-            return ResponseEntity.status(404).build();
-        }
+
     }
 }
