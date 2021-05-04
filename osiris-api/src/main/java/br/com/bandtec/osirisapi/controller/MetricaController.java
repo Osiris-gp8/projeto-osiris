@@ -5,6 +5,7 @@ import br.com.bandtec.osirisapi.domain.Evento;
 import br.com.bandtec.osirisapi.repository.AcessoRepository;
 import br.com.bandtec.osirisapi.repository.CupomRepository;
 import br.com.bandtec.osirisapi.repository.EventoRepository;
+import br.com.bandtec.osirisapi.service.MetricaService;
 import br.com.bandtec.osirisapi.views.CupomMaisUsadoView;
 import br.com.bandtec.osirisapi.views.RanqueCategoriaView;
 import lombok.AllArgsConstructor;
@@ -24,68 +25,52 @@ public class MetricaController {
     private final AcessoRepository acessoRepository;
     private final EventoRepository eventoRepository;
     private final CupomRepository cupomRepository;
+    private final MetricaService metricaService;
 
-    @GetMapping("/ultimaSemana")
+    @GetMapping("/ultima-semana")
     public ResponseEntity getUltimaSemana() {
-        Integer count = acessoRepository.countAcessosSemana();
-        if (count==0) return ResponseEntity.status(204).build();
-        return ResponseEntity.status(200).body(count);
+        Integer acessosUltimaSemana = metricaService.getUltimaSemana();
+        if (acessosUltimaSemana.equals(0)){
+            return ResponseEntity.status(204).build();
+        }
+        return ResponseEntity.status(200).body(acessosUltimaSemana);
     }
 
-    @GetMapping("/vendasAcesso")
+    @GetMapping("/vendas-acesso")
     public ResponseEntity getVendasAcesso() {
-        Double media = (double) acessoRepository.count() / eventoRepository.count();
-        if (media==0) return ResponseEntity.status(204).build();
-        return ResponseEntity.status(200).body(media);
+
+        return ResponseEntity.status(200).body(metricaService.getVendasPorAcesso());
     }
 
-    @GetMapping("/ranqueCategoria")
+    @GetMapping("/ranque-categoria")
     public ResponseEntity getRanqueCategoria() {
-        List<RanqueCategoriaView> ranque = eventoRepository.ranque();
-        if (ranque.isEmpty()) return ResponseEntity.status(204).build();
-        return ResponseEntity.status(200).body(ranque);
+
+        return ResponseEntity.status(200).body(metricaService.getRanqueCategoriaView());
     }
 
-    @GetMapping("/maisUsado")
+    @GetMapping("/mais-usado")
     public ResponseEntity getCupomMaisUsado(){
-        List<CupomMaisUsadoView> cupomMaisUsadoView = eventoRepository.cupomMaisUsado();
-        if (cupomMaisUsadoView.isEmpty()) return ResponseEntity.status(204).build();
-        return ResponseEntity.status(200).body(cupomMaisUsadoView);
+
+        return ResponseEntity.status(200).body(metricaService.getCupomMaisUsadoView());
     }
 
     @GetMapping("/{idConsumidorEcommerce}")
     public ResponseEntity getComprasProduto(@PathVariable Integer idConsumidorEcommerce){
-        List<Evento> compras = eventoRepository.findAllByIdConsumidorEcommerce(idConsumidorEcommerce);
-        if (compras.isEmpty()) return ResponseEntity.status(204).build();
-        return ResponseEntity.status(200).body(compras);
+
+        return ResponseEntity.status(200).body(metricaService.getComprasPorConsumidor(idConsumidorEcommerce));
     }
 
-    @GetMapping("/listaCupomExpirado")
+    @GetMapping("/cupons-expirado")
     public ResponseEntity getListaCupomExpirado(){
-        List<Cupom> lista = cupomRepository.findAllByUsadoIsFalseAndDataValidadoLessThanTodayNow();
-        if (lista.isEmpty()) return ResponseEntity.status(204).build();
-        return ResponseEntity.status(200).body(lista);
+
+        return ResponseEntity.status(200).body(metricaService.getCuponsExpirados());
     }
 
-    @GetMapping("/contagemCupomExpirado")
-    public ResponseEntity getContagemCupomExpirado(){
-        Integer total = cupomRepository.countAllByUsadoIsFalseAndDataValidadoLessThanTodayNow();
-        if (total == null) return ResponseEntity.status(204).build();
-        return ResponseEntity.status(200).body(total);
-    }
-
-    @GetMapping("/listaCompraCupomNaoUsado")
+    @GetMapping("/compras-cupom-nao-usado")
     public ResponseEntity getListaCompraCupomNaoUsado(){
-        List<Evento> lista = eventoRepository.findAllByCupomAndEventoAndUsadoIsFalseAndFkStatus();
-        if (lista.isEmpty()) return ResponseEntity.status(204).build();
-        return ResponseEntity.status(200).body(lista);
+
+        return ResponseEntity.status(200).body(metricaService.getComprasSemCupom());
     }
 
-    @GetMapping("/contagemCompraCupomNaoUsado")
-    public ResponseEntity getContagemCompraCupomNaoUsado(){
-        Integer total = eventoRepository.countAllByCupomAndEventoAndUsadoIsFalseAndFkStatus();
-        if (total == null) return ResponseEntity.status(204).build();
-        return ResponseEntity.status(200).body(total);
-    }
 
 }
