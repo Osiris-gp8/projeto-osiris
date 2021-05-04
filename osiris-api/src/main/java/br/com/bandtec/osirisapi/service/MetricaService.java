@@ -38,6 +38,7 @@ public class MetricaService {
     }
 
     public List<Evento> getComprasPorConsumidor(@PathVariable Integer idConsumidorEcommerce){
+
         return eventoRepository.findAllByIdConsumidorEcommerce(idConsumidorEcommerce);
     }
 

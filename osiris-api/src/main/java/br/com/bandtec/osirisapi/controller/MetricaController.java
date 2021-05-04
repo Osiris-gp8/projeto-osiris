@@ -27,23 +27,28 @@ public class MetricaController {
     private final CupomRepository cupomRepository;
     private final MetricaService metricaService;
 
-    @GetMapping("/ultimaSemana")
+    @GetMapping("/ultima-semana")
     public ResponseEntity getUltimaSemana() {
-        return ResponseEntity.status(200).body(metricaService.getUltimaSemana());
+        Integer acessosUltimaSemana = metricaService.getUltimaSemana();
+        if (acessosUltimaSemana.equals(0)){
+            return ResponseEntity.status(204).build();
+        }
+        return ResponseEntity.status(200).body(acessosUltimaSemana);
     }
 
-    @GetMapping("/vendasAcesso")
+    @GetMapping("/vendas-acesso")
     public ResponseEntity getVendasAcesso() {
+
         return ResponseEntity.status(200).body(metricaService.getVendasPorAcesso());
     }
 
-    @GetMapping("/ranqueCategoria")
+    @GetMapping("/ranque-categoria")
     public ResponseEntity getRanqueCategoria() {
 
         return ResponseEntity.status(200).body(metricaService.getRanqueCategoriaView());
     }
 
-    @GetMapping("/maisUsado")
+    @GetMapping("/mais-usado")
     public ResponseEntity getCupomMaisUsado(){
 
         return ResponseEntity.status(200).body(metricaService.getCupomMaisUsadoView());
@@ -55,13 +60,13 @@ public class MetricaController {
         return ResponseEntity.status(200).body(metricaService.getComprasPorConsumidor(idConsumidorEcommerce));
     }
 
-    @GetMapping("/listaCupomExpirado")
+    @GetMapping("/cupons-expirado")
     public ResponseEntity getListaCupomExpirado(){
 
         return ResponseEntity.status(200).body(metricaService.getCuponsExpirados());
     }
 
-    @GetMapping("/listaCompraCupomNaoUsado")
+    @GetMapping("/compras-cupom-nao-usado")
     public ResponseEntity getListaCompraCupomNaoUsado(){
 
         return ResponseEntity.status(200).body(metricaService.getComprasSemCupom());
