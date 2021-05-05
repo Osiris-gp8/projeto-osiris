@@ -18,7 +18,7 @@ export default () => {
                 [6.5, 7],
             ]}
             options={{
-                title: 'Cluste de cliente',
+                title: 'Cluster de cliente',
                 hAxis: { title: 'Tempo'},
                 vAxis: { title: 'Valor', minValue: 0, maxValue: 1000 },
                 legend: 'none',

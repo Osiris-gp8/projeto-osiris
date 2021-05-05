@@ -31,7 +31,7 @@ fkcupom <- popular(4, c(0:4))
 
 status <- rbinom(n,4,0.5) + 1
 
-idConsumidor <- abs(round(rnorm(n, 500, 500),0))
+idConsumidor <- abs(round(rnorm(n, 500, 10),0))
 
 #cupom <- rbinom(n,1,0.2)
 #cupom <- factor(cupom, levels = c(0,1),

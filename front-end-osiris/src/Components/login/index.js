@@ -14,7 +14,7 @@ export default () => {
 
     function onSubmit(e){
         e.preventDefault()
-        if(cnpj == '00.000.000/0000-00' && senha == '1234'){
+        if(cnpj == '' && senha == '1234'){
             return history.push('/home')
         }
     }
