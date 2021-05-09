@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface CupomRepository extends JpaRepository<Cupom, Integer> {
-    @Query(nativeQuery = true, value = "select * from cupom where usado = false " +
-            "and data_validado < current_timestamp()")
+    @Query(value = "select * from cupom where usado = false " +
+            "and data_validado < current_timestamp()", nativeQuery = true)
     List<Cupom> findAllByUsadoIsFalseAndDataValidadoLessThanTodayNow();
 
     @Query(value = "select count(*) from cupom where usado = false " +

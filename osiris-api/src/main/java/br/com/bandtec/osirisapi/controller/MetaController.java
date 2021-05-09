@@ -2,6 +2,8 @@ package br.com.bandtec.osirisapi.controller;
 
 import br.com.bandtec.osirisapi.domain.Meta;
 import br.com.bandtec.osirisapi.repository.MetaRepository;
+import br.com.bandtec.osirisapi.service.MetaService;
+import javassist.NotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,21 +15,28 @@ import java.util.List;
 @AllArgsConstructor
 public class MetaController {
 
-    private final MetaRepository mr;
+    private MetaService metaService;
 
     @GetMapping
-    public ResponseEntity getMetas() {
-        List<Meta> metas = mr.findAll();
-        if (metas.isEmpty()) {
-            return ResponseEntity.status(204).build();
-        } else {
-            return ResponseEntity.status(200).body(metas);
-        }
+    public ResponseEntity getMetas() throws NotFoundException {
+        return ResponseEntity.status(201).body(metaService.getMetas());
     }
 
     @PostMapping
-    public ResponseEntity postAcesso(@RequestBody Meta novaMeta) {
-        mr.save(novaMeta);
-        return ResponseEntity.status(201).build();
+    public ResponseEntity postMeta(@RequestBody final Meta novaMeta) {
+        return ResponseEntity.status(201).body(metaService.inserirMeta(novaMeta));
+    }
+
+    @PutMapping("/{idMeta}")
+    public ResponseEntity putMeta(
+            @PathVariable Integer idMeta,
+            @RequestBody Meta meta) throws NotFoundException {
+        return ResponseEntity.status(200).body(metaService.atualizarMeta(idMeta, meta));
+    }
+
+    @DeleteMapping("/{idMeta}")
+    public ResponseEntity deleteMeta(@PathVariable Integer idMeta) throws NotFoundException {
+        metaService.deletarMeta(idMeta);
+        return ResponseEntity.status(200).build();
     }
 }

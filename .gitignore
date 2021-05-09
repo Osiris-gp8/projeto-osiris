@@ -32,3 +32,4 @@ buildNumber.properties
 >>>>>>> main
 lib/
 __pycache__/
+.venv

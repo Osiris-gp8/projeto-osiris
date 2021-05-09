@@ -7,9 +7,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Formatter;
 import java.util.FormatterClosedException;
+import java.util.List;
 
 public class Gravar {
-    public static void gravarCsv(ListaObj<LayoutEvento> lista, String nomeArquivo){
+    public static void gravarCsv(List<LayoutEvento> lista, String nomeArquivo){
         FileWriter arquivo = null;
         Formatter saida = null;
         boolean erro = false;
@@ -26,8 +27,8 @@ public class Gravar {
         }
 
         try{
-            for (int i = 0; i < lista.getTamanho(); i++) {
-                LayoutEvento registro = lista.getElemento(i);
+            for (int i = 0; i < lista.size(); i++) {
+                LayoutEvento registro = lista.get(i);
 
                 saida.format(registro.toCSV());
             }
@@ -49,7 +50,7 @@ public class Gravar {
         }
     }
 
-    public static void gravarTxt(ListaObj<LayoutEvento> lista, String nomeArquivo){
+    public static void gravarTxt(List<LayoutEvento> lista, String nomeArquivo){
         BufferedWriter saida = null;
         nomeArquivo += ".txt";
         int contRegistro = 0;
@@ -62,8 +63,8 @@ public class Gravar {
 
             saida.append(LayoutEvento.header());
 
-            for (int i = 0; i < lista.getTamanho(); i++) {
-                LayoutEvento registro = lista.getElemento(i);
+            for (int i = 0; i < lista.size(); i++) {
+                LayoutEvento registro = lista.get(i);
 
                 saida.append(registro.toTXT());
                 contRegistro++;

@@ -2,14 +2,11 @@ from DbManager import DbManager
 import pandas as pd
 
 def main():
-    db = DbManager("root", "bandtec", "localhost", "processamento_db")
-    data_frame = db.read("SELECT * FROM eventos")
-    
-    data_frame['categoria'] = data_frame['categoria'].astype('category')
-    
+    db = DbManager("root", "bandtec123", "localhost", "processamento_db")
+    data_frame = db.read("SELECT * FROM eventos").astype({'categoria':'category'})
     data_frame['categoria'] = data_frame['categoria'].cat.codes
-
-    consumidores = data_frame.groupby(['idConsumidor', 'categoria'])
+    data_frame_categoria = data_frame.groupby(['idConsumidor','categoria'])['idEvento'].count().reset_index()
+    data_frame_categoria.sort_values('idEvento')
     # .agg({
     #     'categoriaFreq':'count'
     # }).reset_index()
