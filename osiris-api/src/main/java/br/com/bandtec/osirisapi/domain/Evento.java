@@ -43,8 +43,11 @@ public class Evento {
 
     @NotNull
     @Positive
-    private Integer fkEcommerce;
-    private Integer fkCupom;
+    @ManyToOne
+    private Ecommerce ecommerce;
+
+    @ManyToOne
+    private Cupom cupomOsiris;
 
     @NotNull
     @Positive
