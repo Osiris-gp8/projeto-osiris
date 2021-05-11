@@ -32,7 +32,7 @@ jobs:
         actions/upload-artifact@v2
       with:
         name: java-app
-        path: '${{ github.workspace }}/target/*.jar'
+        path: '${{ github.workspace }}/osiris-api/target/*.jar'
 
   deploy:
     runs-on: ubuntu-latest
