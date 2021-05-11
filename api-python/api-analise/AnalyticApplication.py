@@ -1,17 +1,19 @@
+from os import rename
 from DbManager import DbManager
+from ApiClient import ApiClient
 import pandas as pd
 
 def main():
-    db = DbManager("root", "bandtec123", "localhost", "processamento_db")
+    db = DbManager("root", "bandtec", "localhost", "processamento_db")
+    api = ApiClient("http://localhost")
+
     data_frame = db.read("SELECT * FROM eventos").astype({'categoria':'category'})
     data_frame['categoria'] = data_frame['categoria'].cat.codes
-    data_frame_categoria = data_frame.groupby(['idConsumidor','categoria'])['idEvento'].count().reset_index()
-    data_frame_categoria.sort_values('idEvento')
-    # .agg({
-    #     'categoriaFreq':'count'
-    # }).reset_index()
-    
-    print(consumidores.head())
+    data_frame = data_frame.groupby(['idConsumidor','categoria']).agg(
+        freq = ('idEvento', 'count')
+    )
+    print(data_frame)
+    api.sendData("/clusters", data_frame)
     
 
 if __name__ == "__main__":
