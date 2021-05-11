@@ -27,9 +27,7 @@ jobs:
         mvn clean install
 
     - name: Upload artifact for deployment job
-      uses: |
-        cd ./osiris-api
-        actions/upload-artifact@v2
+      uses: actions/upload-artifact@v2
       with:
         name: java-app
         path: '${{ github.workspace }}/osiris-api/target/*.jar'
