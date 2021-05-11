@@ -52,13 +52,13 @@ public class EventoService {
 
         eventoParaAtualizar.setCupom(evento.getCupom());
         eventoParaAtualizar.setDataCompra(evento.getDataCompra());
-        eventoParaAtualizar.setFkStatus(evento.getFkStatus());
+        eventoParaAtualizar.setStatus(evento.getStatus());
         eventoParaAtualizar.setIdConsumidorEcommerce(eventoParaAtualizar.getIdConsumidorEcommerce());
         eventoParaAtualizar.setNomeCategoria(evento.getNomeCategoria());
         eventoParaAtualizar.setNomeProduto(evento.getNomeProduto());
         eventoParaAtualizar.setPreco(evento.getPreco());
-        eventoParaAtualizar.setFkEcommerce(evento.getFkEcommerce());
-        eventoParaAtualizar.setFkCupom(evento.getFkCupom());
+        eventoParaAtualizar.setEcommerce(evento.getEcommerce());
+        eventoParaAtualizar.setCupomOsiris(evento.getCupomOsiris());
 
         return eventoRepository.save(eventoParaAtualizar);
 

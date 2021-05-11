@@ -51,7 +51,7 @@ public class UsuarioService {
 
         Usuario usuarioParaAtualizar = usuarioParaAtualizarOptional.get();
 
-        usuarioParaAtualizar.setFkEcommerce(usuario.getFkEcommerce());
+        usuarioParaAtualizar.setEcommerce(usuario.getEcommerce());
         usuarioParaAtualizar.setLogin(usuario.getLogin());
         usuarioParaAtualizar.setSenha(usuario.getSenha());
 

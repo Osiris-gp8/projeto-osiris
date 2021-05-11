@@ -4,10 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
@@ -46,11 +43,15 @@ public class Evento {
 
     @NotNull
     @Positive
-    private Integer fkEcommerce;
-    private Integer fkCupom;
+    @ManyToOne
+    private Ecommerce ecommerce;
+
+    @ManyToOne
+    private Cupom cupomOsiris;
 
     @NotNull
     @Positive
-    private Integer fkStatus;
+    @OneToOne
+    private DominioStatus status;
 
 }

@@ -6,11 +6,13 @@ import br.com.bandtec.osirisapi.repository.*;
 import br.com.bandtec.osirisapi.views.CupomMaisUsadoView;
 import br.com.bandtec.osirisapi.views.RanqueCategoriaView;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
 @AllArgsConstructor
+@Service
 public class MetricaService {
 
     private final EventoRepository eventoRepository;
