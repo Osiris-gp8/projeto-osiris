@@ -13,6 +13,10 @@ def main():
         freq = ('idEvento', 'count')
     )
     print(data_frame)
+    data_frame.rename(columns = {
+        'categoria' : 'nomeCluster',
+        'freq' : 'valor'
+    })
     api.sendData("/clusters", data_frame)
     
 
