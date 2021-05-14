@@ -63,7 +63,7 @@ x <- toJSON(dataCalcados, pretty = T)
 
 write(x, "dado.json")
 
-processamentoDb <- dbConnect(RMariaDB::MariaDB(), user='root', password='bandtec123', 
+processamentoDb <- dbConnect(RMariaDB::MariaDB(), user='admin', password='bandtec', 
                              dbname='processamento_db', host='localhost')
 
 dbListTables(processamentoDb)
@@ -80,3 +80,4 @@ for(i in 1:nrow(dataCalcados)){
 }
 
 dbDisconnect(processamentoDb)
+
