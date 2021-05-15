@@ -56,7 +56,7 @@ dataCalcados = data.frame(id = 1:n,
                           fkcupom,
                           status,
                           fkEcommerce=1,
-                          dataCompra = dataHora[1:n])
+                          dataCompra = as.Date(dataHora[1:n], "%Y/%m/%d"))
 print(dataCalcados)
 x <- toJSON(dataCalcados, pretty = T)
 
@@ -72,7 +72,7 @@ for(i in 1:nrow(dataCalcados)){
   sql <- paste("INSERT INTO eventos(idConsumidor, idade, preco, nome, categoria, fkCupom, statusEvento, fkEcommerce,
   dataCompra) VALUES(",dataCalcados[i, 2],", ",dataCalcados[i, 3],", "
   ,dataCalcados[i, 4],", '",dataCalcados[i, 5],"', '",dataCalcados[i, 6],"', "
-  ,dataCalcados[i, 7],", ",dataCalcados[i, 8],", ",dataCalcados[i, 9],", ",dataCalcados[i, 10],")")
+  ,dataCalcados[i, 7],", ",dataCalcados[i, 8],", ",dataCalcados[i, 9],", ", dataCalcados[i, 10],")")
   print(sql)
   
   insert<-dbSendQuery(processamentoDb, sql)
