@@ -1,0 +1,323 @@
+.container{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.left{
+    float: left;
+}
+
+.right{
+    float: right;
+}
+
+.btn{
+    width: 10%;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0);
+    color: #666BC2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #666BC2;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-preenchido{
+    background-color: #666BC2;
+    color: #ECF0F7;
+}
+
+.opacidade{
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+}
+
+.min-section{
+    width: 100%;
+    height: 50vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.nav{
+    width: 100%;
+    height: 50px;
+    background-color: #ECF0F7;
+    display: flex;
+    align-items: center;
+}
+
+.logo{
+    width: 8%;
+    float: left;
+}
+
+.section-1{
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-1 img{
+    width: 30%;
+}
+
+.section-1 .content{
+    text-align: left;
+    width: 50%;
+    font-size: 55px;
+    font-weight: 500;
+}
+
+.section-1 .content span{
+    color: #666BC2;
+    font-weight: 900;
+}
+
+.section-1 .content .btn{
+    width: 30%;
+}
+
+.section-2{
+    background-image: url(../Images/co-working.jpg);
+}
+
+.section-2 .opacidade{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5%;
+}
+
+.section-2 .opacidade .container{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.section-2 .opacidade .container .content{
+    width: 40%;
+    text-align: right;
+    margin: 3% 0 3% 0;
+}
+
+.section-2 .opacidade .container .content,
+.section-4 .opacidade .container .content{
+    display: flex;
+    flex-direction: column;
+    font-size: 45px;
+    color: #ECF0F7;
+}
+
+.section-2 .opacidade .container .content .btn,
+.section-5 .container .form-contato .btn{
+    color: #ECF0F7;
+    border: 2px solid #ECF0F7;
+    width: 30%;
+}
+
+.section-3{
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.section-3 .container{
+    display: flex;
+    flex-direction: row;
+}
+
+.items{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.item{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    text-align: center;
+    font-size: 30px;
+}
+
+.item img{
+    height: 30vh;
+}
+
+.item span{
+    margin-top: 4vh;
+}
+
+#item2{
+    margin-top: 20vh;
+}
+
+#item3{
+    margin-top: 40vh;
+}
+
+.section-4{
+    background-image: url('../Images/people-in-working.jpg');
+}
+
+.section-4 .opacidade .container .content{
+    text-align: left;
+    width: 50%;
+    margin-top: 6%;
+}
+
+.section-4 .opacidade .container{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.section-5{
+    width: 100%;
+    background-color: #666BC2;
+    color: #ECF0F7;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+.section-5 h2{
+    font-weight: 600;
+    font-size: 40px;
+    text-align: center;
+}
+
+.section-5 .container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 3%;
+}
+
+.section-5 .container .content{
+    text-align: left;
+    font-size: 45px;
+    width: 35%;
+}
+
+.bar{
+    width: 5px;
+    height: 50vh;
+    background-color: #ECF0F7;
+}
+
+.form-contato{
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-contato .row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 3%;
+}
+
+.form-contato .row .col{
+    width: 48%;
+}
+
+.form-contato .row textarea{
+    width: 100%;
+    height: 20vh;
+    background-color: #ECF0F7;
+    resize: none;
+    border-radius: 5px;
+}
+
+.input-form{
+    background-color: #ECF0F7;
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+}
+
+.section-6{
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    align-items: center;
+}
+
+.section-6 .container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.links{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    height: 20vh;
+    justify-content: space-around;
+}
+
+.links ul h3{
+    margin-bottom: 10%;
+}
+
+.links ul li{
+    margin-bottom: 10%;
+}
+
+.links ul li a{
+    color: black;
+}
+
+.redes-sociais{
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 15%;
+}
+
+.redes-sociais .logo{
+    width: 70%;
+    margin-top: 5%;
+}
+
+.logo{
+    display: flex;
+}
+
+.logo img{
+    width: 90%;
+    margin-left: 25%;
+}
+
+.icons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.icons img{
+    width: 40px;
+}
+
+.footer{
+    width: 100%;
+    height: 10vh;
+    text-align: center;
+    background-color: #666BC2;
+    color: #ECF0F7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
