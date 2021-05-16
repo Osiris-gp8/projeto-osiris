@@ -1,3 +1,4 @@
+-- drop database if exists processamento_db;
 create database if not exists processamento_db;
 use processamento_db;
 
@@ -11,7 +12,12 @@ create table if not exists eventos(
     fkCupom int,
     statusEvento int,
     fkEcommerce int,
-    dataCompra int
+    sexo char(1),
+    dataCompra date
 );
 
+select * from eventos;
+
 select count(*) from eventos;
+
+-- delete from eventos where idEvento > 0

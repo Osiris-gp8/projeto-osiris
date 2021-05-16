@@ -8,7 +8,7 @@ class DbManager:
     def read(self, query):
         connection = create_engine(self.connection_str)
         print(f'Conectado ao banco')
-        result = pd.read_sql(query, con = connection)
+        result = pd.read_sql(query, con = connection, parse_dates=["dataCompra"])
         data_frame = pd.DataFrame(result)
         data_frame.columns = result.keys()
         return data_frame
