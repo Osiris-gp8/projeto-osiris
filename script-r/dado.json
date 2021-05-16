@@ -345,7 +345,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18685
+    "dataCompra": 18759
   },
   {
     "id": 30,
@@ -357,7 +357,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18738
+    "dataCompra": 18685
   },
   {
     "id": 31,
@@ -369,7 +369,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18755
+    "dataCompra": 18738
   },
   {
     "id": 32,
@@ -393,7 +393,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18744
+    "dataCompra": 18755
   },
   {
     "id": 34,
@@ -405,7 +405,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18710
+    "dataCompra": 18744
   },
   {
     "id": 35,
@@ -417,7 +417,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18682
+    "dataCompra": 18710
   },
   {
     "id": 36,
@@ -429,7 +429,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18739
+    "dataCompra": 18682
   },
   {
     "id": 37,
@@ -441,7 +441,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18667
+    "dataCompra": 18739
   },
   {
     "id": 38,
@@ -453,7 +453,7 @@
     "fkcupom": "4",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18708
+    "dataCompra": 18667
   },
   {
     "id": 39,
@@ -465,7 +465,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18679
+    "dataCompra": 18708
   },
   {
     "id": 40,
@@ -477,7 +477,7 @@
     "fkcupom": "3",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18741
+    "dataCompra": 18679
   },
   {
     "id": 41,
@@ -489,7 +489,7 @@
     "fkcupom": "0",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18662
+    "dataCompra": 18741
   },
   {
     "id": 42,
@@ -501,7 +501,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18713
+    "dataCompra": 18760
   },
   {
     "id": 43,
@@ -513,7 +513,7 @@
     "fkcupom": "0",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18641
+    "dataCompra": 18662
   },
   {
     "id": 44,
@@ -525,7 +525,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18747
+    "dataCompra": 18713
   },
   {
     "id": 45,
@@ -537,7 +537,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18648
+    "dataCompra": 18641
   },
   {
     "id": 46,
@@ -549,7 +549,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18680
+    "dataCompra": 18747
   },
   {
     "id": 47,
@@ -561,7 +561,7 @@
     "fkcupom": "4",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18632
+    "dataCompra": 18648
   },
   {
     "id": 48,
@@ -573,7 +573,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18662
+    "dataCompra": 18680
   },
   {
     "id": 49,
@@ -585,7 +585,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18703
+    "dataCompra": 18632
   },
   {
     "id": 50,
@@ -597,7 +597,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18675
+    "dataCompra": 18662
   },
   {
     "id": 51,
@@ -609,7 +609,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18660
+    "dataCompra": 18703
   },
   {
     "id": 52,
@@ -621,7 +621,7 @@
     "fkcupom": "4",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18701
+    "dataCompra": 18675
   },
   {
     "id": 53,
@@ -633,7 +633,7 @@
     "fkcupom": "3",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18654
+    "dataCompra": 18660
   },
   {
     "id": 54,
@@ -645,7 +645,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18694
+    "dataCompra": 18701
   },
   {
     "id": 55,
@@ -657,7 +657,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18661
+    "dataCompra": 18654
   },
   {
     "id": 56,
@@ -669,7 +669,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18644
+    "dataCompra": 18694
   },
   {
     "id": 57,
@@ -681,7 +681,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18721
+    "dataCompra": 18661
   },
   {
     "id": 58,
@@ -693,7 +693,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18684
+    "dataCompra": 18644
   },
   {
     "id": 59,
@@ -705,7 +705,7 @@
     "fkcupom": "1",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18654
+    "dataCompra": 18721
   },
   {
     "id": 60,
@@ -717,7 +717,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18729
+    "dataCompra": 18684
   },
   {
     "id": 61,
@@ -729,7 +729,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18696
+    "dataCompra": 18654
   },
   {
     "id": 62,
@@ -741,7 +741,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18660
+    "dataCompra": 18729
   },
   {
     "id": 63,
@@ -753,7 +753,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18687
+    "dataCompra": 18696
   },
   {
     "id": 64,
@@ -765,7 +765,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18710
+    "dataCompra": 18660
   },
   {
     "id": 65,
@@ -777,7 +777,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18639
+    "dataCompra": 18687
   },
   {
     "id": 66,
@@ -789,7 +789,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18708
+    "dataCompra": 18710
   },
   {
     "id": 67,
@@ -801,7 +801,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18675
+    "dataCompra": 18639
   },
   {
     "id": 68,
@@ -813,7 +813,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18653
+    "dataCompra": 18708
   },
   {
     "id": 69,
@@ -825,7 +825,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18696
+    "dataCompra": 18675
   },
   {
     "id": 70,
@@ -837,7 +837,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18630
+    "dataCompra": 18653
   },
   {
     "id": 71,
@@ -849,7 +849,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18729
+    "dataCompra": 18696
   },
   {
     "id": 72,
@@ -861,7 +861,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18751
+    "dataCompra": 18630
   },
   {
     "id": 73,
@@ -873,7 +873,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18702
+    "dataCompra": 18757
   },
   {
     "id": 74,
@@ -885,7 +885,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18654
+    "dataCompra": 18729
   },
   {
     "id": 75,
@@ -897,7 +897,7 @@
     "fkcupom": "0",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18753
+    "dataCompra": 18751
   },
   {
     "id": 76,
@@ -909,7 +909,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18705
+    "dataCompra": 18702
   },
   {
     "id": 77,
@@ -921,7 +921,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18704
+    "dataCompra": 18654
   },
   {
     "id": 78,
@@ -933,7 +933,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18740
+    "dataCompra": 18753
   },
   {
     "id": 79,
@@ -945,7 +945,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18697
+    "dataCompra": 18705
   },
   {
     "id": 80,
@@ -957,7 +957,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18678
+    "dataCompra": 18704
   },
   {
     "id": 81,
@@ -969,7 +969,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18629
+    "dataCompra": 18740
   },
   {
     "id": 82,
@@ -981,7 +981,7 @@
     "fkcupom": "0",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18666
+    "dataCompra": 18697
   },
   {
     "id": 83,
@@ -993,7 +993,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18711
+    "dataCompra": 18678
   },
   {
     "id": 84,
@@ -1005,7 +1005,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18697
+    "dataCompra": 18629
   },
   {
     "id": 85,
@@ -1017,7 +1017,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18728
+    "dataCompra": 18666
   },
   {
     "id": 86,
@@ -1029,7 +1029,7 @@
     "fkcupom": "4",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18736
+    "dataCompra": 18711
   },
   {
     "id": 87,
@@ -1041,7 +1041,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18742
+    "dataCompra": 18697
   },
   {
     "id": 88,
@@ -1053,7 +1053,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18722
+    "dataCompra": 18728
   },
   {
     "id": 89,
@@ -1065,7 +1065,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18728
+    "dataCompra": 18736
   },
   {
     "id": 90,
@@ -1077,7 +1077,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18645
+    "dataCompra": 18742
   },
   {
     "id": 91,
@@ -1089,7 +1089,7 @@
     "fkcupom": "4",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18717
+    "dataCompra": 18722
   },
   {
     "id": 92,
@@ -1101,7 +1101,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18626
+    "dataCompra": 18728
   },
   {
     "id": 93,
@@ -1113,7 +1113,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18738
+    "dataCompra": 18645
   },
   {
     "id": 94,
@@ -1125,7 +1125,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18637
+    "dataCompra": 18717
   },
   {
     "id": 95,
@@ -1137,7 +1137,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18666
+    "dataCompra": 18626
   },
   {
     "id": 96,
@@ -1149,7 +1149,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18657
+    "dataCompra": 18738
   },
   {
     "id": 97,
@@ -1161,7 +1161,7 @@
     "fkcupom": "1",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18723
+    "dataCompra": 18637
   },
   {
     "id": 98,
@@ -1173,7 +1173,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18738
+    "dataCompra": 18666
   },
   {
     "id": 99,
@@ -1185,7 +1185,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18699
+    "dataCompra": 18657
   },
   {
     "id": 100,
@@ -1197,7 +1197,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18677
+    "dataCompra": 18723
   },
   {
     "id": 101,
@@ -1209,7 +1209,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18732
+    "dataCompra": 18738
   },
   {
     "id": 102,
@@ -1221,7 +1221,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18740
+    "dataCompra": 18699
   },
   {
     "id": 103,
@@ -1233,7 +1233,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18718
+    "dataCompra": 18677
   },
   {
     "id": 104,
@@ -1245,7 +1245,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18716
+    "dataCompra": 18732
   },
   {
     "id": 105,
@@ -1257,7 +1257,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18652
+    "dataCompra": 18740
   },
   {
     "id": 106,
@@ -1269,7 +1269,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18705
+    "dataCompra": 18718
   },
   {
     "id": 107,
@@ -1281,7 +1281,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18726
+    "dataCompra": 18716
   },
   {
     "id": 108,
@@ -1293,7 +1293,7 @@
     "fkcupom": "2",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18682
+    "dataCompra": 18652
   },
   {
     "id": 109,
@@ -1305,7 +1305,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18628
+    "dataCompra": 18705
   },
   {
     "id": 110,
@@ -1317,7 +1317,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18692
+    "dataCompra": 18726
   },
   {
     "id": 111,
@@ -1329,7 +1329,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18657
+    "dataCompra": 18682
   },
   {
     "id": 112,
@@ -1341,7 +1341,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18702
+    "dataCompra": 18761
   },
   {
     "id": 113,
@@ -1353,7 +1353,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18698
+    "dataCompra": 18628
   },
   {
     "id": 114,
@@ -1365,7 +1365,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18691
+    "dataCompra": 18692
   },
   {
     "id": 115,
@@ -1377,7 +1377,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18712
+    "dataCompra": 18657
   },
   {
     "id": 116,
@@ -1389,7 +1389,7 @@
     "fkcupom": "4",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18706
+    "dataCompra": 18702
   },
   {
     "id": 117,
@@ -1401,7 +1401,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18702
+    "dataCompra": 18698
   },
   {
     "id": 118,
@@ -1413,7 +1413,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18733
+    "dataCompra": 18691
   },
   {
     "id": 119,
@@ -1425,7 +1425,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18647
+    "dataCompra": 18712
   },
   {
     "id": 120,
@@ -1437,7 +1437,7 @@
     "fkcupom": "4",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18725
+    "dataCompra": 18706
   },
   {
     "id": 121,
@@ -1449,7 +1449,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18679
+    "dataCompra": 18702
   },
   {
     "id": 122,
@@ -1461,7 +1461,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18728
+    "dataCompra": 18733
   },
   {
     "id": 123,
@@ -1473,7 +1473,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18629
+    "dataCompra": 18647
   },
   {
     "id": 124,
@@ -1485,7 +1485,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18715
+    "dataCompra": 18725
   },
   {
     "id": 125,
@@ -1497,7 +1497,7 @@
     "fkcupom": "0",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18705
+    "dataCompra": 18679
   },
   {
     "id": 126,
@@ -1509,7 +1509,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18661
+    "dataCompra": 18728
   },
   {
     "id": 127,
@@ -1521,7 +1521,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18634
+    "dataCompra": 18629
   },
   {
     "id": 128,
@@ -1533,7 +1533,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18736
+    "dataCompra": 18715
   },
   {
     "id": 129,
@@ -1545,7 +1545,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18659
+    "dataCompra": 18705
   },
   {
     "id": 130,
@@ -1557,7 +1557,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18737
+    "dataCompra": 18661
   },
   {
     "id": 131,
@@ -1569,7 +1569,7 @@
     "fkcupom": "0",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18734
+    "dataCompra": 18634
   },
   {
     "id": 132,
@@ -1581,7 +1581,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18744
+    "dataCompra": 18736
   },
   {
     "id": 133,
@@ -1593,7 +1593,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18685
+    "dataCompra": 18659
   },
   {
     "id": 134,
@@ -1605,7 +1605,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18734
+    "dataCompra": 18737
   },
   {
     "id": 135,
@@ -1617,7 +1617,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18664
+    "dataCompra": 18734
   },
   {
     "id": 136,
@@ -1629,7 +1629,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18654
+    "dataCompra": 18744
   },
   {
     "id": 137,
@@ -1641,7 +1641,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18705
+    "dataCompra": 18685
   },
   {
     "id": 138,
@@ -1653,7 +1653,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18665
+    "dataCompra": 18734
   },
   {
     "id": 139,
@@ -1665,7 +1665,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18752
+    "dataCompra": 18664
   },
   {
     "id": 140,
@@ -1677,7 +1677,7 @@
     "fkcupom": "4",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18657
+    "dataCompra": 18654
   },
   {
     "id": 141,
@@ -1689,7 +1689,7 @@
     "fkcupom": "3",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18693
+    "dataCompra": 18705
   },
   {
     "id": 142,
@@ -1701,7 +1701,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18698
+    "dataCompra": 18665
   },
   {
     "id": 143,
@@ -1713,7 +1713,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18755
+    "dataCompra": 18752
   },
   {
     "id": 144,
@@ -1725,7 +1725,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18743
+    "dataCompra": 18657
   },
   {
     "id": 145,
@@ -1737,7 +1737,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18699
+    "dataCompra": 18693
   },
   {
     "id": 146,
@@ -1749,7 +1749,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18659
+    "dataCompra": 18698
   },
   {
     "id": 147,
@@ -1761,7 +1761,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18741
+    "dataCompra": 18755
   },
   {
     "id": 148,
@@ -1773,7 +1773,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18640
+    "dataCompra": 18743
   },
   {
     "id": 149,
@@ -1785,7 +1785,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18673
+    "dataCompra": 18699
   },
   {
     "id": 150,
@@ -1797,7 +1797,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18724
+    "dataCompra": 18659
   },
   {
     "id": 151,
@@ -1809,7 +1809,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18688
+    "dataCompra": 18741
   },
   {
     "id": 152,
@@ -1821,7 +1821,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18709
+    "dataCompra": 18640
   },
   {
     "id": 153,
@@ -1833,7 +1833,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18675
+    "dataCompra": 18673
   },
   {
     "id": 154,
@@ -1845,7 +1845,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18699
+    "dataCompra": 18724
   },
   {
     "id": 155,
@@ -1857,7 +1857,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18729
+    "dataCompra": 18688
   },
   {
     "id": 156,
@@ -1869,7 +1869,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18689
+    "dataCompra": 18709
   },
   {
     "id": 157,
@@ -1881,7 +1881,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18657
+    "dataCompra": 18675
   },
   {
     "id": 158,
@@ -1893,7 +1893,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18639
+    "dataCompra": 18699
   },
   {
     "id": 159,
@@ -1905,7 +1905,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18647
+    "dataCompra": 18729
   },
   {
     "id": 160,
@@ -1917,7 +1917,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18683
+    "dataCompra": 18689
   },
   {
     "id": 161,
@@ -1929,7 +1929,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18637
+    "dataCompra": 18657
   },
   {
     "id": 162,
@@ -1941,7 +1941,7 @@
     "fkcupom": "1",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18653
+    "dataCompra": 18639
   },
   {
     "id": 163,
@@ -1953,7 +1953,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18630
+    "dataCompra": 18647
   },
   {
     "id": 164,
@@ -1965,7 +1965,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18753
+    "dataCompra": 18683
   },
   {
     "id": 165,
@@ -1977,7 +1977,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18732
+    "dataCompra": 18637
   },
   {
     "id": 166,
@@ -1989,7 +1989,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18745
+    "dataCompra": 18653
   },
   {
     "id": 167,
@@ -2001,7 +2001,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18652
+    "dataCompra": 18630
   },
   {
     "id": 168,
@@ -2013,7 +2013,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18637
+    "dataCompra": 18753
   },
   {
     "id": 169,
@@ -2025,7 +2025,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18725
+    "dataCompra": 18732
   },
   {
     "id": 170,
@@ -2037,7 +2037,7 @@
     "fkcupom": "3",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18663
+    "dataCompra": 18745
   },
   {
     "id": 171,
@@ -2049,7 +2049,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18732
+    "dataCompra": 18652
   },
   {
     "id": 172,
@@ -2061,7 +2061,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18695
+    "dataCompra": 18637
   },
   {
     "id": 173,
@@ -2073,7 +2073,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18755
+    "dataCompra": 18725
   },
   {
     "id": 174,
@@ -2085,7 +2085,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18700
+    "dataCompra": 18663
   },
   {
     "id": 175,
@@ -2097,7 +2097,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18736
+    "dataCompra": 18732
   },
   {
     "id": 176,
@@ -2109,7 +2109,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18726
+    "dataCompra": 18695
   },
   {
     "id": 177,
@@ -2121,7 +2121,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18639
+    "dataCompra": 18755
   },
   {
     "id": 178,
@@ -2133,7 +2133,7 @@
     "fkcupom": "3",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18727
+    "dataCompra": 18700
   },
   {
     "id": 179,
@@ -2145,7 +2145,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18690
+    "dataCompra": 18736
   },
   {
     "id": 180,
@@ -2157,7 +2157,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18732
+    "dataCompra": 18726
   },
   {
     "id": 181,
@@ -2169,7 +2169,7 @@
     "fkcupom": "0",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18653
+    "dataCompra": 18639
   },
   {
     "id": 182,
@@ -2181,7 +2181,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18685
+    "dataCompra": 18727
   },
   {
     "id": 183,
@@ -2193,7 +2193,7 @@
     "fkcupom": "1",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18672
+    "dataCompra": 18690
   },
   {
     "id": 184,
@@ -2205,7 +2205,7 @@
     "fkcupom": "0",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18682
+    "dataCompra": 18732
   },
   {
     "id": 185,
@@ -2217,7 +2217,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18656
+    "dataCompra": 18653
   },
   {
     "id": 186,
@@ -2229,7 +2229,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18737
+    "dataCompra": 18685
   },
   {
     "id": 187,
@@ -2241,7 +2241,7 @@
     "fkcupom": "2",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18734
+    "dataCompra": 18672
   },
   {
     "id": 188,
@@ -2253,7 +2253,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18713
+    "dataCompra": 18682
   },
   {
     "id": 189,
@@ -2265,7 +2265,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18726
+    "dataCompra": 18656
   },
   {
     "id": 190,
@@ -2277,7 +2277,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18746
+    "dataCompra": 18737
   },
   {
     "id": 191,
@@ -2289,7 +2289,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18725
+    "dataCompra": 18734
   },
   {
     "id": 192,
@@ -2301,7 +2301,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18667
+    "dataCompra": 18713
   },
   {
     "id": 193,
@@ -2313,7 +2313,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18682
+    "dataCompra": 18726
   },
   {
     "id": 194,
@@ -2325,7 +2325,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18735
+    "dataCompra": 18746
   },
   {
     "id": 195,
@@ -2337,7 +2337,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18745
+    "dataCompra": 18725
   },
   {
     "id": 196,
@@ -2349,7 +2349,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18689
+    "dataCompra": 18667
   },
   {
     "id": 197,
@@ -2361,7 +2361,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18643
+    "dataCompra": 18682
   },
   {
     "id": 198,
@@ -2373,7 +2373,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18749
+    "dataCompra": 18735
   },
   {
     "id": 199,
@@ -2385,7 +2385,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18705
+    "dataCompra": 18745
   },
   {
     "id": 200,
@@ -2397,7 +2397,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18732
+    "dataCompra": 18689
   },
   {
     "id": 201,
@@ -2409,7 +2409,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18666
+    "dataCompra": 18643
   },
   {
     "id": 202,
@@ -2421,7 +2421,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18668
+    "dataCompra": 18749
   },
   {
     "id": 203,
@@ -2433,7 +2433,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18658
+    "dataCompra": 18705
   },
   {
     "id": 204,
@@ -2445,7 +2445,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18733
+    "dataCompra": 18732
   },
   {
     "id": 205,
@@ -2457,7 +2457,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18680
+    "dataCompra": 18666
   },
   {
     "id": 206,
@@ -2469,7 +2469,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18694
+    "dataCompra": 18668
   },
   {
     "id": 207,
@@ -2481,7 +2481,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18633
+    "dataCompra": 18658
   },
   {
     "id": 208,
@@ -2493,7 +2493,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18685
+    "dataCompra": 18733
   },
   {
     "id": 209,
@@ -2505,7 +2505,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18732
+    "dataCompra": 18680
   },
   {
     "id": 210,
@@ -2517,7 +2517,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18716
+    "dataCompra": 18694
   },
   {
     "id": 211,
@@ -2529,7 +2529,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18737
+    "dataCompra": 18633
   },
   {
     "id": 212,
@@ -2541,7 +2541,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18664
+    "dataCompra": 18685
   },
   {
     "id": 213,
@@ -2553,7 +2553,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18691
+    "dataCompra": 18732
   },
   {
     "id": 214,
@@ -2565,7 +2565,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18651
+    "dataCompra": 18716
   },
   {
     "id": 215,
@@ -2577,7 +2577,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18729
+    "dataCompra": 18737
   },
   {
     "id": 216,
@@ -2589,7 +2589,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18740
+    "dataCompra": 18664
   },
   {
     "id": 217,
@@ -2601,7 +2601,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18739
+    "dataCompra": 18691
   },
   {
     "id": 218,
@@ -2613,7 +2613,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18675
+    "dataCompra": 18651
   },
   {
     "id": 219,
@@ -2625,7 +2625,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18725
+    "dataCompra": 18729
   },
   {
     "id": 220,
@@ -2637,7 +2637,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18664
+    "dataCompra": 18740
   },
   {
     "id": 221,
@@ -2649,7 +2649,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18742
+    "dataCompra": 18739
   },
   {
     "id": 222,
@@ -2661,7 +2661,7 @@
     "fkcupom": "0",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18636
+    "dataCompra": 18675
   },
   {
     "id": 223,
@@ -2673,7 +2673,7 @@
     "fkcupom": "1",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18653
+    "dataCompra": 18725
   },
   {
     "id": 224,
@@ -2685,7 +2685,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18627
+    "dataCompra": 18664
   },
   {
     "id": 225,
@@ -2697,7 +2697,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18726
+    "dataCompra": 18742
   },
   {
     "id": 226,
@@ -2709,7 +2709,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18699
+    "dataCompra": 18636
   },
   {
     "id": 227,
@@ -2721,7 +2721,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18748
+    "dataCompra": 18653
   },
   {
     "id": 228,
@@ -2733,7 +2733,7 @@
     "fkcupom": "1",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18651
+    "dataCompra": 18758
   },
   {
     "id": 229,
@@ -2745,7 +2745,7 @@
     "fkcupom": "2",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18693
+    "dataCompra": 18627
   },
   {
     "id": 230,
@@ -2757,7 +2757,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18741
+    "dataCompra": 18726
   },
   {
     "id": 231,
@@ -2769,7 +2769,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18725
+    "dataCompra": 18699
   },
   {
     "id": 232,
@@ -2781,7 +2781,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18666
+    "dataCompra": 18748
   },
   {
     "id": 233,
@@ -2793,7 +2793,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18710
+    "dataCompra": 18651
   },
   {
     "id": 234,
@@ -2805,7 +2805,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18643
+    "dataCompra": 18693
   },
   {
     "id": 235,
@@ -2817,7 +2817,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18712
+    "dataCompra": 18741
   },
   {
     "id": 236,
@@ -2829,7 +2829,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18734
+    "dataCompra": 18725
   },
   {
     "id": 237,
@@ -2841,7 +2841,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18702
+    "dataCompra": 18666
   },
   {
     "id": 238,
@@ -2853,7 +2853,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18652
+    "dataCompra": 18710
   },
   {
     "id": 239,
@@ -2865,7 +2865,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18726
+    "dataCompra": 18643
   },
   {
     "id": 240,
@@ -2877,7 +2877,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18688
+    "dataCompra": 18712
   },
   {
     "id": 241,
@@ -2889,7 +2889,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18716
+    "dataCompra": 18734
   },
   {
     "id": 242,
@@ -2901,7 +2901,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18642
+    "dataCompra": 18702
   },
   {
     "id": 243,
@@ -2913,7 +2913,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18709
+    "dataCompra": 18652
   },
   {
     "id": 244,
@@ -2925,7 +2925,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18685
+    "dataCompra": 18761
   },
   {
     "id": 245,
@@ -2937,7 +2937,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18660
+    "dataCompra": 18726
   },
   {
     "id": 246,
@@ -2949,7 +2949,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18730
+    "dataCompra": 18688
   },
   {
     "id": 247,
@@ -2961,7 +2961,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18737
+    "dataCompra": 18716
   },
   {
     "id": 248,
@@ -2973,7 +2973,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18732
+    "dataCompra": 18642
   },
   {
     "id": 249,
@@ -2985,7 +2985,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18683
+    "dataCompra": 18709
   },
   {
     "id": 250,
@@ -2997,7 +2997,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18740
+    "dataCompra": 18685
   },
   {
     "id": 251,
@@ -3009,7 +3009,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18637
+    "dataCompra": 18660
   },
   {
     "id": 252,
@@ -3021,7 +3021,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18734
+    "dataCompra": 18730
   },
   {
     "id": 253,
@@ -3033,7 +3033,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18701
+    "dataCompra": 18737
   },
   {
     "id": 254,
@@ -3045,7 +3045,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18746
+    "dataCompra": 18732
   },
   {
     "id": 255,
@@ -3057,7 +3057,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18719
+    "dataCompra": 18683
   },
   {
     "id": 256,
@@ -3069,7 +3069,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18724
+    "dataCompra": 18740
   },
   {
     "id": 257,
@@ -3081,7 +3081,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18671
+    "dataCompra": 18637
   },
   {
     "id": 258,
@@ -3093,7 +3093,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18668
+    "dataCompra": 18734
   },
   {
     "id": 259,
@@ -3105,7 +3105,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18740
+    "dataCompra": 18701
   },
   {
     "id": 260,
@@ -3117,7 +3117,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18725
+    "dataCompra": 18746
   },
   {
     "id": 261,
@@ -3129,7 +3129,7 @@
     "fkcupom": "0",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18671
+    "dataCompra": 18719
   },
   {
     "id": 262,
@@ -3141,7 +3141,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18713
+    "dataCompra": 18724
   },
   {
     "id": 263,
@@ -3153,7 +3153,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18737
+    "dataCompra": 18671
   },
   {
     "id": 264,
@@ -3165,7 +3165,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18656
+    "dataCompra": 18668
   },
   {
     "id": 265,
@@ -3177,7 +3177,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18676
+    "dataCompra": 18740
   },
   {
     "id": 266,
@@ -3189,7 +3189,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18654
+    "dataCompra": 18725
   },
   {
     "id": 267,
@@ -3201,7 +3201,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18694
+    "dataCompra": 18671
   },
   {
     "id": 268,
@@ -3213,7 +3213,7 @@
     "fkcupom": "0",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18670
+    "dataCompra": 18713
   },
   {
     "id": 269,
@@ -3225,7 +3225,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18702
+    "dataCompra": 18737
   },
   {
     "id": 270,
@@ -3237,7 +3237,7 @@
     "fkcupom": "4",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18728
+    "dataCompra": 18656
   },
   {
     "id": 271,
@@ -3249,7 +3249,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18720
+    "dataCompra": 18676
   },
   {
     "id": 272,
@@ -3273,7 +3273,7 @@
     "fkcupom": "2",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18714
+    "dataCompra": 18694
   },
   {
     "id": 274,
@@ -3285,7 +3285,7 @@
     "fkcupom": "4",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18634
+    "dataCompra": 18670
   },
   {
     "id": 275,
@@ -3297,7 +3297,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18652
+    "dataCompra": 18702
   },
   {
     "id": 276,
@@ -3309,7 +3309,7 @@
     "fkcupom": "2",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18636
+    "dataCompra": 18728
   },
   {
     "id": 277,
@@ -3321,7 +3321,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18688
+    "dataCompra": 18720
   },
   {
     "id": 278,
@@ -3333,7 +3333,7 @@
     "fkcupom": "4",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18753
+    "dataCompra": 18654
   },
   {
     "id": 279,
@@ -3345,7 +3345,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18658
+    "dataCompra": 18714
   },
   {
     "id": 280,
@@ -3357,7 +3357,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18680
+    "dataCompra": 18634
   },
   {
     "id": 281,
@@ -3369,7 +3369,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18665
+    "dataCompra": 18652
   },
   {
     "id": 282,
@@ -3381,7 +3381,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18638
+    "dataCompra": 18636
   },
   {
     "id": 283,
@@ -3393,7 +3393,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18649
+    "dataCompra": 18688
   },
   {
     "id": 284,
@@ -3405,7 +3405,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18711
+    "dataCompra": 18753
   },
   {
     "id": 285,
@@ -3417,7 +3417,7 @@
     "fkcupom": "2",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18684
+    "dataCompra": 18658
   },
   {
     "id": 286,
@@ -3429,7 +3429,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18675
+    "dataCompra": 18680
   },
   {
     "id": 287,
@@ -3441,7 +3441,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18712
+    "dataCompra": 18665
   },
   {
     "id": 288,
@@ -3453,7 +3453,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18692
+    "dataCompra": 18638
   },
   {
     "id": 289,
@@ -3465,7 +3465,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18707
+    "dataCompra": 18649
   },
   {
     "id": 290,
@@ -3477,7 +3477,7 @@
     "fkcupom": "1",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18721
+    "dataCompra": 18711
   },
   {
     "id": 291,
@@ -3489,7 +3489,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18748
+    "dataCompra": 18684
   },
   {
     "id": 292,
@@ -3501,7 +3501,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18635
+    "dataCompra": 18675
   },
   {
     "id": 293,
@@ -3513,7 +3513,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18647
+    "dataCompra": 18712
   },
   {
     "id": 294,
@@ -3525,7 +3525,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18656
+    "dataCompra": 18692
   },
   {
     "id": 295,
@@ -3537,7 +3537,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18729
+    "dataCompra": 18707
   },
   {
     "id": 296,
@@ -3549,7 +3549,7 @@
     "fkcupom": "3",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18678
+    "dataCompra": 18721
   },
   {
     "id": 297,
@@ -3561,7 +3561,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18690
+    "dataCompra": 18748
   },
   {
     "id": 298,
@@ -3573,7 +3573,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18636
+    "dataCompra": 18635
   },
   {
     "id": 299,
@@ -3585,7 +3585,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18653
+    "dataCompra": 18647
   },
   {
     "id": 300,
@@ -3597,7 +3597,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18651
+    "dataCompra": 18656
   },
   {
     "id": 301,
@@ -3609,7 +3609,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18653
+    "dataCompra": 18729
   },
   {
     "id": 302,
@@ -3621,7 +3621,7 @@
     "fkcupom": "4",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18750
+    "dataCompra": 18678
   },
   {
     "id": 303,
@@ -3633,7 +3633,7 @@
     "fkcupom": "1",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18749
+    "dataCompra": 18690
   },
   {
     "id": 304,
@@ -3645,7 +3645,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18697
+    "dataCompra": 18636
   },
   {
     "id": 305,
@@ -3657,7 +3657,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18682
+    "dataCompra": 18653
   },
   {
     "id": 306,
@@ -3669,7 +3669,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18683
+    "dataCompra": 18651
   },
   {
     "id": 307,
@@ -3681,7 +3681,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18694
+    "dataCompra": 18653
   },
   {
     "id": 308,
@@ -3693,7 +3693,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18633
+    "dataCompra": 18750
   },
   {
     "id": 309,
@@ -3705,7 +3705,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18707
+    "dataCompra": 18749
   },
   {
     "id": 310,
@@ -3717,7 +3717,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18725
+    "dataCompra": 18697
   },
   {
     "id": 311,
@@ -3729,7 +3729,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18744
+    "dataCompra": 18682
   },
   {
     "id": 312,
@@ -3741,7 +3741,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18679
+    "dataCompra": 18683
   },
   {
     "id": 313,
@@ -3753,7 +3753,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18753
+    "dataCompra": 18694
   },
   {
     "id": 314,
@@ -3765,7 +3765,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18665
+    "dataCompra": 18633
   },
   {
     "id": 315,
@@ -3777,7 +3777,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18682
+    "dataCompra": 18707
   },
   {
     "id": 316,
@@ -3789,7 +3789,7 @@
     "fkcupom": "1",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18688
+    "dataCompra": 18725
   },
   {
     "id": 317,
@@ -3801,7 +3801,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18670
+    "dataCompra": 18744
   },
   {
     "id": 318,
@@ -3813,7 +3813,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18722
+    "dataCompra": 18679
   },
   {
     "id": 319,
@@ -3825,7 +3825,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18710
+    "dataCompra": 18753
   },
   {
     "id": 320,
@@ -3837,7 +3837,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18724
+    "dataCompra": 18665
   },
   {
     "id": 321,
@@ -3849,7 +3849,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18714
+    "dataCompra": 18682
   },
   {
     "id": 322,
@@ -3861,7 +3861,7 @@
     "fkcupom": "2",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18743
+    "dataCompra": 18688
   },
   {
     "id": 323,
@@ -3873,7 +3873,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18698
+    "dataCompra": 18670
   },
   {
     "id": 324,
@@ -3885,7 +3885,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18646
+    "dataCompra": 18722
   },
   {
     "id": 325,
@@ -3897,7 +3897,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18726
+    "dataCompra": 18710
   },
   {
     "id": 326,
@@ -3909,7 +3909,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18658
+    "dataCompra": 18724
   },
   {
     "id": 327,
@@ -3921,7 +3921,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18636
+    "dataCompra": 18714
   },
   {
     "id": 328,
@@ -3933,7 +3933,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18685
+    "dataCompra": 18743
   },
   {
     "id": 329,
@@ -3945,7 +3945,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18651
+    "dataCompra": 18698
   },
   {
     "id": 330,
@@ -3957,7 +3957,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18740
+    "dataCompra": 18646
   },
   {
     "id": 331,
@@ -3969,7 +3969,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18713
+    "dataCompra": 18726
   },
   {
     "id": 332,
@@ -3981,7 +3981,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18653
+    "dataCompra": 18658
   },
   {
     "id": 333,
@@ -3993,7 +3993,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18688
+    "dataCompra": 18636
   },
   {
     "id": 334,
@@ -4005,7 +4005,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18632
+    "dataCompra": 18685
   },
   {
     "id": 335,
@@ -4017,7 +4017,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18670
+    "dataCompra": 18651
   },
   {
     "id": 336,
@@ -4029,7 +4029,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18668
+    "dataCompra": 18740
   },
   {
     "id": 337,
@@ -4041,7 +4041,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18755
+    "dataCompra": 18713
   },
   {
     "id": 338,
@@ -4053,7 +4053,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18681
+    "dataCompra": 18653
   },
   {
     "id": 339,
@@ -4065,7 +4065,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18628
+    "dataCompra": 18688
   },
   {
     "id": 340,
@@ -4077,7 +4077,7 @@
     "fkcupom": "0",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18663
+    "dataCompra": 18632
   },
   {
     "id": 341,
@@ -4089,7 +4089,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18695
+    "dataCompra": 18670
   },
   {
     "id": 342,
@@ -4101,7 +4101,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18642
+    "dataCompra": 18668
   },
   {
     "id": 343,
@@ -4113,7 +4113,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18667
+    "dataCompra": 18755
   },
   {
     "id": 344,
@@ -4125,7 +4125,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18709
+    "dataCompra": 18681
   },
   {
     "id": 345,
@@ -4137,7 +4137,7 @@
     "fkcupom": "2",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18643
+    "dataCompra": 18628
   },
   {
     "id": 346,
@@ -4149,7 +4149,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18646
+    "dataCompra": 18663
   },
   {
     "id": 347,
@@ -4161,7 +4161,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18671
+    "dataCompra": 18695
   },
   {
     "id": 348,
@@ -4173,7 +4173,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18747
+    "dataCompra": 18642
   },
   {
     "id": 349,
@@ -4185,7 +4185,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18630
+    "dataCompra": 18667
   },
   {
     "id": 350,
@@ -4197,7 +4197,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18638
+    "dataCompra": 18709
   },
   {
     "id": 351,
@@ -4209,7 +4209,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18751
+    "dataCompra": 18643
   },
   {
     "id": 352,
@@ -4221,7 +4221,7 @@
     "fkcupom": "4",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18730
+    "dataCompra": 18646
   },
   {
     "id": 353,
@@ -4233,7 +4233,7 @@
     "fkcupom": "1",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18659
+    "dataCompra": 18671
   },
   {
     "id": 354,
@@ -4245,7 +4245,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18749
+    "dataCompra": 18747
   },
   {
     "id": 355,
@@ -4257,7 +4257,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18731
+    "dataCompra": 18630
   },
   {
     "id": 356,
@@ -4269,7 +4269,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18756
+    "dataCompra": 18638
   },
   {
     "id": 357,
@@ -4281,7 +4281,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18667
+    "dataCompra": 18751
   },
   {
     "id": 358,
@@ -4293,7 +4293,7 @@
     "fkcupom": "4",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18631
+    "dataCompra": 18730
   },
   {
     "id": 359,
@@ -4305,7 +4305,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18686
+    "dataCompra": 18659
   },
   {
     "id": 360,
@@ -4317,7 +4317,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18641
+    "dataCompra": 18749
   },
   {
     "id": 361,
@@ -4329,7 +4329,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18649
+    "dataCompra": 18731
   },
   {
     "id": 362,
@@ -4341,7 +4341,7 @@
     "fkcupom": "4",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18660
+    "dataCompra": 18756
   },
   {
     "id": 363,
@@ -4353,7 +4353,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18679
+    "dataCompra": 18667
   },
   {
     "id": 364,
@@ -4365,7 +4365,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18653
+    "dataCompra": 18631
   },
   {
     "id": 365,
@@ -4377,7 +4377,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18657
+    "dataCompra": 18686
   },
   {
     "id": 366,
@@ -4401,7 +4401,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18646
+    "dataCompra": 18649
   },
   {
     "id": 368,
@@ -4413,7 +4413,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18663
+    "dataCompra": 18660
   },
   {
     "id": 369,
@@ -4425,7 +4425,7 @@
     "fkcupom": "4",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18740
+    "dataCompra": 18679
   },
   {
     "id": 370,
@@ -4437,7 +4437,7 @@
     "fkcupom": "4",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18683
+    "dataCompra": 18653
   },
   {
     "id": 371,
@@ -4449,7 +4449,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18747
+    "dataCompra": 18657
   },
   {
     "id": 372,
@@ -4461,7 +4461,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18732
+    "dataCompra": 18641
   },
   {
     "id": 373,
@@ -4473,7 +4473,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18682
+    "dataCompra": 18646
   },
   {
     "id": 374,
@@ -4485,7 +4485,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18646
+    "dataCompra": 18663
   },
   {
     "id": 375,
@@ -4497,7 +4497,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18662
+    "dataCompra": 18740
   },
   {
     "id": 376,
@@ -4509,7 +4509,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18693
+    "dataCompra": 18683
   },
   {
     "id": 377,
@@ -4521,7 +4521,7 @@
     "fkcupom": "4",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18707
+    "dataCompra": 18747
   },
   {
     "id": 378,
@@ -4533,7 +4533,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18641
+    "dataCompra": 18732
   },
   {
     "id": 379,
@@ -4545,7 +4545,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18720
+    "dataCompra": 18682
   },
   {
     "id": 380,
@@ -4557,7 +4557,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18720
+    "dataCompra": 18646
   },
   {
     "id": 381,
@@ -4569,7 +4569,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18673
+    "dataCompra": 18662
   },
   {
     "id": 382,
@@ -4581,7 +4581,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18681
+    "dataCompra": 18693
   },
   {
     "id": 383,
@@ -4593,7 +4593,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18663
+    "dataCompra": 18707
   },
   {
     "id": 384,
@@ -4605,7 +4605,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18691
+    "dataCompra": 18641
   },
   {
     "id": 385,
@@ -4617,7 +4617,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18647
+    "dataCompra": 18720
   },
   {
     "id": 386,
@@ -4629,7 +4629,7 @@
     "fkcupom": "2",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18693
+    "dataCompra": 18720
   },
   {
     "id": 387,
@@ -4641,7 +4641,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18684
+    "dataCompra": 18673
   },
   {
     "id": 388,
@@ -4653,7 +4653,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18678
+    "dataCompra": 18681
   },
   {
     "id": 389,
@@ -4665,7 +4665,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18739
+    "dataCompra": 18663
   },
   {
     "id": 390,
@@ -4677,7 +4677,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18751
+    "dataCompra": 18691
   },
   {
     "id": 391,
@@ -4689,7 +4689,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18700
+    "dataCompra": 18647
   },
   {
     "id": 392,
@@ -4701,7 +4701,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18660
+    "dataCompra": 18693
   },
   {
     "id": 393,
@@ -4713,7 +4713,7 @@
     "fkcupom": "2",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18726
+    "dataCompra": 18684
   },
   {
     "id": 394,
@@ -4725,7 +4725,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18663
+    "dataCompra": 18678
   },
   {
     "id": 395,
@@ -4737,7 +4737,7 @@
     "fkcupom": "1",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18732
+    "dataCompra": 18739
   },
   {
     "id": 396,
@@ -4749,7 +4749,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18711
+    "dataCompra": 18751
   },
   {
     "id": 397,
@@ -4761,7 +4761,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18665
+    "dataCompra": 18700
   },
   {
     "id": 398,
@@ -4773,7 +4773,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18659
+    "dataCompra": 18660
   },
   {
     "id": 399,
@@ -4785,7 +4785,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18646
+    "dataCompra": 18726
   },
   {
     "id": 400,
@@ -4797,7 +4797,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18696
+    "dataCompra": 18663
   },
   {
     "id": 401,
@@ -4809,7 +4809,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18719
+    "dataCompra": 18732
   },
   {
     "id": 402,
@@ -4821,7 +4821,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18652
+    "dataCompra": 18711
   },
   {
     "id": 403,
@@ -4833,7 +4833,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18683
+    "dataCompra": 18665
   },
   {
     "id": 404,
@@ -4845,7 +4845,7 @@
     "fkcupom": "0",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18668
+    "dataCompra": 18659
   },
   {
     "id": 405,
@@ -4857,7 +4857,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18711
+    "dataCompra": 18646
   },
   {
     "id": 406,
@@ -4869,7 +4869,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18663
+    "dataCompra": 18696
   },
   {
     "id": 407,
@@ -4881,7 +4881,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18714
+    "dataCompra": 18719
   },
   {
     "id": 408,
@@ -4893,7 +4893,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18671
+    "dataCompra": 18652
   },
   {
     "id": 409,
@@ -4905,7 +4905,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18706
+    "dataCompra": 18683
   },
   {
     "id": 410,
@@ -4917,7 +4917,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18666
+    "dataCompra": 18668
   },
   {
     "id": 411,
@@ -4929,7 +4929,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18685
+    "dataCompra": 18711
   },
   {
     "id": 412,
@@ -4941,7 +4941,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18633
+    "dataCompra": 18663
   },
   {
     "id": 413,
@@ -4953,7 +4953,7 @@
     "fkcupom": "0",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18646
+    "dataCompra": 18714
   },
   {
     "id": 414,
@@ -4965,7 +4965,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18641
+    "dataCompra": 18671
   },
   {
     "id": 415,
@@ -4977,7 +4977,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18684
+    "dataCompra": 18706
   },
   {
     "id": 416,
@@ -4989,7 +4989,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18720
+    "dataCompra": 18666
   },
   {
     "id": 417,
@@ -5001,7 +5001,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18739
+    "dataCompra": 18685
   },
   {
     "id": 418,
@@ -5013,7 +5013,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18701
+    "dataCompra": 18633
   },
   {
     "id": 419,
@@ -5025,7 +5025,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18643
+    "dataCompra": 18646
   },
   {
     "id": 420,
@@ -5037,7 +5037,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18710
+    "dataCompra": 18641
   },
   {
     "id": 421,
@@ -5049,7 +5049,7 @@
     "fkcupom": "2",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18669
+    "dataCompra": 18684
   },
   {
     "id": 422,
@@ -5061,7 +5061,7 @@
     "fkcupom": "4",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18724
+    "dataCompra": 18720
   },
   {
     "id": 423,
@@ -5073,7 +5073,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18743
+    "dataCompra": 18739
   },
   {
     "id": 424,
@@ -5085,7 +5085,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18641
+    "dataCompra": 18701
   },
   {
     "id": 425,
@@ -5097,7 +5097,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18699
+    "dataCompra": 18643
   },
   {
     "id": 426,
@@ -5109,7 +5109,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18689
+    "dataCompra": 18761
   },
   {
     "id": 427,
@@ -5121,7 +5121,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18741
+    "dataCompra": 18710
   },
   {
     "id": 428,
@@ -5133,7 +5133,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18626
+    "dataCompra": 18669
   },
   {
     "id": 429,
@@ -5145,7 +5145,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18666
+    "dataCompra": 18724
   },
   {
     "id": 430,
@@ -5157,7 +5157,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18719
+    "dataCompra": 18743
   },
   {
     "id": 431,
@@ -5169,7 +5169,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18626
+    "dataCompra": 18641
   },
   {
     "id": 432,
@@ -5181,7 +5181,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18654
+    "dataCompra": 18699
   },
   {
     "id": 433,
@@ -5193,7 +5193,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18750
+    "dataCompra": 18689
   },
   {
     "id": 434,
@@ -5205,7 +5205,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18634
+    "dataCompra": 18741
   },
   {
     "id": 435,
@@ -5217,7 +5217,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18687
+    "dataCompra": 18626
   },
   {
     "id": 436,
@@ -5229,7 +5229,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18647
+    "dataCompra": 18666
   },
   {
     "id": 437,
@@ -5241,7 +5241,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18738
+    "dataCompra": 18719
   },
   {
     "id": 438,
@@ -5253,7 +5253,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18718
+    "dataCompra": 18626
   },
   {
     "id": 439,
@@ -5265,7 +5265,7 @@
     "fkcupom": "0",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18689
+    "dataCompra": 18654
   },
   {
     "id": 440,
@@ -5277,7 +5277,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18729
+    "dataCompra": 18750
   },
   {
     "id": 441,
@@ -5289,7 +5289,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18636
+    "dataCompra": 18634
   },
   {
     "id": 442,
@@ -5301,7 +5301,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18718
+    "dataCompra": 18687
   },
   {
     "id": 443,
@@ -5313,7 +5313,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18692
+    "dataCompra": 18647
   },
   {
     "id": 444,
@@ -5325,7 +5325,7 @@
     "fkcupom": "1",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18740
+    "dataCompra": 18738
   },
   {
     "id": 445,
@@ -5337,7 +5337,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18671
+    "dataCompra": 18718
   },
   {
     "id": 446,
@@ -5349,7 +5349,7 @@
     "fkcupom": "0",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18742
+    "dataCompra": 18689
   },
   {
     "id": 447,
@@ -5361,7 +5361,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18661
+    "dataCompra": 18729
   },
   {
     "id": 448,
@@ -5373,7 +5373,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18752
+    "dataCompra": 18636
   },
   {
     "id": 449,
@@ -5385,7 +5385,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18742
+    "dataCompra": 18718
   },
   {
     "id": 450,
@@ -5397,7 +5397,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18684
+    "dataCompra": 18692
   },
   {
     "id": 451,
@@ -5409,7 +5409,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18682
+    "dataCompra": 18740
   },
   {
     "id": 452,
@@ -5421,7 +5421,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18655
+    "dataCompra": 18671
   },
   {
     "id": 453,
@@ -5433,7 +5433,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18639
+    "dataCompra": 18742
   },
   {
     "id": 454,
@@ -5445,7 +5445,7 @@
     "fkcupom": "1",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18707
+    "dataCompra": 18661
   },
   {
     "id": 455,
@@ -5457,7 +5457,7 @@
     "fkcupom": "0",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18648
+    "dataCompra": 18752
   },
   {
     "id": 456,
@@ -5469,7 +5469,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18748
+    "dataCompra": 18742
   },
   {
     "id": 457,
@@ -5481,7 +5481,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18653
+    "dataCompra": 18684
   },
   {
     "id": 458,
@@ -5493,7 +5493,7 @@
     "fkcupom": "2",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18694
+    "dataCompra": 18682
   },
   {
     "id": 459,
@@ -5505,7 +5505,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18714
+    "dataCompra": 18655
   },
   {
     "id": 460,
@@ -5517,7 +5517,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18741
+    "dataCompra": 18639
   },
   {
     "id": 461,
@@ -5529,7 +5529,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18704
+    "dataCompra": 18758
   },
   {
     "id": 462,
@@ -5541,7 +5541,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18652
+    "dataCompra": 18707
   },
   {
     "id": 463,
@@ -5553,7 +5553,7 @@
     "fkcupom": "2",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18722
+    "dataCompra": 18648
   },
   {
     "id": 464,
@@ -5565,7 +5565,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18741
+    "dataCompra": 18748
   },
   {
     "id": 465,
@@ -5577,7 +5577,7 @@
     "fkcupom": "1",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18706
+    "dataCompra": 18653
   },
   {
     "id": 466,
@@ -5589,7 +5589,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18664
+    "dataCompra": 18694
   },
   {
     "id": 467,
@@ -5601,7 +5601,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18630
+    "dataCompra": 18714
   },
   {
     "id": 468,
@@ -5613,7 +5613,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18698
+    "dataCompra": 18741
   },
   {
     "id": 469,
@@ -5625,7 +5625,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18668
+    "dataCompra": 18704
   },
   {
     "id": 470,
@@ -5637,7 +5637,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18707
+    "dataCompra": 18652
   },
   {
     "id": 471,
@@ -5649,7 +5649,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18730
+    "dataCompra": 18722
   },
   {
     "id": 472,
@@ -5661,7 +5661,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18679
+    "dataCompra": 18741
   },
   {
     "id": 473,
@@ -5673,7 +5673,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18653
+    "dataCompra": 18706
   },
   {
     "id": 474,
@@ -5685,7 +5685,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18653
+    "dataCompra": 18664
   },
   {
     "id": 475,
@@ -5697,7 +5697,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18662
+    "dataCompra": 18630
   },
   {
     "id": 476,
@@ -5709,7 +5709,7 @@
     "fkcupom": "1",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18645
+    "dataCompra": 18698
   },
   {
     "id": 477,
@@ -5721,7 +5721,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18719
+    "dataCompra": 18668
   },
   {
     "id": 478,
@@ -5733,7 +5733,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18696
+    "dataCompra": 18707
   },
   {
     "id": 479,
@@ -5745,7 +5745,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18641
+    "dataCompra": 18730
   },
   {
     "id": 480,
@@ -5757,7 +5757,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18756
+    "dataCompra": 18679
   },
   {
     "id": 481,
@@ -5769,7 +5769,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18651
+    "dataCompra": 18653
   },
   {
     "id": 482,
@@ -5781,7 +5781,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18726
+    "dataCompra": 18653
   },
   {
     "id": 483,
@@ -5793,7 +5793,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18630
+    "dataCompra": 18662
   },
   {
     "id": 484,
@@ -5805,7 +5805,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18700
+    "dataCompra": 18645
   },
   {
     "id": 485,
@@ -5817,7 +5817,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18738
+    "dataCompra": 18719
   },
   {
     "id": 486,
@@ -5829,7 +5829,7 @@
     "fkcupom": "4",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18712
+    "dataCompra": 18759
   },
   {
     "id": 487,
@@ -5841,7 +5841,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18652
+    "dataCompra": 18696
   },
   {
     "id": 488,
@@ -5853,7 +5853,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18754
+    "dataCompra": 18641
   },
   {
     "id": 489,
@@ -5865,7 +5865,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18726
+    "dataCompra": 18756
   },
   {
     "id": 490,
@@ -5877,7 +5877,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18682
+    "dataCompra": 18651
   },
   {
     "id": 491,
@@ -5889,7 +5889,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18736
+    "dataCompra": 18726
   },
   {
     "id": 492,
@@ -5901,7 +5901,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18694
+    "dataCompra": 18630
   },
   {
     "id": 493,
@@ -5913,7 +5913,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18708
+    "dataCompra": 18700
   },
   {
     "id": 494,
@@ -5925,7 +5925,7 @@
     "fkcupom": "4",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18681
+    "dataCompra": 18738
   },
   {
     "id": 495,
@@ -5937,7 +5937,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18630
+    "dataCompra": 18712
   },
   {
     "id": 496,
@@ -5949,7 +5949,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18694
+    "dataCompra": 18652
   },
   {
     "id": 497,
@@ -5961,7 +5961,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18749
+    "dataCompra": 18754
   },
   {
     "id": 498,
@@ -5973,7 +5973,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18630
+    "dataCompra": 18726
   },
   {
     "id": 499,
@@ -5985,7 +5985,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18722
+    "dataCompra": 18682
   },
   {
     "id": 500,
@@ -5997,7 +5997,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18717
+    "dataCompra": 18736
   },
   {
     "id": 501,
@@ -6009,7 +6009,7 @@
     "fkcupom": "4",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18729
+    "dataCompra": 18694
   },
   {
     "id": 502,
@@ -6021,7 +6021,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18638
+    "dataCompra": 18708
   },
   {
     "id": 503,
@@ -6033,7 +6033,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18684
+    "dataCompra": 18681
   },
   {
     "id": 504,
@@ -6045,7 +6045,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18684
+    "dataCompra": 18760
   },
   {
     "id": 505,
@@ -6057,7 +6057,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18650
+    "dataCompra": 18630
   },
   {
     "id": 506,
@@ -6069,7 +6069,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18662
+    "dataCompra": 18694
   },
   {
     "id": 507,
@@ -6081,7 +6081,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18651
+    "dataCompra": 18749
   },
   {
     "id": 508,
@@ -6093,7 +6093,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18671
+    "dataCompra": 18630
   },
   {
     "id": 509,
@@ -6105,7 +6105,7 @@
     "fkcupom": "0",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18730
+    "dataCompra": 18722
   },
   {
     "id": 510,
@@ -6117,7 +6117,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18660
+    "dataCompra": 18717
   },
   {
     "id": 511,
@@ -6129,7 +6129,7 @@
     "fkcupom": "4",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18663
+    "dataCompra": 18729
   },
   {
     "id": 512,
@@ -6141,7 +6141,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18725
+    "dataCompra": 18638
   },
   {
     "id": 513,
@@ -6153,7 +6153,7 @@
     "fkcupom": "4",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18628
+    "dataCompra": 18684
   },
   {
     "id": 514,
@@ -6165,7 +6165,7 @@
     "fkcupom": "4",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18639
+    "dataCompra": 18684
   },
   {
     "id": 515,
@@ -6177,7 +6177,7 @@
     "fkcupom": "4",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18663
+    "dataCompra": 18650
   },
   {
     "id": 516,
@@ -6189,7 +6189,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18684
+    "dataCompra": 18662
   },
   {
     "id": 517,
@@ -6201,7 +6201,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18721
+    "dataCompra": 18651
   },
   {
     "id": 518,
@@ -6213,7 +6213,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18642
+    "dataCompra": 18671
   },
   {
     "id": 519,
@@ -6225,7 +6225,7 @@
     "fkcupom": "2",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18710
+    "dataCompra": 18730
   },
   {
     "id": 520,
@@ -6237,7 +6237,7 @@
     "fkcupom": "4",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18748
+    "dataCompra": 18660
   },
   {
     "id": 521,
@@ -6249,7 +6249,7 @@
     "fkcupom": "2",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18647
+    "dataCompra": 18663
   },
   {
     "id": 522,
@@ -6261,7 +6261,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18631
+    "dataCompra": 18725
   },
   {
     "id": 523,
@@ -6273,7 +6273,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18747
+    "dataCompra": 18628
   },
   {
     "id": 524,
@@ -6285,7 +6285,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18737
+    "dataCompra": 18639
   },
   {
     "id": 525,
@@ -6297,7 +6297,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18746
+    "dataCompra": 18663
   },
   {
     "id": 526,
@@ -6309,7 +6309,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18755
+    "dataCompra": 18761
   },
   {
     "id": 527,
@@ -6321,7 +6321,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18677
+    "dataCompra": 18684
   },
   {
     "id": 528,
@@ -6333,7 +6333,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18678
+    "dataCompra": 18721
   },
   {
     "id": 529,
@@ -6345,7 +6345,7 @@
     "fkcupom": "4",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18753
+    "dataCompra": 18642
   },
   {
     "id": 530,
@@ -6357,7 +6357,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18685
+    "dataCompra": 18710
   },
   {
     "id": 531,
@@ -6369,7 +6369,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18716
+    "dataCompra": 18748
   },
   {
     "id": 532,
@@ -6381,7 +6381,7 @@
     "fkcupom": "0",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18675
+    "dataCompra": 18647
   },
   {
     "id": 533,
@@ -6405,7 +6405,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18722
+    "dataCompra": 18759
   },
   {
     "id": 535,
@@ -6417,7 +6417,7 @@
     "fkcupom": "1",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18700
+    "dataCompra": 18747
   },
   {
     "id": 536,
@@ -6429,7 +6429,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18645
+    "dataCompra": 18737
   },
   {
     "id": 537,
@@ -6441,7 +6441,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18639
+    "dataCompra": 18746
   },
   {
     "id": 538,
@@ -6453,7 +6453,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18681
+    "dataCompra": 18755
   },
   {
     "id": 539,
@@ -6465,7 +6465,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18638
+    "dataCompra": 18677
   },
   {
     "id": 540,
@@ -6477,7 +6477,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18732
+    "dataCompra": 18678
   },
   {
     "id": 541,
@@ -6489,7 +6489,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18661
+    "dataCompra": 18753
   },
   {
     "id": 542,
@@ -6501,7 +6501,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18756
+    "dataCompra": 18685
   },
   {
     "id": 543,
@@ -6513,7 +6513,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18715
+    "dataCompra": 18716
   },
   {
     "id": 544,
@@ -6525,7 +6525,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18750
+    "dataCompra": 18675
   },
   {
     "id": 545,
@@ -6537,7 +6537,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18748
+    "dataCompra": 18631
   },
   {
     "id": 546,
@@ -6549,7 +6549,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18721
+    "dataCompra": 18722
   },
   {
     "id": 547,
@@ -6561,7 +6561,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18750
+    "dataCompra": 18700
   },
   {
     "id": 548,
@@ -6573,7 +6573,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18680
+    "dataCompra": 18645
   },
   {
     "id": 549,
@@ -6585,7 +6585,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18662
+    "dataCompra": 18639
   },
   {
     "id": 550,
@@ -6597,7 +6597,7 @@
     "fkcupom": "4",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18748
+    "dataCompra": 18681
   },
   {
     "id": 551,
@@ -6609,7 +6609,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18667
+    "dataCompra": 18638
   },
   {
     "id": 552,
@@ -6621,7 +6621,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18681
+    "dataCompra": 18732
   },
   {
     "id": 553,
@@ -6633,7 +6633,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18658
+    "dataCompra": 18661
   },
   {
     "id": 554,
@@ -6645,7 +6645,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18680
+    "dataCompra": 18756
   },
   {
     "id": 555,
@@ -6657,7 +6657,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18752
+    "dataCompra": 18715
   },
   {
     "id": 556,
@@ -6669,7 +6669,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18733
+    "dataCompra": 18750
   },
   {
     "id": 557,
@@ -6681,7 +6681,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18713
+    "dataCompra": 18748
   },
   {
     "id": 558,
@@ -6693,7 +6693,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18691
+    "dataCompra": 18721
   },
   {
     "id": 559,
@@ -6705,7 +6705,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18705
+    "dataCompra": 18750
   },
   {
     "id": 560,
@@ -6717,7 +6717,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18689
+    "dataCompra": 18680
   },
   {
     "id": 561,
@@ -6729,7 +6729,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18660
+    "dataCompra": 18662
   },
   {
     "id": 562,
@@ -6741,7 +6741,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18686
+    "dataCompra": 18748
   },
   {
     "id": 563,
@@ -6753,7 +6753,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18694
+    "dataCompra": 18667
   },
   {
     "id": 564,
@@ -6765,7 +6765,7 @@
     "fkcupom": "4",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18685
+    "dataCompra": 18681
   },
   {
     "id": 565,
@@ -6777,7 +6777,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18651
+    "dataCompra": 18658
   },
   {
     "id": 566,
@@ -6789,7 +6789,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18645
+    "dataCompra": 18680
   },
   {
     "id": 567,
@@ -6801,7 +6801,7 @@
     "fkcupom": "4",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18686
+    "dataCompra": 18752
   },
   {
     "id": 568,
@@ -6813,7 +6813,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18693
+    "dataCompra": 18733
   },
   {
     "id": 569,
@@ -6825,7 +6825,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18726
+    "dataCompra": 18713
   },
   {
     "id": 570,
@@ -6837,7 +6837,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18649
+    "dataCompra": 18691
   },
   {
     "id": 571,
@@ -6849,7 +6849,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18708
+    "dataCompra": 18760
   },
   {
     "id": 572,
@@ -6861,7 +6861,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18642
+    "dataCompra": 18705
   },
   {
     "id": 573,
@@ -6873,7 +6873,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18655
+    "dataCompra": 18689
   },
   {
     "id": 574,
@@ -6885,7 +6885,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18659
+    "dataCompra": 18660
   },
   {
     "id": 575,
@@ -6897,7 +6897,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18706
+    "dataCompra": 18686
   },
   {
     "id": 576,
@@ -6909,7 +6909,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18712
+    "dataCompra": 18694
   },
   {
     "id": 577,
@@ -6921,7 +6921,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18710
+    "dataCompra": 18758
   },
   {
     "id": 578,
@@ -6933,7 +6933,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18706
+    "dataCompra": 18685
   },
   {
     "id": 579,
@@ -6945,7 +6945,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18650
+    "dataCompra": 18651
   },
   {
     "id": 580,
@@ -6957,7 +6957,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18664
+    "dataCompra": 18645
   },
   {
     "id": 581,
@@ -6969,7 +6969,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18750
+    "dataCompra": 18686
   },
   {
     "id": 582,
@@ -6981,7 +6981,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18689
+    "dataCompra": 18693
   },
   {
     "id": 583,
@@ -6993,7 +6993,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18674
+    "dataCompra": 18726
   },
   {
     "id": 584,
@@ -7005,7 +7005,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18749
+    "dataCompra": 18649
   },
   {
     "id": 585,
@@ -7017,7 +7017,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18744
+    "dataCompra": 18708
   },
   {
     "id": 586,
@@ -7029,7 +7029,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18735
+    "dataCompra": 18642
   },
   {
     "id": 587,
@@ -7041,7 +7041,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18626
+    "dataCompra": 18655
   },
   {
     "id": 588,
@@ -7053,7 +7053,7 @@
     "fkcupom": "4",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18626
+    "dataCompra": 18659
   },
   {
     "id": 589,
@@ -7065,7 +7065,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18668
+    "dataCompra": 18706
   },
   {
     "id": 590,
@@ -7077,7 +7077,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18698
+    "dataCompra": 18712
   },
   {
     "id": 591,
@@ -7089,7 +7089,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18703
+    "dataCompra": 18710
   },
   {
     "id": 592,
@@ -7101,7 +7101,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18653
+    "dataCompra": 18706
   },
   {
     "id": 593,
@@ -7113,7 +7113,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18730
+    "dataCompra": 18759
   },
   {
     "id": 594,
@@ -7125,7 +7125,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18639
+    "dataCompra": 18650
   },
   {
     "id": 595,
@@ -7137,7 +7137,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18682
+    "dataCompra": 18664
   },
   {
     "id": 596,
@@ -7149,7 +7149,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18718
+    "dataCompra": 18750
   },
   {
     "id": 597,
@@ -7161,7 +7161,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18705
+    "dataCompra": 18689
   },
   {
     "id": 598,
@@ -7173,7 +7173,7 @@
     "fkcupom": "1",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18633
+    "dataCompra": 18674
   },
   {
     "id": 599,
@@ -7185,7 +7185,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18646
+    "dataCompra": 18749
   },
   {
     "id": 600,
@@ -7197,7 +7197,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18673
+    "dataCompra": 18744
   },
   {
     "id": 601,
@@ -7209,7 +7209,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18664
+    "dataCompra": 18735
   },
   {
     "id": 602,
@@ -7221,7 +7221,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18723
+    "dataCompra": 18626
   },
   {
     "id": 603,
@@ -7233,7 +7233,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18755
+    "dataCompra": 18626
   },
   {
     "id": 604,
@@ -7245,7 +7245,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18733
+    "dataCompra": 18668
   },
   {
     "id": 605,
@@ -7257,7 +7257,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18745
+    "dataCompra": 18698
   },
   {
     "id": 606,
@@ -7269,7 +7269,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18745
+    "dataCompra": 18703
   },
   {
     "id": 607,
@@ -7281,7 +7281,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18692
+    "dataCompra": 18653
   },
   {
     "id": 608,
@@ -7293,7 +7293,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18638
+    "dataCompra": 18730
   },
   {
     "id": 609,
@@ -7305,7 +7305,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18685
+    "dataCompra": 18639
   },
   {
     "id": 610,
@@ -7317,7 +7317,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18661
+    "dataCompra": 18682
   },
   {
     "id": 611,
@@ -7329,7 +7329,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18640
+    "dataCompra": 18718
   },
   {
     "id": 612,
@@ -7341,7 +7341,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18636
+    "dataCompra": 18705
   },
   {
     "id": 613,
@@ -7353,7 +7353,7 @@
     "fkcupom": "2",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18704
+    "dataCompra": 18633
   },
   {
     "id": 614,
@@ -7365,7 +7365,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18680
+    "dataCompra": 18646
   },
   {
     "id": 615,
@@ -7377,7 +7377,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18665
+    "dataCompra": 18673
   },
   {
     "id": 616,
@@ -7389,7 +7389,7 @@
     "fkcupom": "1",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18736
+    "dataCompra": 18664
   },
   {
     "id": 617,
@@ -7401,7 +7401,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18736
+    "dataCompra": 18723
   },
   {
     "id": 618,
@@ -7413,7 +7413,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18740
+    "dataCompra": 18755
   },
   {
     "id": 619,
@@ -7425,7 +7425,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18748
+    "dataCompra": 18733
   },
   {
     "id": 620,
@@ -7437,7 +7437,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18703
+    "dataCompra": 18745
   },
   {
     "id": 621,
@@ -7449,7 +7449,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18731
+    "dataCompra": 18745
   },
   {
     "id": 622,
@@ -7461,7 +7461,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18732
+    "dataCompra": 18692
   },
   {
     "id": 623,
@@ -7473,7 +7473,7 @@
     "fkcupom": "4",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18671
+    "dataCompra": 18638
   },
   {
     "id": 624,
@@ -7485,7 +7485,7 @@
     "fkcupom": "4",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18647
+    "dataCompra": 18685
   },
   {
     "id": 625,
@@ -7497,7 +7497,7 @@
     "fkcupom": "4",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18734
+    "dataCompra": 18661
   },
   {
     "id": 626,
@@ -7509,7 +7509,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18740
+    "dataCompra": 18640
   },
   {
     "id": 627,
@@ -7521,7 +7521,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18747
+    "dataCompra": 18636
   },
   {
     "id": 628,
@@ -7533,7 +7533,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18751
+    "dataCompra": 18704
   },
   {
     "id": 629,
@@ -7545,7 +7545,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18647
+    "dataCompra": 18680
   },
   {
     "id": 630,
@@ -7557,7 +7557,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18663
+    "dataCompra": 18665
   },
   {
     "id": 631,
@@ -7569,7 +7569,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18669
+    "dataCompra": 18736
   },
   {
     "id": 632,
@@ -7581,7 +7581,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18643
+    "dataCompra": 18736
   },
   {
     "id": 633,
@@ -7593,7 +7593,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18678
+    "dataCompra": 18740
   },
   {
     "id": 634,
@@ -7605,7 +7605,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18707
+    "dataCompra": 18748
   },
   {
     "id": 635,
@@ -7617,7 +7617,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18739
+    "dataCompra": 18703
   },
   {
     "id": 636,
@@ -7629,7 +7629,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18701
+    "dataCompra": 18731
   },
   {
     "id": 637,
@@ -7641,7 +7641,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18742
+    "dataCompra": 18732
   },
   {
     "id": 638,
@@ -7653,7 +7653,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18734
+    "dataCompra": 18671
   },
   {
     "id": 639,
@@ -7677,7 +7677,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18650
+    "dataCompra": 18734
   },
   {
     "id": 641,
@@ -7689,7 +7689,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18651
+    "dataCompra": 18740
   },
   {
     "id": 642,
@@ -7701,7 +7701,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18704
+    "dataCompra": 18747
   },
   {
     "id": 643,
@@ -7713,7 +7713,7 @@
     "fkcupom": "4",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18730
+    "dataCompra": 18751
   },
   {
     "id": 644,
@@ -7725,7 +7725,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18637
+    "dataCompra": 18647
   },
   {
     "id": 645,
@@ -7737,7 +7737,7 @@
     "fkcupom": "3",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18717
+    "dataCompra": 18663
   },
   {
     "id": 646,
@@ -7749,7 +7749,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18638
+    "dataCompra": 18669
   },
   {
     "id": 647,
@@ -7761,7 +7761,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18626
+    "dataCompra": 18643
   },
   {
     "id": 648,
@@ -7773,7 +7773,7 @@
     "fkcupom": "2",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18728
+    "dataCompra": 18678
   },
   {
     "id": 649,
@@ -7785,7 +7785,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18638
+    "dataCompra": 18707
   },
   {
     "id": 650,
@@ -7797,7 +7797,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18630
+    "dataCompra": 18739
   },
   {
     "id": 651,
@@ -7809,7 +7809,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18678
+    "dataCompra": 18701
   },
   {
     "id": 652,
@@ -7821,7 +7821,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18676
+    "dataCompra": 18742
   },
   {
     "id": 653,
@@ -7833,7 +7833,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18753
+    "dataCompra": 18734
   },
   {
     "id": 654,
@@ -7845,7 +7845,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18683
+    "dataCompra": 18647
   },
   {
     "id": 655,
@@ -7857,7 +7857,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18649
+    "dataCompra": 18650
   },
   {
     "id": 656,
@@ -7869,7 +7869,7 @@
     "fkcupom": "4",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18730
+    "dataCompra": 18651
   },
   {
     "id": 657,
@@ -7881,7 +7881,7 @@
     "fkcupom": "4",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18637
+    "dataCompra": 18704
   },
   {
     "id": 658,
@@ -7893,7 +7893,7 @@
     "fkcupom": "3",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18630
+    "dataCompra": 18730
   },
   {
     "id": 659,
@@ -7905,7 +7905,7 @@
     "fkcupom": "1",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18723
+    "dataCompra": 18637
   },
   {
     "id": 660,
@@ -7917,7 +7917,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18692
+    "dataCompra": 18717
   },
   {
     "id": 661,
@@ -7929,7 +7929,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18734
+    "dataCompra": 18638
   },
   {
     "id": 662,
@@ -7941,7 +7941,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18651
+    "dataCompra": 18626
   },
   {
     "id": 663,
@@ -7953,7 +7953,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18676
+    "dataCompra": 18728
   },
   {
     "id": 664,
@@ -7965,7 +7965,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18714
+    "dataCompra": 18638
   },
   {
     "id": 665,
@@ -7977,7 +7977,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18670
+    "dataCompra": 18630
   },
   {
     "id": 666,
@@ -7989,7 +7989,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18676
+    "dataCompra": 18678
   },
   {
     "id": 667,
@@ -8001,7 +8001,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18659
+    "dataCompra": 18676
   },
   {
     "id": 668,
@@ -8013,7 +8013,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18756
+    "dataCompra": 18753
   },
   {
     "id": 669,
@@ -8025,7 +8025,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18667
+    "dataCompra": 18683
   },
   {
     "id": 670,
@@ -8037,7 +8037,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18719
+    "dataCompra": 18649
   },
   {
     "id": 671,
@@ -8049,7 +8049,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18680
+    "dataCompra": 18730
   },
   {
     "id": 672,
@@ -8061,7 +8061,7 @@
     "fkcupom": "3",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18752
+    "dataCompra": 18637
   },
   {
     "id": 673,
@@ -8073,7 +8073,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18657
+    "dataCompra": 18630
   },
   {
     "id": 674,
@@ -8085,7 +8085,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18744
+    "dataCompra": 18723
   },
   {
     "id": 675,
@@ -8097,7 +8097,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18663
+    "dataCompra": 18692
   },
   {
     "id": 676,
@@ -8109,7 +8109,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18630
+    "dataCompra": 18734
   },
   {
     "id": 677,
@@ -8121,7 +8121,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18683
+    "dataCompra": 18651
   },
   {
     "id": 678,
@@ -8133,7 +8133,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18720
+    "dataCompra": 18676
   },
   {
     "id": 679,
@@ -8145,7 +8145,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18644
+    "dataCompra": 18714
   },
   {
     "id": 680,
@@ -8157,7 +8157,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18708
+    "dataCompra": 18670
   },
   {
     "id": 681,
@@ -8169,7 +8169,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18647
+    "dataCompra": 18676
   },
   {
     "id": 682,
@@ -8181,7 +8181,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18731
+    "dataCompra": 18659
   },
   {
     "id": 683,
@@ -8193,7 +8193,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18737
+    "dataCompra": 18756
   },
   {
     "id": 684,
@@ -8205,7 +8205,7 @@
     "fkcupom": "1",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18650
+    "dataCompra": 18667
   },
   {
     "id": 685,
@@ -8217,7 +8217,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18713
+    "dataCompra": 18719
   },
   {
     "id": 686,
@@ -8229,7 +8229,7 @@
     "fkcupom": "4",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18644
+    "dataCompra": 18680
   },
   {
     "id": 687,
@@ -8241,7 +8241,7 @@
     "fkcupom": "4",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18691
+    "dataCompra": 18752
   },
   {
     "id": 688,
@@ -8253,7 +8253,7 @@
     "fkcupom": "4",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18728
+    "dataCompra": 18657
   },
   {
     "id": 689,
@@ -8265,7 +8265,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18694
+    "dataCompra": 18744
   },
   {
     "id": 690,
@@ -8277,7 +8277,7 @@
     "fkcupom": "1",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18731
+    "dataCompra": 18663
   },
   {
     "id": 691,
@@ -8289,7 +8289,7 @@
     "fkcupom": "4",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18696
+    "dataCompra": 18630
   },
   {
     "id": 692,
@@ -8301,7 +8301,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18740
+    "dataCompra": 18683
   },
   {
     "id": 693,
@@ -8313,7 +8313,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18722
+    "dataCompra": 18720
   },
   {
     "id": 694,
@@ -8325,7 +8325,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18685
+    "dataCompra": 18644
   },
   {
     "id": 695,
@@ -8337,7 +8337,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18754
+    "dataCompra": 18708
   },
   {
     "id": 696,
@@ -8349,7 +8349,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18670
+    "dataCompra": 18647
   },
   {
     "id": 697,
@@ -8361,7 +8361,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18650
+    "dataCompra": 18731
   },
   {
     "id": 698,
@@ -8373,7 +8373,7 @@
     "fkcupom": "4",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18753
+    "dataCompra": 18737
   },
   {
     "id": 699,
@@ -8385,7 +8385,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18677
+    "dataCompra": 18650
   },
   {
     "id": 700,
@@ -8397,7 +8397,7 @@
     "fkcupom": "3",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18665
+    "dataCompra": 18713
   },
   {
     "id": 701,
@@ -8409,7 +8409,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18658
+    "dataCompra": 18644
   },
   {
     "id": 702,
@@ -8421,7 +8421,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18755
+    "dataCompra": 18759
   },
   {
     "id": 703,
@@ -8433,7 +8433,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18754
+    "dataCompra": 18691
   },
   {
     "id": 704,
@@ -8445,7 +8445,7 @@
     "fkcupom": "0",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18753
+    "dataCompra": 18728
   },
   {
     "id": 705,
@@ -8457,7 +8457,7 @@
     "fkcupom": "4",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18645
+    "dataCompra": 18760
   },
   {
     "id": 706,
@@ -8481,7 +8481,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18637
+    "dataCompra": 18731
   },
   {
     "id": 708,
@@ -8493,7 +8493,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18648
+    "dataCompra": 18696
   },
   {
     "id": 709,
@@ -8505,7 +8505,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18711
+    "dataCompra": 18740
   },
   {
     "id": 710,
@@ -8517,7 +8517,7 @@
     "fkcupom": "3",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18634
+    "dataCompra": 18722
   },
   {
     "id": 711,
@@ -8529,7 +8529,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18683
+    "dataCompra": 18685
   },
   {
     "id": 712,
@@ -8541,7 +8541,7 @@
     "fkcupom": "1",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18659
+    "dataCompra": 18754
   },
   {
     "id": 713,
@@ -8553,7 +8553,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18664
+    "dataCompra": 18670
   },
   {
     "id": 714,
@@ -8565,7 +8565,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18636
+    "dataCompra": 18650
   },
   {
     "id": 715,
@@ -8577,7 +8577,7 @@
     "fkcupom": "0",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18676
+    "dataCompra": 18753
   },
   {
     "id": 716,
@@ -8589,7 +8589,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18637
+    "dataCompra": 18677
   },
   {
     "id": 717,
@@ -8601,7 +8601,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18697
+    "dataCompra": 18665
   },
   {
     "id": 718,
@@ -8613,7 +8613,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18704
+    "dataCompra": 18658
   },
   {
     "id": 719,
@@ -8625,7 +8625,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18627
+    "dataCompra": 18755
   },
   {
     "id": 720,
@@ -8637,7 +8637,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18651
+    "dataCompra": 18754
   },
   {
     "id": 721,
@@ -8649,7 +8649,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18703
+    "dataCompra": 18753
   },
   {
     "id": 722,
@@ -8661,7 +8661,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18715
+    "dataCompra": 18645
   },
   {
     "id": 723,
@@ -8673,7 +8673,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18661
+    "dataCompra": 18694
   },
   {
     "id": 724,
@@ -8685,7 +8685,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18686
+    "dataCompra": 18637
   },
   {
     "id": 725,
@@ -8697,7 +8697,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18697
+    "dataCompra": 18648
   },
   {
     "id": 726,
@@ -8709,7 +8709,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18732
+    "dataCompra": 18760
   },
   {
     "id": 727,
@@ -8721,7 +8721,7 @@
     "fkcupom": "4",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18717
+    "dataCompra": 18711
   },
   {
     "id": 728,
@@ -8733,7 +8733,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18639
+    "dataCompra": 18634
   },
   {
     "id": 729,
@@ -8745,7 +8745,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18746
+    "dataCompra": 18683
   },
   {
     "id": 730,
@@ -8757,7 +8757,7 @@
     "fkcupom": "4",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18665
+    "dataCompra": 18659
   },
   {
     "id": 731,
@@ -8769,7 +8769,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18659
+    "dataCompra": 18664
   },
   {
     "id": 732,
@@ -8781,7 +8781,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18643
+    "dataCompra": 18636
   },
   {
     "id": 733,
@@ -8793,7 +8793,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18732
+    "dataCompra": 18676
   },
   {
     "id": 734,
@@ -8805,7 +8805,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18690
+    "dataCompra": 18637
   },
   {
     "id": 735,
@@ -8817,7 +8817,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18721
+    "dataCompra": 18697
   },
   {
     "id": 736,
@@ -8829,7 +8829,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18634
+    "dataCompra": 18704
   },
   {
     "id": 737,
@@ -8841,7 +8841,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18688
+    "dataCompra": 18627
   },
   {
     "id": 738,
@@ -8853,7 +8853,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18639
+    "dataCompra": 18761
   },
   {
     "id": 739,
@@ -8865,7 +8865,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18727
+    "dataCompra": 18651
   },
   {
     "id": 740,
@@ -8877,7 +8877,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18745
+    "dataCompra": 18703
   },
   {
     "id": 741,
@@ -8889,7 +8889,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18727
+    "dataCompra": 18715
   },
   {
     "id": 742,
@@ -8901,7 +8901,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18631
+    "dataCompra": 18661
   },
   {
     "id": 743,
@@ -8913,7 +8913,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18627
+    "dataCompra": 18686
   },
   {
     "id": 744,
@@ -8925,7 +8925,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18700
+    "dataCompra": 18697
   },
   {
     "id": 745,
@@ -8937,7 +8937,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18715
+    "dataCompra": 18757
   },
   {
     "id": 746,
@@ -8949,7 +8949,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18662
+    "dataCompra": 18732
   },
   {
     "id": 747,
@@ -8961,7 +8961,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18748
+    "dataCompra": 18717
   },
   {
     "id": 748,
@@ -8973,7 +8973,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18651
+    "dataCompra": 18639
   },
   {
     "id": 749,
@@ -8985,7 +8985,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18703
+    "dataCompra": 18746
   },
   {
     "id": 750,
@@ -8997,7 +8997,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18709
+    "dataCompra": 18665
   },
   {
     "id": 751,
@@ -9009,7 +9009,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18628
+    "dataCompra": 18659
   },
   {
     "id": 752,
@@ -9021,7 +9021,7 @@
     "fkcupom": "2",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18675
+    "dataCompra": 18643
   },
   {
     "id": 753,
@@ -9033,7 +9033,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18729
+    "dataCompra": 18732
   },
   {
     "id": 754,
@@ -9045,7 +9045,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18633
+    "dataCompra": 18690
   },
   {
     "id": 755,
@@ -9057,7 +9057,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18749
+    "dataCompra": 18721
   },
   {
     "id": 756,
@@ -9069,7 +9069,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18668
+    "dataCompra": 18634
   },
   {
     "id": 757,
@@ -9081,7 +9081,7 @@
     "fkcupom": "4",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18634
+    "dataCompra": 18688
   },
   {
     "id": 758,
@@ -9093,7 +9093,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18662
+    "dataCompra": 18759
   },
   {
     "id": 759,
@@ -9105,7 +9105,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18735
+    "dataCompra": 18639
   },
   {
     "id": 760,
@@ -9117,7 +9117,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18656
+    "dataCompra": 18727
   },
   {
     "id": 761,
@@ -9129,7 +9129,7 @@
     "fkcupom": "4",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18690
+    "dataCompra": 18745
   },
   {
     "id": 762,
@@ -9141,7 +9141,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18656
+    "dataCompra": 18727
   },
   {
     "id": 763,
@@ -9153,7 +9153,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18723
+    "dataCompra": 18631
   },
   {
     "id": 764,
@@ -9165,7 +9165,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18748
+    "dataCompra": 18627
   },
   {
     "id": 765,
@@ -9177,7 +9177,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18711
+    "dataCompra": 18700
   },
   {
     "id": 766,
@@ -9189,7 +9189,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18723
+    "dataCompra": 18715
   },
   {
     "id": 767,
@@ -9201,7 +9201,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18709
+    "dataCompra": 18662
   },
   {
     "id": 768,
@@ -9213,7 +9213,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18640
+    "dataCompra": 18748
   },
   {
     "id": 769,
@@ -9225,7 +9225,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18699
+    "dataCompra": 18651
   },
   {
     "id": 770,
@@ -9237,7 +9237,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18629
+    "dataCompra": 18703
   },
   {
     "id": 771,
@@ -9249,7 +9249,7 @@
     "fkcupom": "1",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18645
+    "dataCompra": 18709
   },
   {
     "id": 772,
@@ -9261,7 +9261,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18650
+    "dataCompra": 18628
   },
   {
     "id": 773,
@@ -9273,7 +9273,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18726
+    "dataCompra": 18675
   },
   {
     "id": 774,
@@ -9285,7 +9285,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18739
+    "dataCompra": 18729
   },
   {
     "id": 775,
@@ -9297,7 +9297,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18649
+    "dataCompra": 18633
   },
   {
     "id": 776,
@@ -9309,7 +9309,7 @@
     "fkcupom": "0",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18631
+    "dataCompra": 18749
   },
   {
     "id": 777,
@@ -9333,7 +9333,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18629
+    "dataCompra": 18634
   },
   {
     "id": 779,
@@ -9345,7 +9345,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18661
+    "dataCompra": 18662
   },
   {
     "id": 780,
@@ -9357,7 +9357,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18713
+    "dataCompra": 18735
   },
   {
     "id": 781,
@@ -9369,7 +9369,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18651
+    "dataCompra": 18656
   },
   {
     "id": 782,
@@ -9381,7 +9381,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18698
+    "dataCompra": 18690
   },
   {
     "id": 783,
@@ -9393,7 +9393,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18633
+    "dataCompra": 18656
   },
   {
     "id": 784,
@@ -9405,7 +9405,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18663
+    "dataCompra": 18723
   },
   {
     "id": 785,
@@ -9417,7 +9417,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18642
+    "dataCompra": 18748
   },
   {
     "id": 786,
@@ -9429,7 +9429,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18669
+    "dataCompra": 18711
   },
   {
     "id": 787,
@@ -9441,7 +9441,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18751
+    "dataCompra": 18723
   },
   {
     "id": 788,
@@ -9453,7 +9453,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18733
+    "dataCompra": 18709
   },
   {
     "id": 789,
@@ -9465,7 +9465,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18719
+    "dataCompra": 18640
   },
   {
     "id": 790,
@@ -9477,7 +9477,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18710
+    "dataCompra": 18699
   },
   {
     "id": 791,
@@ -9489,7 +9489,7 @@
     "fkcupom": "0",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18729
+    "dataCompra": 18629
   },
   {
     "id": 792,
@@ -9501,7 +9501,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18729
+    "dataCompra": 18645
   },
   {
     "id": 793,
@@ -9513,7 +9513,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18678
+    "dataCompra": 18650
   },
   {
     "id": 794,
@@ -9525,7 +9525,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18746
+    "dataCompra": 18726
   },
   {
     "id": 795,
@@ -9537,7 +9537,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18673
+    "dataCompra": 18739
   },
   {
     "id": 796,
@@ -9549,7 +9549,7 @@
     "fkcupom": "3",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18720
+    "dataCompra": 18649
   },
   {
     "id": 797,
@@ -9561,7 +9561,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18723
+    "dataCompra": 18631
   },
   {
     "id": 798,
@@ -9573,7 +9573,7 @@
     "fkcupom": "4",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18639
+    "dataCompra": 18668
   },
   {
     "id": 799,
@@ -9585,7 +9585,7 @@
     "fkcupom": "1",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18744
+    "dataCompra": 18629
   },
   {
     "id": 800,
@@ -9597,7 +9597,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18670
+    "dataCompra": 18661
   },
   {
     "id": 801,
@@ -9609,7 +9609,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18640
+    "dataCompra": 18713
   },
   {
     "id": 802,
@@ -9621,7 +9621,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18686
+    "dataCompra": 18651
   },
   {
     "id": 803,
@@ -9633,7 +9633,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18637
+    "dataCompra": 18698
   },
   {
     "id": 804,
@@ -9645,7 +9645,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18643
+    "dataCompra": 18633
   },
   {
     "id": 805,
@@ -9657,7 +9657,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18653
+    "dataCompra": 18663
   },
   {
     "id": 806,
@@ -9669,7 +9669,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18699
+    "dataCompra": 18642
   },
   {
     "id": 807,
@@ -9681,7 +9681,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18629
+    "dataCompra": 18669
   },
   {
     "id": 808,
@@ -9693,7 +9693,7 @@
     "fkcupom": "4",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18699
+    "dataCompra": 18751
   },
   {
     "id": 809,
@@ -9705,7 +9705,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18728
+    "dataCompra": 18733
   },
   {
     "id": 810,
@@ -9717,7 +9717,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18743
+    "dataCompra": 18719
   },
   {
     "id": 811,
@@ -9729,7 +9729,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18635
+    "dataCompra": 18710
   },
   {
     "id": 812,
@@ -9741,7 +9741,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18710
+    "dataCompra": 18729
   },
   {
     "id": 813,
@@ -9753,7 +9753,7 @@
     "fkcupom": "0",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18709
+    "dataCompra": 18729
   },
   {
     "id": 814,
@@ -9765,7 +9765,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18746
+    "dataCompra": 18678
   },
   {
     "id": 815,
@@ -9777,7 +9777,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18679
+    "dataCompra": 18746
   },
   {
     "id": 816,
@@ -9789,7 +9789,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18745
+    "dataCompra": 18673
   },
   {
     "id": 817,
@@ -9801,7 +9801,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18698
+    "dataCompra": 18720
   },
   {
     "id": 818,
@@ -9813,7 +9813,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18719
+    "dataCompra": 18723
   },
   {
     "id": 819,
@@ -9825,7 +9825,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18660
+    "dataCompra": 18639
   },
   {
     "id": 820,
@@ -9837,7 +9837,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18746
+    "dataCompra": 18744
   },
   {
     "id": 821,
@@ -9849,7 +9849,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18734
+    "dataCompra": 18670
   },
   {
     "id": 822,
@@ -9861,7 +9861,7 @@
     "fkcupom": "2",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18671
+    "dataCompra": 18640
   },
   {
     "id": 823,
@@ -9873,7 +9873,7 @@
     "fkcupom": "0",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18712
+    "dataCompra": 18686
   },
   {
     "id": 824,
@@ -9885,7 +9885,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18725
+    "dataCompra": 18637
   },
   {
     "id": 825,
@@ -9897,7 +9897,7 @@
     "fkcupom": "4",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18710
+    "dataCompra": 18643
   },
   {
     "id": 826,
@@ -9909,7 +9909,7 @@
     "fkcupom": "1",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18677
+    "dataCompra": 18653
   },
   {
     "id": 827,
@@ -9921,7 +9921,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18739
+    "dataCompra": 18699
   },
   {
     "id": 828,
@@ -9933,7 +9933,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18663
+    "dataCompra": 18629
   },
   {
     "id": 829,
@@ -9945,7 +9945,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18691
+    "dataCompra": 18699
   },
   {
     "id": 830,
@@ -9957,7 +9957,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18754
+    "dataCompra": 18728
   },
   {
     "id": 831,
@@ -9969,7 +9969,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18666
+    "dataCompra": 18743
   },
   {
     "id": 832,
@@ -9981,7 +9981,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18747
+    "dataCompra": 18761
   },
   {
     "id": 833,
@@ -9993,7 +9993,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18644
+    "dataCompra": 18635
   },
   {
     "id": 834,
@@ -10005,7 +10005,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18648
+    "dataCompra": 18710
   },
   {
     "id": 835,
@@ -10017,7 +10017,7 @@
     "fkcupom": "4",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18694
+    "dataCompra": 18709
   },
   {
     "id": 836,
@@ -10029,7 +10029,7 @@
     "fkcupom": "2",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18751
+    "dataCompra": 18746
   },
   {
     "id": 837,
@@ -10041,7 +10041,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18753
+    "dataCompra": 18679
   },
   {
     "id": 838,
@@ -10053,7 +10053,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18629
+    "dataCompra": 18745
   },
   {
     "id": 839,
@@ -10065,7 +10065,7 @@
     "fkcupom": "0",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18756
+    "dataCompra": 18698
   },
   {
     "id": 840,
@@ -10077,7 +10077,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18681
+    "dataCompra": 18719
   },
   {
     "id": 841,
@@ -10089,7 +10089,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18713
+    "dataCompra": 18660
   },
   {
     "id": 842,
@@ -10101,7 +10101,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18644
+    "dataCompra": 18746
   },
   {
     "id": 843,
@@ -10113,7 +10113,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18690
+    "dataCompra": 18734
   },
   {
     "id": 844,
@@ -10125,7 +10125,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18750
+    "dataCompra": 18671
   },
   {
     "id": 845,
@@ -10137,7 +10137,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18677
+    "dataCompra": 18712
   },
   {
     "id": 846,
@@ -10149,7 +10149,7 @@
     "fkcupom": "1",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18728
+    "dataCompra": 18725
   },
   {
     "id": 847,
@@ -10161,7 +10161,7 @@
     "fkcupom": "4",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18626
+    "dataCompra": 18710
   },
   {
     "id": 848,
@@ -10173,7 +10173,7 @@
     "fkcupom": "0",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18728
+    "dataCompra": 18677
   },
   {
     "id": 849,
@@ -10185,7 +10185,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18737
+    "dataCompra": 18739
   },
   {
     "id": 850,
@@ -10197,7 +10197,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18749
+    "dataCompra": 18663
   },
   {
     "id": 851,
@@ -10209,7 +10209,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18683
+    "dataCompra": 18691
   },
   {
     "id": 852,
@@ -10221,7 +10221,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18692
+    "dataCompra": 18754
   },
   {
     "id": 853,
@@ -10233,7 +10233,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18655
+    "dataCompra": 18666
   },
   {
     "id": 854,
@@ -10245,7 +10245,7 @@
     "fkcupom": "4",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18661
+    "dataCompra": 18747
   },
   {
     "id": 855,
@@ -10257,7 +10257,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18744
+    "dataCompra": 18644
   },
   {
     "id": 856,
@@ -10269,7 +10269,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18740
+    "dataCompra": 18648
   },
   {
     "id": 857,
@@ -10281,7 +10281,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18734
+    "dataCompra": 18694
   },
   {
     "id": 858,
@@ -10293,7 +10293,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18715
+    "dataCompra": 18751
   },
   {
     "id": 859,
@@ -10305,7 +10305,7 @@
     "fkcupom": "4",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18676
+    "dataCompra": 18753
   },
   {
     "id": 860,
@@ -10317,7 +10317,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18735
+    "dataCompra": 18629
   },
   {
     "id": 861,
@@ -10329,7 +10329,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18753
+    "dataCompra": 18756
   },
   {
     "id": 862,
@@ -10341,7 +10341,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18748
+    "dataCompra": 18681
   },
   {
     "id": 863,
@@ -10353,7 +10353,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18650
+    "dataCompra": 18713
   },
   {
     "id": 864,
@@ -10365,7 +10365,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18741
+    "dataCompra": 18644
   },
   {
     "id": 865,
@@ -10377,7 +10377,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18686
+    "dataCompra": 18690
   },
   {
     "id": 866,
@@ -10389,7 +10389,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18728
+    "dataCompra": 18750
   },
   {
     "id": 867,
@@ -10401,7 +10401,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18732
+    "dataCompra": 18677
   },
   {
     "id": 868,
@@ -10413,7 +10413,7 @@
     "fkcupom": "0",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18701
+    "dataCompra": 18728
   },
   {
     "id": 869,
@@ -10425,7 +10425,7 @@
     "fkcupom": "3",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18659
+    "dataCompra": 18626
   },
   {
     "id": 870,
@@ -10437,7 +10437,7 @@
     "fkcupom": "2",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18632
+    "dataCompra": 18728
   },
   {
     "id": 871,
@@ -10449,7 +10449,7 @@
     "fkcupom": "4",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18638
+    "dataCompra": 18737
   },
   {
     "id": 872,
@@ -10461,7 +10461,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18673
+    "dataCompra": 18749
   },
   {
     "id": 873,
@@ -10473,7 +10473,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18639
+    "dataCompra": 18683
   },
   {
     "id": 874,
@@ -10485,7 +10485,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18739
+    "dataCompra": 18692
   },
   {
     "id": 875,
@@ -10497,7 +10497,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18717
+    "dataCompra": 18655
   },
   {
     "id": 876,
@@ -10509,7 +10509,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18708
+    "dataCompra": 18661
   },
   {
     "id": 877,
@@ -10521,7 +10521,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18664
+    "dataCompra": 18744
   },
   {
     "id": 878,
@@ -10533,7 +10533,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18748
+    "dataCompra": 18740
   },
   {
     "id": 879,
@@ -10545,7 +10545,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18731
+    "dataCompra": 18734
   },
   {
     "id": 880,
@@ -10557,7 +10557,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18629
+    "dataCompra": 18715
   },
   {
     "id": 881,
@@ -10569,7 +10569,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18689
+    "dataCompra": 18676
   },
   {
     "id": 882,
@@ -10581,7 +10581,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18658
+    "dataCompra": 18735
   },
   {
     "id": 883,
@@ -10593,7 +10593,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18674
+    "dataCompra": 18753
   },
   {
     "id": 884,
@@ -10605,7 +10605,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18726
+    "dataCompra": 18748
   },
   {
     "id": 885,
@@ -10617,7 +10617,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18664
+    "dataCompra": 18650
   },
   {
     "id": 886,
@@ -10629,7 +10629,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18662
+    "dataCompra": 18741
   },
   {
     "id": 887,
@@ -10641,7 +10641,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18662
+    "dataCompra": 18686
   },
   {
     "id": 888,
@@ -10653,7 +10653,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18740
+    "dataCompra": 18728
   },
   {
     "id": 889,
@@ -10677,7 +10677,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18705
+    "dataCompra": 18701
   },
   {
     "id": 891,
@@ -10689,7 +10689,7 @@
     "fkcupom": "1",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18726
+    "dataCompra": 18659
   },
   {
     "id": 892,
@@ -10701,7 +10701,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18686
+    "dataCompra": 18632
   },
   {
     "id": 893,
@@ -10713,7 +10713,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18671
+    "dataCompra": 18638
   },
   {
     "id": 894,
@@ -10725,7 +10725,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18675
+    "dataCompra": 18673
   },
   {
     "id": 895,
@@ -10737,7 +10737,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18717
+    "dataCompra": 18759
   },
   {
     "id": 896,
@@ -10749,7 +10749,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18659
+    "dataCompra": 18639
   },
   {
     "id": 897,
@@ -10761,7 +10761,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18714
+    "dataCompra": 18739
   },
   {
     "id": 898,
@@ -10785,7 +10785,7 @@
     "fkcupom": "0",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18705
+    "dataCompra": 18708
   },
   {
     "id": 900,
@@ -10797,7 +10797,7 @@
     "fkcupom": "4",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18692
+    "dataCompra": 18664
   },
   {
     "id": 901,
@@ -10809,7 +10809,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18652
+    "dataCompra": 18748
   },
   {
     "id": 902,
@@ -10821,7 +10821,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18707
+    "dataCompra": 18760
   },
   {
     "id": 903,
@@ -10833,7 +10833,7 @@
     "fkcupom": "3",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18699
+    "dataCompra": 18731
   },
   {
     "id": 904,
@@ -10845,7 +10845,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18641
+    "dataCompra": 18629
   },
   {
     "id": 905,
@@ -10857,7 +10857,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18666
+    "dataCompra": 18689
   },
   {
     "id": 906,
@@ -10869,7 +10869,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18710
+    "dataCompra": 18658
   },
   {
     "id": 907,
@@ -10881,7 +10881,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18698
+    "dataCompra": 18674
   },
   {
     "id": 908,
@@ -10893,7 +10893,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18688
+    "dataCompra": 18726
   },
   {
     "id": 909,
@@ -10905,7 +10905,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18703
+    "dataCompra": 18664
   },
   {
     "id": 910,
@@ -10917,7 +10917,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18736
+    "dataCompra": 18662
   },
   {
     "id": 911,
@@ -10941,7 +10941,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18670
+    "dataCompra": 18740
   },
   {
     "id": 913,
@@ -10953,7 +10953,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18750
+    "dataCompra": 18732
   },
   {
     "id": 914,
@@ -10965,7 +10965,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18751
+    "dataCompra": 18705
   },
   {
     "id": 915,
@@ -10977,7 +10977,7 @@
     "fkcupom": "1",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18666
+    "dataCompra": 18726
   },
   {
     "id": 916,
@@ -10989,7 +10989,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18718
+    "dataCompra": 18686
   },
   {
     "id": 917,
@@ -11001,7 +11001,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18675
+    "dataCompra": 18671
   },
   {
     "id": 918,
@@ -11013,7 +11013,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18710
+    "dataCompra": 18675
   },
   {
     "id": 919,
@@ -11037,7 +11037,7 @@
     "fkcupom": "3",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18727
+    "dataCompra": 18659
   },
   {
     "id": 921,
@@ -11049,7 +11049,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18729
+    "dataCompra": 18714
   },
   {
     "id": 922,
@@ -11061,7 +11061,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18755
+    "dataCompra": 18717
   },
   {
     "id": 923,
@@ -11073,7 +11073,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18640
+    "dataCompra": 18705
   },
   {
     "id": 924,
@@ -11085,7 +11085,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18680
+    "dataCompra": 18692
   },
   {
     "id": 925,
@@ -11097,7 +11097,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18719
+    "dataCompra": 18652
   },
   {
     "id": 926,
@@ -11109,7 +11109,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18720
+    "dataCompra": 18707
   },
   {
     "id": 927,
@@ -11121,7 +11121,7 @@
     "fkcupom": "1",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18683
+    "dataCompra": 18699
   },
   {
     "id": 928,
@@ -11133,7 +11133,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18743
+    "dataCompra": 18641
   },
   {
     "id": 929,
@@ -11145,7 +11145,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18684
+    "dataCompra": 18666
   },
   {
     "id": 930,
@@ -11157,7 +11157,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18693
+    "dataCompra": 18710
   },
   {
     "id": 931,
@@ -11169,7 +11169,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18756
+    "dataCompra": 18698
   },
   {
     "id": 932,
@@ -11181,7 +11181,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18711
+    "dataCompra": 18688
   },
   {
     "id": 933,
@@ -11193,7 +11193,7 @@
     "fkcupom": "1",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18650
+    "dataCompra": 18703
   },
   {
     "id": 934,
@@ -11205,7 +11205,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18723
+    "dataCompra": 18736
   },
   {
     "id": 935,
@@ -11217,7 +11217,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18726
+    "dataCompra": 18662
   },
   {
     "id": 936,
@@ -11229,7 +11229,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18725
+    "dataCompra": 18670
   },
   {
     "id": 937,
@@ -11241,7 +11241,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18638
+    "dataCompra": 18750
   },
   {
     "id": 938,
@@ -11253,7 +11253,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18665
+    "dataCompra": 18758
   },
   {
     "id": 939,
@@ -11265,7 +11265,7 @@
     "fkcupom": "2",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18698
+    "dataCompra": 18751
   },
   {
     "id": 940,
@@ -11277,7 +11277,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18709
+    "dataCompra": 18666
   },
   {
     "id": 941,
@@ -11289,7 +11289,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18732
+    "dataCompra": 18718
   },
   {
     "id": 942,
@@ -11301,7 +11301,7 @@
     "fkcupom": "0",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18755
+    "dataCompra": 18675
   },
   {
     "id": 943,
@@ -11313,7 +11313,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18634
+    "dataCompra": 18710
   },
   {
     "id": 944,
@@ -11325,7 +11325,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18647
+    "dataCompra": 18717
   },
   {
     "id": 945,
@@ -11337,7 +11337,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18695
+    "dataCompra": 18727
   },
   {
     "id": 946,
@@ -11349,7 +11349,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18695
+    "dataCompra": 18729
   },
   {
     "id": 947,
@@ -11361,7 +11361,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18685
+    "dataCompra": 18755
   },
   {
     "id": 948,
@@ -11385,7 +11385,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18692
+    "dataCompra": 18680
   },
   {
     "id": 950,
@@ -11397,7 +11397,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18646
+    "dataCompra": 18719
   },
   {
     "id": 951,
@@ -11409,7 +11409,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18653
+    "dataCompra": 18759
   },
   {
     "id": 952,
@@ -11421,7 +11421,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18640
+    "dataCompra": 18720
   },
   {
     "id": 953,
@@ -11433,7 +11433,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18728
+    "dataCompra": 18683
   },
   {
     "id": 954,
@@ -11445,7 +11445,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18666
+    "dataCompra": 18743
   },
   {
     "id": 955,
@@ -11457,7 +11457,7 @@
     "fkcupom": "0",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18722
+    "dataCompra": 18684
   },
   {
     "id": 956,
@@ -11469,7 +11469,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18731
+    "dataCompra": 18693
   },
   {
     "id": 957,
@@ -11481,7 +11481,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18629
+    "dataCompra": 18756
   },
   {
     "id": 958,
@@ -11493,7 +11493,7 @@
     "fkcupom": "3",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18697
+    "dataCompra": 18711
   },
   {
     "id": 959,
@@ -11505,7 +11505,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18725
+    "dataCompra": 18650
   },
   {
     "id": 960,
@@ -11517,7 +11517,7 @@
     "fkcupom": "4",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18657
+    "dataCompra": 18723
   },
   {
     "id": 961,
@@ -11529,7 +11529,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18708
+    "dataCompra": 18726
   },
   {
     "id": 962,
@@ -11541,7 +11541,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18675
+    "dataCompra": 18725
   },
   {
     "id": 963,
@@ -11553,7 +11553,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18749
+    "dataCompra": 18638
   },
   {
     "id": 964,
@@ -11565,7 +11565,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18750
+    "dataCompra": 18665
   },
   {
     "id": 965,
@@ -11577,7 +11577,7 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18744
+    "dataCompra": 18698
   },
   {
     "id": 966,
@@ -11589,7 +11589,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18645
+    "dataCompra": 18709
   },
   {
     "id": 967,
@@ -11601,7 +11601,7 @@
     "fkcupom": "3",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18754
+    "dataCompra": 18732
   },
   {
     "id": 968,
@@ -11613,7 +11613,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18708
+    "dataCompra": 18755
   },
   {
     "id": 969,
@@ -11625,7 +11625,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18742
+    "dataCompra": 18634
   },
   {
     "id": 970,
@@ -11637,7 +11637,7 @@
     "fkcupom": "1",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18722
+    "dataCompra": 18647
   },
   {
     "id": 971,
@@ -11649,7 +11649,7 @@
     "fkcupom": "1",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18680
+    "dataCompra": 18695
   },
   {
     "id": 972,
@@ -11661,7 +11661,7 @@
     "fkcupom": "2",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18746
+    "dataCompra": 18695
   },
   {
     "id": 973,
@@ -11673,7 +11673,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18735
+    "dataCompra": 18685
   },
   {
     "id": 974,
@@ -11685,7 +11685,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18744
+    "dataCompra": 18640
   },
   {
     "id": 975,
@@ -11697,7 +11697,7 @@
     "fkcupom": "2",
     "status": 5,
     "fkEcommerce": 1,
-    "dataCompra": 18689
+    "dataCompra": 18692
   },
   {
     "id": 976,
@@ -11709,7 +11709,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18699
+    "dataCompra": 18646
   },
   {
     "id": 977,
@@ -11721,7 +11721,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18672
+    "dataCompra": 18653
   },
   {
     "id": 978,
@@ -11733,7 +11733,7 @@
     "fkcupom": "0",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18735
+    "dataCompra": 18640
   },
   {
     "id": 979,
@@ -11745,7 +11745,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18664
+    "dataCompra": 18728
   },
   {
     "id": 980,
@@ -11757,7 +11757,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18713
+    "dataCompra": 18666
   },
   {
     "id": 981,
@@ -11769,7 +11769,7 @@
     "fkcupom": "0",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18708
+    "dataCompra": 18722
   },
   {
     "id": 982,
@@ -11781,7 +11781,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18728
+    "dataCompra": 18731
   },
   {
     "id": 983,
@@ -11793,7 +11793,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18649
+    "dataCompra": 18629
   },
   {
     "id": 984,
@@ -11805,7 +11805,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18730
+    "dataCompra": 18697
   },
   {
     "id": 985,
@@ -11817,7 +11817,7 @@
     "fkcupom": "1",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18669
+    "dataCompra": 18725
   },
   {
     "id": 986,
@@ -11829,7 +11829,7 @@
     "fkcupom": "4",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18715
+    "dataCompra": 18657
   },
   {
     "id": 987,
@@ -11841,7 +11841,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18719
+    "dataCompra": 18708
   },
   {
     "id": 988,
@@ -11853,7 +11853,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18689
+    "dataCompra": 18675
   },
   {
     "id": 989,
@@ -11865,7 +11865,7 @@
     "fkcupom": "2",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18657
+    "dataCompra": 18749
   },
   {
     "id": 990,
@@ -11877,7 +11877,7 @@
     "fkcupom": "0",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18716
+    "dataCompra": 18750
   },
   {
     "id": 991,
@@ -11889,7 +11889,7 @@
     "fkcupom": "4",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18671
+    "dataCompra": 18744
   },
   {
     "id": 992,
@@ -11901,7 +11901,7 @@
     "fkcupom": "0",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18667
+    "dataCompra": 18645
   },
   {
     "id": 993,
@@ -11913,7 +11913,7 @@
     "fkcupom": "4",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18678
+    "dataCompra": 18754
   },
   {
     "id": 994,
@@ -11925,7 +11925,7 @@
     "fkcupom": "1",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18688
+    "dataCompra": 18708
   },
   {
     "id": 995,
@@ -11937,7 +11937,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18688
+    "dataCompra": 18742
   },
   {
     "id": 996,
@@ -11949,7 +11949,7 @@
     "fkcupom": "4",
     "status": 1,
     "fkEcommerce": 1,
-    "dataCompra": 18667
+    "dataCompra": 18722
   },
   {
     "id": 997,
@@ -11961,7 +11961,7 @@
     "fkcupom": "3",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18687
+    "dataCompra": 18680
   },
   {
     "id": 998,
@@ -11973,7 +11973,7 @@
     "fkcupom": "2",
     "status": 2,
     "fkEcommerce": 1,
-    "dataCompra": 18658
+    "dataCompra": 18746
   },
   {
     "id": 999,
@@ -11985,7 +11985,7 @@
     "fkcupom": "4",
     "status": 3,
     "fkEcommerce": 1,
-    "dataCompra": 18743
+    "dataCompra": 18735
   },
   {
     "id": 1000,
@@ -11997,6 +11997,6 @@
     "fkcupom": "2",
     "status": 4,
     "fkEcommerce": 1,
-    "dataCompra": 18643
+    "dataCompra": 18744
   }
 ]

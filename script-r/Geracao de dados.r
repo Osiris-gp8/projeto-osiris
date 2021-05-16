@@ -63,13 +63,14 @@ x <- toJSON(dataCalcados, pretty = T)
 
 write(x, "dado.json")
 
-processamentoDb <- dbConnect(RMariaDB::MariaDB(), user='root', password='bandtec', 
+processamentoDb <- dbConnect(RMariaDB::MariaDB(), user='admin', password='bandtec',
                              dbname='processamento_db', host='localhost')
 
 dbListTables(processamentoDb)
 
 print("Iniciando inserção")
 for(i in 1:nrow(dataCalcados)){
+  
   sql <- paste("INSERT INTO eventos(idConsumidor, idade, preco, nome, categoria, fkCupom, statusEvento, fkEcommerce,
   sexo, dataCompra) VALUES(",dataCalcados[i, 2],", ",dataCalcados[i, 3],", "
   ,dataCalcados[i, 4],", '",dataCalcados[i, 5],"', '",dataCalcados[i, 6],"', "
