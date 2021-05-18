@@ -40,11 +40,11 @@ idConsumidor <- abs(round(rnorm(n, 500, 500),0))
 sexo <- popular(c("M","F","O"))
 
 hoje <- Sys.Date()
-inicio <- hoje - pop
+inicio <- hoje - pop / 10
 
 range_datas <- seq(inicio, hoje, by="day")
 
-datas <- sample(range_datas, n)
+datas <- sample(range_datas, n, replace = TRUE)
 
 dataCalcados = data.frame(id = 1:n,
                           idConsumidor, 
