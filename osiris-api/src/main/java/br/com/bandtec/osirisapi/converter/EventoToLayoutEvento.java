@@ -22,16 +22,16 @@ public class EventoToLayoutEvento implements Converter<Evento, LayoutEvento> {
     public LayoutEvento convert(Evento evento) {
 
         LayoutEvento layout = LayoutEvento.builder()
-                .IdCompra( evento.getIdCompra() )
+                .IdCompra( evento.getIdEvento() )
                 .IdConsumidor( evento.getIdConsumidorEcommerce() )
                 .nomeProduto( evento.getNomeProduto() )
                 .precoProduto( evento.getPreco() )
                 .categoriaProduto( evento.getNomeCategoria() )
                 .dataCompra( evento.getDataCompra() )
                 .nomeEcommerce(evento.getEcommerce().getNome())
-                .nomeCupom(evento.getCupom() )
-                .valorCupom( evento.getCupomOsiris().getValor() )
-                .status( evento.getStatus().getNome() )
+                .nomeCupom( evento.getCupom().getNomeCupom() )
+                .valorCupom( evento.getCupom().getValor() )
+                .status( evento.getDominioStatus().getNome() )
                 .build();
 
         return layout;

@@ -52,7 +52,7 @@ public class UsuarioService {
         Usuario usuarioParaAtualizar = usuarioParaAtualizarOptional.get();
 
         usuarioParaAtualizar.setEcommerce(usuario.getEcommerce());
-        usuarioParaAtualizar.setLogin(usuario.getLogin());
+        usuarioParaAtualizar.setLoginUsuario(usuario.getLoginUsuario());
         usuarioParaAtualizar.setSenha(usuario.getSenha());
 
         return usuarioRepository.save(usuarioParaAtualizar);
@@ -63,7 +63,7 @@ public class UsuarioService {
         String senha = usuarioAcessoRequest.getSenha();
 
         for (Usuario u : this.sessoes) {
-            if(u.getLogin().equals(login) && u.getSenha().equals(senha)){
+            if(u.getLoginUsuario().equals(login) && u.getSenha().equals(senha)){
                 return u;
             }
         }
