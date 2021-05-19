@@ -33,10 +33,11 @@ export default () => {
             "senha": usuarioData.senha
         }).then( response => {
             console.log("foi", response);
+            localStorage.setItem("idUsuario", response.data.idUsuario);
             history.push('/home');
-        }).catch( e => {
-            console.log(e);
-        });
+        }).catch( error => {
+            console.log(error);
+        })
     }
 
 
