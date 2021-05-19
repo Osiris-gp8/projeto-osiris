@@ -44,7 +44,7 @@ public class UsuarioController {
 
     @PostMapping("/login")
     public ResponseEntity loginUsuario(@RequestBody UsuarioAcessoRequest usuarioAcessoRequest) throws NotFoundException {
-        return ResponseEntity.status(201).body(usuarioService.logarUsuario(usuarioAcessoRequest));
+        return ResponseEntity.status(200).body(usuarioService.logarUsuario(usuarioAcessoRequest));
     }
 
     @GetMapping("/logoff")
