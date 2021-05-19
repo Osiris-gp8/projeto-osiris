@@ -8,6 +8,6 @@ import java.util.Optional;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
-    @Query(value = "select * from usuario where login = ?1 and senha = ?2", nativeQuery = true)
+    @Query(value = "select * from usuario where login_usuario = ?1 and senha = ?2", nativeQuery = true)
     Optional<Usuario> findByLoginEqualsAndSenhaEquals(String login, String senha);
 }
