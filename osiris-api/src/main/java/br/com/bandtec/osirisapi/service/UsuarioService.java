@@ -82,6 +82,7 @@ public class UsuarioService {
         for (Usuario usuario : sessoes) {
             if (usuario.getIdUsuario() == idUsuario){
                 this.sessoes.remove(usuario);
+                return;
             }
         }
 
