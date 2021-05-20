@@ -18,15 +18,14 @@ export default () =>{
 
     const history = useHistory();
 
-    let uri = "";
-    //console.log(JSON.parse(sessionStorage.getItem("usuarioLogado")));
-    if(sessionStorage.getItem("usuarioLogado")){
-        uri = "/usuarios/logoff?idUsuario=" + JSON.parse(sessionStorage.getItem("usuarioLogado")).idUsuario;
-    }
-
     function logoff(){
+
+        let uri = "";
+        if(sessionStorage.getItem("usuarioLogado")){
+            uri = "/usuarios/logoff?idUsuario=" + JSON.parse(sessionStorage.getItem("usuarioLogado")).idUsuario;
+        }
+
         api.get(uri).then( response => {
-            console.log(response);
             sessionStorage.removeItem("usuarioLogado");
             return history.push("/login");
         }).catch(error => {
@@ -37,30 +36,39 @@ export default () =>{
     return(
         <Container>
             <WelcomeText children={Text}>
-             Bem vindo, <Contrast children="Patrick"/> 
+             Bem vindo, <Contrast>Patrick</Contrast> 
              <br/>Veja as Informações da sua loja
             </WelcomeText>
             <div>
-            <Item first active={useLocation().pathname === '/home'} as={Link} to="/home" >
-                <IconChildren icon={bxHome} />
-                <p>Home</p>
-            </Item>
-            <Item as={Link} active={useLocation().pathname === '/relation'} to="/relation" >
-                <IconChildren icon={lineChartOutlined}  />
-                <p>Vendas</p>
-            </Item>
-            <Item as={Link} active={useLocation().pathname === '/cluster-cliente'} to="/cluster-cliente" >
-                <IconChildren icon={peopleIcon} />
-                <p>Cliente</p>
-            </Item>
-            <Item as={Link} active={useLocation().pathname === '/config'} to="/config" >
-                <IconChildren icon={gearFill} />
-                <p>Configurações</p>
-            </Item>
+            <Link>
+                <Item first active={useLocation().pathname === '/home'} as={Link} to="/home" >
+                    <IconChildren icon={bxHome} />
+                    <p>Home</p>
+                </Item>
+            </Link>
+            <Link to="/relation"> 
+                <Item active={useLocation().pathname === '/relation'} to="/relation" >
+                    <IconChildren icon={lineChartOutlined}  />
+                    <p>Vendas</p>
+                </Item>
+            </Link>
+            
+            <Link to="/cluster-cliente">
+                <Item active={useLocation().pathname === '/cluster-cliente'} >
+                    <IconChildren icon={peopleIcon} />
+                    <p>Cliente</p>
+                </Item>
+            </Link>
+            <Link to="/config">
+                <Item active={useLocation().pathname === '/config'} >
+                    <IconChildren icon={gearFill} />
+                    <p>Configurações</p>
+                </Item>
+            </Link>
             </div>
-            <Item as={Link}>
+            <Item as={Link} onClick={logoff}>
                 <IconChildren icon={accountLogout} />
-                <p onClick={logoff}>Sair</p>
+                <p>Sair</p>
             </Item>
         </Container>
     )
