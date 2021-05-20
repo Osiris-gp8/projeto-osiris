@@ -8,6 +8,10 @@ export default () => {
 
     const btnContato = {
         marginRight: '2%'
+    }   
+
+    const buttons = {
+        width: '100%'
     }
 
     return(
@@ -21,8 +25,11 @@ export default () => {
         <div className="nav">
             <div className="container">
                 <img src={logoOsiris} className="logo"/>
-                <Button uri="/login" side="right" type="btn-preenchido">Login</Button>
-                <Button uri="#contato" side="right" style={btnContato}>Contato</Button>
+                <div style={buttons}>
+                    <Button uri="/login" side="right" type="btn-preenchido">Login</Button>
+                    <Button uri="#contato" side="right" style={btnContato}>Contato</Button>
+                </div>
+                
             </div>
         </div>
     );
