@@ -1,6 +1,7 @@
 import { Container, Dashs, Metrics } from './style'
 import { Chart } from 'react-google-charts'
 import { Icon, InlineIcon } from '@iconify/react';
+
 import clockCircleFilled from '@iconify-icons/ant-design/clock-circle-filled';
 import arrowUpCircleFill from '@iconify-icons/bi/arrow-up-circle-fill';
 import { useEffect, useState } from 'react';
