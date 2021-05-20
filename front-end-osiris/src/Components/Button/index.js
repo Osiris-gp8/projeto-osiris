@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 export default (props) => {
     return(
-        <Link to={props.uri}>
-            <button className={`btn ${props.side} ${props.type}`} style={props.style}>{props.children}</button>
+        <Link to={props.uri} className={`link ${props.side}`} style={props.style}>
+            <button className={`btn ${props.type}`} >{props.children}</button>
         </Link>
     );
 }
