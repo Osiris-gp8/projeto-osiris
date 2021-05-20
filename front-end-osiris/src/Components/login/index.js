@@ -1,4 +1,4 @@
-import {React, useState} from 'react';
+import {React, useEffect, useState} from 'react';
 // import MaskedInput from '../MaskedInput'
 import leftblob from '../../Images/left-blob.svg'
 import rightblob from '../../Images/right-blob.svg'
@@ -30,7 +30,9 @@ export default () => {
     function onSubmit(e){
         e.preventDefault()
         if(usuarioData.login == '' || usuarioData.senha == ''){
-            console.log("campos vazios");
+            {/* 
+                TODO CRIAR COMPONENTE DE RETORNO DE ERRO
+            */}
             return;
         }
 
@@ -38,10 +40,12 @@ export default () => {
             "login": usuarioData.login,
             "senha": usuarioData.senha
         }).then( async response => {
-            console.log("foi", response);
             sessionStorage.setItem("usuarioLogado", JSON.stringify(response.data));
             history.push('/home');
         }).catch( error => {
+            {/* 
+                TODO CRIAR COMPONENTE DE RETORNO DE ERRO
+            */}
             console.log(error);
         })
     }
@@ -55,7 +59,7 @@ export default () => {
                     <label></label>
                     <h2>Login</h2>
                     <div>
-                        <label for='cnpj'>CNPJ/Usuário</label>
+                        <label for='cnpj'>Login usuário</label>
                         <input id="login" type="text" onChange={handle}/>
                     </div>
                     <div>
