@@ -3,6 +3,8 @@ import { Chart } from 'react-google-charts'
 import { Icon, InlineIcon } from '@iconify/react';
 import clockCircleFilled from '@iconify-icons/ant-design/clock-circle-filled';
 import arrowUpCircleFill from '@iconify-icons/bi/arrow-up-circle-fill';
+import { useEffect, useState } from 'react';
+import api from '../../api.js';
 
 
 const DonutChart = (props) => {
@@ -46,25 +48,44 @@ function MetricsFinal(props) {
         </Metrics>)
 }
 
+async function getVendas(){
+            const resposta = await api.get("/eventos");
+            console.log("Resposta: ", resposta);
+            return resposta;
+        }
+
+async function getCountVendas() {
+        const resposta = await getVendas();
+        console.log("Vendas data", resposta.data.length);
+        return resposta.status == 204 ? 0 : resposta.data.length;
+}
+
 export default () => {
+    
+    const [totalVendas, setTotalVendas] = useState(0);
+
+    useEffect(async ()=> {
+        setTotalVendas(await getCountVendas());
+    }, [])
+
     return (
         <Container>
             <Dashs>
                 <MetricsFinal
-                 icon={clockCircleFilled} 
-                 label="Vendas"
-                 value="+1563"
-                 />
+                    icon={clockCircleFilled} 
+                    label="Vendas"
+                    value={"+"+totalVendas}
+                />
                 <MetricsFinal
-                 icon={clockCircleFilled} 
-                 label="Clientes"
-                 value="+56"
-                 />
+                    icon={clockCircleFilled} 
+                    label="Clientes"
+                    value="+56"
+                />
                 <MetricsFinal
-                 icon={arrowUpCircleFill} 
-                 label="Tempo de uso dos clientes"
-                 value="15min"
-                 />
+                    icon={arrowUpCircleFill} 
+                    label="Tempo de uso dos clientes"
+                    value="15min"
+                />
             </Dashs>
             <Dashs>
                 <Chart
