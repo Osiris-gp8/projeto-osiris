@@ -18,12 +18,17 @@ export default () =>{
 
     const history = useHistory();
 
-    const uri = "/usuarios/logoff?idUsuario=" + localStorage.getItem("idUsuario")
+    let uri = "";
+    //console.log(JSON.parse(sessionStorage.getItem("usuarioLogado")));
+    if(sessionStorage.getItem("usuarioLogado")){
+        uri = "/usuarios/logoff?idUsuario=" + JSON.parse(sessionStorage.getItem("usuarioLogado")).idUsuario;
+    }
 
     function logoff(){
         api.get(uri).then( response => {
             console.log(response);
-            return history.push("/");
+            sessionStorage.removeItem("usuarioLogado");
+            return history.push("/login");
         }).catch(error => {
             console.log(error);
         })
@@ -53,7 +58,7 @@ export default () =>{
                 <p>Configurações</p>
             </Item>
             </div>
-            <Item as={Link} to="/">
+            <Item as={Link}>
                 <IconChildren icon={accountLogout} />
                 <p onClick={logoff}>Sair</p>
             </Item>

@@ -9,11 +9,16 @@ import api from '../../api';
 
 export default () => {
 
+    const history = useHistory();
+
+    // if(localStorage.getItem("idUsuario")){
+    //     return history.push('/home');
+    // }
+
     const [usuarioData, setUsuarioData] = useState({
         "login": "",
         "senha": ""
     });
-    const history = useHistory();
 
     function handle(e){
         const user = {...usuarioData};
@@ -25,15 +30,16 @@ export default () => {
     function onSubmit(e){
         e.preventDefault()
         if(usuarioData.login == '' || usuarioData.senha == ''){
-            return history.push('/');
+            console.log("campos vazios");
+            return;
         }
 
         api.post("/usuarios/login", {
             "login": usuarioData.login,
             "senha": usuarioData.senha
-        }).then( response => {
+        }).then( async response => {
             console.log("foi", response);
-            localStorage.setItem("idUsuario", response.data.idUsuario);
+            sessionStorage.setItem("usuarioLogado", JSON.stringify(response.data));
             history.push('/home');
         }).catch( error => {
             console.log(error);
