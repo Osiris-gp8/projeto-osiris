@@ -62,7 +62,4 @@ export const Dashs = styled.div`
     width: 100%;
     height:35.00%;
     display:flex;
-   
-   
-    
 ` 

@@ -18,8 +18,13 @@ public class EventoController {
     private final EventoService eventoService;
 
     @GetMapping
-    public ResponseEntity getEventos() throws NotFoundException {
-        return ResponseEntity.status(200).body(eventoService.getEventos());
+    public ResponseEntity getEventos() {
+
+        List<Evento> eventos = eventoService.getEventos();
+        if (eventos.isEmpty()){
+            return ResponseEntity.status(204).build();
+        }
+        return ResponseEntity.status(200).body(eventos);
     }
 
     @PostMapping
