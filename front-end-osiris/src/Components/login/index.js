@@ -1,22 +1,49 @@
 import {React, useState} from 'react';
-import MaskedInput from '../MaskedInput'
+// import MaskedInput from '../MaskedInput'
 import leftblob from '../../Images/left-blob.svg'
 import rightblob from '../../Images/right-blob.svg'
 import { Container, Form, ContainerForm, Button } from './style';
 import {Link,useHistory} from 'react-router-dom';
 
-
+import api from '../../api';
 
 export default () => {
-    const [cnpj, setCNPJ] = useState('');
-    const [senha, setSenha] = useState('');
-    const history = useHistory()
+
+    const history = useHistory();
+
+    // if(localStorage.getItem("idUsuario")){
+    //     return history.push('/home');
+    // }
+
+    const [usuarioData, setUsuarioData] = useState({
+        "login": "",
+        "senha": ""
+    });
+
+    function handle(e){
+        const user = {...usuarioData};
+        user[e.target.id] = e.target.value;
+        setUsuarioData(user);
+        console.log(user);
+    }
 
     function onSubmit(e){
         e.preventDefault()
-        if(cnpj == '' && senha == '1234'){
-            return history.push('/home')
+        if(usuarioData.login == '' || usuarioData.senha == ''){
+            console.log("campos vazios");
+            return;
         }
+
+        api.post("/usuarios/login", {
+            "login": usuarioData.login,
+            "senha": usuarioData.senha
+        }).then( async response => {
+            console.log("foi", response);
+            sessionStorage.setItem("usuarioLogado", JSON.stringify(response.data));
+            history.push('/home');
+        }).catch( error => {
+            console.log(error);
+        })
     }
 
 
@@ -25,18 +52,16 @@ export default () => {
         <img src={leftblob} alt="Blob a esquerda" />
             <Form onSubmit={onSubmit}>
             <ContainerForm>
+                    <label></label>
                     <h2>Login</h2>
                     <div>
                         <label for='cnpj'>CNPJ/Usuário</label>
-                        <MaskedInput mask="99.999.999/9999-99" id="cnpj" value={cnpj}
-                        onChange={(e) => setCNPJ(e.target.value)} />
+                        <input id="login" type="text" onChange={handle}/>
                     </div>
                     <div>
                         <label for='senha'>Senha</label>
                         <input
-                        value={senha}
-                        onChange={(e) => setSenha(e.target.value)}
-                        id='senha' type='password'/>
+                        id='senha' type='password' onChange={handle}/>
                     </div>
                     <div>
                         <Link>Esqueceu sua senha?</Link>

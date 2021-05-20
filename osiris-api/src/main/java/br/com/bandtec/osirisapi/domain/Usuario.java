@@ -17,13 +17,16 @@ public class Usuario {
     private Integer idUsuario;
 
     @NotBlank
+    private String nomeCompleto;
+
+    @NotBlank
     private String loginUsuario;
 
     @NotBlank
     private String senha;
 
-    @NotBlank
-    @Positive
+//    @NotBlank
+//    @Positive
     @ManyToOne
     private Ecommerce ecommerce;
 }

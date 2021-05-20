@@ -7,14 +7,33 @@ import peopleIcon from '@iconify-icons/bi/people';
 import gearFill from '@iconify-icons/bi/gear-fill';
 // npm install --save-dev @iconify/react @iconify-icons/cil
 import accountLogout from '@iconify-icons/cil/account-logout';
-import { Link,useLocation } from 'react-router-dom';
+import { Link,useLocation, useHistory } from 'react-router-dom';
 import {useState} from 'react'
 
-
+import api from '../../api';
 
 
 
 export default () =>{
+
+    const history = useHistory();
+
+    let uri = "";
+    //console.log(JSON.parse(sessionStorage.getItem("usuarioLogado")));
+    if(sessionStorage.getItem("usuarioLogado")){
+        uri = "/usuarios/logoff?idUsuario=" + JSON.parse(sessionStorage.getItem("usuarioLogado")).idUsuario;
+    }
+
+    function logoff(){
+        api.get(uri).then( response => {
+            console.log(response);
+            sessionStorage.removeItem("usuarioLogado");
+            return history.push("/login");
+        }).catch(error => {
+            console.log(error);
+        })
+    }
+
     return(
         <Container>
             <WelcomeText children={Text}>
@@ -39,9 +58,9 @@ export default () =>{
                 <p>Configurações</p>
             </Item>
             </div>
-            <Item as={Link} to="/">
+            <Item as={Link}>
                 <IconChildren icon={accountLogout} />
-                <p>Sair</p>
+                <p onClick={logoff}>Sair</p>
             </Item>
         </Container>
     )
