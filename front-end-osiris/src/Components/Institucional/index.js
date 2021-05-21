@@ -3,10 +3,15 @@ import { Link } from 'react-router-dom';
 // import { Container, Content } from '../../style/style';
 // import { Image, Section1, Span } from './style';
 import Button from '../Button';
+import Item from './Item/Item';
 import Analytic from '../../Images/analytic-graphics.jpg';
-import Item1 from '../../Images/icon-char.svg';
-import Item2 from '../../Images/icon-clipboard.svg';
-import Item3 from '../../Images/icon-shopping.svg';
+import Blob1 from '../../Images/blob-section1.svg';
+import Blob2 from '../../Images/blob1-section3.svg';
+import Blob3 from '../../Images/blob2-section3.svg';
+import Blob4 from '../../Images/blob-section5.svg';
+import iconChar from '../../Images/icon-char.svg';
+import iconClipboard from '../../Images/icon-clipboard.svg';
+import iconShopping from '../../Images/icon-shopping.svg';
 import Icon1 from '../../Images/icon-facebook.svg';
 import Icon2 from '../../Images/icon-instagram.svg';
 import Icon3 from '../../Images/icon-twitter.svg';
@@ -34,10 +39,14 @@ export default () => {
             <div className="container">
                 <section className="section-1">
                     <div className="content">
-                        Melhore a <span>Venda</span> de seu E-commerce com a nossa ajuda de <span>Análise</span>!
+                        <div>
+                            Melhore a <span>Venda</span> de seu E-commerce com a nossa ajuda de <span>Análise</span>!
+                        </div>
+                        
                         <Button uri="#" side="left" type="btn-preenchido" style={btnContent}>Começe Agora</Button>
                     </div>
                     <img src={Analytic}/>
+                    <img src={Blob1} id="blob1" className="blob"/>
                 </section>
             </div>
 
@@ -55,21 +64,13 @@ export default () => {
             <section className="section-3">
                 <div className="container">
                     <div className="items">
-                        <div className="item" id="item1">
-                            <img src={Item1}/>
-                            <span>Analise o comportamento de suas vendas.</span>
-                        </div>
-                        <div className="item" id="item2">
-                            <img src={Item2}/>
-                            <span>Alavanque suas vendas obtendo informações de sua loja.</span>
-                        </div>
-                        <div className="item" id="item3">
-                            <img src={Item3}/>
-                            <span>Saiba qual o perfil de comprador de seus clientes.</span>
-                        </div>
+                        <Item img={iconChar} txt="Analise o comportamento de suas vendas." id="item1"/>
+                        <Item img={iconClipboard} txt="Alavanque suas vendas obtendo informações de sua loja." id="item2"/>
+                        <Item img={iconShopping} txt="Saiba qual o perfil de comprador de seus clientes." id="item3"/>
                     </div>
-                    
                 </div>
+                <img src={Blob2} id="blob2" className="blob"/>
+                <img src={Blob3} id="blob3" className="blob"/>
             </section>
 
             <section className="section-4 min-section">
@@ -88,7 +89,7 @@ export default () => {
                     <form className="form-contato">
                         <div className="row">
                             <div className="col">
-                                <input className="input-form" placeholder="E-mail"/>
+                                <input className="input-form" placeholder="Nome"/>
                             </div>
                             <div className="col">
                                 <input className="input-form" placeholder="E-mail"/>
@@ -106,6 +107,7 @@ export default () => {
                         Entre em contato com a gente, mande sugestões ou seu objetivo com o nosso sistema.
                     </div>
                 </div>
+                <img src={Blob4} id="blob4" className="blob"/>
             </section>
 
             <section className="section-6">

@@ -3,6 +3,10 @@
     margin: 0 auto;
 }
 
+.link{
+    text-decoration: none;
+}
+
 .left{
     float: left;
 }
@@ -12,15 +16,15 @@
 }
 
 .btn{
-    width: 10%;
-    height: 30px;
+    width: 100%;
+    height: 40px;
     background-color: rgba(0, 0, 0, 0);
     color: #666BC2;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 2px solid #666BC2;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 600;
     cursor: pointer;
 }
@@ -38,17 +42,34 @@
 
 .min-section{
     width: 100%;
-    height: 50vh;
+    height: 40vh;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
+.blob{
+    position: absolute;
+}
+
 .nav{
     width: 100%;
-    height: 50px;
+    height: 70px;
     background-color: #ECF0F7;
     display: flex;
     align-items: center;
+    position: fixed;
+    z-index: 999;
+}
+
+.nav .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav .container .link{
+    width: 10%;
 }
 
 .logo{
@@ -63,17 +84,24 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    overflow-y: hidden;
 }
 
 .section-1 img{
     width: 30%;
 }
 
+#blob1{
+    left: 70%;
+}
+
 .section-1 .content{
     text-align: left;
     width: 50%;
-    font-size: 55px;
+    font-size: 65px;
     font-weight: 500;
+    display: flex;
+    flex-direction: column;
 }
 
 .section-1 .content span{
@@ -81,12 +109,13 @@
     font-weight: 900;
 }
 
-.section-1 .content .btn{
+.section-1 .content .link{
     width: 30%;
 }
 
 .section-2{
     background-image: url(../Images/co-working.jpg);
+    background-attachment: fixed;
 }
 
 .section-2 .opacidade{
@@ -103,7 +132,10 @@
 .section-2 .opacidade .container .content{
     width: 40%;
     text-align: right;
-    margin: 3% 0 3% 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
 }
 
 .section-2 .opacidade .container .content,
@@ -114,11 +146,15 @@
     color: #ECF0F7;
 }
 
-.section-2 .opacidade .container .content .btn,
-.section-5 .container .form-contato .btn{
+.section-2 .opacidade .container .content .link,
+.section-5 .container .form-contato .link{
+    width: 30%;
+}
+
+.section-2 .opacidade .container .content .link .btn,
+.section-5 .container .form-contato .link .btn{
     color: #ECF0F7;
     border: 2px solid #ECF0F7;
-    width: 30%;
 }
 
 .section-3{
@@ -143,7 +179,9 @@
     flex-direction: column;
     width: 30%;
     text-align: center;
-    font-size: 30px;
+    font-size: 35px;
+    color: #666BC2;
+    font-weight: 900;
 }
 
 .item img{
@@ -155,26 +193,33 @@
 }
 
 #item2{
-    margin-top: 20vh;
+    margin-top: 25vh;
 }
 
 #item3{
-    margin-top: 40vh;
+    margin-top: 45vh;
+}
+
+#blob2{
+    top: 102vh;
+    left: 71%;
+}
+
+#blob3{
+    top: 170vh;
 }
 
 .section-4{
     background-image: url('../Images/people-in-working.jpg');
+    background-attachment: fixed;
 }
 
 .section-4 .opacidade .container .content{
     text-align: left;
-    width: 50%;
-    margin-top: 6%;
-}
-
-.section-4 .opacidade .container{
+    width: 45%;
+    height: 40vh;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
 .section-5{
@@ -187,21 +232,21 @@
 
 .section-5 h2{
     font-weight: 600;
-    font-size: 40px;
+    font-size: 50px;
     text-align: center;
 }
 
 .section-5 .container{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     margin-top: 3%;
 }
 
 .section-5 .container .content{
     text-align: left;
-    font-size: 45px;
+    font-size: 60px;
     width: 35%;
 }
 
@@ -209,12 +254,14 @@
     width: 5px;
     height: 50vh;
     background-color: #ECF0F7;
+    margin: 0 5% 0 5%;
 }
 
 .form-contato{
-    width: 35%;
+    width: 30%;
     display: flex;
     flex-direction: column;
+    z-index: 900;
 }
 
 .form-contato .row{
@@ -235,14 +282,21 @@
     background-color: #ECF0F7;
     resize: none;
     border-radius: 5px;
+    font-size: 16px;
 }
 
 .input-form{
     background-color: #ECF0F7;
     width: 100%;
-    height: 30px;
+    height: 40px;
     border-radius: 5px;
     border: none;
+    padding-left: 5px;
+    font-size: 16px;
+}
+
+#blob4{
+    top: 270vh;
 }
 
 .section-6{
@@ -268,10 +322,12 @@
 
 .links ul h3{
     margin-bottom: 10%;
+    font-size: 30px;
 }
 
 .links ul li{
     margin-bottom: 10%;
+    font-size: 25px;
 }
 
 .links ul li a{
@@ -287,17 +343,17 @@
 }
 
 .redes-sociais .logo{
-    width: 70%;
-    margin-top: 5%;
+    width: 100%;
+    margin-top: 10%;
 }
 
 .logo{
     display: flex;
+    justify-content: center;
 }
 
 .logo img{
-    width: 90%;
-    margin-left: 25%;
+    width: 70%;
 }
 
 .icons{

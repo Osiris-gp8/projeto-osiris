@@ -16,13 +16,9 @@ public class EventoService {
 
     private final EventoRepository eventoRepository;
 
-    public List<Evento> getEventos() throws NotFoundException {
+    public List<Evento> getEventos(){
 
         List<Evento> eventos = eventoRepository.findAll();
-
-        if (eventos.isEmpty()){
-            throw new NotFoundException("Não existem eventos");
-        }
 
         return eventos;
     }
