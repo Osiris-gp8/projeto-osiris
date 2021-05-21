@@ -1,11 +1,11 @@
--- drop database if exists processamento_db;
+drop database if exists processamento_db;
 create database if not exists processamento_db;
 use processamento_db;
 
 create table if not exists eventos(
 	idEvento int primary key auto_increment,
     idConsumidor int,
-    idade int,
+    dataNascimento date,
     preco decimal(10,2),
     nome varchar(50),
     categoria varchar(50),

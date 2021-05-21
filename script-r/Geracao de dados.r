@@ -18,8 +18,8 @@ popular <- function(textos){
 
 
 
-idade.pop <- abs(round(rnorm(pop, 37, 10),0))
-idade <- idade.pop[ sample( which( idade.pop >= 18 ), n) ]
+#idade.pop <- abs(round(rnorm(pop, 37, 10),0))
+#idade <- idade.pop[ sample( which( idade.pop >= 18 ), n) ]
 
 preco <-  abs(round(rnorm(n, 2000, 300),2))
 
@@ -33,7 +33,7 @@ nome <- popular(c("Nike","Adidas",
 
 fkcupom <- popular(c(0:4))
 
-status <- rbinom(n,4,0.5) + 1
+status <- rbinom(n,1,0.3) + 1
 
 idConsumidor <- abs(round(rnorm(n, 500, 500),0))
 
@@ -46,9 +46,13 @@ range_datas <- seq(inicio, hoje, by="day")
 
 datas <- sample(range_datas, n, replace = TRUE)
 
+range_data_nascimento <- seq(ISOdate(1950,1,1), ISOdate(2008,1,1), "days")
+
+data_nascimento <- sample(range_data_nascimento, n)
+
 dataCalcados = data.frame(id = 1:n,
                           idConsumidor, 
-                          idade,
+                          data_nascimento,
                           preco,
                           nome,
                           categoria,
@@ -71,8 +75,8 @@ dbListTables(processamentoDb)
 print("Iniciando inserção")
 for(i in 1:nrow(dataCalcados)){
   
-  sql <- paste("INSERT INTO eventos(idConsumidor, idade, preco, nome, categoria, fkCupom, statusEvento, fkEcommerce,
-  sexo, dataCompra) VALUES(",dataCalcados[i, 2],", ",dataCalcados[i, 3],", "
+  sql <- paste("INSERT INTO eventos(idConsumidor, dataNascimento, preco, nome, categoria, fkCupom, statusEvento, fkEcommerce,
+  sexo, dataCompra) VALUES(",dataCalcados[i, 2],", '",format(as.Date(dataCalcados[i,3]), "%Y/%m/%d"),"', "
   ,dataCalcados[i, 4],", '",dataCalcados[i, 5],"', '",dataCalcados[i, 6],"', "
   ,dataCalcados[i, 7],", ",dataCalcados[i, 8],", ",dataCalcados[i, 9],", '",dataCalcados[i, 10],"', '"
   ,dataCalcados[i, 11],"')", sep = "")
