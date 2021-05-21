@@ -15,7 +15,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 public class LayoutEvento implements Layout {
-    private Integer IdCompra;
+    private Integer IdEvento;
     private Integer IdConsumidor;
     private String nomeProduto;
     private Double precoProduto;
@@ -26,10 +26,10 @@ public class LayoutEvento implements Layout {
     private Double valorCupom;
     private String status;
 
-    public LayoutEvento(Integer idCompra, Integer idConsumidor, String nomeProduto, Double precoProduto,
+    public LayoutEvento(Integer IdEvento, Integer idConsumidor, String nomeProduto, Double precoProduto,
                         String categoriaProduto, LocalDateTime dataCompra, String nomeEcommerce, String nomeCupom,
                         Double valorCupom, String status) {
-        IdCompra = idCompra;
+        IdEvento = IdEvento;
         IdConsumidor = idConsumidor;
         this.nomeProduto = nomeProduto;
         this.precoProduto = precoProduto;
@@ -44,7 +44,7 @@ public class LayoutEvento implements Layout {
     @Override
     public String toString() {
         return "Layout{" +
-                "IdCompra=" + IdCompra +
+                "IdEvento=" + IdEvento +
                 ", IdConsumidor=" + IdConsumidor +
                 ", nomeProduto='" + nomeProduto + '\'' +
                 ", precoProduto=" + precoProduto +
@@ -62,7 +62,7 @@ public class LayoutEvento implements Layout {
 //        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         return String.format("%d;%d;%s;%.2f;%s;%s;%s;%s;%.2f;%s%n",
-                this.getIdCompra(), this.getIdConsumidor(), this.getNomeProduto(),
+                this.getIdEvento(), this.getIdConsumidor(), this.getNomeProduto(),
                 this.getPrecoProduto(), this.getCategoriaProduto(), this.getDataCompra().format(formatter),
                 this.getNomeEcommerce(), this.getNomeCupom(), this.getValorCupom(),
                 this.getStatus());
@@ -74,7 +74,7 @@ public class LayoutEvento implements Layout {
         String corpo = "";
 
         corpo = "02";
-        corpo += String.format("%05d", this.getIdCompra());
+        corpo += String.format("%05d", this.getIdEvento());
         corpo += String.format("%05d", this.getIdConsumidor());
         corpo += String.format("%-45s", this.getNomeProduto());
         corpo += String.format("R$%9.2f", this.getPrecoProduto());
