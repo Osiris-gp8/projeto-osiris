@@ -1,7 +1,7 @@
 package br.com.bandtec.osirisapi.controller;
 
 import br.com.bandtec.osirisapi.domain.Usuario;
-import br.com.bandtec.osirisapi.dto.UsuarioAcessoRequest;
+import br.com.bandtec.osirisapi.dto.request.UsuarioAcessoRequest;
 import br.com.bandtec.osirisapi.service.UsuarioService;
 import javassist.NotFoundException;
 import javassist.tools.web.BadHttpRequest;

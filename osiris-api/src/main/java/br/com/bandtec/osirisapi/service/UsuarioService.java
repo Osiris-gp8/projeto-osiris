@@ -2,18 +2,16 @@ package br.com.bandtec.osirisapi.service;
 
 import br.com.bandtec.osirisapi.converter.implementation.UsuarioConverterImplementation;
 import br.com.bandtec.osirisapi.domain.Usuario;
-import br.com.bandtec.osirisapi.dto.UsuarioAcessoRequest;
+import br.com.bandtec.osirisapi.dto.request.UsuarioAcessoRequest;
 import br.com.bandtec.osirisapi.dto.response.UsuarioResponse;
 import br.com.bandtec.osirisapi.repository.UsuarioRepository;
 import javassist.NotFoundException;
 import javassist.tools.web.BadHttpRequest;
 import lombok.AllArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor

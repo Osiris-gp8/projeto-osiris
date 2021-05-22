@@ -1,4 +1,4 @@
-package br.com.bandtec.osirisapi.dto;
+package br.com.bandtec.osirisapi.dto.request;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
