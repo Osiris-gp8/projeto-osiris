@@ -24,7 +24,7 @@ public class UsuarioController {
         return ResponseEntity.status(200).body(usuarioService.getUsuarios());
     }
 
-    @PostMapping("/cadastro")
+    @PostMapping
     public ResponseEntity postUsuario(@RequestBody @Valid Usuario novoUsuario) {
         return ResponseEntity.status(201).body(usuarioService.inserirUsuario(novoUsuario));
     }
