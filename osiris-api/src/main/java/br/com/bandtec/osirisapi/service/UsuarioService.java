@@ -1,9 +1,11 @@
 package br.com.bandtec.osirisapi.service;
 
 import br.com.bandtec.osirisapi.converter.implementation.UsuarioConverterImplementation;
+import br.com.bandtec.osirisapi.domain.Ecommerce;
 import br.com.bandtec.osirisapi.domain.Usuario;
 import br.com.bandtec.osirisapi.dto.request.UsuarioAcessoRequest;
 import br.com.bandtec.osirisapi.dto.response.UsuarioResponse;
+import br.com.bandtec.osirisapi.repository.EcommerceRepository;
 import br.com.bandtec.osirisapi.repository.UsuarioRepository;
 import javassist.NotFoundException;
 import javassist.tools.web.BadHttpRequest;
@@ -19,6 +21,7 @@ public class UsuarioService {
 
     private final UsuarioConverterImplementation usuarioConverter;
     private final UsuarioRepository usuarioRepository;
+    private final EcommerceRepository ecommerceRepository;
     private List<UsuarioResponse> sessoes;
 
     public List<UsuarioResponse> getUsuarios() throws NotFoundException {
@@ -33,7 +36,10 @@ public class UsuarioService {
 
     }
 
-    public UsuarioResponse inserirUsuario(Usuario usuario){
+    public UsuarioResponse inserirUsuario(Usuario usuario) throws NotFoundException {
+        if (!ecommerceRepository.existsById(usuario.getEcommerce().getIdEcommerce())){
+            throw new NotFoundException("Ecommerce não existente");
+        }
         return usuarioConverter.usuarioToUsuarioResponse(usuarioRepository.save(usuario));
     }
 

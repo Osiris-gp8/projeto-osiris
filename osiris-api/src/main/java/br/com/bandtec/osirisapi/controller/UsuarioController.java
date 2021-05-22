@@ -25,7 +25,7 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public ResponseEntity postUsuario(@RequestBody @Valid Usuario novoUsuario) {
+    public ResponseEntity postUsuario(@RequestBody @Valid Usuario novoUsuario) throws NotFoundException {
         return ResponseEntity.status(201).body(usuarioService.inserirUsuario(novoUsuario));
     }
 
