@@ -1,54 +1,43 @@
 package br.com.bandtec.osirisapi.controller;
 
 import br.com.bandtec.osirisapi.domain.DominioStatus;
-import br.com.bandtec.osirisapi.repository.DominioStatusRepository;
+import br.com.bandtec.osirisapi.service.DominioStatusService;
+import javassist.NotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/dominios")
 @AllArgsConstructor
 public class DominioStatusController {
 
-    private final DominioStatusRepository dominioStatusRepository;
+    DominioStatusService dominioStatusService;
 
     @GetMapping
-    public ResponseEntity getDominioStatus() {
-        List<DominioStatus> dominios = dominioStatusRepository.findAll();
-        if (dominios.isEmpty()) {
-            return ResponseEntity.status(204).build();
-        } else {
-            return ResponseEntity.status(200).body(dominios);
-        }
+    public ResponseEntity getDominioStatus() throws NotFoundException {
+
+        return ResponseEntity.status(200).body(dominioStatusService.getAllDominios());
     }
 
     @PostMapping
     public ResponseEntity postDominioStatus(@RequestBody DominioStatus dominioStatus){
-        dominioStatusRepository.save(dominioStatus);
+        dominioStatusService.saveDominio(dominioStatus);
         return ResponseEntity.status(201).build();
     }
 
     @DeleteMapping("/{idDominioStatus}")
-    public ResponseEntity deleteDominioStatus(@PathVariable int idDominioStatus) {
-        if (dominioStatusRepository.existsById(idDominioStatus)) {
-            dominioStatusRepository.deleteById(idDominioStatus);
-            return ResponseEntity.status(200).build();
-        } else {
-            return ResponseEntity.status(404).build();
-        }
+    public ResponseEntity deleteDominioStatus(@PathVariable int idDominioStatus) throws NotFoundException {
+        dominioStatusService.deleteDomino(idDominioStatus);
+        return ResponseEntity.status(200).build();
     }
 
-    @PutMapping
-    public ResponseEntity atualizarDominioStatus(@RequestBody DominioStatus dominioStatus){
-        if (dominioStatusRepository.findById(dominioStatus.getIdDominioStatus()).isPresent()){
-            dominioStatusRepository.save(dominioStatus);
-            return ResponseEntity.status(200).build();
-        }else {
-            return ResponseEntity.status(404).build();
-        }
+    @PutMapping("/{idDominioStatus}")
+    public ResponseEntity atualizarDominioStatus(
+            @PathVariable Integer idDominioStatus,
+            @RequestBody DominioStatus dominioStatus) throws NotFoundException {
+        dominioStatusService.atualizarDominioPeloId(idDominioStatus, dominioStatus);
+        return ResponseEntity.status(200).build();
     }
 
 }
