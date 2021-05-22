@@ -35,8 +35,8 @@ public class UsuarioService {
 
     }
 
-    public Usuario inserirUsuario(Usuario usuario){
-        return usuarioRepository.save(usuario);
+    public UsuarioResponse inserirUsuario(Usuario usuario){
+        return usuarioConverter.usuarioToUsuarioResponse(usuarioRepository.save(usuario));
     }
 
     public void deletarUsuario(int idUsuario) throws BadHttpRequest {
