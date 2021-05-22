@@ -3,10 +3,12 @@ package br.com.bandtec.osirisapi.converter.implementation;
 import br.com.bandtec.osirisapi.converter.UsuarioConverter;
 import br.com.bandtec.osirisapi.domain.Usuario;
 import br.com.bandtec.osirisapi.dto.response.UsuarioResponse;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class UsuarioConverterImplementation implements UsuarioConverter {
 
     @Override
