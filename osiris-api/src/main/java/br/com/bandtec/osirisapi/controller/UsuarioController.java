@@ -29,7 +29,7 @@ public class UsuarioController {
         return ResponseEntity.status(201).body(usuarioService.inserirUsuario(novoUsuario));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{idUsuario}")
     public ResponseEntity deleteUsuario(@PathVariable int idUsuario) throws BadHttpRequest {
         usuarioService.deletarUsuario(idUsuario);
         return ResponseEntity.status(200).build();
