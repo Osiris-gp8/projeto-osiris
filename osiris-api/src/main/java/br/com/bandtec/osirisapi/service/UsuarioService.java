@@ -1,12 +1,13 @@
 package br.com.bandtec.osirisapi.service;
 
+import br.com.bandtec.osirisapi.converter.implementation.UsuarioConverterImplementation;
 import br.com.bandtec.osirisapi.domain.Usuario;
-import br.com.bandtec.osirisapi.dto.UsuarioAcessoRequest;
+import br.com.bandtec.osirisapi.dto.request.UsuarioAcessoRequest;
+import br.com.bandtec.osirisapi.dto.response.UsuarioResponse;
 import br.com.bandtec.osirisapi.repository.UsuarioRepository;
 import javassist.NotFoundException;
 import javassist.tools.web.BadHttpRequest;
 import lombok.AllArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,12 +17,14 @@ import java.util.Optional;
 @AllArgsConstructor
 public class UsuarioService {
 
+    private final UsuarioConverterImplementation usuarioConverter;
     private final UsuarioRepository usuarioRepository;
-    private List<Usuario> sessoes;
+    private List<UsuarioResponse> sessoes;
 
-    public List<Usuario> getUsuarios() throws NotFoundException {
+    public List<UsuarioResponse> getUsuarios() throws NotFoundException {
 
-        List<Usuario> usuarios = usuarioRepository.findAll();
+        List<UsuarioResponse> usuarios = usuarioConverter.usuarioListToUsuarioResponseList(usuarioRepository.findAll());
+
         if (usuarios.isEmpty()) {
             throw new NotFoundException("Não existem usuários");
         }
@@ -30,8 +33,8 @@ public class UsuarioService {
 
     }
 
-    public Usuario inserirUsuario(Usuario usuario){
-        return usuarioRepository.save(usuario);
+    public UsuarioResponse inserirUsuario(Usuario usuario){
+        return usuarioConverter.usuarioToUsuarioResponse(usuarioRepository.save(usuario));
     }
 
     public void deletarUsuario(int idUsuario) throws BadHttpRequest {
@@ -41,7 +44,7 @@ public class UsuarioService {
         usuarioRepository.deleteById(idUsuario);
     }
 
-    public Usuario atualizarUsuario(int idUsuario ,Usuario usuario) throws NotFoundException{
+    public UsuarioResponse atualizarUsuario(int idUsuario ,Usuario usuario) throws NotFoundException{
 
         Optional<Usuario> usuarioParaAtualizarOptional = usuarioRepository.findById(idUsuario);
 
@@ -55,15 +58,15 @@ public class UsuarioService {
         usuarioParaAtualizar.setLoginUsuario(usuario.getLoginUsuario());
         usuarioParaAtualizar.setSenha(usuario.getSenha());
 
-        return usuarioRepository.save(usuarioParaAtualizar);
+        return usuarioConverter.usuarioToUsuarioResponse(usuarioRepository.save(usuarioParaAtualizar));
     }
 
-    public Usuario logarUsuario(UsuarioAcessoRequest usuarioAcessoRequest) throws NotFoundException {
+    public UsuarioResponse logarUsuario(UsuarioAcessoRequest usuarioAcessoRequest) throws NotFoundException {
         String login = usuarioAcessoRequest.getLogin();
         String senha = usuarioAcessoRequest.getSenha();
 
-        for (Usuario u : this.sessoes) {
-            if(u.getLoginUsuario().equals(login) && u.getSenha().equals(senha)){
+        for (UsuarioResponse u : this.sessoes) {
+            if(u.getLoginUsuario().equals(login)){
                 return u;
             }
         }
@@ -72,14 +75,14 @@ public class UsuarioService {
         if (!usuario.isPresent()){
             throw new NotFoundException("Usuário não existe");
         }else {
-            Usuario usuarioLogado = usuario.get();
+            UsuarioResponse usuarioLogado = usuarioConverter.usuarioToUsuarioResponse(usuario.get());
             sessoes.add(usuarioLogado);
             return usuarioLogado;
         }
     }
 
     public void logoffUsuario(Integer idUsuario) throws NotFoundException{
-        for (Usuario usuario : sessoes) {
+        for (UsuarioResponse usuario : sessoes) {
             if (usuario.getIdUsuario() == idUsuario){
                 this.sessoes.remove(usuario);
                 return;

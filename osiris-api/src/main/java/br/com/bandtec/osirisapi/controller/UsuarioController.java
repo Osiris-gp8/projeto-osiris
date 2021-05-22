@@ -1,7 +1,7 @@
 package br.com.bandtec.osirisapi.controller;
 
 import br.com.bandtec.osirisapi.domain.Usuario;
-import br.com.bandtec.osirisapi.dto.UsuarioAcessoRequest;
+import br.com.bandtec.osirisapi.dto.request.UsuarioAcessoRequest;
 import br.com.bandtec.osirisapi.service.UsuarioService;
 import javassist.NotFoundException;
 import javassist.tools.web.BadHttpRequest;
@@ -24,12 +24,12 @@ public class UsuarioController {
         return ResponseEntity.status(200).body(usuarioService.getUsuarios());
     }
 
-    @PostMapping("/cadastro")
+    @PostMapping
     public ResponseEntity postUsuario(@RequestBody @Valid Usuario novoUsuario) {
         return ResponseEntity.status(201).body(usuarioService.inserirUsuario(novoUsuario));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{idUsuario}")
     public ResponseEntity deleteUsuario(@PathVariable int idUsuario) throws BadHttpRequest {
         usuarioService.deletarUsuario(idUsuario);
         return ResponseEntity.status(200).build();
