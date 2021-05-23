@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -66,5 +67,13 @@ public class CupomService {
         }
 
         return cupomOptional.get();
+    }
+
+    public List<Cupom> adicionarCupons(List<Cupom> cupons) {
+
+        return cupons
+                .stream()
+                .map(cupom -> cupomRepository.save(cupom))
+                .collect(Collectors.toList());
     }
 }
