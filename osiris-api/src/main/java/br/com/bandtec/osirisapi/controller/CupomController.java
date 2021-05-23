@@ -38,8 +38,8 @@ public class CupomController {
         return ResponseEntity.status(201).build();
     }
 
-    @PostMapping
-    public ResponseEntity postCupons(@RequestBody @Valid List<Cupom> cupons){
+    @PostMapping("/list")
+    public ResponseEntity postCupons(@RequestBody List<Cupom> cupons){
 
         return ResponseEntity.status(201).body(cupomService.adicionarCupons(cupons));
     }
