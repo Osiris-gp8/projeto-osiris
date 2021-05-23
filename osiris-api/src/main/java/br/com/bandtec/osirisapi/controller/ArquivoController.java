@@ -19,7 +19,7 @@ public class ArquivoController {
 
     @GetMapping(value = "/relatorio-csv", produces = "text/csv")
     @ResponseBody
-    public ResponseEntity downloadCsv() throws NotFoundException {
+    public ResponseEntity downloadCsv() {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Disposition", "attachment; filename=exportacao.csv");
 
@@ -28,7 +28,7 @@ public class ArquivoController {
 
     @GetMapping(value = "/relatorio-txt", produces = "text/plain")
     @ResponseBody
-    public ResponseEntity downloadTxt() throws NotFoundException {
+    public ResponseEntity downloadTxt() {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Disposition", "attachment; filename=exportacao.txt");
 

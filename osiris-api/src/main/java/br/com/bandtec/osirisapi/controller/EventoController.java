@@ -34,7 +34,7 @@ public class EventoController {
     }
 
     @DeleteMapping("/{idEvento}")
-    public ResponseEntity deleteEvento(@PathVariable int idEvento) throws NotFoundException {
+    public ResponseEntity deleteEvento(@PathVariable int idEvento) {
         eventoService.deletarEvento(idEvento);
         return ResponseEntity.status(200).build();
     }
@@ -42,7 +42,7 @@ public class EventoController {
     @PutMapping("/{idEvento}")
     public ResponseEntity atualizarEvento(
             @PathVariable Integer idEvento,
-            @RequestBody Evento evento) throws NotFoundException {
+            @RequestBody Evento evento) {
         return ResponseEntity.status(200).body(eventoService.atualizarEvento(idEvento, evento));
     }
 
