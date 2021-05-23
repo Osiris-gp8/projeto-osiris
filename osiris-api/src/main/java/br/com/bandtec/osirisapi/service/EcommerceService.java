@@ -1,10 +1,10 @@
 package br.com.bandtec.osirisapi.service;
 
 import br.com.bandtec.osirisapi.domain.Ecommerce;
+import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.repository.EcommerceRepository;
-import javassist.NotFoundException;
 import lombok.AllArgsConstructor;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,10 +16,10 @@ public class EcommerceService {
 
     private final EcommerceRepository ecommerceRepository;
 
-    public List<Ecommerce> getEcommerces() throws NotFoundException {
+    public List<Ecommerce> getEcommerces() {
         List<Ecommerce> ecommerces = ecommerceRepository.findAll();
         if (ecommerces.isEmpty()) {
-            throw new NotFoundException("Não existem ecommerces");
+            throw new ApiRequestException("Não existem ecommerces", HttpStatus.NO_CONTENT);
         }
 
         return ecommerces;
@@ -29,19 +29,19 @@ public class EcommerceService {
         return ecommerceRepository.save(ecommerce);
     }
 
-    public void deletarEcommerce(int idEcommerce) throws NotFoundException {
+    public void deletarEcommerce(int idEcommerce) {
         if (!ecommerceRepository.existsById(idEcommerce)) {
-            throw new NotFoundException("Ecommerce não existe");
+            throw new ApiRequestException("Esse ecommerce não existe", HttpStatus.NOT_FOUND);
         }
         ecommerceRepository.deleteById(idEcommerce);
     }
 
-    public Ecommerce atualizarEcommerce(Integer idEcommerce, Ecommerce ecommerce) throws NotFoundException {
+    public Ecommerce atualizarEcommerce(Integer idEcommerce, Ecommerce ecommerce) {
 
         Optional<Ecommerce> ecommerceParaAtualizarOptional = ecommerceRepository.findById(idEcommerce);
 
         if (!ecommerceParaAtualizarOptional.isPresent()){
-            throw new NotFoundException("Ecommerce não existe");
+            throw new ApiRequestException("Esse ecommerce não existe", HttpStatus.NOT_FOUND);
         }
 
         Ecommerce ecommerceParaAtualizar = ecommerceParaAtualizarOptional.get();
