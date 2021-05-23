@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/cupons")
@@ -34,6 +35,12 @@ public class CupomController {
     public ResponseEntity postCupom(@RequestBody @Valid Cupom novoCupom) {
         cupomService.inserirCupom(novoCupom);
         return ResponseEntity.status(201).build();
+    }
+
+    @PostMapping("/list")
+    public ResponseEntity postCupons(@RequestBody List<Cupom> cupons){
+
+        return ResponseEntity.status(201).body(cupomService.adicionarCupons(cupons));
     }
 
     @DeleteMapping("/{idCupom}")
