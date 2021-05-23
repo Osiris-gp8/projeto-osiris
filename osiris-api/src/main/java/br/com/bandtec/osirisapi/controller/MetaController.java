@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -23,7 +24,7 @@ public class MetaController {
     }
 
     @PostMapping
-    public ResponseEntity postMeta(@RequestBody final Meta novaMeta) {
+    public ResponseEntity postMeta(@RequestBody @Valid final Meta novaMeta) {
         return ResponseEntity.status(201).body(metaService.inserirMeta(novaMeta));
     }
 

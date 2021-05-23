@@ -1,9 +1,11 @@
 package br.com.bandtec.osirisapi.service;
 
 import br.com.bandtec.osirisapi.domain.Meta;
+import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.repository.MetaRepository;
 import javassist.NotFoundException;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -16,11 +18,11 @@ public class MetaService {
 
     private MetaRepository metaRepository;
 
-    public List<Meta> getMetas() throws NotFoundException {
+    public List<Meta> getMetas() {
 
         List<Meta> metas = metaRepository.findAll();
         if (metas.isEmpty()) {
-            throw new NotFoundException("Não existem metas");
+            throw new ApiRequestException("Não existem metas", HttpStatus.NO_CONTENT);
         }
 
         return metas;
