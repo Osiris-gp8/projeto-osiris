@@ -4,6 +4,7 @@ import br.com.bandtec.osirisapi.converter.implementation.UsuarioConverterImpleme
 import br.com.bandtec.osirisapi.domain.Usuario;
 import br.com.bandtec.osirisapi.dto.request.UsuarioAcessoRequest;
 import br.com.bandtec.osirisapi.dto.response.UsuarioResponse;
+import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.repository.EcommerceRepository;
 import br.com.bandtec.osirisapi.repository.UsuarioRepository;
 import javassist.NotFoundException;
@@ -25,38 +26,37 @@ public class UsuarioService {
     private final EcommerceRepository ecommerceRepository;
     private List<UsuarioResponse> sessoes;
 
-    public List<UsuarioResponse> getUsuarios() throws NotFoundException {
+    public List<UsuarioResponse> getUsuarios(){
 
         List<UsuarioResponse> usuarios = usuarioConverter.usuarioListToUsuarioResponseList(usuarioRepository.findAll());
 
         if (usuarios.isEmpty()) {
-            throw new NotFoundException("Não existem usuários");
+            throw new ApiRequestException("Não existem usuários", HttpStatus.NO_CONTENT);
         }
 
         return usuarios;
-
     }
 
-    public UsuarioResponse inserirUsuario(Usuario usuario) throws NotFoundException {
+    public UsuarioResponse inserirUsuario(Usuario usuario) {
         if (!ecommerceRepository.existsById(usuario.getEcommerce().getIdEcommerce())){
-            throw new NotFoundException("Ecommerce não existente");
+            throw new ApiRequestException("Ecommerce não existente", HttpStatus.BAD_REQUEST);
         }
         return usuarioConverter.usuarioToUsuarioResponse(usuarioRepository.save(usuario));
     }
 
-    public void deletarUsuario(int idUsuario) throws BadHttpRequest {
+    public void deletarUsuario(int idUsuario) {
         if (!usuarioRepository.existsById(idUsuario)) {
-            throw new BadHttpRequest();
+            throw new ApiRequestException("Usuário não existe", HttpStatus.NOT_FOUND);
         }
         usuarioRepository.deleteById(idUsuario);
     }
 
-    public UsuarioResponse atualizarUsuario(int idUsuario ,Usuario usuario) throws NotFoundException{
+    public UsuarioResponse atualizarUsuario(int idUsuario ,Usuario usuario) {
 
         Optional<Usuario> usuarioParaAtualizarOptional = usuarioRepository.findById(idUsuario);
 
         if(!usuarioParaAtualizarOptional.isPresent()){
-            throw new NotFoundException("Usuário não existe");
+            throw new ApiRequestException("Usuário não existe", HttpStatus.NOT_FOUND);
         }
 
         Usuario usuarioParaAtualizar = usuarioParaAtualizarOptional.get();
@@ -68,7 +68,7 @@ public class UsuarioService {
         return usuarioConverter.usuarioToUsuarioResponse(usuarioRepository.save(usuarioParaAtualizar));
     }
 
-    public UsuarioResponse logarUsuario(UsuarioAcessoRequest usuarioAcessoRequest) throws NotFoundException {
+    public UsuarioResponse logarUsuario(UsuarioAcessoRequest usuarioAcessoRequest) {
         String login = usuarioAcessoRequest.getLogin();
         String senha = usuarioAcessoRequest.getSenha();
 
@@ -80,7 +80,7 @@ public class UsuarioService {
 
         Optional<Usuario> usuario = usuarioRepository.findByLoginEqualsAndSenhaEquals( login, senha );
         if (!usuario.isPresent()){
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Login ou senha incorreto");
+            throw new ApiRequestException("Login ou senha incorreto", HttpStatus.BAD_REQUEST);
         }else {
             UsuarioResponse usuarioLogado = usuarioConverter.usuarioToUsuarioResponse(usuario.get());
             sessoes.add(usuarioLogado);
@@ -88,7 +88,7 @@ public class UsuarioService {
         }
     }
 
-    public void logoffUsuario(Integer idUsuario) throws NotFoundException{
+    public void logoffUsuario(Integer idUsuario) {
         for (UsuarioResponse usuario : sessoes) {
             if (usuario.getIdUsuario() == idUsuario){
                 this.sessoes.remove(usuario);
@@ -96,7 +96,7 @@ public class UsuarioService {
             }
         }
 
-        throw new NotFoundException("Usuário não está logado");
+        throw new ApiRequestException("Usuário não está logado", HttpStatus.BAD_REQUEST);
     }
 
 }
