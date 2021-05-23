@@ -19,7 +19,7 @@ public class MetaController {
     private MetaService metaService;
 
     @GetMapping
-    public ResponseEntity getMetas() throws NotFoundException {
+    public ResponseEntity getMetas() {
         return ResponseEntity.status(201).body(metaService.getMetas());
     }
 
@@ -31,12 +31,12 @@ public class MetaController {
     @PutMapping("/{idMeta}")
     public ResponseEntity putMeta(
             @PathVariable Integer idMeta,
-            @RequestBody Meta meta) throws NotFoundException {
+            @RequestBody Meta meta) {
         return ResponseEntity.status(200).body(metaService.atualizarMeta(idMeta, meta));
     }
 
     @DeleteMapping("/{idMeta}")
-    public ResponseEntity deleteMeta(@PathVariable Integer idMeta) throws NotFoundException {
+    public ResponseEntity deleteMeta(@PathVariable Integer idMeta) {
         metaService.deletarMeta(idMeta);
         return ResponseEntity.status(200).build();
     }

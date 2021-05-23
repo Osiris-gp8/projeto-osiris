@@ -33,12 +33,12 @@ public class MetaService {
         return metaRepository.save(meta);
     }
 
-    public Meta atualizarMeta(Integer idMeta, Meta meta) throws NotFoundException {
+    public Meta atualizarMeta(Integer idMeta, Meta meta) {
 
         Optional<Meta> metaParaAtualizarOptional = metaRepository.findById(idMeta);
 
         if (!metaParaAtualizarOptional.isPresent()){
-            throw new NotFoundException("Meta não existe");
+            throw new ApiRequestException("Meta não existe", HttpStatus.NOT_FOUND);
         }
 
         Meta metaParaAtualizar = metaParaAtualizarOptional.get();
@@ -50,11 +50,11 @@ public class MetaService {
         return metaRepository.save(metaParaAtualizar);
     }
 
-    public void deletarMeta(Integer idMeta) throws NotFoundException {
+    public void deletarMeta(Integer idMeta) {
 
         Optional<Meta> metaOptional = metaRepository.findById(idMeta);
         if (!metaOptional.isPresent()){
-            throw new NotFoundException("Meta não existe");
+            throw new ApiRequestException("Meta não existe", HttpStatus.NOT_FOUND);
         }
 
         metaRepository.deleteById(idMeta);
