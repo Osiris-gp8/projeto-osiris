@@ -2,10 +2,11 @@ package br.com.bandtec.osirisapi.service;
 
 import br.com.bandtec.osirisapi.converter.EventoToLayoutEvento;
 import br.com.bandtec.osirisapi.domain.Evento;
+import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.layout.LayoutEvento;
 import br.com.bandtec.osirisapi.repository.EventoRepository;
-import javassist.NotFoundException;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -18,11 +19,11 @@ public class ArquivoService {
     private final EventoRepository eventoRepository;
     private final EventoToLayoutEvento eventoToLayoutEvento;
 
-    public String gerarCsv() throws NotFoundException {
+    public String gerarCsv() {
         List<Evento> eventos = eventoRepository.findAll();
 
         if(eventos.isEmpty()){
-            throw new NotFoundException("Não existem eventos");
+            throw new ApiRequestException("Não existem eventos", HttpStatus.NO_CONTENT);
         }
 
         List<LayoutEvento> listaLayout = new ArrayList<LayoutEvento>();
@@ -38,11 +39,11 @@ public class ArquivoService {
         return csv;
     }
 
-    public String gerarTxt() throws NotFoundException {
+    public String gerarTxt() {
         List<Evento> eventos = eventoRepository.findAll();
 
         if(eventos.isEmpty()){
-            throw new NotFoundException("Não existem eventos");
+            throw new ApiRequestException("Não existem eventos", HttpStatus.NO_CONTENT);
         }
 
         List<LayoutEvento> listaLayout = new ArrayList<LayoutEvento>();

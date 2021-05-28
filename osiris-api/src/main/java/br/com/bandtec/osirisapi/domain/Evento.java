@@ -3,11 +3,7 @@ package br.com.bandtec.osirisapi.domain;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
@@ -22,7 +18,7 @@ public class Evento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idCompra;
+    private Integer idEvento;
 
     @NotNull
     @Positive
@@ -42,15 +38,14 @@ public class Evento {
     @PastOrPresent
     private LocalDateTime dataCompra;
 
-    private String cupom;
+    @NotNull
+    @ManyToOne
+    private Ecommerce ecommerce;
+
+    @ManyToOne
+    private Cupom cupom;
 
     @NotNull
-    @Positive
-    private Integer fkEcommerce;
-    private Integer fkCupom;
-
-    @NotNull
-    @Positive
-    private Integer fkStatus;
-
+    @OneToOne
+    private DominioStatus dominioStatus;
 }

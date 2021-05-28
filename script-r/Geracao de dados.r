@@ -35,7 +35,7 @@ fkcupom <- popular(c(0:4))
 
 status <- rbinom(n,4,0.5) + 1
 
-idConsumidor <- abs(round(rnorm(n, 500, 500),0))
+idConsumidor <- abs(round(rnorm(n, 500, 10),0))
 
 sexo <- popular(c("M","F","O"))
 

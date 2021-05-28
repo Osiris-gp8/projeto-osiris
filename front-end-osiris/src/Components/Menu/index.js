@@ -7,39 +7,66 @@ import peopleIcon from '@iconify-icons/bi/people';
 import gearFill from '@iconify-icons/bi/gear-fill';
 // npm install --save-dev @iconify/react @iconify-icons/cil
 import accountLogout from '@iconify-icons/cil/account-logout';
-import { Link,useLocation } from 'react-router-dom';
+import { Link,useLocation, useHistory } from 'react-router-dom';
 import {useState} from 'react'
 
-
+import api from '../../api';
 
 
 
 export default () =>{
+
+    const history = useHistory();
+
+    function logoff(){
+
+        let uri = "";
+        if(sessionStorage.getItem("usuarioLogado")){
+            uri = "/usuarios/logoff?idUsuario=" + JSON.parse(sessionStorage.getItem("usuarioLogado")).idUsuario;
+        }
+
+        api.get(uri).then( response => {
+            sessionStorage.removeItem("usuarioLogado");
+            return history.push("/login");
+        }).catch(error => {
+            console.log(error);
+        })
+    }
+
     return(
         <Container>
             <WelcomeText children={Text}>
-             Bem vindo, <Contrast children="Patrick"/> 
+             Bem vindo, <Contrast>Patrick</Contrast> 
              <br/>Veja as Informações da sua loja
             </WelcomeText>
             <div>
-            <Item first active={useLocation().pathname === '/home'} as={Link} to="/home" >
-                <IconChildren icon={bxHome} />
-                <p>Home</p>
-            </Item>
-            <Item as={Link} active={useLocation().pathname === '/relation'} to="/relation" >
-                <IconChildren icon={lineChartOutlined}  />
-                <p>Vendas</p>
-            </Item>
-            <Item as={Link} active={useLocation().pathname === '/cluster-cliente'} to="/cluster-cliente" >
-                <IconChildren icon={peopleIcon} />
-                <p>Cliente</p>
-            </Item>
-            <Item as={Link} active={useLocation().pathname === '/config'} to="/config" >
-                <IconChildren icon={gearFill} />
-                <p>Configurações</p>
-            </Item>
+            <Link>
+                <Item first active={useLocation().pathname === '/home'} as={Link} to="/home" >
+                    <IconChildren icon={bxHome} />
+                    <p>Home</p>
+                </Item>
+            </Link>
+            <Link to="/relation"> 
+                <Item active={useLocation().pathname === '/relation'} to="/relation" >
+                    <IconChildren icon={lineChartOutlined}  />
+                    <p>Vendas</p>
+                </Item>
+            </Link>
+            
+            <Link to="/cluster-cliente">
+                <Item active={useLocation().pathname === '/cluster-cliente'} >
+                    <IconChildren icon={peopleIcon} />
+                    <p>Cliente</p>
+                </Item>
+            </Link>
+            <Link to="/config">
+                <Item active={useLocation().pathname === '/config'} >
+                    <IconChildren icon={gearFill} />
+                    <p>Configurações</p>
+                </Item>
+            </Link>
             </div>
-            <Item as={Link} to="/">
+            <Item as={Link} onClick={logoff}>
                 <IconChildren icon={accountLogout} />
                 <p>Sair</p>
             </Item>

@@ -1,9 +1,11 @@
 package br.com.bandtec.osirisapi.service;
 
 import br.com.bandtec.osirisapi.domain.Evento;
+import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.repository.EventoRepository;
 import javassist.NotFoundException;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -16,12 +18,12 @@ public class EventoService {
 
     private final EventoRepository eventoRepository;
 
-    public List<Evento> getEventos() throws NotFoundException {
+    public List<Evento> getEventos(){
 
         List<Evento> eventos = eventoRepository.findAll();
 
-        if (eventos.isEmpty()){
-            throw new NotFoundException("Não existem eventos");
+        if (!eventos.isEmpty()){
+            throw new ApiRequestException("Não existem eventos", HttpStatus.NO_CONTENT);
         }
 
         return eventos;
@@ -31,34 +33,34 @@ public class EventoService {
         return eventoRepository.save(evento);
     }
 
-    public void deletarEvento(int idEvento) throws NotFoundException {
+    public void deletarEvento(int idEvento) {
 
         if (!eventoRepository.existsById(idEvento)) {
-            throw new NotFoundException("Não existem eventos");
+            throw new ApiRequestException("Esse evento não existe", HttpStatus.NOT_FOUND);
         }
 
         eventoRepository.deleteById(idEvento);
     }
 
-    public Evento atualizarEvento(Integer idEvento, Evento evento) throws NotFoundException {
+    public Evento atualizarEvento(Integer idEvento, Evento evento) {
 
         Optional<Evento> eventoParaAtualizarOptional = eventoRepository.findById(idEvento);
 
         if (!eventoParaAtualizarOptional.isPresent()){
-            throw new NotFoundException("Evento não existente");
+            throw new ApiRequestException("Esse evento não existe", HttpStatus.NOT_FOUND);
         }
 
         Evento eventoParaAtualizar = eventoParaAtualizarOptional.get();
-
+        //TODO CRIAR UM CONVERTER
         eventoParaAtualizar.setCupom(evento.getCupom());
         eventoParaAtualizar.setDataCompra(evento.getDataCompra());
-        eventoParaAtualizar.setFkStatus(evento.getFkStatus());
+        eventoParaAtualizar.setDominioStatus(evento.getDominioStatus());
         eventoParaAtualizar.setIdConsumidorEcommerce(eventoParaAtualizar.getIdConsumidorEcommerce());
         eventoParaAtualizar.setNomeCategoria(evento.getNomeCategoria());
         eventoParaAtualizar.setNomeProduto(evento.getNomeProduto());
         eventoParaAtualizar.setPreco(evento.getPreco());
-        eventoParaAtualizar.setFkEcommerce(evento.getFkEcommerce());
-        eventoParaAtualizar.setFkCupom(evento.getFkCupom());
+        eventoParaAtualizar.setEcommerce(evento.getEcommerce());
+        eventoParaAtualizar.setCupom(evento.getCupom());
 
         return eventoRepository.save(eventoParaAtualizar);
 

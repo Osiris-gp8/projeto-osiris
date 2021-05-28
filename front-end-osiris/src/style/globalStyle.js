@@ -7,6 +7,8 @@ export default createGlobalStyle`
         --background-div:#ECF0F7;
     }
 
+    @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;500;600;700&display=swap');
+
     html, body, div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,
     a, abbr, acronym, address, big, cite, code,
@@ -24,7 +26,7 @@ export default createGlobalStyle`
     	padding: 0;
     	border: 0;
     	font-size: 100%;
-    	font: inherit;
+    	font-family: 'Exo 2', sans-serif;
     	vertical-align: baseline;
     }
     /* HTML5 display-role reset for older browsers */
