@@ -31,19 +31,18 @@ def main():
             quantidade = ('idEvento' , 'count')
             ).reset_index()
     
-    cupons = pd.DataFrame(columns = ['nomeCupom', 'valor', 'dataEmitido', 
-        'dataValido', 'cupomEcommerce', 'idConsumidorEcommerce', 'usado'])
+    cupons = pd.DataFrame()
+    cupons['valor'] = max_categoria_faixa['maxPreco'] / 100 # 1% do valor
     cupons['usado'] = False
     cupons['cupomEcommerce'] = False
-    # cupons['nomeCupom'] = pd.concat(['osiris', np.random.randint(1, 10, size = len(max_categoria_faixa))])
-    cupons['valor'] = max_categoria_faixa['maxPreco'] / 100 # 1% do valor
+    cupons['nomeCupom'] = np.random.randint(1, 10, size = len(max_categoria_faixa))
+    cupons['nomeCupom'] = 'osiris'+cupons['nomeCupom'].astype(str)
+    # cupons['nomeCupom'] =  'osiris %d' %  cupons['nomeCupom']
     cupons['dataEmitido'] = date.today()
     cupons['dataValido'] = cupons['dataEmitido'] + timedelta(days = 30)
-    print(cupons['cupomEcommerce'])
-    condicional = ((data_frame[ 'faixa_etaria'] == 'Primeira Faixa') & (data_frame['categoria'] == 0))\
-        & ((data_frame[ 'preco'] == max_categoria_faixa\
-        .query('faixa_etaria == "Primeira Faixa" & categoria == 0')['maxPreco'] ))
-    print(condicional)
+    cupons['idConsumidor'] = data_frame.merge(max_categoria_faixa).query('maxPreco == preco').reset_index()['idConsumidor']
+    cupons
+    print(cupons)
     # cupons['idConsumidorEcommerce'] = data_frame[condicional]
     # api.sendData("/cupons" , cupons)
 
