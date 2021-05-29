@@ -2,10 +2,10 @@ from DbManager import DbManager
 from ApiClient import ApiClient
 import numpy as np
 import pandas as pd
-from  datetime import date
+from  datetime import date, timedelta
 
 def main():
-    db = DbManager("root", "bandtec123", "localhost", "processamento_db")
+    db = DbManager("root", "bandtec", "localhost", "processamento_db")
     api = ApiClient("http://localhost")
 
     data_frame = db.read("SELECT * FROM eventos").astype({
@@ -25,12 +25,32 @@ def main():
         'Terceira Faixa')
     )
 
-    max_categoria_faixa = data_frame[data_frame['statusEvento'] == 1].groupby(['faixa_etaria', 'categoria']).agg(
-        maxPreco = ('preco' , 'max'),
-        Quantidade = ('idEvento' , 'count')
-        ).reset_index()
+    max_categoria_faixa = data_frame[data_frame['statusEvento'] == 1]\
+        .groupby(['faixa_etaria', 'categoria'], as_index=False).agg(
+            maxPreco = ('preco' , 'max'),
+            quantidade = ('idEvento' , 'count')
+            ).reset_index()
+    
+    cupons = pd.DataFrame(columns = ['nomeCupom', 'valor', 'dataEmitido', 
+        'dataValido', 'cupomEcommerce', 'idConsumidorEcommerce', 'usado'])
+    cupons['usado'] = False
+    cupons['cupomEcommerce'] = False
+    # cupons['nomeCupom'] = pd.concat(['osiris', np.random.randint(1, 10, size = len(max_categoria_faixa))])
+    cupons['valor'] = max_categoria_faixa['maxPreco'] / 100 # 1% do valor
+    cupons['dataEmitido'] = date.today()
+    cupons['dataValido'] = cupons['dataEmitido'] + timedelta(days = 30)
+    print(cupons['cupomEcommerce'])
+    condicional = ((data_frame[ 'faixa_etaria'] == 'Primeira Faixa') & (data_frame['categoria'] == 0))\
+        & ((data_frame[ 'preco'] == max_categoria_faixa\
+        .query('faixa_etaria == "Primeira Faixa" & categoria == 0')['maxPreco'] ))
+    print(condicional)
+    # cupons['idConsumidorEcommerce'] = data_frame[condicional]
+    # api.sendData("/cupons" , cupons)
 
-    print(max_categoria_faixa.head(50))
+
+    # sem_cupom = data_frame[data_frame['fkCupom'] == 0]
+    # print(sem_cupom)
+
     categorias_consumidor = data_frame.groupby(['idConsumidor','categoria']).agg(
         freq = ('idEvento', 'count')
     )
