@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import { Container, Content } from '../../style/style';
 // import { Image, Section1, Span } from './style';
-import Button from '../Button';
+import {Button, ButtonNoLink} from '../Button';
 import Item from './Item/Item';
 import Analytic from '../../Images/analytic-graphics.jpg';
 import Blob1 from '../../Images/blob-section1.svg';
@@ -42,26 +42,27 @@ export default () => {
                         <div>
                             Melhore a <span>Venda</span> de seu E-commerce com a nossa ajuda de <span>Análise</span>!
                         </div>
-                        
-                        <Button uri="#" side="left" type="btn-preenchido" style={btnContent}>Começe Agora</Button>
+                        <ButtonNoLink section="#section2" type="btn-preenchido" side="left" style={btnContent}>Começe agora</ButtonNoLink>
                     </div>
                     <img src={Analytic}/>
                     <img src={Blob1} id="blob1" className="blob"/>
                 </section>
             </div>
 
-            <section className="section-2 min-section">
+            <section className="section-2 min-section" id="section2">
                 <div className="opacidade">
                     <div className="container">
                         <div className="content">
                             Com a nossa solução, sua loja melhora o comportamento e o jeito de vender!
-                            <Button uri="#" side="right" style={btnContent}>Saiba mais</Button>
+                            {/* <Button uri="#" side="right" style={btnContent}>Saiba mais</Button> */}
+                            {/* <a href="#section3" className="btn link right" style={btnContent}>Saiba mais</a> */}
+                            <ButtonNoLink section="#section3" side="right" style={btnContent}>Saiba mais</ButtonNoLink>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section className="section-3">
+            <section className="section-3" id="section3">
                 <div className="container">
                     <div className="items">
                         <Item img={iconChar} txt="Analise o comportamento de suas vendas." id="item1"/>
