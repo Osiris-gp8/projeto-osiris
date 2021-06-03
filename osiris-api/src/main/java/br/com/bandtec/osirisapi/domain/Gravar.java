@@ -1,7 +1,6 @@
 package br.com.bandtec.osirisapi.domain;
 
 import br.com.bandtec.osirisapi.layout.LayoutEvento;
-
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
