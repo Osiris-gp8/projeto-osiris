@@ -19,7 +19,7 @@ public class Evento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idCompra;
+    private Integer idEvento;
 
     @NotNull
     @Positive
@@ -39,19 +39,16 @@ public class Evento {
     @PastOrPresent
     private LocalDateTime dataCompra;
 
-    private String cupom;
-
     @NotNull
     @Positive
     @ManyToOne
     private Ecommerce ecommerce;
 
     @ManyToOne
-    private Cupom cupomOsiris;
+    private Cupom cupom;
 
     @NotNull
     @Positive
     @OneToOne
-    private DominioStatus status;
-
+    private DominioStatus dominioStatus;
 }
