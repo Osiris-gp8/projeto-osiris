@@ -22,6 +22,9 @@ public class Usuario implements UserDetails {
     private Integer idUsuario;
 
     @NotBlank
+    private String nomeCompleto;
+
+    @NotBlank
     private String loginUsuario;
 
     @NotBlank
