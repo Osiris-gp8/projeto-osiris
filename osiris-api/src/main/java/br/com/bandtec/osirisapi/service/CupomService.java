@@ -1,13 +1,16 @@
 package br.com.bandtec.osirisapi.service;
 
 import br.com.bandtec.osirisapi.domain.Cupom;
+import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.repository.CupomRepository;
 import javassist.NotFoundException;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -15,20 +18,20 @@ public class CupomService {
 
     private final CupomRepository cupomRepository;
 
-    public void deleteCupom(int idCupom) throws NotFoundException{
+    public void deleteCupom(int idCupom) {
 
         Optional<Cupom> cupomOptional = cupomRepository.findById(idCupom);
         if (!cupomOptional.isPresent()){
-            throw new NotFoundException("Cupom não existe");
+            throw new ApiRequestException("Cupom não existe", HttpStatus.NOT_FOUND);
         }
 
         cupomRepository.deleteById(idCupom);
     }
 
-    public List<Cupom> buscarCupons() throws NotFoundException{
+    public List<Cupom> buscarCupons() {
 
         if (cupomRepository.findAll().isEmpty()){
-            throw new NotFoundException("Não existem cupons");
+            throw new ApiRequestException("Não existem cupons", HttpStatus.NO_CONTENT);
         }
 
         return cupomRepository.findAll();
@@ -38,12 +41,12 @@ public class CupomService {
         return cupomRepository.save(cupom);
     }
 
-    public Cupom atualizarCupom(Integer idCupom, Cupom cupomAtualizar) throws NotFoundException {
+    public Cupom atualizarCupom(Integer idCupom, Cupom cupomAtualizar) {
 
         Optional<Cupom> cupomOptional = cupomRepository.findById(idCupom);
 
         if (!cupomOptional.isPresent()) {
-            throw new NotFoundException("Cupom não existe");
+            throw new ApiRequestException("Cupom não existe", HttpStatus.NOT_FOUND);
         }
 
         Cupom cupom = cupomOptional.get();
@@ -58,13 +61,21 @@ public class CupomService {
         return cupom;
     }
 
-    public Cupom buscarCupom(Integer idCupom) throws NotFoundException {
+    public Cupom buscarCupom(Integer idCupom) {
 
         Optional<Cupom> cupomOptional = cupomRepository.findById(idCupom);
         if (!cupomOptional.isPresent()){
-            throw new NotFoundException("Cupom não existe");
+            throw new ApiRequestException("Cupom não existe", HttpStatus.NOT_FOUND);
         }
 
         return cupomOptional.get();
+    }
+
+    public List<Cupom> adicionarCupons(List<Cupom> cupons) {
+
+        return cupons
+                .stream()
+                .map(cupom -> cupomRepository.save(cupom))
+                .collect(Collectors.toList());
     }
 }

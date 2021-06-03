@@ -18,8 +18,13 @@ public class EventoController {
     private final EventoService eventoService;
 
     @GetMapping
-    public ResponseEntity getEventos() throws NotFoundException {
-        return ResponseEntity.status(200).body(eventoService.getEventos());
+    public ResponseEntity getEventos() {
+
+        List<Evento> eventos = eventoService.getEventos();
+        if (eventos.isEmpty()){
+            return ResponseEntity.status(204).build();
+        }
+        return ResponseEntity.status(200).body(eventos);
     }
 
     @PostMapping
@@ -29,7 +34,7 @@ public class EventoController {
     }
 
     @DeleteMapping("/{idEvento}")
-    public ResponseEntity deleteEvento(@PathVariable int idEvento) throws NotFoundException {
+    public ResponseEntity deleteEvento(@PathVariable int idEvento) {
         eventoService.deletarEvento(idEvento);
         return ResponseEntity.status(200).build();
     }
@@ -37,7 +42,7 @@ public class EventoController {
     @PutMapping("/{idEvento}")
     public ResponseEntity atualizarEvento(
             @PathVariable Integer idEvento,
-            @RequestBody Evento evento) throws NotFoundException {
+            @RequestBody Evento evento) {
         return ResponseEntity.status(200).body(eventoService.atualizarEvento(idEvento, evento));
     }
 

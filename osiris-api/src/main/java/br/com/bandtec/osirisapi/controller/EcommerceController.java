@@ -1,13 +1,11 @@
 package br.com.bandtec.osirisapi.controller;
+
 import br.com.bandtec.osirisapi.domain.Ecommerce;
-import br.com.bandtec.osirisapi.repository.EcommerceRepository;
 import br.com.bandtec.osirisapi.service.EcommerceService;
 import javassist.NotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/ecommerces")
@@ -17,7 +15,7 @@ public class EcommerceController {
     private final EcommerceService ecommerceService;
 
     @GetMapping
-    public ResponseEntity getEcommerce() throws NotFoundException {
+    public ResponseEntity getEcommerce() {
         return ResponseEntity.status(200).body(ecommerceService.getEcommerces());
     }
 
@@ -27,7 +25,7 @@ public class EcommerceController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteEcommerce(@PathVariable int idEcommerce) throws NotFoundException {
+    public ResponseEntity deleteEcommerce(@PathVariable int idEcommerce) {
        ecommerceService.deletarEcommerce(idEcommerce);
         return ResponseEntity.status(200).build();
     }
@@ -35,7 +33,7 @@ public class EcommerceController {
     @PutMapping("/{idEcommerce}")
     public ResponseEntity atualizarEcommerce(
             @PathVariable Integer idEcommerce,
-            @RequestBody Ecommerce ecommerce) throws NotFoundException {
+            @RequestBody Ecommerce ecommerce) {
         return ResponseEntity.status(200).body(ecommerceService.atualizarEcommerce(idEcommerce, ecommerce));
     }
 }

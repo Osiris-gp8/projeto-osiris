@@ -7,7 +7,7 @@ export default createGlobalStyle`
         --background-div:#ECF0F7;
     }
 
-    @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;500;600;700&display=swap');
 
     html, body, div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,

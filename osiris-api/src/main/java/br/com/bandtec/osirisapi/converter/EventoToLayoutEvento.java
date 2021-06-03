@@ -2,7 +2,9 @@ package br.com.bandtec.osirisapi.converter;
 
 import br.com.bandtec.osirisapi.domain.Evento;
 import br.com.bandtec.osirisapi.layout.LayoutEvento;
-import br.com.bandtec.osirisapi.repository.*;
+import br.com.bandtec.osirisapi.repository.CupomRepository;
+import br.com.bandtec.osirisapi.repository.DominioStatusRepository;
+import br.com.bandtec.osirisapi.repository.EcommerceRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
@@ -27,7 +29,7 @@ public class EventoToLayoutEvento implements Converter<Evento, LayoutEvento> {
                 .categoriaProduto( evento.getNomeCategoria() )
                 .dataCompra( evento.getDataCompra() )
                 .nomeEcommerce(evento.getEcommerce().getNome())
-                .nomeCupom(evento.getCupom().getNomeCupom() )
+                .nomeCupom( evento.getCupom().getNomeCupom() )
                 .valorCupom( evento.getCupom().getValor() )
                 .status( evento.getDominioStatus().getNome() )
                 .build();
