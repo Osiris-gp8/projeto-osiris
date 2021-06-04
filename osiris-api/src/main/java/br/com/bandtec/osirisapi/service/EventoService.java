@@ -22,7 +22,7 @@ public class EventoService {
 
         List<Evento> eventos = eventoRepository.findAll();
 
-        if (!eventos.isEmpty()){
+        if (eventos.isEmpty()){
             throw new ApiRequestException("Não existem eventos", HttpStatus.NO_CONTENT);
         }
 

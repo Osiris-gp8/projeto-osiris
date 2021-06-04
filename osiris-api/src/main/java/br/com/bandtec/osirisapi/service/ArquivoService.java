@@ -1,6 +1,7 @@
 package br.com.bandtec.osirisapi.service;
 
 import br.com.bandtec.osirisapi.converter.EventoToLayoutEvento;
+import br.com.bandtec.osirisapi.converter.LayoutEventoToEvento;
 import br.com.bandtec.osirisapi.domain.Evento;
 import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.layout.LayoutEvento;
@@ -18,6 +19,7 @@ public class ArquivoService {
 
     private final EventoRepository eventoRepository;
     private final EventoToLayoutEvento eventoToLayoutEvento;
+    private final LayoutEventoToEvento layoutEventoToEvento;
 
     public String gerarCsv() {
         List<Evento> eventos = eventoRepository.findAll();
@@ -63,5 +65,15 @@ public class ArquivoService {
         txt += LayoutEvento.trailer(eventos.size());
 
         return txt;
+    }
+
+    public Evento importarEventoTXT(String conteudo){
+        LayoutEvento layoutEvento = new LayoutEvento();
+
+        layoutEvento.fromTXT(conteudo);
+
+        Evento evento = layoutEventoToEvento.convert(layoutEvento);
+
+        return evento;
     }
 }
