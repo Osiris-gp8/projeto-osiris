@@ -1,5 +1,5 @@
 import styled from "styled-components"
-
+import { Button as BTN } from "../settings/style"
 
 
 export const Container = styled.div`
@@ -27,19 +27,73 @@ export const BoxDownload = styled.div`
 `
 
 export const BoxUpload = styled.div`
-height: 40%;
-justify-content:space-between;
+    height: 50%;
+    justify-content:space-between;
     display:grid;
     grid-template:
-    25%
-    50%
+    20%
+    40%
+    10%
     25%
     /1fr;
     background-color: var(--background-div);
     grid-template-areas: 
     ". "
     "DZ"
+    "."
     ".";
 
+    &>div:nth-of-type(4){
+        display:flex;
+        justify-content: flex-end;
+    }
+`
 
+export const BoxFile = styled.div`
+display: flex;
+position:relative;
+width: 90.5%;
+height: 100%;
+border: 2px solid black;
+top:50%;
+left: 5%;
+transform: translate(30% -50%);
+align-items: center;
+
+& p {
+  font-size: 19px;
+  position:absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+&> button{
+    margin:0;
+    height: 90%;
+    position:absolute;
+    top:50%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+}
+`;
+
+
+export const Button = styled(BTN)`
+    background-color: ${props => props.cancelButton?`#D44463`: `var(--primary)`  } ;
+    align-self: flex-end;
+    margin-right: 4%;
+    border:none;
+
+    &:hover{
+        background-color: ${props => props.cancelButton?`#EB6357`: `var(--primary)`  } ;
+        border:none;
+    }
+`;
+
+
+export const Title = styled.h1`
+    font-size:30px;
+    color: var(--primary);
+    padding: 20px 5%;
 `
