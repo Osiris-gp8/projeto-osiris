@@ -51,6 +51,13 @@ height: 20%;
 padding: 15px 0;
 border: 2px solid black;
 
+&::before{
+  content:"";
+  z-index:-1;
+  height: 100%;
+  width: 80%;
+}
+
 & p {
   font-size: 19px;
 }
