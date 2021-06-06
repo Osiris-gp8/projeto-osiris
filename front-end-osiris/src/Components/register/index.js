@@ -15,10 +15,12 @@ export default () => {
     const [cnpj, setCNPJ]= useState('')
 
     const [usuarioData, setUsuarioData]= useState({
-        "loginUsuario": "",
-        "senha": "",
-        "ecommerceIdEcommerce": 0,
-        "nomeCompleto": ""
+        loginUsuario: "",
+        senha: "",
+        nomeCompleto: "",
+        ecommerce: {
+            idEcommerce: 1
+        }
     })
 
     function handle(e) {
@@ -30,11 +32,13 @@ export default () => {
 
     function enviar(e) {
         e.preventDefault();
-        api.post("/usuarios/cadastro", {
-            "loginUsuario": usuarioData.loginUsuario,
-            "senha": usuarioData.senha,
-            "ecommerceIdEcommerce": Number(usuarioData.ecommerceIdEcommerce),
-            "nomeCompleto": usuarioData.nomeCompleto
+        api.post("/usuarios", {
+            loginUsuario: usuarioData.loginUsuario,
+            senha: usuarioData.senha,
+            nomeCompleto: usuarioData.nomeCompleto,
+            ecommerce: {
+                idEcommerce: Number(usuarioData.idEcommerce)
+            }
         }).then((resposta) => {
             console.log("post ok", resposta);
             history.push("/login");
@@ -79,7 +83,7 @@ export default () => {
                     </div>
                     <div>
                         <label>Id do ecommerce</label>
-                        <input id="ecommerceIdEcommerce" type='password' onChange={(e) => handle(e)} />
+                        <input id="idEcommerce" type='password' onChange={(e) => handle(e)} />
                     </div>
                     <Link to="/">Voltar para tela de Login</Link>
                 </ContainerForm>

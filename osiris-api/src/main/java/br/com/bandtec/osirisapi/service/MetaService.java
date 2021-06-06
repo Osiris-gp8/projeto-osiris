@@ -1,9 +1,11 @@
 package br.com.bandtec.osirisapi.service;
 
 import br.com.bandtec.osirisapi.domain.Meta;
+import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.repository.MetaRepository;
 import javassist.NotFoundException;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -16,11 +18,11 @@ public class MetaService {
 
     private MetaRepository metaRepository;
 
-    public List<Meta> getMetas() throws NotFoundException {
+    public List<Meta> getMetas() {
 
         List<Meta> metas = metaRepository.findAll();
         if (metas.isEmpty()) {
-            throw new NotFoundException("Não existem metas");
+            throw new ApiRequestException("Não existem metas", HttpStatus.NO_CONTENT);
         }
 
         return metas;
@@ -31,12 +33,12 @@ public class MetaService {
         return metaRepository.save(meta);
     }
 
-    public Meta atualizarMeta(Integer idMeta, Meta meta) throws NotFoundException {
+    public Meta atualizarMeta(Integer idMeta, Meta meta) {
 
         Optional<Meta> metaParaAtualizarOptional = metaRepository.findById(idMeta);
 
         if (!metaParaAtualizarOptional.isPresent()){
-            throw new NotFoundException("Meta não existe");
+            throw new ApiRequestException("Meta não existe", HttpStatus.NOT_FOUND);
         }
 
         Meta metaParaAtualizar = metaParaAtualizarOptional.get();
@@ -48,11 +50,11 @@ public class MetaService {
         return metaRepository.save(metaParaAtualizar);
     }
 
-    public void deletarMeta(Integer idMeta) throws NotFoundException {
+    public void deletarMeta(Integer idMeta) {
 
         Optional<Meta> metaOptional = metaRepository.findById(idMeta);
         if (!metaOptional.isPresent()){
-            throw new NotFoundException("Meta não existe");
+            throw new ApiRequestException("Meta não existe", HttpStatus.NOT_FOUND);
         }
 
         metaRepository.deleteById(idMeta);
