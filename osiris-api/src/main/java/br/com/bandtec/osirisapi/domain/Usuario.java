@@ -7,6 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -30,8 +31,7 @@ public class Usuario implements UserDetails {
     @NotBlank
     private String senha;
 
-    @NotBlank
-    @Positive
+    @NotNull
     @ManyToOne
     private Ecommerce ecommerce;
 

@@ -11,6 +11,7 @@ import javassist.NotFoundException;
 import javassist.tools.web.BadHttpRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 
@@ -38,6 +39,7 @@ public class UsuarioService {
     }
 
     public UsuarioResponse inserirUsuario(Usuario usuario) {
+        usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
         if (!ecommerceRepository.existsById(usuario.getEcommerce().getIdEcommerce())){
             throw new ApiRequestException("Ecommerce não existente", HttpStatus.BAD_REQUEST);
         }
