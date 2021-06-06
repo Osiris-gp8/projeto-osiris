@@ -3,7 +3,9 @@ package br.com.bandtec.osirisapi.converter;
 import br.com.bandtec.osirisapi.domain.Cupom;
 import br.com.bandtec.osirisapi.layout.LayoutCupom;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CupomToLayoutCupom implements Converter<Cupom, LayoutCupom> {
     @Override
     public LayoutCupom convert(Cupom cupom) {
