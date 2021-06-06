@@ -15,10 +15,12 @@ export default () => {
     const [cnpj, setCNPJ]= useState('')
 
     const [usuarioData, setUsuarioData]= useState({
-        login_usuario: "",
+        loginUsuario: "",
         senha: "",
-        ecommerce_id_ecommerce: 0,
-        nome_completo: ""
+        nomeCompleto: "",
+        ecommerce: {
+            idEcommerce: 1
+        }
     })
 
     function handle(e) {
@@ -30,11 +32,13 @@ export default () => {
 
     function enviar(e) {
         e.preventDefault();
-        api.post("/usuarios/cadastro", {
-            login_usuario: usuarioData.login_usuario,
+        api.post("/usuarios", {
+            loginUsuario: usuarioData.loginUsuario,
             senha: usuarioData.senha,
-            ecommerce_id_ecommerce: Number(usuarioData.ecommerce_id_ecommerce),
-            nome_completo: usuarioData.nome_completo
+            nomeCompleto: usuarioData.nomeCompleto,
+            ecommerce: {
+                idEcommerce: Number(usuarioData.idEcommerce)
+            }
         }).then((resposta) => {
             console.log("post ok", resposta);
             history.push("/login");
@@ -59,11 +63,11 @@ export default () => {
                     </div>
                     <div>
                         <label>Usuário</label>
-                        <input id="login_usuario" onChange={(e) => handle(e)} />
+                        <input id="loginUsuario" onChange={(e) => handle(e)} />
                     </div>
                     <div>
                         <label>Nome Completo</label>
-                        <input id="nome_completo" onChange={(e) => handle(e)} />
+                        <input id="nomeCompleto" onChange={(e) => handle(e)} />
                     </div>
                     <Link to="/">Voltar para tela de Login</Link>
                 </ContainerForm>
@@ -79,7 +83,7 @@ export default () => {
                     </div>
                     <div>
                         <label>Id do ecommerce</label>
-                        <input id="ecommerce_id_ecommerce" type='password' onChange={(e) => handle(e)} />
+                        <input id="idEcommerce" type='password' onChange={(e) => handle(e)} />
                     </div>
                     <Link to="/">Voltar para tela de Login</Link>
                 </ContainerForm>
