@@ -1,7 +1,8 @@
-import { BoxUpload, Container, BoxDownload, Button, BoxFile, Title } from './style'
+import { BoxUpload, Container, BoxDownload, Button, BoxFile, Title, Subtitle } from './style'
 import DropZone from '../dragzone'
 import { useEffect, useState } from 'react'
 import api from '../../api'
+import InputPicker from '../InputPicker'
 
 function UploadFiles(props) {
   let [uploaded, setUploaded] = useState(false)
@@ -65,9 +66,14 @@ function UploadFiles(props) {
     const data = new FormData();
     const newFile = file;
     data.append("file", file.file, file.nomeArquivo);
-
+    let postType = file.tipoArquivo=='text/plain' ? "importacaoTXT" : "importacaoCSV"
+    const config = {
+      headers: {
+          'content-type': 'multipart/form-data'
+      }
+  }
     api
-      .post("/arquivos/importacaoTXT", data)
+      .post(`/arquivos/${postType}`, data, config )
       .then(response => {
 
         newFile['url'] = response.url
@@ -89,7 +95,19 @@ function UploadFiles(props) {
   return (
     <Container>
       <BoxDownload>
-
+        <div><Title>Exportação</Title>
+        <Subtitle>Selecione uma data e a categoria de dados que você deseja:</Subtitle>
+        </div>
+        <div>
+          <InputPicker label="Início:" id="inicio" />
+          <InputPicker label="Fim:" id="fim" />
+          <InputPicker select label="Dados:" id="Dados" />
+        </div>
+        <div>
+          <Button>
+            Baixar
+          </Button>
+        </div>
       </BoxDownload>
       <BoxUpload>
         <div><Title>Importação</Title></div>

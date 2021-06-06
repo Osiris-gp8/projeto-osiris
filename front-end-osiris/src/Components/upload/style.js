@@ -19,11 +19,20 @@ export const BoxDownload = styled.div`
         justify-content:space-between;
         display:grid;
         grid-template:
-        25%
-        50%
+        30%
+        45%
         25%
         /1fr;
         background-color: var(--background-div);
+        padding: 5px 5%;
+        &>div:nth-of-type(3){
+        display:flex;
+        justify-content: flex-end;
+        }
+        &>div:nth-of-type(2){
+            display:flex;
+            justify-content: space-around;
+        }
 `
 
 export const BoxUpload = styled.div`
@@ -42,7 +51,7 @@ export const BoxUpload = styled.div`
     "DZ"
     "."
     ".";
-
+    padding: 5px 5%;
     &>div:nth-of-type(4){
         display:flex;
         justify-content: flex-end;
@@ -95,5 +104,13 @@ export const Button = styled(BTN)`
 export const Title = styled.h1`
     font-size:30px;
     color: var(--primary);
-    padding: 20px 5%;
+    padding-top: 3%;
 `
+
+
+export const Subtitle = styled.h1`
+    font-size:20px;
+    color: black;
+    
+`
+
