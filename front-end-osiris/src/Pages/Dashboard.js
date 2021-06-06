@@ -1,3 +1,4 @@
+import { Recat, useEffect } from 'react';
 import MenuNovo from '../Components/MenuNovo/MenuNovo';
 import Metricas from '../Components/Metricas/Metricas';
 import arrowUpCircleFill from '@iconify-icons/bi/arrow-up-circle-fill';
@@ -5,7 +6,6 @@ import clockCircleFilled from '@iconify-icons/ant-design/clock-circle-filled';
 import ChartBar from '../Components/ChartBar/ChartBar';
 import ChartPie from '../Components/ChartPie/ChartPie';
 import { useHistory } from 'react-router-dom';
-import { useEffect } from 'react';
 
 export default () =>{ 
     // const history = useHistory();
@@ -34,6 +34,14 @@ export default () =>{
         ['Vendas com cupom', 200],
         ['Vendas sem cupom', 300],
         ['Expirou o cupom', 200]];
+    
+    const dadosPie2 = [
+        ['Tipo de calçado', 'Valor'],
+        ['Skate', 200],
+        ['Social', 300],
+        ['Esportivo', 450],
+        ['Casual', 100]
+    ];
 
     return (
         <>
@@ -42,6 +50,7 @@ export default () =>{
                 <Metricas 
                     metrica="Vendas" 
                     valor="+1,569" 
+                    color="red"
                     meta="3,600"
                     icon={arrowUpCircleFill}
                 />
@@ -49,13 +58,15 @@ export default () =>{
                 <Metricas 
                     metrica="Clientes" 
                     valor="+56" 
+                    color="yellow"
                     meta="300"
                     icon={arrowUpCircleFill}
                 />
 
                 <Metricas 
-                    metrica="Tempo de uso dos clientes" 
+                    metrica="Uso dos clientes" 
                     valor="15min" 
+                    color="green"
                     meta="12min"
                     icon={clockCircleFilled}
                 />
@@ -65,6 +76,7 @@ export default () =>{
                 <ChartBar
                     id="chart-acessos"
                     width="95%"
+                    height="30vh"
                     data={dados}
                     title="Acessos da Semana"
                     colors={[cores[1], cores[2]]}
@@ -75,13 +87,26 @@ export default () =>{
 
             <div className="chart-area">
                 <div className="charts-pie">
-                    <ChartPie
-                        width="50%"
-                        data={dadosPie1}
-                        title="Tipo de Venda"
-                        pieHole= {0.4}
-                        colors={cores}
-                    />
+                    <div>
+                        <h2>Vendas com Cupons</h2>
+                        <ChartPie
+                            width="100%"
+                            data={dadosPie1}
+                            title="Tipo de Venda"
+                            pieHole= {0.4}
+                            colors={cores}
+                        />
+                    </div>
+                    <div>
+                        <h2>Calçados mais vendidos</h2>
+                        <ChartPie
+                            title="Tipo de Venda"
+                            width="100%"
+                            data={dadosPie2}
+                            pieHole= {0.4}
+                            colors={cores}
+                        />
+                    </div>
                 </div>
             </div>
         </>

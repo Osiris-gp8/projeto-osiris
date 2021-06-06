@@ -7,9 +7,17 @@ function ChartPie(props){
         pieHole: props.pieHole,
         pieSliceText: "none",
         colors: props.colors,
+        backgroundColor: "#ECF0F7",
         chartArea: {
             width: "100%",
             height: "100%"
+        },
+        legend: {
+            position: "right",
+            alignment: "center",
+            textStyle: {
+                fontSize: 18
+            }
         }
     }
     return (

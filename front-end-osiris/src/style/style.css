@@ -495,4 +495,92 @@ html{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+} 
+
+.charts-pie div{
+    width: 50%;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.charts-pie div h2{
+    margin-left: 10%;
+    margin-bottom: 5%;
+}
+
+/* settings */
+
+.body-config{
+    width: 65%;
+    height: 94vh;
+    background-color: #ECF0F7;
+    float: right;
+    margin-top: 1.5%;
+    margin-right: 2%;
+    display: flex;
+    align-items: flex-start;
+}
+
+.body-config .container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 3%;
+}
+
+.body-config .container h1{
+    font-size: 40px;
+    color: #666BC2;
+    margin-bottom: 2%;
+}
+
+.user-config{
+    width: 100%;
+    margin-bottom: 5%;
+}
+
+.configs-head{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 2%;
+}
+
+.configs-head h2{
+    font-size: 30px;
+}
+
+.configs-head span{
+    color: #666BC2;
+    font-size: 20px;
+    margin-left: 2%;
+}
+
+.label-settings{
+    color: #666BC2;
+    margin-bottom: 5px;
+}
+
+.input-settings{
+    width: 100%;
+    height: 30px;
+    font-size: 20px;
+    border: 2px solid #666BC2;
+    padding: 5px;
+    background-color: #ECF0F7;
+    border-radius: 5px;
+}
+
+.row-configs{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.col-settings{
+    display: flex;
+    flex-direction: column;
+    margin-right: 5%;
 }

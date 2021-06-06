@@ -4,14 +4,17 @@ import { Chart } from 'react-google-charts'
 function ChartBar(props){
     const options = {
         title: props.title,
+        titleTextStyle: {
+            fontSize: 20
+        },
         legend: {
             position: "top",
             alignment: "center"
         },
         colors: props.colors,
+        backgroundColor: "#ECF0F7",
         chartArea: {
             width: "100%",
-            backgroundColor: "#ECF0F7"
         },
         hAxis: {
             title: props.titleX
@@ -25,7 +28,7 @@ function ChartBar(props){
             id={props.id}
             width={props.width}
             height={props.height}
-            chartType="Bar"
+            chartType="ColumnChart"
             loader={<span className="load">Carregando Dados</span>}
             data={props.data}
             options={options}
