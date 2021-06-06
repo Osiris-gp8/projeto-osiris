@@ -1,9 +1,13 @@
 package br.com.bandtec.osirisapi.security;
 
+import br.com.bandtec.osirisapi.repository.UsuarioRepository;
 import br.com.bandtec.osirisapi.service.AutenticacaoService;
+import br.com.bandtec.osirisapi.service.TokenService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -19,7 +23,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 
-    private AutenticacaoService autenticacaoService;
+    private final AutenticacaoService autenticacaoService;
+
+    private final TokenService tokenService;
+
+    private final UsuarioRepository usuarioRepository;
 
     @Override
     @Bean
@@ -39,11 +47,11 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 // Forma de liberar endpoints das controllers
                 .antMatchers("/auth").permitAll()
-                .antMatchers(HttpMethod.POST, "/usuarios").permitAll()
+                .antMatchers("/usuarios").permitAll()
                 .anyRequest().authenticated()
                 .and().csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and().addFilterBefore(new AutenticacaoViaTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+                .and().addFilterBefore(new AutenticacaoViaTokenFilter(tokenService, usuarioRepository), UsernamePasswordAuthenticationFilter.class);
     }
 
     // Configurações de recursos estáticos (js, css, imagens, etc..)
