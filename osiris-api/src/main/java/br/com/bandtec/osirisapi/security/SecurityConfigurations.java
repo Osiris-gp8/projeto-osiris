@@ -45,7 +45,7 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 // Forma de liberar endpoints das controllers
                 .antMatchers("/auth").permitAll()
-                .antMatchers("/usuarios").permitAll()
+                .antMatchers("/usuarios/login").permitAll()
                 .anyRequest().authenticated()
                 .and().csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
