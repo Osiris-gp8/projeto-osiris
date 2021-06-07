@@ -12,10 +12,11 @@ const Container = styled.form`
     z-index:1;
     min-width: 500px;
     display:grid;
-    grid-template: 
+    grid-template:
+    
     50px 
     repeat(3,0.5fr) 
-    1fr/ repeat(3,2fr);
+    1fr;
     grid-template-areas:
     "titulo . ."
     "G G G"

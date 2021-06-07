@@ -5,6 +5,7 @@ import bxHome from '@iconify-icons/bx/bx-home';
 import lineChartOutlined from '@iconify-icons/ant-design/line-chart-outlined';
 import peopleIcon from '@iconify-icons/bi/people';
 import gearFill from '@iconify-icons/bi/gear-fill';
+import upload from '@iconify-icons/bi/upload';
 // npm install --save-dev @iconify/react @iconify-icons/cil
 import accountLogout from '@iconify-icons/cil/account-logout';
 import { Link,useLocation, useHistory } from 'react-router-dom';
@@ -57,6 +58,12 @@ export default () =>{
                 <Item active={useLocation().pathname === '/cluster-cliente'} >
                     <IconChildren icon={peopleIcon} />
                     <p>Cliente</p>
+                </Item>
+            </Link>
+            <Link to="/upload">
+                <Item active={useLocation().pathname === '/upload'} >
+                    <IconChildren icon={upload} />
+                    <p>Arquivos</p>
                 </Item>
             </Link>
             <Link to="/config">
