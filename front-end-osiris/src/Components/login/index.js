@@ -41,6 +41,7 @@ export default () => {
             "senha": usuarioData.senha
         }).then( async response => {
             sessionStorage.setItem("usuarioLogado", JSON.stringify(response.data));
+            // sessionStorage.setItem("Token", JSON.stringify(response.data));
             history.push('/home');
         }).catch( error => {
             {/* 

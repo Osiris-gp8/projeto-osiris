@@ -7,12 +7,10 @@ import br.com.bandtec.osirisapi.dto.response.UsuarioResponse;
 import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.repository.EcommerceRepository;
 import br.com.bandtec.osirisapi.repository.UsuarioRepository;
-import javassist.NotFoundException;
-import javassist.tools.web.BadHttpRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.List;
 import java.util.Optional;
@@ -38,6 +36,7 @@ public class UsuarioService {
     }
 
     public UsuarioResponse inserirUsuario(Usuario usuario) {
+        usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
         if (!ecommerceRepository.existsById(usuario.getEcommerce().getIdEcommerce())){
             throw new ApiRequestException("Ecommerce não existente", HttpStatus.BAD_REQUEST);
         }
