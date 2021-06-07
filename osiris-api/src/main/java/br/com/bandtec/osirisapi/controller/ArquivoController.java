@@ -52,9 +52,8 @@ public class ArquivoController {
         try {
             conteudo = new String(arquivo.getBytes());
 
-            Evento evento = arquivoService.importarEventoTXT( conteudo );
+            arquivoService.importarTXT(conteudo);
 
-            eventoRepository.save(evento);
         } catch (IOException e) {
             e.printStackTrace();
             return ResponseEntity.status(400).build();

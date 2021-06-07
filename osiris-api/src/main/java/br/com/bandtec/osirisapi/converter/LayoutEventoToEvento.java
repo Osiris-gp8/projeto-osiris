@@ -8,6 +8,9 @@ import br.com.bandtec.osirisapi.layout.LayoutEvento;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Component
 public class LayoutEventoToEvento implements Converter<LayoutEvento, Evento> {
     private final Integer SEM_CUPOM = 0;
@@ -42,5 +45,11 @@ public class LayoutEventoToEvento implements Converter<LayoutEvento, Evento> {
                 .cupom(cupom)
                 .dominioStatus(dominioStatus)
                 .build();
+    }
+
+    public List<Evento> convertFromList(List<LayoutEvento> layoutEventoList){
+        return layoutEventoList.stream()
+                .map(this::convert)
+                .collect(Collectors.toList());
     }
 }
