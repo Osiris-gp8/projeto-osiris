@@ -1,9 +1,7 @@
 package br.com.bandtec.osirisapi.controller;
 
 import br.com.bandtec.osirisapi.domain.Evento;
-import br.com.bandtec.osirisapi.repository.EventoRepository;
 import br.com.bandtec.osirisapi.service.EventoService;
-import javassist.NotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -44,6 +42,13 @@ public class EventoController {
             @PathVariable Integer idEvento,
             @RequestBody Evento evento) {
         return ResponseEntity.status(200).body(eventoService.atualizarEvento(idEvento, evento));
+    }
+
+    @PutMapping
+    public ResponseEntity putDesfazer(){
+        eventoService.desfazerEvento();
+
+        return ResponseEntity.status(200).build();
     }
 
 }
