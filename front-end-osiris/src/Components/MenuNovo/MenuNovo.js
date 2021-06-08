@@ -37,7 +37,7 @@ function MenuNovo(){
                 <Item destino="/home" icon={bxHome} aba="Home"/>
                 <Item destino="/" icon={lineChartOutlined} aba="Vendas"/>
                 <Item destino="/" icon={arrowUpCircleFill} aba="Metas"/>
-                <Item destino="/" icon={fileIcon} aba="Arquivos"/>
+                <Item destino="/upload" icon={fileIcon} aba="Arquivos"/>
                 <Item destino="/config" icon={gearIcon} aba="Configuração"/>
                 <Item onClick={logoff} id="item-sair" destino="/" icon={signOut} aba="Sair"/>
             </div>

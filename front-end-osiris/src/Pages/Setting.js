@@ -3,8 +3,6 @@ import Input from '../Components/Input/Input'
 import Icon from '@iconify/react'
 import pencilIcon from '@iconify-icons/akar-icons/pencil';
 import {ButtonNoLink} from '../Components/Button'
-import Setting from '../Components/settings'
-import Suport_flex from '../Components/Style-Suport/Suport_flex'
 
 export default () =>{ 
     return (
