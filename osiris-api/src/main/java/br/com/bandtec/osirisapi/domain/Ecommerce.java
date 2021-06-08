@@ -7,6 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 @Getter
@@ -22,5 +23,6 @@ public class Ecommerce {
     private String cnpj;
 
     @NotBlank
+    @Size(min = 5, max = 45)
     private String nome;
 }
