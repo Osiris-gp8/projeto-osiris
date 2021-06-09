@@ -1,12 +1,15 @@
 package br.com.bandtec.osirisapi.utils;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class PilhaObj<T>{
-    private int topo;
+    private Integer topo;
     private T[] pilha;
 
-    public PilhaObj(int capacidade) {
+    public PilhaObj() {
         topo = -1;
-        pilha = (T[]) new Object[capacidade];
+        pilha = (T[]) new Object[10];
     }
     public boolean isEmpty() {
         return topo == -1;
