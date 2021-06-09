@@ -34,7 +34,7 @@ public class EventoToLayoutEvento implements Converter<Evento, LayoutEvento> {
         }
 
         LayoutEvento layout = LayoutEvento.builder()
-                .IdEvento( evento.getIdEvento() )
+                .IdCompra( evento.getIdEvento() )
                 .IdConsumidor( evento.getIdConsumidorEcommerce() )
                 .nomeProduto( evento.getNomeProduto() )
                 .precoProduto( evento.getPreco() )
