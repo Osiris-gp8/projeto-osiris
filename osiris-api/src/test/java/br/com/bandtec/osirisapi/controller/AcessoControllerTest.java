@@ -1,6 +1,7 @@
 package br.com.bandtec.osirisapi.controller;
 
 import br.com.bandtec.osirisapi.domain.Acesso;
+import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.repository.AcessoRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -10,6 +11,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.ResponseEntity;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -33,6 +35,18 @@ class AcessoControllerTest {
         ResponseEntity<List<Acesso>> resposta = acessoController.getAcessos();
 
         assertEquals(200, resposta.getStatusCodeValue());
+        assertEquals(3, resposta.getStatusCodeValue());
+    }
+
+    @Test
+    void getAcessosNaoOk() {
+        Mockito.when(acessoRepository.findAll()).thenReturn(new ArrayList<>());
+
+        ResponseEntity<List<Acesso>> resposta = acessoController.getAcessos();
+
+        assertThrows(ApiRequestException.class, () -> {
+            resposta.getBody().equals(null);
+        });
     }
 
     @Test
