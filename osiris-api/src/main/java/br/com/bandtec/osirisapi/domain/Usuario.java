@@ -31,7 +31,7 @@ public class Usuario implements UserDetails {
     private String loginUsuario;
 
     @NotBlank
-    @Size(min = 8, max = 16)
+//    @Size(min = 8, max = 16)
     private String senha;
 
     @NotNull
@@ -74,5 +74,17 @@ public class Usuario implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "idUsuario=" + idUsuario +
+                ", nomeCompleto='" + nomeCompleto + '\'' +
+                ", loginUsuario='" + loginUsuario + '\'' +
+                ", senha='" + senha + '\'' +
+                ", ecommerce=" + ecommerce +
+                ", perfis=" + perfis +
+                '}';
     }
 }

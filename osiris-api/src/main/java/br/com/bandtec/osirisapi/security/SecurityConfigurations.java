@@ -3,9 +3,11 @@ package br.com.bandtec.osirisapi.security;
 import br.com.bandtec.osirisapi.repository.UsuarioRepository;
 import br.com.bandtec.osirisapi.service.AutenticacaoService;
 import br.com.bandtec.osirisapi.service.TokenService;
+import com.fasterxml.jackson.core.filter.TokenFilter;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -45,7 +47,7 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 // Forma de liberar endpoints das controllers
                 .antMatchers("/auth").permitAll()
-                .antMatchers("/usuarios").permitAll()
+                .antMatchers("/usuarios/**").permitAll()
                 .anyRequest().authenticated()
                 .and().csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
