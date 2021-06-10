@@ -36,13 +36,8 @@ public class UsuarioController {
     @PutMapping("/{idUsuario}")
     public ResponseEntity putUsuario(
             @PathVariable int idUsuario,
-            @RequestBody Usuario usuario) {
+            @RequestBody @Valid Usuario usuario) {
         return ResponseEntity.status(201).body(usuarioService.atualizarUsuario(idUsuario ,usuario));
-    }
-
-    @PostMapping("/login")
-    public ResponseEntity loginUsuario(@RequestBody UsuarioAcessoRequest usuarioAcessoRequest) {
-        return ResponseEntity.status(200).body(usuarioService.logarUsuario(usuarioAcessoRequest));
     }
 
     @GetMapping("/logoff")
