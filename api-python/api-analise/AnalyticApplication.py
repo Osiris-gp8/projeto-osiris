@@ -1,12 +1,13 @@
+from numpy.lib.shape_base import split
 from DbManager import DbManager
 from ApiClient import ApiClient
 import numpy as np
 import pandas as pd
 from  datetime import date, timedelta
-
+import json
 def main():
-    db = DbManager("root", "bandtec", "localhost", "processamento_db")
-    api = ApiClient("http://localhost")
+    db = DbManager("root", "bandtec123", "localhost", "processamento_db")
+    api = ApiClient("http://localhost:8080")
 
     data_frame = db.read("SELECT * FROM eventos").astype({
         'categoria':'category',
@@ -58,19 +59,23 @@ def main():
     receber_cupom = sem_cupom_freq[ sem_cupom_freq['freq'] > freq_quartis[0.50] ].reset_index()
 
     cupons = pd.DataFrame()
-    cupons['idConsumidor'] = receber_cupom['idConsumidor']
+    cupons['idConsumidorEcommerce'] = receber_cupom['idConsumidor']
     cupons['usado'] = False
     cupons['cupomEcommerce'] = False
     cupons['nomeCupom'] = np.random.randint(1, 10, size = len(cupons))
     cupons['nomeCupom'] = 'OSIRIS'+cupons['nomeCupom'].astype(str)
     cupons['dataEmitido'] = date.today()
-    cupons['dataValido'] = cupons['dataEmitido'] + timedelta(days = 30)
+    cupons['dataValidado'] = cupons['dataEmitido'] + timedelta(days = 30)
     cupons['valor'] = receber_cupom['media_preco'] / 100
 
-    print(cupons)
+    print( cupons.to_json(orient='records'))
+    # print( type(cupons.set_index('idConsumidor').T.to_dict('list')))
+    # result = cupons.to_json(orient="split")
+    # parsed = json.loads(result)
+    # print(json.dumps(parsed, indent=4))
     
-    # api.send_data("/cupons" , cupons)
-    #db.clean_table("eventos")
+    api.send_data("/cupons/list" , cupons)
+    # db.clean_table("eventos")
     
     categorias_consumidor = data_frame.groupby(['idConsumidor','categoria']).agg(
         freq = ('idEvento', 'count')
