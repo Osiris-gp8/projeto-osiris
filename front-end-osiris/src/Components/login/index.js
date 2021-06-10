@@ -11,9 +11,9 @@ export default () => {
 
     const history = useHistory();
 
-    // if(localStorage.getItem("idUsuario")){
-    //     return history.push('/home');
-    // }
+    if(sessionStorage.getItem("token")){
+        return history.push('/home');
+    }
 
     const [usuarioData, setUsuarioData] = useState({
         "login": "",
@@ -36,12 +36,12 @@ export default () => {
             return;
         }
 
-        api.post("/usuarios/login", {
+        api.post("/auth", {
             "login": usuarioData.login,
             "senha": usuarioData.senha
         }).then( async response => {
-            sessionStorage.setItem("usuarioLogado", JSON.stringify(response.data));
-            // sessionStorage.setItem("Token", JSON.stringify(response.data));
+            sessionStorage.setItem("token", response.data.token);
+            sessionStorage.setItem("tipo", response.data.tipo);
             history.push('/home');
         }).catch( error => {
             {/* 

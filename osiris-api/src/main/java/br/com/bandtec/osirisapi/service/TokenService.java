@@ -1,16 +1,21 @@
 package br.com.bandtec.osirisapi.service;
 
 import br.com.bandtec.osirisapi.domain.Usuario;
+import br.com.bandtec.osirisapi.dto.response.UsuarioResponse;
+import com.google.gson.Gson;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
-import io.jsonwebtoken.Jwts;
 
 import java.util.Date;
 
 @Service
+@RequiredArgsConstructor
 public class TokenService {
 
     @Value("${osiris.jwt.expiration}")
@@ -19,14 +24,18 @@ public class TokenService {
     @Value("${osiris.jwt.secret}")
     private String secret;
 
+    private final Gson gson;
+
     public String gerarToken(Authentication authentication) {
         Usuario logado = (Usuario) authentication.getPrincipal();
+        System.out.println(gson.toJson(logado)
+        );
         Date hoje = new Date();
         Date dataExpiracao = new Date(hoje.getTime() + Integer.parseInt(expiration));
 
         return Jwts.builder()
                 .setIssuer("Api da Osiris")
-                .setSubject(logado.getIdUsuario().toString())
+                .setSubject(gson.toJson(logado))
                 .setIssuedAt(hoje)
                 .setExpiration(dataExpiracao)
                 .signWith(SignatureAlgorithm.HS256, secret)
@@ -43,11 +52,16 @@ public class TokenService {
     }
 
     public Integer getIdUsuario(String token) {
-        Claims claims =
-                Jwts.parser()
-                        .setSigningKey(this.secret)
-                        .parseClaimsJws(token)
-                        .getBody();
-        return Integer.parseInt(claims.getSubject());
+         UsuarioResponse usuario= getUsuarioViaToken(token);
+
+         return usuario.getIdUsuario();
+    }
+
+    public UsuarioResponse getUsuarioViaToken(String token){
+        return gson.fromJson(Jwts.parser()
+                .setSigningKey(this.secret)
+                .parseClaimsJws(token)
+                .getBody().getSubject(),
+                UsuarioResponse.class);
     }
 }
