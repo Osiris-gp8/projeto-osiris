@@ -39,6 +39,7 @@ public class Usuario implements UserDetails {
     private Ecommerce ecommerce;
 
     @ManyToMany(fetch = FetchType.EAGER)
+    @Transient
     private List<Perfil> perfis = new ArrayList<>();
 
     @Override

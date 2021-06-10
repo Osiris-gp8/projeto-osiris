@@ -1,15 +1,22 @@
 package br.com.bandtec.osirisapi.service;
 
 import br.com.bandtec.osirisapi.domain.Evento;
+import br.com.bandtec.osirisapi.domain.Usuario;
+import br.com.bandtec.osirisapi.dto.response.UsuarioResponse;
 import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.repository.EventoRepository;
 import br.com.bandtec.osirisapi.utils.EventoPilha;
 import br.com.bandtec.osirisapi.utils.PilhaObj;
 import br.com.bandtec.osirisapi.utils.enums.EventoPilhaEnum;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.util.WebUtils;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -19,13 +26,18 @@ import java.util.Optional;
 public class EventoService {
 
     private final EventoRepository eventoRepository;
+    private final TokenService tokenService;
     private final PilhaObj<EventoPilha> eventosPilasObj;
 
-    public List<Evento> getEventos(){
+    public List<Evento> getEventos(HttpServletRequest httpRequest){
 
-        List<Evento> eventos = eventoRepository.findAll();
+        String token = tokenService.getTokenViaCookie(httpRequest);
 
-        if (!eventos.isEmpty()){
+        UsuarioResponse usuario = tokenService.getUsuarioViaToken(token);
+
+        List<Evento> eventos = eventoRepository.findAllByIdEcommerce(usuario.getEcommerce().getIdEcommerce());
+
+        if (eventos.isEmpty()){
             throw new ApiRequestException("Não existem eventos", HttpStatus.NO_CONTENT);
         }
 
@@ -38,10 +50,18 @@ public class EventoService {
         return evento;
     }
 
-    public void deletarEvento(int idEvento) {
+    public void deletarEvento(int idEvento, HttpServletRequest httpRequest) {
+
+        String token = tokenService.getTokenViaCookie(httpRequest);
+        UsuarioResponse usuario = tokenService.getUsuarioViaToken(token);
 
         if (!eventoRepository.existsById(idEvento)) {
-            throw new ApiRequestException("Esse evento não existe", HttpStatus.NOT_FOUND);
+             throw new ApiRequestException("Esse evento não existe", HttpStatus.NOT_FOUND);
+        }
+
+        Evento evento = eventoRepository.findById(idEvento).get();
+        if (evento.getEcommerce().getIdEcommerce() != usuario.getEcommerce().getIdEcommerce()){
+            throw new ApiRequestException("", HttpStatus.UNAUTHORIZED);
         }
 
         eventosPilasObj.push(new EventoPilha(idEvento, eventoRepository.findById(idEvento).get() ,"delete"));
