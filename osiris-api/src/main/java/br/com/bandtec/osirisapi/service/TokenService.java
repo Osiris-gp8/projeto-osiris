@@ -7,9 +7,12 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 
 @Service
@@ -24,20 +27,26 @@ public class TokenService {
 
     private final Gson gson;
 
-    public String gerarToken(Authentication authentication) {
+    public String gerarToken(Authentication authentication, HttpServletResponse response) {
         Usuario logado = (Usuario) authentication.getPrincipal();
-        System.out.println(gson.toJson(logado)
-        );
         Date hoje = new Date();
         Date dataExpiracao = new Date(hoje.getTime() + Integer.parseInt(expiration));
 
-        return Jwts.builder()
+        String token = Jwts.builder()
                 .setIssuer("Api da Osiris")
                 .setSubject(gson.toJson(logado))
                 .setIssuedAt(hoje)
                 .setExpiration(dataExpiracao)
                 .signWith(SignatureAlgorithm.HS256, secret)
                 .compact();
+
+        Cookie cookie = new Cookie("token", token);
+        cookie.setPath("/");
+        cookie.setHttpOnly(true);
+        cookie.setMaxAge(60 * 30);
+        response.addCookie(cookie);
+
+        return token;
     }
 
     public boolean isTokenValido(String token) {

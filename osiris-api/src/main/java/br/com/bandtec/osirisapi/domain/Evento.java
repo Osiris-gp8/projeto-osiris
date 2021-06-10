@@ -39,6 +39,10 @@ public class Evento {
     private LocalDateTime dataCompra;
 
     @NotNull
+    @PastOrPresent
+    private LocalDateTime dataInclusao;
+
+    @NotNull
     @ManyToOne
     private Ecommerce ecommerce;
 

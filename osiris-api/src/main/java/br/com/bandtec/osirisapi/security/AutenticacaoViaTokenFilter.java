@@ -1,6 +1,7 @@
 package br.com.bandtec.osirisapi.security;
 
 import br.com.bandtec.osirisapi.domain.Usuario;
+import br.com.bandtec.osirisapi.dto.response.UsuarioResponse;
 import br.com.bandtec.osirisapi.repository.UsuarioRepository;
 import br.com.bandtec.osirisapi.service.TokenService;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -37,8 +38,8 @@ public class AutenticacaoViaTokenFilter extends OncePerRequestFilter {
     }
 
     private void autenticarCliente(String token) {
-        Integer idUsuario = tokenService.getIdUsuario(token);
-        Usuario usuario = repository.findById(idUsuario).get();
+        UsuarioResponse usuarioResponse = tokenService.getUsuarioViaToken(token);
+        Usuario usuario = repository.findById(usuarioResponse.getIdUsuario()).get();
         UsernamePasswordAuthenticationToken authentication =
                 new UsernamePasswordAuthenticationToken(usuario, null, usuario.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authentication);
