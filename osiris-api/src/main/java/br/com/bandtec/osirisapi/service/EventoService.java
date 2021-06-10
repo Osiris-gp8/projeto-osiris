@@ -31,12 +31,7 @@ public class EventoService {
 
     public List<Evento> getEventos(HttpServletRequest httpRequest){
 
-        Cookie cookie = WebUtils.getCookie(httpRequest, "token");
-        if (Objects.isNull(cookie)){
-            throw new ApiRequestException("", HttpStatus.UNAUTHORIZED);
-        }
-
-        String token = cookie.getValue();
+        String token = tokenService.getTokenViaCookie(httpRequest);
 
         UsuarioResponse usuario = tokenService.getUsuarioViaToken(token);
 
@@ -55,10 +50,18 @@ public class EventoService {
         return evento;
     }
 
-    public void deletarEvento(int idEvento) {
+    public void deletarEvento(int idEvento, HttpServletRequest httpRequest) {
+
+        String token = tokenService.getTokenViaCookie(httpRequest);
+        UsuarioResponse usuario = tokenService.getUsuarioViaToken(token);
 
         if (!eventoRepository.existsById(idEvento)) {
              throw new ApiRequestException("Esse evento não existe", HttpStatus.NOT_FOUND);
+        }
+
+        Evento evento = eventoRepository.findById(idEvento).get();
+        if (evento.getEcommerce().getIdEcommerce() != usuario.getEcommerce().getIdEcommerce()){
+            throw new ApiRequestException("", HttpStatus.UNAUTHORIZED);
         }
 
         eventosPilasObj.push(new EventoPilha(idEvento, eventoRepository.findById(idEvento).get() ,"delete"));
