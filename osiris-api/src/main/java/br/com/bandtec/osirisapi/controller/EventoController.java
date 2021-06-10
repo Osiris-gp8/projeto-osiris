@@ -1,11 +1,20 @@
 package br.com.bandtec.osirisapi.controller;
 
 import br.com.bandtec.osirisapi.domain.Evento;
+import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.service.EventoService;
+import br.com.bandtec.osirisapi.service.TokenService;
+import com.sun.corba.se.impl.interceptors.RequestInfoImpl;
 import lombok.AllArgsConstructor;
+import org.omg.PortableInterceptor.RequestInfo;
+import org.springframework.http.HttpRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -16,17 +25,13 @@ public class EventoController {
     private final EventoService eventoService;
 
     @GetMapping
-    public ResponseEntity getEventos() {
+    public ResponseEntity getEventos(HttpServletRequest httpRequest) {
 
-        List<Evento> eventos = eventoService.getEventos();
-        if (eventos.isEmpty()){
-            return ResponseEntity.status(204).build();
-        }
-        return ResponseEntity.status(200).body(eventos);
+        return ResponseEntity.status(200).body(eventoService.getEventos(httpRequest));
     }
 
     @PostMapping
-    public ResponseEntity postEvento(@RequestBody Evento novoEvento) {
+    public ResponseEntity postEvento(@RequestBody @Valid Evento novoEvento) {
 
         return ResponseEntity.status(201).body(eventoService.inserirEvento(novoEvento));
     }

@@ -30,4 +30,8 @@ public interface EventoRepository extends JpaRepository<Evento, Integer> {
     @Query(value = "select count(*) from evento e, cupom c where e.fk_cupom = c.id_cupom " +
             "and c.usado=false and e.fk_status = 2", nativeQuery = true)
     Integer countAllByCupomAndEventoAndUsadoIsFalseAndFkStatus();
+
+    @Query(value = "select e.* from evento e, ecommerce ec where e.ecommerce_id_ecommerce = ?1 and e.ecommerce_id_ecommerce = ec.id_ecommerce",
+            nativeQuery = true)
+    List<Evento> findAllByIdEcommerce(Integer idEcommerce);
 }
