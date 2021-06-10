@@ -1,7 +1,7 @@
 import React from 'react';
-import { Chart } from 'react-google-charts'
+import { Chart } from 'react-google-charts';
 
-function ChartBar(props){
+function ChartLine(props){
     const options = {
         title: props.title,
         titleTextStyle: {
@@ -20,20 +20,20 @@ function ChartBar(props){
             title: props.titleX
         },
         vAxis: {
-            title: props.titleY
+            title: props.titleV
         }
     }
     return(
         <Chart
-            id={props.id}
             width={props.width}
             height={props.height}
-            chartType="ColumnChart"
-            loader={<span className="load">Carregando Dados</span>}
+            chartType="LineChart"
+            loader={<div>Carregando gráfico</div>}
             data={props.data}
             options={options}
+            rootProps={{ 'data-testid': '1' }}
         />
     );
 }
 
-export default ChartBar;
+export default ChartLine;

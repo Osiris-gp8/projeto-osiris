@@ -1,4 +1,4 @@
-import { Recat, useEffect } from 'react';
+import { React, useEffect } from 'react';
 import MenuNovo from '../Components/MenuNovo/MenuNovo';
 import Metricas from '../Components/Metricas/Metricas';
 import arrowUpCircleFill from '@iconify-icons/bi/arrow-up-circle-fill';
@@ -80,7 +80,7 @@ export default () =>{
                     title="Acessos da Semana"
                     colors={[cores[1], cores[2]]}
                     titleX="Dias da semana"
-                    titleV="Acessos x Vendas"
+                    titleY="Acessos x Vendas"
                 />
             </div>
 

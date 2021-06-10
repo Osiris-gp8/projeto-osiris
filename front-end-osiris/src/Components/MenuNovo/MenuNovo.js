@@ -35,7 +35,7 @@ function MenuNovo(){
 
             <div className="itens-menu">
                 <Item destino="/home" icon={bxHome} aba="Home"/>
-                <Item destino="/" icon={lineChartOutlined} aba="Vendas"/>
+                <Item destino="/sales" icon={lineChartOutlined} aba="Vendas"/>
                 <Item destino="/" icon={arrowUpCircleFill} aba="Metas"/>
                 <Item destino="/upload" icon={fileIcon} aba="Arquivos"/>
                 <Item destino="/config" icon={gearIcon} aba="Configuração"/>
