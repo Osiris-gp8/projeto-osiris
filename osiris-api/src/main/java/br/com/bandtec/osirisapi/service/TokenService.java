@@ -2,18 +2,23 @@ package br.com.bandtec.osirisapi.service;
 
 import br.com.bandtec.osirisapi.domain.Usuario;
 import br.com.bandtec.osirisapi.dto.response.UsuarioResponse;
+import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import com.google.gson.Gson;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
+import org.springframework.web.util.WebUtils;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -71,4 +76,15 @@ public class TokenService {
                 .getBody().getSubject(),
                 UsuarioResponse.class);
     }
+
+
+    public String getTokenViaCookie(HttpServletRequest httpRequest){
+        Cookie cookie = WebUtils.getCookie(httpRequest, "token");
+        if (Objects.isNull(cookie)){
+            throw new ApiRequestException("", HttpStatus.UNAUTHORIZED);
+        }
+
+        return cookie.getValue();
+    }
+
 }

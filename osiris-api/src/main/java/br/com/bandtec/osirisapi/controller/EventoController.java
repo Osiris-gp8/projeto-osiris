@@ -37,8 +37,8 @@ public class EventoController {
     }
 
     @DeleteMapping("/{idEvento}")
-    public ResponseEntity deleteEvento(@PathVariable int idEvento) {
-        eventoService.deletarEvento(idEvento);
+    public ResponseEntity deleteEvento(@PathVariable int idEvento, HttpServletRequest httpRequest) {
+        eventoService.deletarEvento(idEvento, httpRequest);
         return ResponseEntity.status(200).build();
     }
 
