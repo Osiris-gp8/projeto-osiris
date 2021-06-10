@@ -4,10 +4,8 @@ import br.com.bandtec.osirisapi.domain.Usuario;
 import br.com.bandtec.osirisapi.dto.response.UsuarioResponse;
 import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import com.google.gson.Gson;
-import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpRequest;
@@ -78,6 +76,7 @@ public class TokenService {
                 .getBody().getSubject(),
                 UsuarioResponse.class);
     }
+
 
     public String getTokenViaCookie(HttpServletRequest httpRequest){
         Cookie cookie = WebUtils.getCookie(httpRequest, "token");
