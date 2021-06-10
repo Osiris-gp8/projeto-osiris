@@ -49,11 +49,11 @@ public class LayoutCupom implements Layout{
     public void fromTXT(String conteudo) {
         idCupom = Integer.valueOf(conteudo.substring(2, 7));
         nomeCupom = conteudo.substring(7, 17);
-        valor = Double.valueOf(conteudo.substring(17, 21));
-        dataEmitido = LocalDateTime.parse(conteudo.substring(21, 30), FORMATO_DATA_HORA);
-        dataValido = LocalDateTime.parse(conteudo.substring(30, 49), FORMATO_DATA_HORA);
-        idConsumidor = Integer.valueOf(conteudo.substring(49, 54));
-        usado = Integer.valueOf( conteudo.substring(54, 55) ) == 1;
-        cupomEcommerce = Integer.valueOf( conteudo.substring(55, 56) ) == 1;
+        valor = Double.valueOf(conteudo.substring(17, 21).replace(",", "."));
+        dataEmitido = LocalDateTime.parse(conteudo.substring(21, 40), FORMATO_DATA_HORA);
+        dataValido = LocalDateTime.parse(conteudo.substring(40, 59), FORMATO_DATA_HORA);
+        idConsumidor = Integer.valueOf(conteudo.substring(59, 64));
+        usado = Integer.valueOf( conteudo.substring(64, 65) ) == 1;
+        cupomEcommerce = Integer.valueOf( conteudo.substring(65, 66) ) == 1;
     }
 }

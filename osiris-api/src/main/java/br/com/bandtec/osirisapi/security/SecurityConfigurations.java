@@ -45,11 +45,14 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 // Forma de liberar endpoints das controllers
                 .antMatchers("/auth").permitAll()
-                .antMatchers("/usuarios").permitAll()
+//                .antMatchers("/usuarios").permitAll()
+                .antMatchers("/usuarios/**").permitAll()
                 .anyRequest().authenticated()
                 .and().csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and().addFilterBefore(new AutenticacaoViaTokenFilter(tokenService, usuarioRepository), UsernamePasswordAuthenticationFilter.class);
+                .and().addFilterBefore(
+                        new AutenticacaoViaTokenFilter(tokenService, usuarioRepository),
+                        UsernamePasswordAuthenticationFilter.class);
     }
 
     // Configurações de recursos estáticos (js, css, imagens, etc..)
