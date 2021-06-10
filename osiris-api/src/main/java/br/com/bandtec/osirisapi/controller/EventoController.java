@@ -45,7 +45,7 @@ public class EventoController {
     @PutMapping("/{idEvento}")
     public ResponseEntity atualizarEvento(
             @PathVariable Integer idEvento,
-            @RequestBody Evento evento) {
+            @RequestBody @Valid Evento evento) {
         return ResponseEntity.status(200).body(eventoService.atualizarEvento(idEvento, evento));
     }
 
