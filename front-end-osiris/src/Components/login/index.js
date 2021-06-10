@@ -11,9 +11,11 @@ export default () => {
 
     const history = useHistory();
 
-    if(sessionStorage.getItem("token")){
-        return history.push('/home');
-    }
+    useEffect(() =>{
+        if(sessionStorage.getItem("token")){
+            return history.push('/home');
+        }
+    }, []);
 
     const [usuarioData, setUsuarioData] = useState({
         "login": "",

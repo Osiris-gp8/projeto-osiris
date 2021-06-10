@@ -427,6 +427,14 @@ html{
     text-decoration: underline;
 }
 
+.item-menu button{
+    background-color: #ECF0F7;
+    border: none;
+    font-size: 25px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
 .icon-menu{
     color: #666BC2;
 }

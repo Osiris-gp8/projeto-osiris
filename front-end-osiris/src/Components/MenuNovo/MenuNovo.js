@@ -1,5 +1,5 @@
 import React from 'react';
-import Item from './Item/Item';
+import {Item, ItemSair} from './Item/Item';
 import bxHome from '@iconify-icons/bx/bx-home';
 import lineChartOutlined from '@iconify-icons/ant-design/line-chart-outlined';
 import arrowUpCircleFill from '@iconify-icons/bi/arrow-up-circle-fill';
@@ -12,21 +12,21 @@ import api from '../../api';
 function MenuNovo(){
     const history = useHistory();
     const nomeUser = "Patrick";
-    // const nomeUser = JSON.parse(sessionStorage.getItem("usuarioLogado")).nomeUsuario;
 
     function logoff(){
 
-        let uri = "";
-        if(sessionStorage.getItem("usuarioLogado")){
-            uri = "/usuarios/logoff?idUsuario=" + JSON.parse(sessionStorage.getItem("usuarioLogado")).idUsuario;
-        }
-
-        api.get(uri).then( response => {
-            sessionStorage.removeItem("usuarioLogado");
-            return history.push("/login");
-        }).catch(error => {
-            console.log(error);
-        })
+        sessionStorage.removeItem("token");
+        sessionStorage.removeItem("tipo");
+        return history.push("/login");
+        
+        // api.get("/usuarios/logoff?idUsuario=1").then( response => {
+        //     console.log(response);
+        //     sessionStorage.removeItem("token");
+        //     sessionStorage.removeItem("tipo");
+        //     return history.push("/login");
+        // }).catch(error => {
+        //     console.log(error);
+        // })
     }
     return(
         <div className="menu">
@@ -39,7 +39,7 @@ function MenuNovo(){
                 <Item destino="/" icon={arrowUpCircleFill} aba="Metas"/>
                 <Item destino="/upload" icon={fileIcon} aba="Arquivos"/>
                 <Item destino="/config" icon={gearIcon} aba="Configuração"/>
-                <Item onClick={logoff} id="item-sair" destino="/" icon={signOut} aba="Sair"/>
+                <ItemSair function={logoff} id="item-sair" icon={signOut} aba="Sair"/>
             </div>
         </div>
     );

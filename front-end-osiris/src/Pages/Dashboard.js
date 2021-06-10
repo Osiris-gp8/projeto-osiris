@@ -8,13 +8,12 @@ import ChartPie from '../Components/ChartPie/ChartPie';
 import { useHistory } from 'react-router-dom';
 
 export default () =>{ 
-    // const history = useHistory();
-    // useEffect(() => {
-    //     if(sessionStorage.getItem("usuarioLogado") == null || !sessionStorage.getItem("usuarioLogado")){
-    //         console.log("volta")
-    //         return history.push("/login"); 
-    //     }
-    // }, []);
+    const history = useHistory();
+    useEffect(() =>{
+        if(!sessionStorage.getItem("token")){
+            return history.push('/login');
+        }
+    }, []);
 
     const cores = ["#666BC2", "#8CA8D1", "#B3C8E1", "#D9E2F0", "#ECF0F7"];
     
