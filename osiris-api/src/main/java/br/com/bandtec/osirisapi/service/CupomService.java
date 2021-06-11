@@ -72,7 +72,6 @@ public class CupomService {
     }
 
     public List<Cupom> adicionarCupons(List<Cupom> cupons) {
-
         return cupons
                 .stream()
                 .map(cupom -> cupomRepository.save(cupom))
