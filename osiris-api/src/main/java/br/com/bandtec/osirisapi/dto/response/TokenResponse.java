@@ -1,4 +1,4 @@
-package br.com.bandtec.osirisapi.dto;
+package br.com.bandtec.osirisapi.dto.response;
 
 import br.com.bandtec.osirisapi.dto.response.UsuarioResponse;
 import lombok.AllArgsConstructor;
@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class TokenDto {
+public class TokenResponse {
 
     private String token;
     private String tipo;
