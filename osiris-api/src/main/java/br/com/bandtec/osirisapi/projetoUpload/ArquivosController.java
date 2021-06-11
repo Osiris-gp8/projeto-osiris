@@ -1,7 +1,9 @@
 package br.com.bandtec.osirisapi.projetoUpload;
 
 import br.com.bandtec.osirisapi.domain.Cupom;
+import br.com.bandtec.osirisapi.domain.Ecommerce;
 import br.com.bandtec.osirisapi.domain.Evento;
+import br.com.bandtec.osirisapi.repository.EventoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,8 +29,10 @@ public class ArquivosController {
     @Autowired
     private AnexoRepository anexoRepository;
 
-    private Integer IdCompra;
-    private Integer IdConsumidor;
+    private EventoRepository eventoRepository;
+
+    private Integer idEvento;
+    private Integer idConsumidor;
     private String nomeProduto;
     private Double precoProduto;
     private String categoriaProduto;
@@ -58,82 +62,112 @@ public class ArquivosController {
         return ResponseEntity.status(201).build();
     }
 
-//    @PostMapping("/importacaoCSV")
-//    public ResponseEntity criarImportacao(@RequestParam MultipartFile arquivo) throws IOException {
-//        Evento evento = new Evento();
-//        Cupom cupom = new Cupom();
-//        String conteudoString = new String(arquivo.getBytes());
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-//        String[] conteudoSeparado = conteudoString.split(";");
-//        Scanner entradaCSV = null;
-//
-//        System.out.println("CSV");
-//        System.out.printf("%05d%05d%-45s%9.2f%-45s%-19s%-45s%-45s%7.2f%-45s%n\n", "IdCompra", "IdConsumidor"
-//                , "NomeProduto", "PrecoProduto", "CategoriaProduto", "DataCompra", "NomeEcommerce", "NomeCupom",
-//                "ValorCupom");
-//        while (entradaCSV.hasNext()) {
-//            IdCompra = Integer.valueOf(conteudoSeparado[0]);
-//            IdConsumidor = Integer.valueOf(conteudoSeparado[1]);
-//            nomeProduto = conteudoSeparado[2];
-//            precoProduto = Double.valueOf(conteudoSeparado[3]);
-//            categoriaProduto = conteudoSeparado[4];
-//            dataCompra = LocalDateTime.parse(conteudoSeparado[5]);
-//            nomeEcommerce = conteudoSeparado[6];
-//            nomeCupom = conteudoSeparado[7];
-//            valorCupom = Double.valueOf(conteudoSeparado[8]);
-//        }
-//        // evento.setIdCompra(IdCompra);
-//        evento.setIdConsumidorEcommerce(IdConsumidor);
-//        evento.setNomeProduto(nomeProduto);
-//        evento.setPreco(precoProduto);
-//        evento.setNomeCategoria(categoriaProduto);
-//        evento.setDataCompra(dataCompra);
-//        // evento.setFkEcommerce(nomeEcommerce);
-//        cupom.setNomeCupom(nomeCupom);
-//        cupom.setValor(valorCupom);
-//        evento.setCupom(cupom);
-//        // // ///////////////////////// CSV
-//    }
-//
-//
-//    @PostMapping("/importacaoTXT")
-//    public ResponseEntity criarImportacao(@RequestParam MultipartFile arquivo) throws IOException {
-//        Scanner entradaTXT = null;
-//        Evento evento = new Evento();
-//        Cupom cupom = new Cupom();
-//        String conteudoString = new String(arquivo.getBytes());
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-//        String[] conteudoSeparado = conteudoString.split(";");
-//
-//
-//        System.out.println("TXT");
-//        System.out.printf("%05d%05d%-45s%9.2f%-45s%-19s%-45s%-45s%7.2f%-45s%n\n", "IdCompra", "IdConsumidor"
-//                , "NomeProduto", "PrecoProduto", "CategoriaProduto", "DataCompra", "NomeEcommerce", "NomeCupom",
-//                "ValorCupom");
-//        while (entradaTXT.hasNext()) {
-//            IdCompra = Integer.valueOf(conteudoSeparado[0]);
-//            IdConsumidor = Integer.valueOf(conteudoSeparado[1]);
-//            nomeProduto = conteudoSeparado[2];
-//            precoProduto = Double.valueOf(conteudoSeparado[3]);
-//            categoriaProduto = conteudoSeparado[4];
-//            dataCompra = LocalDateTime.parse(conteudoSeparado[5]);
-//            nomeEcommerce = conteudoSeparado[6];
-//            nomeCupom = conteudoSeparado[7];
-//            valorCupom = Double.valueOf(conteudoSeparado[8]);
-//
-//        }
-//        evento.setIdConsumidorEcommerce(IdConsumidor);
-//        evento.setNomeProduto(nomeProduto);
-//        evento.setPreco(precoProduto);
-//        evento.setNomeCategoria(categoriaProduto);
-//        evento.setDataCompra(dataCompra);
-//        // evento.setFkEcommerce(nomeEcommerce);
-//        cupom.setNomeCupom(nomeCupom);
-//        cupom.setValor(valorCupom);
-//        evento.setCupom(cupom);
-//
-//        //   anexoRepository.save(evento);
-//    }
+    @PostMapping("/importacaoCSV")
+    public ResponseEntity criarImportacaoCSV(@RequestParam MultipartFile arquivo) throws IOException {
+        Evento evento = new Evento();
+        Cupom cupom = new Cupom();
+        Ecommerce ecommerce = new Ecommerce();
+
+        // criar objeto de Ecommerce e fazer nomeEcommerce
+
+        String conteudoString = new String(arquivo.getBytes());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        String[] conteudoSeparado = conteudoString.split(";");
+        Scanner entradaCSV = null;
+
+        idEvento = Integer.valueOf(conteudoSeparado[0]);
+        idConsumidor = Integer.valueOf(conteudoSeparado[1]);
+        nomeProduto = conteudoSeparado[2];
+        precoProduto = Double.valueOf(conteudoSeparado[3]);
+        categoriaProduto = conteudoSeparado[4];
+        dataCompra = LocalDateTime.parse(conteudoSeparado[5]);
+        nomeEcommerce = conteudoSeparado[6];
+        nomeCupom = conteudoSeparado[7];
+        valorCupom = Double.valueOf(conteudoSeparado[8]);
+
+        evento.setIdEvento(idEvento);
+        evento.setIdConsumidorEcommerce(idConsumidor);
+        evento.setNomeProduto(nomeProduto);
+        evento.setPreco(precoProduto);
+        evento.setNomeCategoria(categoriaProduto);
+        evento.setDataCompra(dataCompra);
+        ecommerce.setNome(nomeEcommerce);
+        cupom.setNomeCupom(nomeCupom);
+        cupom.setValor(valorCupom);
+        evento.setCupom(cupom);
+
+        eventoRepository.save(evento);
+
+        return ResponseEntity.status(201).build();
+
+    }
+
+
+    @PostMapping("/importacaoTXT")
+    public ResponseEntity criarImportacaoTXT(@RequestParam MultipartFile arquivo) throws IOException {
+        Evento evento = new Evento();
+        Ecommerce ecommerce = new Ecommerce();
+        Cupom cupom = new Cupom();
+        String conteudoString = new String(arquivo.getBytes());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        String[] conteudoSeparado = conteudoString.split(";");
+
+
+       // tipoRegistro = registro.substring(0, 2); // obtém os 2 primeiros caracteres do registro
+
+      //  if (tipoRegistro.equals("00")) {
+       //     System.out.println("Header");
+         //   System.out.println("Tipo de arquivo: " + registro.substring(2, 6));
+           // int periodoLetivo= Integer.parseInt(registro.substring(6,11));
+          //  System.out.println("Período letivo: " + periodoLetivo);
+          //  System.out.println("Data/hora de geração do arquivo: " + registro.substring(11,30));
+          //  System.out.println("Versão do layout: " + registro.substring(30,32));
+      //  }
+      //  else if (tipoRegistro.equals("01")) {
+          //  System.out.println("\nTrailer");
+          //  int qtdRegistro = Integer.parseInt(registro.substring(2,12));
+        //    if (qtdRegistro == contRegistro) {
+            //    System.out.println("Quantidade de registros gravados compatível com quantidade lida");
+        //    }
+        //    else {
+        //        System.out.println("Quantidade de registros gravados não confere com quantidade lida");
+         //   }
+      //  }
+      //  else if (tipoRegistro.equals("02")) {
+       //     if (contRegistro == 0) {
+        //        System.out.println();
+       //         System.out.printf("%-8s %-50s %-40s %5s %6s\n","RA","NOME DO ALUNO","DISCIPLINA",
+       //                 "MÉDIA", "FALTAS");
+
+        //    }
+        idEvento = Integer.valueOf(conteudoSeparado[0].substring(3,7));
+        idConsumidor = Integer.valueOf(conteudoSeparado[1].substring(8,12));
+        nomeProduto = conteudoSeparado[2].substring(13,57);
+        precoProduto = Double.valueOf(conteudoSeparado[3].substring(58,66).replace(',','.'));
+        categoriaProduto = conteudoSeparado[4].substring(67,111);
+        dataCompra = LocalDateTime.parse(conteudoSeparado[5].substring(111,130));
+        nomeEcommerce = conteudoSeparado[6].substring(131,175);
+        nomeCupom = conteudoSeparado[7].substring(176,220);
+        valorCupom = Double.valueOf(conteudoSeparado[8].substring(221,227).replace(',','.'));
+
+        evento.setIdEvento(idEvento);
+        evento.setIdConsumidorEcommerce(idConsumidor);
+        evento.setNomeProduto(nomeProduto);
+        evento.setPreco(precoProduto);
+        evento.setNomeCategoria(categoriaProduto);
+        evento.setDataCompra(dataCompra);
+        ecommerce.setNome(nomeEcommerce);
+        cupom.setNomeCupom(nomeCupom);
+        cupom.setValor(valorCupom);
+        evento.setCupom(cupom);
+
+        //    contRegistro++;
+      //  }
+
+
+           eventoRepository.save(evento);
+        return ResponseEntity.status(201).build();
+    }
 
     @PostMapping("/anexo")
     public ResponseEntity criarAnexo(@RequestParam MultipartFile arquivo) throws IOException {
