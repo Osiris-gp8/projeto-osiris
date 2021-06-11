@@ -2,7 +2,7 @@ package br.com.bandtec.osirisapi.controller;
 
 import br.com.bandtec.osirisapi.converter.implementation.UsuarioConverterImplementation;
 import br.com.bandtec.osirisapi.domain.Usuario;
-import br.com.bandtec.osirisapi.dto.TokenDto;
+import br.com.bandtec.osirisapi.dto.response.TokenResponse;
 import br.com.bandtec.osirisapi.dto.request.UsuarioAcessoRequest;
 import br.com.bandtec.osirisapi.dto.response.UsuarioResponse;
 import br.com.bandtec.osirisapi.service.TokenService;
@@ -41,7 +41,7 @@ public class AutenticacaoController {
             Usuario usuario = (Usuario) authentication.getPrincipal();
             UsuarioResponse usuarioResponse = usuarioConverterImplementation.usuarioToUsuarioResponse(usuario);
 
-            return ResponseEntity.status(200).body(new TokenDto(token, "Bearer", usuarioResponse));
+            return ResponseEntity.status(200).body(new TokenResponse(token, "Bearer", usuarioResponse));
         } catch (AuthenticationException e) {
             return ResponseEntity.status(400).build();
         }

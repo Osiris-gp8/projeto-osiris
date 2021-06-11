@@ -31,9 +31,11 @@ public class EventoController {
     }
 
     @PostMapping
-    public ResponseEntity postEvento(@RequestBody @Valid Evento novoEvento) {
+    public ResponseEntity postEvento(@RequestBody @Valid Evento novoEvento, HttpServletRequest httpRequest) {
 
-        return ResponseEntity.status(201).body(eventoService.inserirEvento(novoEvento));
+        return ResponseEntity.status(202).header(
+                "protocolo",
+                eventoService.inserirEvento(novoEvento, httpRequest)).build();
     }
 
     @DeleteMapping("/{idEvento}")
@@ -45,8 +47,20 @@ public class EventoController {
     @PutMapping("/{idEvento}")
     public ResponseEntity atualizarEvento(
             @PathVariable Integer idEvento,
-            @RequestBody Evento evento) {
+            @RequestBody @Valid Evento evento) {
         return ResponseEntity.status(200).body(eventoService.atualizarEvento(idEvento, evento));
+    }
+
+    @GetMapping("/protocolos/{idProtocolo}")
+    public ResponseEntity getEventoPorProtocolo(@PathVariable String idProtocolo, HttpServletRequest httpRequest){
+
+        return ResponseEntity.status(200).body(eventoService.getEventoProtocolo(idProtocolo, httpRequest));
+    }
+
+    @GetMapping("/protocolos")
+    public ResponseEntity getEventosProtocolo(HttpServletRequest httpRequest){
+
+        return ResponseEntity.status(200).body(eventoService.getEventosProtocolo(httpRequest));
     }
 
     @PutMapping
