@@ -1,3 +1,5 @@
+import {React, useEffect} from 'react'
+import { useHistory } from 'react-router-dom'
 import MenuNovo from '../Components/MenuNovo/MenuNovo'
 import Input from '../Components/Input/Input'
 import Icon from '@iconify/react'
@@ -5,6 +7,14 @@ import pencilIcon from '@iconify-icons/akar-icons/pencil';
 import {ButtonNoLink} from '../Components/Button'
 
 export default () =>{ 
+
+    const history = useHistory();
+    useEffect(() =>{
+        if(!sessionStorage.getItem("token")){
+            return history.push('/login');
+        }
+    }, []);
+
     return (
         <>
             <MenuNovo/>

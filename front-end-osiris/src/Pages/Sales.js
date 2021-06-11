@@ -1,7 +1,17 @@
+import {React, useEffect} from 'react';
 import MenuNovo from '../Components/MenuNovo/MenuNovo'
 import ChartLine from '../Components/ChartLine/ChartLine'
+import { useHistory } from 'react-router-dom';
 
 export default () =>{ 
+
+    const history = useHistory();
+    useEffect(() =>{
+        if(!sessionStorage.getItem("token")){
+            return history.push('/login');
+        }
+    }, []);
+    
     const cores = ["#666BC2", "#8CA8D1", "#B3C8E1", "#D9E2F0", "#ECF0F7"];
     const dados = [
         ['Acessos', 'Vendas'],

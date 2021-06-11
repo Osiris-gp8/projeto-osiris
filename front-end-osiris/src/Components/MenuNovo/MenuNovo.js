@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {Item, ItemSair} from './Item/Item';
 import bxHome from '@iconify-icons/bx/bx-home';
 import lineChartOutlined from '@iconify-icons/ant-design/line-chart-outlined';
@@ -11,22 +11,17 @@ import api from '../../api';
 
 function MenuNovo(){
     const history = useHistory();
-    const nomeUser = "Patrick";
+    const [nomeUser, setNomeUser] = useState("");
+
+    useEffect(() => {
+        setNomeUser(JSON.parse(sessionStorage.getItem("usuario")).nomeCompleto);
+    }, []);
 
     function logoff(){
 
         sessionStorage.removeItem("token");
         sessionStorage.removeItem("tipo");
         return history.push("/login");
-        
-        // api.get("/usuarios/logoff?idUsuario=1").then( response => {
-        //     console.log(response);
-        //     sessionStorage.removeItem("token");
-        //     sessionStorage.removeItem("tipo");
-        //     return history.push("/login");
-        // }).catch(error => {
-        //     console.log(error);
-        // })
     }
     return(
         <div className="menu">
