@@ -165,7 +165,7 @@ public class EventoService {
         );
 
         if (!eventoProtocolo.isPresent()){
-            throw new ApiRequestException("Evento Protocolo não existe", HttpStatus.NOT_FOUND);
+            throw new ApiRequestException("Evento Protocolo não encontrado", HttpStatus.NOT_FOUND);
         }
 
         return eventoConverter.eventoProtocoloToEventoProtocoloResponse(eventoProtocolo.get());
@@ -186,6 +186,10 @@ public class EventoService {
 
                 eventosProtocolo.add(eventoProtocolo);
             }
+        }
+
+        if (eventosProtocolo.isEmpty()){
+            throw new ApiRequestException("", HttpStatus.NO_CONTENT);
         }
 
         return eventoConverter.eventoProtocoloToEventoProtocoloResponse(eventosProtocolo);
