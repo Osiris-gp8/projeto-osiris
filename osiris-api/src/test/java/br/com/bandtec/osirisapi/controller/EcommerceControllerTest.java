@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -30,6 +31,8 @@ class EcommerceControllerTest {
 
         Mockito.when(ecommerceRepository.findAll()).thenReturn(ecommerceList);
         ResponseEntity<List<Ecommerce>> resposta = ecommerceController.getEcommerce();
+
+        assertEquals(200, resposta.getStatusCodeValue());
     }
 
     @Test
@@ -56,7 +59,16 @@ class EcommerceControllerTest {
 
     @Test
     void atualizarEcommerce() {
-        int idTeste = 1;
+        int idTeste = 31;
+        Ecommerce ecommerce = new Ecommerce();
 
+        Optional<Ecommerce> optionalEcommerce = Optional.of(new Ecommerce());
+        Mockito.when(ecommerceRepository.findById(idTeste))
+                .thenReturn(optionalEcommerce);
+
+        ResponseEntity resposta =
+                ecommerceController.atualizarEcommerce(idTeste, ecommerce);
+
+        assertEquals(200, resposta.getStatusCodeValue());
     }
 }
