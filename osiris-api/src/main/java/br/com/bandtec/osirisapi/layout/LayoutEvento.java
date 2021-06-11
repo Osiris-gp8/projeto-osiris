@@ -1,9 +1,6 @@
 package br.com.bandtec.osirisapi.layout;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -14,99 +11,74 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @Builder
+@AllArgsConstructor
 public class LayoutEvento implements Layout {
+
+    private final DateTimeFormatter FORMATO_DATA_HORA = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+
     private Integer IdEvento;
     private Integer IdConsumidor;
     private String nomeProduto;
     private Double precoProduto;
     private String categoriaProduto;
     private LocalDateTime dataCompra;
+    private Integer idEcommerce;
     private String nomeEcommerce;
+    private Integer idCupom;
     private String nomeCupom;
     private Double valorCupom;
-    private String status;
+    private Integer idDominioStatus;
+    private String statusNome;
 
-    public LayoutEvento(Integer IdEvento, Integer idConsumidor, String nomeProduto, Double precoProduto,
-                        String categoriaProduto, LocalDateTime dataCompra, String nomeEcommerce, String nomeCupom,
-                        Double valorCupom, String status) {
-        IdEvento = IdEvento;
-        IdConsumidor = idConsumidor;
-        this.nomeProduto = nomeProduto;
-        this.precoProduto = precoProduto;
-        this.categoriaProduto = categoriaProduto;
-        this.dataCompra = dataCompra;
-        this.nomeEcommerce = nomeEcommerce;
-        this.nomeCupom = nomeCupom;
-        this.valorCupom = valorCupom;
-        this.status = status;
-    }
-
-    @Override
-    public String toString() {
-        return "Layout{" +
-                "IdEvento=" + IdEvento +
-                ", IdConsumidor=" + IdConsumidor +
-                ", nomeProduto='" + nomeProduto + '\'' +
-                ", precoProduto=" + precoProduto +
-                ", categoriaProduto='" + categoriaProduto + '\'' +
-                ", dataCompra=" + dataCompra +
-                ", nomeEcommerce='" + nomeEcommerce + '\'' +
-                ", nomeCupom='" + nomeCupom + '\'' +
-                ", valorCupom=" + valorCupom +
-                ", status='" + status + '\'' +
-                '}';
-    }
 
     @Override
     public String toCSV() {
-//        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+
         return String.format("%d;%d;%s;%.2f;%s;%s;%s;%s;%.2f;%s%n",
                 this.getIdEvento(), this.getIdConsumidor(), this.getNomeProduto(),
-                this.getPrecoProduto(), this.getCategoriaProduto(), this.getDataCompra().format(formatter),
+                this.getPrecoProduto(), this.getCategoriaProduto(), this.getDataCompra().format(FORMATO_DATA_HORA),
                 this.getNomeEcommerce(), this.getNomeCupom(), this.getValorCupom(),
-                this.getStatus());
+                this.getStatusNome());
     }
 
     @Override
     public String toTXT() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         String corpo = "";
 
-        corpo = "02";
+        corpo = LayoutGenerico.TIPO_REGISTRO_CORPO_EVENTO;
         corpo += String.format("%05d", this.getIdEvento());
         corpo += String.format("%05d", this.getIdConsumidor());
         corpo += String.format("%-45s", this.getNomeProduto());
-        corpo += String.format("R$%9.2f", this.getPrecoProduto());
+        corpo += String.format("%9.2f", this.getPrecoProduto());
         corpo += String.format("%-45s", this.getCategoriaProduto());
-        corpo += String.format("%-19s", this.getDataCompra().format(formatter));
+        corpo += String.format("%-19s", this.getDataCompra().format(FORMATO_DATA_HORA));
+        corpo += String.format("%05d", this.getIdEcommerce());
         corpo += String.format("%-45s", this.getNomeEcommerce());
+        corpo += String.format("%05d", this.getIdCupom());
         corpo += String.format("%-45s", this.getNomeCupom());
         corpo += String.format("%7.2f", this.getValorCupom());
-        corpo += String.format("%-45s%n", this.getStatus());
+        corpo += String.format("%05d", this.getIdDominioStatus());
+        corpo += String.format("%-45s%n", this.getStatusNome());
 
         return corpo;
     }
 
-    public static String header() {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-        Date dataHoje = new Date();
+    @Override
+    public void fromTXT(String linha) {
 
-        String header = "";
-
-        header += "00RELATORIO";
-        header += formatter.format(dataHoje);
-        header += "00\n";
-
-        return header;
+        IdEvento = Integer.valueOf(linha.substring(2,7).trim());
+        IdConsumidor = Integer.valueOf(linha.substring(7,12).trim());
+        nomeProduto = linha.substring(12, 56).trim();
+        precoProduto = Double.valueOf(linha.substring(57, 66).replace(",", ".").trim());
+        categoriaProduto = linha.substring(66, 111).trim();
+        dataCompra = LocalDateTime.parse(linha.substring(111, 130), FORMATO_DATA_HORA);
+        idEcommerce = Integer.valueOf(linha.substring(130, 135));
+        nomeEcommerce = linha.substring(135, 180).trim();
+        idCupom = Integer.valueOf(linha.substring(180, 185).trim());
+        nomeCupom = linha.substring(185, 230).trim();
+        valorCupom = Double.valueOf(linha.substring(230, 237).replace(",", ".").trim());
+        idDominioStatus = Integer.valueOf(linha.substring(237, 242));
+        statusNome = linha.substring(242, 287).trim();
     }
 
-    public static String trailer(int contRegistro) {
-        String trailer = "";
-
-        trailer += "01";
-        trailer += String.format("%010d%n", contRegistro);
-
-        return trailer;
-    }
 }

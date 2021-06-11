@@ -32,7 +32,6 @@ public class Meta {
     private Double valor;
 
     @NotNull
-    @Positive
     @ManyToOne
     private Ecommerce ecommerce;
 }

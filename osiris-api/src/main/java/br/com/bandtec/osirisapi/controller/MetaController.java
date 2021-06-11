@@ -31,7 +31,7 @@ public class MetaController {
     @PutMapping("/{idMeta}")
     public ResponseEntity putMeta(
             @PathVariable Integer idMeta,
-            @RequestBody Meta meta) {
+            @RequestBody @Valid Meta meta) {
         return ResponseEntity.status(200).body(metaService.atualizarMeta(idMeta, meta));
     }
 

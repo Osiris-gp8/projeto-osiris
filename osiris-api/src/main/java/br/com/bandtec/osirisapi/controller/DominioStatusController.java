@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/dominios")
 @AllArgsConstructor
@@ -20,7 +22,7 @@ public class DominioStatusController {
     }
 
     @PostMapping
-    public ResponseEntity postDominioStatus(@RequestBody DominioStatus dominioStatus){
+    public ResponseEntity postDominioStatus(@RequestBody @Valid DominioStatus dominioStatus){
         dominioStatusService.saveDominio(dominioStatus);
         return ResponseEntity.status(201).build();
     }

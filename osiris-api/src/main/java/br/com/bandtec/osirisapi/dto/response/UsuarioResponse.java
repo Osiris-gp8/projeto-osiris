@@ -1,10 +1,7 @@
 package br.com.bandtec.osirisapi.dto.response;
 
 import br.com.bandtec.osirisapi.domain.Ecommerce;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.ManyToOne;
 
@@ -17,7 +14,15 @@ public class UsuarioResponse {
     private Integer idUsuario;
     private String nomeCompleto;
     private String loginUsuario;
-
-    @ManyToOne
     private Ecommerce ecommerce;
+
+    @Override
+    public String toString() {
+        return "UsuarioResponse{" +
+                "idUsuario=" + idUsuario +
+                ", nomeCompleto='" + nomeCompleto + '\'' +
+                ", loginUsuario='" + loginUsuario + '\'' +
+                ", ecommerce=" + ecommerce +
+                '}';
+    }
 }
