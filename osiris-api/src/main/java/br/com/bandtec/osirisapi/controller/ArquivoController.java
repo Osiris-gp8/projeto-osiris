@@ -4,6 +4,7 @@ import br.com.bandtec.osirisapi.domain.Cupom;
 import br.com.bandtec.osirisapi.domain.DominioStatus;
 import br.com.bandtec.osirisapi.domain.Ecommerce;
 import br.com.bandtec.osirisapi.domain.Evento;
+import br.com.bandtec.osirisapi.dto.request.ExportacaoRequest;
 import br.com.bandtec.osirisapi.layout.LayoutEvento;
 import br.com.bandtec.osirisapi.repository.EventoRepository;
 import br.com.bandtec.osirisapi.service.ArquivoService;
@@ -14,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -37,11 +39,11 @@ public class ArquivoController {
 
     @GetMapping(value = "/relatorio-txt", produces = "text/plain")
     @ResponseBody
-    public ResponseEntity downloadTxt() {
+    public ResponseEntity downloadTxt(@Valid ExportacaoRequest request) {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Disposition", "attachment; filename=exportacao.txt");
 
-        return ResponseEntity.status(200).headers(headers).body(arquivoService.gerarTxt());
+        return ResponseEntity.status(200).headers(headers).body(arquivoService.gerarTxt(request));
     }
 
     @PostMapping("/importacao-txt")
