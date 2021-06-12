@@ -42,7 +42,6 @@ public class Evento {
     private LocalDate dataInclusao;
 
     @NotNull
-    @Positive
     @ManyToOne
     private Ecommerce ecommerce;
 
@@ -50,7 +49,6 @@ public class Evento {
     private Cupom cupom;
 
     @NotNull
-    @Positive
     @OneToOne
     private DominioStatus dominioStatus;
 }
