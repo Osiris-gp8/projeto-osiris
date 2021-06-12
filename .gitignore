@@ -30,8 +30,3 @@ buildNumber.properties
 =======
 .mvn/wrapper/maven-wrapper.jar
 >>>>>>> main
-lib/
-__pycache__/
-.venv
-.Rhistory
-.env
