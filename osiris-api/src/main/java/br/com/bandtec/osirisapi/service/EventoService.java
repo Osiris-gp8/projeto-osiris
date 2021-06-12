@@ -51,7 +51,7 @@ public class EventoService {
         return eventos;
     }
 
-    public String inserirEvento(Evento evento, HttpServletRequest httpRequest) {
+    public String inserirEventoAssincrono(Evento evento, HttpServletRequest httpRequest) {
 
         if (eventoContemErros(evento, httpRequest) == true){
             throw new ApiRequestException("Não autorizado para adicionar eventos em outro ecommerce",
@@ -70,6 +70,10 @@ public class EventoService {
         scheduleService.getEventosFilaObj().insert(eventoProtocolo);
 
         return protocolo;
+    }
+
+    public void inserirEvento(Evento evento){
+        eventoRepository.save(evento);
     }
 
     private boolean eventoContemErros(Evento evento, HttpServletRequest httpRequest) {
