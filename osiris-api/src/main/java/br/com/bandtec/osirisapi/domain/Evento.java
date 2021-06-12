@@ -1,11 +1,11 @@
 package br.com.bandtec.osirisapi.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PastOrPresent;
-import javax.validation.constraints.Positive;
+import javax.validation.constraints.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -37,6 +37,9 @@ public class Evento {
     @NotNull
     @PastOrPresent
     private LocalDateTime dataCompra;
+
+    @JsonIgnore
+    private LocalDate dataInclusao;
 
     @NotNull
     @Positive

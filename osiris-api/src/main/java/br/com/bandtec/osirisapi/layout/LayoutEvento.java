@@ -13,9 +13,10 @@ import java.util.Date;
 @Builder
 @AllArgsConstructor
 public class LayoutEvento implements Layout {
+
     private final DateTimeFormatter FORMATO_DATA_HORA = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 
-    private Integer IdCompra;
+    private Integer IdEvento;
     private Integer IdConsumidor;
     private String nomeProduto;
     private Double precoProduto;
@@ -34,7 +35,7 @@ public class LayoutEvento implements Layout {
     public String toCSV() {
 
         return String.format("%d;%d;%s;%.2f;%s;%s;%s;%s;%.2f;%s%n",
-                this.getIdCompra(), this.getIdConsumidor(), this.getNomeProduto(),
+                this.getIdEvento(), this.getIdConsumidor(), this.getNomeProduto(),
                 this.getPrecoProduto(), this.getCategoriaProduto(), this.getDataCompra().format(FORMATO_DATA_HORA),
                 this.getNomeEcommerce(), this.getNomeCupom(), this.getValorCupom(),
                 this.getStatusNome());
@@ -45,7 +46,7 @@ public class LayoutEvento implements Layout {
         String corpo = "";
 
         corpo = LayoutGenerico.TIPO_REGISTRO_CORPO_EVENTO;
-        corpo += String.format("%05d", this.getIdCompra());
+        corpo += String.format("%05d", this.getIdEvento());
         corpo += String.format("%05d", this.getIdConsumidor());
         corpo += String.format("%-45s", this.getNomeProduto());
         corpo += String.format("%9.2f", this.getPrecoProduto());
@@ -65,7 +66,7 @@ public class LayoutEvento implements Layout {
     @Override
     public void fromTXT(String linha) {
 
-        IdCompra = Integer.valueOf(linha.substring(2,7).trim());
+        IdEvento = Integer.valueOf(linha.substring(2,7).trim());
         IdConsumidor = Integer.valueOf(linha.substring(7,12).trim());
         nomeProduto = linha.substring(12, 56).trim();
         precoProduto = Double.valueOf(linha.substring(57, 66).replace(",", ".").trim());
