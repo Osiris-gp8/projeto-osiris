@@ -2,10 +2,7 @@ package br.com.bandtec.osirisapi.domain;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDateTime;
 
@@ -44,4 +41,8 @@ public class Cupom {
 
     @NotNull
     private Boolean usado;
+
+    @NotNull
+    @ManyToOne
+    private Ecommerce ecommerce;
 }
