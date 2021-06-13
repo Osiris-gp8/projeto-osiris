@@ -1,5 +1,6 @@
 package br.com.bandtec.osirisapi.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import javax.persistence.*;
@@ -26,10 +27,12 @@ public class Cupom {
 
     @NotNull
     @PastOrPresent
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss[.SSS][.SS][.S][XXX]")
     private LocalDateTime dataEmitido;
 
     @NotNull
     @Future
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss[.SSS][.SS][.S][XXX]")
     private LocalDateTime dataValidado;
 
     @NotNull
