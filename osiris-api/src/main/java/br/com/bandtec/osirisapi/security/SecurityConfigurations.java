@@ -76,28 +76,5 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
                 "/webjars/**");
     }
 
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource(){
-        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
-        return source;
-    }
-
-//    private static final CorsConfiguration CORS_CONFIGURATION = new CorsConfiguration();
-//
-//    static {
-//        CORS_CONFIGURATION.setAllowCredentials(true);
-//        CORS_CONFIGURATION.setAllowedOrigins(Collections.singletonList("*"));
-//        CORS_CONFIGURATION.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
-//        CORS_CONFIGURATION.setAllowedHeaders(Arrays.asList("Accept",
-//                "Access-Control-Request-Method",
-//                "Access-Control-Request-Headers",
-//                "Authorization",
-//                "Content-Type",
-//                "Origin",
-//                "X-Requested-With"));
-//        CORS_CONFIGURATION.setExposedHeaders(Collections.singletonList("Content-Disposition"));
-//        CORS_CONFIGURATION.setMaxAge(3600L);
-//    }
 
 }
