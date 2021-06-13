@@ -47,6 +47,7 @@ export default () =>{
             return history.push('/login');
         }
 
+        console.log(JSON.parse(sessionStorage.getItem("usuario")));
         setUser({
             nomeCompleto: JSON.parse(sessionStorage.getItem("usuario")).nomeCompleto,
             loginUsuario: JSON.parse(sessionStorage.getItem("usuario")).loginUsuario
@@ -216,12 +217,12 @@ export default () =>{
                         </div>
                     </div>
 
-                    <ButtonNoLink
+                    {/* <ButtonNoLink
                         type="btn-preenchido"
                         style={{width: "30%"}}
                     >
                         Adicionar Colaborador
-                    </ButtonNoLink>
+                    </ButtonNoLink> */}
 
                 </div>
             </div>

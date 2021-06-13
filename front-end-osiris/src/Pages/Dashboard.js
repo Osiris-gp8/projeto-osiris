@@ -6,6 +6,7 @@ import clockCircleFilled from '@iconify-icons/ant-design/clock-circle-filled';
 import ChartBar from '../Components/ChartBar/ChartBar';
 import ChartPie from '../Components/ChartPie/ChartPie';
 import { useHistory } from 'react-router-dom';
+import api from '../api';
 
 export default () =>{ 
     const history = useHistory();
@@ -13,6 +14,19 @@ export default () =>{
         if(!sessionStorage.getItem("token")){
             return history.push('/login');
         }
+
+        const authorization = `${sessionStorage.getItem("tipo")} ${sessionStorage.getItem("token")}`;
+        console.log(authorization);
+
+        api.get("/metas", {
+            headers: {
+                'Authorization': authorization
+            }
+        }).then(res => {
+            console.log(res);
+        }).catch(err => {
+            console.log(err);
+        });
     }, []);
 
     const cores = ["#666BC2", "#8CA8D1", "#B3C8E1", "#D9E2F0", "#ECF0F7"];
