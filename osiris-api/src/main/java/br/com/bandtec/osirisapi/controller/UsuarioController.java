@@ -2,6 +2,7 @@ package br.com.bandtec.osirisapi.controller;
 
 import br.com.bandtec.osirisapi.domain.Usuario;
 import br.com.bandtec.osirisapi.dto.request.UsuarioAcessoRequest;
+import br.com.bandtec.osirisapi.dto.request.UsuarioAtualizacaoRequest;
 import br.com.bandtec.osirisapi.service.UsuarioService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -36,7 +37,7 @@ public class UsuarioController {
     @PutMapping("/{idUsuario}")
     public ResponseEntity putUsuario(
             @PathVariable int idUsuario,
-            @RequestBody @Valid Usuario usuario) {
+            @RequestBody @Valid UsuarioAtualizacaoRequest usuario) {
         return ResponseEntity.status(201).body(usuarioService.atualizarUsuario(idUsuario ,usuario));
     }
 
