@@ -107,10 +107,10 @@ public class ArquivoService {
 
     private List<LayoutEvento> getLayoutEventosByDataInclusaoBetween(LocalDate dataInicial, LocalDate dataFinal){
 
-        Ecommerce ecommerce = userInfo.getEcommerce();
+        Ecommerce logedEcommerce = userInfo.getEcommerce();
 
         List<Evento> eventos = eventoRepository
-                .findByDataInclusaoBetweenAndEcommerceEquals(dataInicial.atStartOfDay(), dataFinal.atStartOfDay(), ecommerce);
+                .findByDataInclusaoBetweenAndEcommerceEquals(dataInicial.atStartOfDay(), dataFinal.atStartOfDay(), logedEcommerce);
 
         return eventos.stream()
                 .map(eventoToLayoutEvento::convert)
@@ -118,9 +118,10 @@ public class ArquivoService {
     }
 
     private List<LayoutCupom> getLayoutCupomsByDataEmitidoBetween(LocalDate dataInicial, LocalDate dataFinal){
-        //TODO adicionar o ecommerce no filtro
-        List<Cupom> cupoms = cupomRepository.findByDataEmitidoBetween(
-                dataInicial.atStartOfDay(), dataFinal.atStartOfDay());
+        Ecommerce logedEcommerce = userInfo.getEcommerce();
+
+        List<Cupom> cupoms = cupomRepository.findByDataEmitidoBetweenAndEcommerceEquals(
+                dataInicial.atStartOfDay(), dataFinal.atStartOfDay(), logedEcommerce);
 
         return cupoms.stream()
                 .map(cupomToLayoutCupom::convert)
