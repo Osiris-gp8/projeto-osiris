@@ -1,19 +1,12 @@
 package br.com.bandtec.osirisapi.controller;
 
 import br.com.bandtec.osirisapi.domain.Evento;
-import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.service.EventoService;
-import br.com.bandtec.osirisapi.service.TokenService;
-import com.sun.corba.se.impl.interceptors.RequestInfoImpl;
 import lombok.AllArgsConstructor;
-import org.omg.PortableInterceptor.RequestInfo;
-import org.springframework.http.HttpRequest;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -35,7 +28,13 @@ public class EventoController {
 
         return ResponseEntity.status(202).header(
                 "protocolo",
-                eventoService.inserirEvento(novoEvento, httpRequest)).build();
+                eventoService.inserirEventoAssincrono(novoEvento, httpRequest)).build();
+    }
+
+    @PostMapping("/list")
+    public ResponseEntity postEventos(@RequestBody List<@Valid Evento> eventoList){
+        eventoList.forEach(eventoService::inserirEvento);
+        return ResponseEntity.status(201).build();
     }
 
     @DeleteMapping("/{idEvento}")
