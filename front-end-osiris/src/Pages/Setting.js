@@ -1,19 +1,104 @@
-import {React, useEffect} from 'react'
+import {React, useEffect, useState} from 'react'
 import { useHistory } from 'react-router-dom'
 import MenuNovo from '../Components/MenuNovo/MenuNovo'
 import Input from '../Components/Input/Input'
 import Icon from '@iconify/react'
 import pencilIcon from '@iconify-icons/akar-icons/pencil';
-import {ButtonNoLink} from '../Components/Button'
+import {ButtonNoLink, ButtonForm} from '../Components/Button'
+import api from '../api';
 
 export default () =>{ 
 
     const history = useHistory();
+
+    const [user, setUser] = useState({});
+    const [ecommerce, setEcommerce] = useState({});
+
+    const [editUser, setEditUser] = useState({
+        nome: true,
+        login: true,
+        button: "none"
+    });
+
+    function editUserClick(){
+        setEditUser({
+            nome: false,
+            login: false,
+            button: "block"
+        })
+    }
+
+    const [editEcommerce, setEditEcommerce] = useState({
+        nome: true,
+        cnpj: true,
+        button: "none"
+    });
+
+    function editEcommerceClick(){
+        setEditEcommerce({
+            nome: false,
+            cnpj: false,
+            button: "block"
+        })
+    }
+
     useEffect(() =>{
         if(!sessionStorage.getItem("token")){
             return history.push('/login');
         }
+
+        setUser({
+            nomeCompleto: JSON.parse(sessionStorage.getItem("usuario")).nomeCompleto,
+            loginUsuario: JSON.parse(sessionStorage.getItem("usuario")).loginUsuario
+        });
+
+        setEcommerce({
+            nome: JSON.parse(sessionStorage.getItem("usuario")).ecommerce.nome,
+            cnpj: JSON.parse(sessionStorage.getItem("usuario")).ecommerce.cnpj
+        })
     }, []);
+
+    function handleUser(e){
+        const newUser = {...user};
+        newUser[e.target.id] = e.target.value;
+        setUser(newUser);
+    }
+
+    function handleEcommerce(e){
+        const newEcommerce = {...ecommerce};
+        newEcommerce[e.target.id] = e.target.value;
+        setEcommerce(newEcommerce);
+    }
+
+    function atualizarUser(e){
+        e.preventDefault();
+        api.put(`/usuarios/${JSON.parse(sessionStorage.getItem("usuario")).idUsuario}`, user)
+            .then(res => {
+                console.log(res)
+                if(res.status == 200){
+                    alert("Usuário alterado com sucesso");
+                }else{
+                    alert("Ops, houve um erro :(")
+                }
+            }).catch(err => {
+                console.log(err);
+            })
+    }
+
+    function atualizarEcommerce(e){
+        e.preventDefault();
+        api.put(`/ecommerces/${JSON.parse(sessionStorage.getItem("usuario")).ecommerce.idEcommerce}`, ecommerce)
+            .then(res => {
+                console.log(res)
+                if(res.status == 200){
+                    alert("Ecommerce alterado com sucesso");
+                }else{
+                    alert("Ops, houve um erro :(")
+                }
+            }).catch(err => {
+                console.log(err);
+            })
+    }
 
     return (
         <>
@@ -24,68 +109,100 @@ export default () =>{
                     <div className="user-config">
                         <div className="configs-head">
                             <h2>Usuário</h2>
-                            <span><Icon icon={pencilIcon}/> Editar</span>
+                            <span onClick={editUserClick}><Icon icon={pencilIcon}/> Editar</span>
                         </div>
-                        <div className="row-configs">
-                            <Input
-                                id="nomeUser"
-                                width="28%"
-                                label="Nome:"
-                                type="text"
-                                value="patrick"
-                                defaultValue="patrick"
-                            />
+                        <form onSubmit={(e) => atualizarUser(e)}>
+                            <div className="row-configs">
 
-                            <Input
-                                id="emailUser"
-                                width="28%"
-                                label="E-mail:"
-                                type="email"
-                                value="patrick@gmail.com"
-                                defaultValue="patrick@gmail.com"
-                            />
+                                <div style={{width: "28%"}} className="col-settings">
+                                    <label className="label-settings">Nome:</label>
+                                    <input 
+                                        className="input-settings"
+                                        id="nomeCompleto"
+                                        type="text"
+                                        value={user.nomeCompleto}
+                                        defaultValue={user.nomeCompleto}
+                                        disabled={editUser.nome}
+                                        onChange={handleUser}
+                                    />
+                                </div>
 
-                            <Input
-                                id="senhaUser"
-                                width="28%"
-                                label="Senha:"
-                                type="password"
-                                value="*****"
-                                defaultValue="******"
-                            />
-                        </div>
+                                <div style={{width: "28%"}} className="col-settings">
+                                    <label className="label-settings">Login:</label>
+                                    <input 
+                                        className="input-settings"
+                                        id="loginUsuario"
+                                        type="text"
+                                        value={user.loginUsuario}
+                                        defaultValue={user.loginUsuario}
+                                        disabled={editUser.login}
+                                        onChange={handleUser}
+                                    />
+                                </div>
+
+                                <ButtonForm
+                                    type="btn-preenchido"
+                                    style={{width: "15%", 
+                                            marginTop: "20px",
+                                            display: editUser.button
+                                        }}>
+                                    Editar
+                                </ButtonForm>
+                            </div>
+                        </form>
+                        
                     </div>
 
                     <div className="user-config">
                         <div className="configs-head">
                             <h2>Ecommerce</h2>
-                            <span><Icon icon={pencilIcon}/> Editar</span>
+                            <span onClick={editEcommerceClick}><Icon icon={pencilIcon}/> Editar</span>
                         </div>
-                        <div className="row-configs">
-                            <Input
-                                id="nomeEcommerce"
-                                width="28%"
-                                label="Nome:"
-                                type="text"
-                                value="Netshoes"
-                                defaultValue="Netshoes"
-                            />
+                        <form onSubmit={(e) => atualizarEcommerce(e)}>
+                            <div className="row-configs">
+                                
+                                <div style={{width: "28%"}} className="col-settings">
+                                    <label className="label-settings">Nome Ecommerce:</label>
+                                    <input 
+                                        className="input-settings"
+                                        id="nomeEcommerce"
+                                        type="text"
+                                        value={ecommerce.nome}
+                                        defaultValue={ecommerce.nome}
+                                        disabled={editEcommerce.nome}
+                                        onChange={handleEcommerce}
+                                    />
+                                </div>
 
-                            <Input
-                                id="cnpjEcommerce"
-                                width="28%"
-                                label="Cnpj:"
-                                type="text"
-                                value="99.999.999/9999-99"
-                                defaultValue="99.999.999/9999-99"
-                            />
-                        </div>
+                                <div style={{width: "28%"}} className="col-settings">
+                                    <label className="label-settings">Cnpj:</label>
+                                    <input 
+                                        className="input-settings"
+                                        id="cnpjEcommerce"
+                                        type="text"
+                                        vvalue={ecommerce.cnpj}
+                                        defaultValue={ecommerce.cnpj}
+                                        disabled={editEcommerce.cnpj}
+                                        onChange={handleEcommerce}
+                                    />
+                                </div>
+
+                                <ButtonForm
+                                    type="btn-preenchido"
+                                    style={{width: "15%", 
+                                            marginTop: "20px",
+                                            display: editEcommerce.button
+                                        }}>
+                                    Editar
+                                </ButtonForm>
+                            </div>
+                        </form>
+                        
                     </div>
 
                     <div className="user-config">
                         <div className="configs-head">
                             <h2>Conexão</h2>
-                            <span><Icon icon={pencilIcon}/> Editar</span>
                         </div>
                         <div className="row-configs">
                             <Input

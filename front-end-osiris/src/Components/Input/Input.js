@@ -13,6 +13,7 @@ function Input(props){
                 type={props.type} 
                 value={props.value} 
                 defaultValue={props.defaultValue}
+                disabled={props.disabled}
             />
         </div>
     );

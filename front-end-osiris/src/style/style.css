@@ -564,6 +564,7 @@ html{
     color: #666BC2;
     font-size: 20px;
     margin-left: 2%;
+    cursor: pointer;
 }
 
 .label-settings{
@@ -586,6 +587,7 @@ html{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    align-items: center;
 }
 
 .col-settings{
