@@ -1,8 +1,9 @@
 import styled from "styled-components"
+import { Button as BTN } from "../settings/style"
 
 
 export const Container = styled.div`
-    width: 65vw;
+    width: 60vw;
     height: 88vh;
     background:none;
     padding:15px;
@@ -11,7 +12,6 @@ export const Container = styled.div`
     justify-content: space-around;
     flex-direction: column;
     display: flex;
-    float: right;
     
 `
 export const BoxDownload = styled.div`
@@ -86,6 +86,20 @@ align-items: center;
   transform: translate(-50%, -50%);
 }
 `;
+
+
+export const Button = styled(BTN)`
+    background-color: ${props => props.cancelButton?`#D44463`: `var(--primary)`  } ;
+    align-self: flex-end;
+    margin-right: 4%;
+    border:none;
+
+    &:hover{
+        background-color: ${props => props.cancelButton?`#EB6357`: `var(--primary)`  } ;
+        border:none;
+    }
+`;
+
 
 export const Title = styled.h1`
     font-size:30px;
