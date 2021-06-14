@@ -1,9 +1,8 @@
-import { BoxUpload, Container, BoxDownload, BoxFile, Title, Subtitle } from './style'
+import { BoxUpload, Container, BoxDownload, Button, BoxFile, Title, Subtitle } from './style'
 import DropZone from '../dragzone'
 import { useEffect, useState } from 'react'
 import api from '../../api'
 import InputPicker from '../InputPicker'
-import { ButtonForm as Button} from '../Button' 
 
 function UploadFiles(props) {
   let [uploaded, setUploaded] = useState(false)
@@ -105,9 +104,7 @@ function UploadFiles(props) {
           <InputPicker select label="Dados:" id="Dados" />
         </div>
         <div>
-          <Button
-              type="btn-preenchido" 
-              side="right" style={{width: "25%", marginRight: "1.8%"}}>
+          <Button>
             Baixar
           </Button>
         </div>
@@ -119,10 +116,7 @@ function UploadFiles(props) {
           {uploaded && <BoxFile><p>{file["nomeArquivo"]} </p> <Button onClick={handleCancel}
             cancelButton>Cancelar</Button> </BoxFile>}
         </div>
-        <div><Button 
-              type="btn-preenchido" 
-              side="right" style={{width: "25%", marginRight: "4%"}} 
-              onClick={handleClick}>Enviar</Button></div>
+        <div><Button onClick={handleClick}>Enviar</Button></div>
       </BoxUpload>
 
 
