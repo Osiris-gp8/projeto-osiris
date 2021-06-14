@@ -47,16 +47,8 @@ export default () =>{
             return history.push('/login');
         }
 
-        console.log(JSON.parse(sessionStorage.getItem("usuario")));
-        setUser({
-            nomeCompleto: JSON.parse(sessionStorage.getItem("usuario")).nomeCompleto,
-            loginUsuario: JSON.parse(sessionStorage.getItem("usuario")).loginUsuario
-        });
-
-        setEcommerce({
-            nome: JSON.parse(sessionStorage.getItem("usuario")).ecommerce.nome,
-            cnpj: JSON.parse(sessionStorage.getItem("usuario")).ecommerce.cnpj
-        })
+        setUser(JSON.parse(sessionStorage.getItem("usuario")));
+        setEcommerce(JSON.parse(sessionStorage.getItem("usuario")).ecommerce);
     }, []);
 
     function handleUser(e){
@@ -83,6 +75,7 @@ export default () =>{
                 }
             }).catch(err => {
                 console.log(err);
+                alert("Ops, houve um erro :(");
             })
     }
 
@@ -94,10 +87,11 @@ export default () =>{
                 if(res.status == 200){
                     alert("Ecommerce alterado com sucesso");
                 }else{
-                    alert("Ops, houve um erro :(")
+                    alert("Ops, houve um erro :(");
                 }
             }).catch(err => {
                 console.log(err);
+                alert("Ops, houve um erro :(");
             })
     }
 
@@ -166,7 +160,7 @@ export default () =>{
                                     <label className="label-settings">Nome Ecommerce:</label>
                                     <input 
                                         className="input-settings"
-                                        id="nomeEcommerce"
+                                        id="nome"
                                         type="text"
                                         value={ecommerce.nome}
                                         defaultValue={ecommerce.nome}
@@ -179,7 +173,7 @@ export default () =>{
                                     <label className="label-settings">Cnpj:</label>
                                     <input 
                                         className="input-settings"
-                                        id="cnpjEcommerce"
+                                        id="cnpj"
                                         type="text"
                                         vvalue={ecommerce.cnpj}
                                         defaultValue={ecommerce.cnpj}

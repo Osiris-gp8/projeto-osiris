@@ -15,14 +15,7 @@ export default () =>{
             return history.push('/login');
         }
 
-        const authorization = `${sessionStorage.getItem("tipo")} ${sessionStorage.getItem("token")}`;
-        console.log(authorization);
-
-        api.get("/metas", {
-            headers: {
-                'Authorization': authorization
-            }
-        }).then(res => {
+        api.get("/metas").then(res => {
             console.log(res);
         }).catch(err => {
             console.log(err);
