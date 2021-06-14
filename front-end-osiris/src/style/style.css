@@ -7,7 +7,7 @@ html{
     margin: 0 auto;
 }
 
-.link{
+.link, a{
     text-decoration: none;
 }
 
@@ -38,6 +38,7 @@ html{
     color: #ECF0F7;
 }
 
+/* Site institucional */
 .opacidade{
     background-color: rgba(0, 0, 0, 0.6);
     width: 100%;
@@ -381,4 +382,216 @@ html{
     align-items: center;
     justify-content: center;
     font-size: 20px;
+}
+
+/* Menu */
+.menu{
+    width: 20%;
+    height: 86vh;
+    position: absolute;
+    top: 3%;
+    left: 2%;
+    display: flex;
+    flex-direction: column;
+    background-color: #ECF0F7;
+    padding: 2%;
+    font-size: 30px;
+}
+
+.nome-user{
+    color: #666BC2;
+}
+
+.itens-menu{
+    width: 100%;
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-menu{
+    width: 100%;
+    text-decoration: none;
+    margin-bottom: 7%;
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    color: black;
+}
+
+.item-menu span{
+    margin-left: 15px;
+}
+
+.item-menu:hover{
+    text-decoration: underline;
+}
+
+.item-menu button{
+    background-color: #ECF0F7;
+    border: none;
+    font-size: 25px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.icon-menu{
+    color: #666BC2;
+}
+
+#item-sair{
+    position: absolute;
+    bottom: 0;
+}
+
+/* Metricas */
+.metricas{
+    width: 65%;
+    float: right;
+    margin-top: 1.5%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.metrica{
+    width: 25%;
+    height: 13vh;
+    background-color: #ECF0F7;
+    display: flex;
+    flex-direction: column;
+    font-size: 25px;
+    padding: 15px;
+    position: relative; 
+}
+
+.metrica span{
+    margin-bottom: 15px;
+}
+
+.valor-metrica{
+    font-size: 30px;
+}
+
+.titulo-metrica{
+    width: 80%;
+}
+
+.icon-metrica{
+    position: absolute;
+    margin-left: 80%;
+}
+
+/* Charts */
+
+.chart-area{
+    width: 65%;
+    min-height: 35vh;
+    background-color: #ECF0F7;
+    float: right;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.charts-pie{
+    width: 90%;
+    height: 35vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+} 
+
+.charts-pie div{
+    width: 50%;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.charts-pie div h2{
+    margin-left: 10%;
+    margin-bottom: 5%;
+}
+
+/* settings */
+
+.body-config{
+    width: 65%;
+    height: 94vh;
+    background-color: #ECF0F7;
+    float: right;
+    margin-top: 1.5%;
+    margin-right: 2%;
+    display: flex;
+    align-items: flex-start;
+}
+
+.body-config .container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 3%;
+}
+
+.body-config .container h1{
+    font-size: 40px;
+    color: #666BC2;
+    margin-bottom: 2%;
+}
+
+.user-config{
+    width: 100%;
+    margin-bottom: 5%;
+}
+
+.configs-head{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 2%;
+}
+
+.configs-head h2{
+    font-size: 30px;
+}
+
+.configs-head span{
+    color: #666BC2;
+    font-size: 20px;
+    margin-left: 2%;
+    cursor: pointer;
+}
+
+.label-settings{
+    color: #666BC2;
+    margin-bottom: 5px;
+}
+
+.input-settings{
+    width: 100%;
+    height: 30px;
+    font-size: 20px;
+    border: 2px solid #666BC2;
+    padding: 5px;
+    background-color: #ECF0F7;
+    border-radius: 5px;
+}
+
+.row-configs{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.col-settings{
+    display: flex;
+    flex-direction: column;
+    margin-right: 5%;
 }
