@@ -1,6 +1,11 @@
-import Menu from '../Components/Menu'
-import Setting from '../Components/settings'
-import Suport_flex from '../Components/Style-Suport/Suport_flex'
+import {React, useEffect, useState} from 'react'
+import { useHistory } from 'react-router-dom'
+import MenuNovo from '../Components/MenuNovo/MenuNovo'
+import Input from '../Components/Input/Input'
+import Icon from '@iconify/react'
+import pencilIcon from '@iconify-icons/akar-icons/pencil';
+import {ButtonNoLink, ButtonForm} from '../Components/Button'
+import api from '../api';
 
 export default () =>{ 
 

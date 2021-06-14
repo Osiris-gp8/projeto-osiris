@@ -24,16 +24,6 @@ export default () => {
     };
 
     return(
-        // <Container>
-        //     <Section1>
-        //         <Content ladoTexto="left" tamanhoTexto="55px" largura="50%" negrito="500">
-        //             Melhore a <Span>Venda</Span> de seu E-commerce com a nossa ajuda de <Span>Análise</Span>!
-        //         </Content>
-        //         <Image>
-        //             <img src={Analytic}/>
-        //         </Image>
-        //     </Section1>
-        // </Container>
 
         <>
             <div className="container">

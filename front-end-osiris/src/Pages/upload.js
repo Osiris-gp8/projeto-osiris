@@ -1,12 +1,19 @@
-import Menu from '../Components/Menu'
+import {React, useEffect} from 'react'
+import { useHistory } from 'react-router-dom'
+import MenuNovo from '../Components/MenuNovo/MenuNovo'
 import Upload from '../Components/upload'
-import Suport_flex from '../Components/Style-Suport/Suport_flex'
 
 export default () =>{ 
+    const history = useHistory();
+    useEffect(() =>{
+        if(!sessionStorage.getItem("token")){
+            return history.push('/login');
+        }
+    }, []);
 return (
-    <Suport_flex>
-        <Menu/>
+    <>
+        <MenuNovo/>
         <Upload/>
-    </Suport_flex>
+    </>
 )
 }
