@@ -16,8 +16,12 @@ export function ButtonNoLink(props){
     );
 }
 
-export function ButtonForm(props){
-    return(
-        <button type="submit" className={`btn ${props.type} ${props.side}`} style={props.style}>{props.children}</button>
-    );
-}
+// export default (props) => {
+//     return(
+//         <Link to={props.uri} className={`link ${props.side}`} style={props.style}>
+//             <button className={`btn ${props.type}`} >{props.children}</button>
+//         </Link>
+//     );
+// }
+
+// export {Button, ButtonNoLink}

@@ -16,7 +16,7 @@ export const DateContainer = styled.div`
     }
 
     &>input::-webkit-calendar-picker-indicator {
-    background-image:url('https://api.iconify.design/akar-icons:calendar.svg?color=%23666BC2');
+    background-image:url('https://api.iconify.design/akar-icons:calendar.svg?color=%23666BC2');;
 }
 
     &>label{

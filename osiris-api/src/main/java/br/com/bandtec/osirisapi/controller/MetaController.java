@@ -20,7 +20,7 @@ public class MetaController {
 
     @GetMapping
     public ResponseEntity getMetas() {
-        return ResponseEntity.status(201).body(metaService.getMetas());
+        return ResponseEntity.status(200).body(metaService.getMetas());
     }
 
     @PostMapping

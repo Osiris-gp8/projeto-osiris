@@ -1,36 +1,74 @@
 package br.com.bandtec.osirisapi.controller;
 
 import br.com.bandtec.osirisapi.domain.Evento;
-import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.repository.EventoRepository;
+import org.junit.jupiter.api.Test;
+import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.utils.EventoPilha;
 import br.com.bandtec.osirisapi.utils.PilhaObj;
 import br.com.bandtec.osirisapi.utils.enums.EventoPilhaEnum;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import java.util.Optional;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
 class EventoControllerTest {
 
+    @Autowired
+    EventoController eventoController;
+
     @MockBean
-    private EventoRepository eventoRepository;
+    HttpServletRequest httpServletRequest;
+
+    @MockBean
+    EventoRepository eventoRepository;
 
     @MockBean
     private PilhaObj<EventoPilha> pilhaObj;
 
-    @Autowired
-    private EventoController eventoController;
+    @Test
+    @DisplayName("PUT /{idEvento} - Atualizar um evento existente")
+    void atualizarEventoOk() {
+        int idTeste = 31;
+        Evento evento = new Evento();
+
+        Optional<Evento> optionalEvento = Optional.of(new Evento());
+        Mockito.when(eventoRepository.findById(idTeste))
+                .thenReturn(optionalEvento);
+
+        ResponseEntity resposta =
+                eventoController.atualizarEvento(idTeste, evento);
+
+        assertEquals(200, resposta.getStatusCodeValue());
+    }
+
+    @Test
+    @DisplayName("PUT /{idEvento} - Atualizar um evento não existente")
+    void atualizarEventoNaoOk() {
+        int idTeste = 31;
+        Evento evento = new Evento();
+
+        Optional<Evento> optionalEvento = Optional.of(new Evento());
+        Mockito.when(eventoRepository.findById(idTeste))
+                .thenReturn(optionalEvento);
+
+        try {
+            ResponseEntity resposta =
+                    eventoController.atualizarEvento(idTeste, evento);
+        } catch(ApiRequestException e) {
+            assertEquals(404, e.getStatus().value());
+        }
+    }
 
     @Test
     @DisplayName("PUT /eventos/desfazer - Quando não existem dados na pilha")
