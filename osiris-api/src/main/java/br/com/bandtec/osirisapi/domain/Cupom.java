@@ -1,5 +1,6 @@
 package br.com.bandtec.osirisapi.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import javax.persistence.Entity;
