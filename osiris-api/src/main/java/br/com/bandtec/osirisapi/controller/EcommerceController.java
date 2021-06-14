@@ -26,7 +26,7 @@ public class EcommerceController {
         return ResponseEntity.status(201).body(ecommerceService.inserirEcommerce(novoEcommerce));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{idEcommerce}")
     public ResponseEntity deleteEcommerce(@PathVariable int idEcommerce) {
        ecommerceService.deletarEcommerce(idEcommerce);
         return ResponseEntity.status(200).build();

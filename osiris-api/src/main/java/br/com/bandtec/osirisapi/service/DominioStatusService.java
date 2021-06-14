@@ -43,7 +43,7 @@ public class DominioStatusService {
 
     public void deleteDomino(int idDominioStatus) {
         if (!dominioStatusRepository.existsById(idDominioStatus)) {
-            throw new ApiRequestException("Dominio não existente", HttpStatus.BAD_REQUEST);
+            throw new ApiRequestException("Dominio não existente", HttpStatus.NOT_FOUND);
         }
         dominioStatusRepository.deleteById(idDominioStatus);
     }
