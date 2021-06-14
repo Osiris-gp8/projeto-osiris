@@ -3,6 +3,7 @@ package br.com.bandtec.osirisapi.controller;
 import br.com.bandtec.osirisapi.domain.Acesso;
 import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.repository.AcessoRepository;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ class AcessoControllerTest {
     AcessoRepository acessoRepository;
 
     @Test
+    @DisplayName("GET / - Quando há acessos na base")
     void getAcessosOk() {
         List<Acesso> acessoList = Arrays.asList(new Acesso(), new Acesso(), new Acesso());
 
@@ -35,21 +37,23 @@ class AcessoControllerTest {
         ResponseEntity<List<Acesso>> resposta = acessoController.getAcessos();
 
         assertEquals(200, resposta.getStatusCodeValue());
-        assertEquals(3, resposta.getStatusCodeValue());
+        assertEquals(3, resposta.getBody().size());
     }
 
     @Test
+    @DisplayName("GET / - Quando não há acessos na base")
     void getAcessosNaoOk() {
         Mockito.when(acessoRepository.findAll()).thenReturn(new ArrayList<>());
 
-        ResponseEntity<List<Acesso>> resposta = acessoController.getAcessos();
-
-        assertThrows(ApiRequestException.class, () -> {
-            resposta.getBody().equals(null);
-        });
+        try {
+            ResponseEntity<List<Acesso>> resposta = acessoController.getAcessos();
+        } catch (ApiRequestException e) {
+            assertEquals(204, e.getStatus().value());
+        }
     }
 
     @Test
+    @DisplayName("POST / - Teste de cadastrar um novo acesso")
     void postAcesso() {
         Acesso acesso = new Acesso();
         acesso.setFimAcesso(LocalDateTime.now().minusHours(2));
