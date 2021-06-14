@@ -1,7 +1,9 @@
 package br.com.bandtec.osirisapi.controller;
 
 import br.com.bandtec.osirisapi.domain.Cupom;
+import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.repository.CupomRepository;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.ResponseEntity;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -25,6 +28,7 @@ class CupomControllerTest {
     CupomRepository cupomRepository;
 
     @Test
+    @DisplayName("GET / - Quando há cupons na base")
     void getCuponsOk() {
         List<Cupom> cupomList = Arrays.asList(new Cupom(), new Cupom(), new Cupom());
 
@@ -37,6 +41,19 @@ class CupomControllerTest {
     }
 
     @Test
+    @DisplayName("GET / - Quando não há cupons na base")
+    void getCuponsNaoOk() {
+        Mockito.when(cupomRepository.findAll()).thenReturn(new ArrayList<>());
+
+        try {
+            ResponseEntity<List<Cupom>> resposta = cupomController.getCupons();
+        } catch (ApiRequestException e) {
+            assertEquals(204, e.getStatus().value());
+        }
+    }
+
+    @Test
+    @DisplayName("GET /{idCupom} - Buscar um cupom a partir de um id existente")
     void getCupomOk() {
         int idTeste = 1;
         Optional<Cupom> cupomOptional = Optional.of(new Cupom());
@@ -49,7 +66,8 @@ class CupomControllerTest {
     }
 
     @Test
-    void postCupomOk() {
+    @DisplayName("POST / - Teste de cadastrar um novo cupom")
+    void postCupom() {
         Cupom cupom = new Cupom();
 
         ResponseEntity resposta = cupomController.postCupom(cupom);
@@ -58,7 +76,8 @@ class CupomControllerTest {
     }
 
     @Test
-    void postCuponsOk() {
+    @DisplayName("POST /list - Teste de cadastrar uma lista de cupons")
+    void postCupons() {
         List<Cupom> cupomList = Arrays.asList(new Cupom(), new Cupom(), new Cupom());
 
         ResponseEntity resposta = cupomController.postCupons(cupomList);
@@ -67,7 +86,8 @@ class CupomControllerTest {
     }
 
     @Test
-    void deleteCupomOk() {
+    @DisplayName("DELETE /{idCupom} - Teste de deletar um cupom a partir de um id")
+    void deleteCupom() {
         int idTeste = 1;
 
         Optional<Cupom> cupomOptional = Optional.of(new Cupom());
@@ -80,7 +100,8 @@ class CupomControllerTest {
     }
 
     @Test
-    void putCupomOk() {
+    @DisplayName("PUT /{idCupom} - Teste de atualizar um cupom")
+    void putCupom() {
         int idTeste = 12;
         Cupom cupom = new Cupom();
 
