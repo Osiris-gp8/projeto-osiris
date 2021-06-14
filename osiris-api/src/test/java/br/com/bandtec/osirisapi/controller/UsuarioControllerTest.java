@@ -2,6 +2,7 @@ package br.com.bandtec.osirisapi.controller;
 
 import br.com.bandtec.osirisapi.domain.Ecommerce;
 import br.com.bandtec.osirisapi.domain.Usuario;
+import br.com.bandtec.osirisapi.dto.request.UsuarioAtualizacaoRequest;
 import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.repository.EcommerceRepository;
 import br.com.bandtec.osirisapi.repository.UsuarioRepository;
@@ -44,7 +45,7 @@ class UsuarioControllerTest {
     }
 
     @Test
-    @DisplayName("GET / - Quando há usuários na base")
+    @DisplayName("GET / - Quando não há usuários na base")
     void getUsuarioNaoOk() {
         Mockito.when(usuarioRepository.findAll()).thenReturn(new ArrayList<>());
 
@@ -109,7 +110,7 @@ class UsuarioControllerTest {
     }
 
     @Test
-    @DisplayName("PUT /{idUsuario} - Quando não há Metas na base")
+    @DisplayName("PUT /{idUsuario} - Atualizar um usuário")
     void putUsuario() {
         int idTeste = 31;
         Ecommerce ecommerce = new Ecommerce();
@@ -117,12 +118,9 @@ class UsuarioControllerTest {
         ecommerce.setNome("TESTE");
         ecommerce.setCnpj("99.999.999/9999-99");
 
-        Usuario usuario = new Usuario();
-        usuario.setIdUsuario(82);
+        UsuarioAtualizacaoRequest usuario = new UsuarioAtualizacaoRequest();
         usuario.setNomeCompleto("USER_TESTE");
         usuario.setLoginUsuario("USER_TESTE");
-        usuario.setSenha("12345");
-        usuario.setEcommerce(ecommerce);
 
         Optional<Usuario> usuarioParaAtualizarOptional = Optional.of(new Usuario());
         Usuario usuarioParaAtualizar = usuarioParaAtualizarOptional.get();
