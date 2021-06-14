@@ -1,5 +1,6 @@
 package br.com.bandtec.osirisapi.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
@@ -36,13 +37,14 @@ public class Evento {
 
     @NotNull
     @PastOrPresent
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss[.SSS][.SS][.S][XXX]")
     private LocalDateTime dataCompra;
 
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss[.SSS][.SS][.S][XXX]")
     @JsonIgnore
     private LocalDate dataInclusao;
 
     @NotNull
-    @Positive
     @ManyToOne
     private Ecommerce ecommerce;
 
@@ -50,7 +52,6 @@ public class Evento {
     private Cupom cupom;
 
     @NotNull
-    @Positive
     @OneToOne
     private DominioStatus dominioStatus;
 }

@@ -1,6 +1,7 @@
 package br.com.bandtec.osirisapi.repository;
 
 import br.com.bandtec.osirisapi.domain.Cupom;
+import br.com.bandtec.osirisapi.domain.Ecommerce;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -17,5 +18,5 @@ public interface CupomRepository extends JpaRepository<Cupom, Integer> {
             "and data_validado < current_timestamp()", nativeQuery = true)
     Integer countAllByUsadoIsFalseAndDataValidadoLessThanTodayNow();
 
-    List<Cupom> findByDataEmitidoBetween(LocalDateTime dataInicial, LocalDateTime dataFinal);
+    List<Cupom> findByDataEmitidoBetweenAndEcommerceEquals(LocalDateTime dataInicial, LocalDateTime dataFinal, Ecommerce ecommerce);
 }

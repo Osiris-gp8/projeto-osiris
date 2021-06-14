@@ -3,6 +3,7 @@ package br.com.bandtec.osirisapi.service;
 import br.com.bandtec.osirisapi.converter.implementation.UsuarioConverterImplementation;
 import br.com.bandtec.osirisapi.domain.Usuario;
 import br.com.bandtec.osirisapi.dto.request.UsuarioAcessoRequest;
+import br.com.bandtec.osirisapi.dto.request.UsuarioAtualizacaoRequest;
 import br.com.bandtec.osirisapi.dto.response.UsuarioResponse;
 import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.repository.EcommerceRepository;
@@ -50,7 +51,7 @@ public class UsuarioService {
         usuarioRepository.deleteById(idUsuario);
     }
 
-    public UsuarioResponse atualizarUsuario(int idUsuario ,Usuario usuario) {
+    public UsuarioResponse atualizarUsuario(int idUsuario , UsuarioAtualizacaoRequest usuario) {
 
         Optional<Usuario> usuarioParaAtualizarOptional = usuarioRepository.findById(idUsuario);
 
@@ -60,9 +61,8 @@ public class UsuarioService {
 
         Usuario usuarioParaAtualizar = usuarioParaAtualizarOptional.get();
 
-        usuarioParaAtualizar.setEcommerce(usuario.getEcommerce());
         usuarioParaAtualizar.setLoginUsuario(usuario.getLoginUsuario());
-        usuarioParaAtualizar.setSenha(usuario.getSenha());
+        usuarioParaAtualizar.setNomeCompleto(usuario.getNomeCompleto());
 
         return usuarioConverter.usuarioToUsuarioResponse(usuarioRepository.save(usuarioParaAtualizar));
     }

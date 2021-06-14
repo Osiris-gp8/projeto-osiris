@@ -1,6 +1,7 @@
 from numpy.lib.shape_base import split
 from DbManager import DbManager
 from ApiClient import ApiClient
+from commons.utils import *
 import numpy as np
 import pandas as pd
 from  datetime import date, timedelta
@@ -28,6 +29,7 @@ def main():
         'Terceira Faixa')
     )
 
+    print(data_frame)
     max_categoria_faixa = data_frame[data_frame['statusEvento'] == 1]\
         .groupby(['faixa_etaria', 'categoria'], as_index=False).agg(
             maxPreco = ('preco' , 'max'),
@@ -44,6 +46,7 @@ def main():
     cupons['dataValido'] = cupons['dataEmitido'] + timedelta(days = 30)
     cupons['idConsumidor'] = data_frame.merge(max_categoria_faixa)\
         .query('maxPreco == preco').reset_index()['idConsumidor']
+    cupons['ecommerce'] = ""
 
     # api.send_data("/cupons" , cupons)
 
@@ -74,12 +77,33 @@ def main():
     # parsed = json.loads(result)
     # print(json.dumps(parsed, indent=4))
     
-    api.send_data("/cupons/list" , cupons)
+    # api.send_data("/cupons/list" , cupons)
+    
+    
+
+    eventos = format_eventos(data_frame)
+    api.send_data("/eventos/list", eventos)
+    print(eventos)
+    # print(random_dates("01-01-2021", "31-01-2021"))
     # db.clean_table("eventos")
     
     categorias_consumidor = data_frame.groupby(['idConsumidor','categoria']).agg(
         freq = ('idEvento', 'count')
     )
+
+
+def format_eventos(dataFrame):
+    newDf = pd.DataFrame()
+    newDf['idConsumidorEcommerce'] = dataFrame['idConsumidor']
+    newDf['nomeProduto']= dataFrame['nome']
+    newDf['preco']= dataFrame['preco']
+    newDf['nomeCategoria']= dataFrame['categoria']
+    newDf['dataCompra']= dataFrame['dataCompra']
+    newDf['dominioStatus'] =  dataFrame['statusEvento']
+    newDf['ecommerce'] = ''
+    newDf['cupom'] = ''
+
+    return newDf
 
 if __name__ == "__main__":
     main()
