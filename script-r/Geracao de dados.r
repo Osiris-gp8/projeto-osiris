@@ -2,15 +2,13 @@ library(jsonlite)
 library(RMariaDB)
 
 set.seed(500)
-pop = 10000
-n = 5000
+n = 1000
 
-popular <- function(textos){
-  n_textos <- c(0:(length(textos)-1)) 
-  elemento.pop <- rep(n_textos, pop)
+popular <- function(qtd, textos){
+  elemento.pop <- rep(0:qtd,n)
   elemento.n <- sample(elemento.pop,n)
   elemento <- factor(elemento.n,
-                     levels = n_textos,
+                     levels = c(0:qtd),
                      labels = textos,
                      ordered = TRUE) 
   return(elemento)
@@ -18,72 +16,67 @@ popular <- function(textos){
 
 
 
-#idade.pop <- abs(round(rnorm(pop, 37, 10),0))
-#idade <- idade.pop[ sample( which( idade.pop >= 18 ), n) ]
+idade <- abs(round(rnorm(n, 37, 10),0))
 
 preco <-  abs(round(rnorm(n, 2000, 300),2))
 
-categoria <- popular(c("Casual","Esporte", 
+categoria <- popular(5, c("Casual","Esporte", 
                           "Social", "Sapatenis",
                           "Sandalia",  "Corrida"))
 
-nome <- popular(c("Nike","Adidas", 
+nome <- popular(4, c("Nike","Adidas", 
                      "Oakley", "Lacoste",
                      "Versace"))
 
-fkcupom <- popular(c(0:4))
+fkcupom <- popular(4, c(0:4))
 
-status <- rbinom(n,1,0.3) + 1
+status <- rbinom(n,4,0.5) + 1
 
 idConsumidor <- abs(round(rnorm(n, 500, 10),0))
 
-sexo <- popular(c("M","F","O"))
+#cupom <- rbinom(n,1,0.2)
+#cupom <- factor(cupom, levels = c(0,1),
+#                labels = c(FALSE, TRUE))
 
-hoje <- Sys.Date()
-inicio <- hoje - pop / 10
 
-range_datas <- seq(inicio, hoje, by="day")
+datasGerais = seq(as.Date('2020/12/30'), Sys.Date(), by="day")
+dataHora <- vector(length = n)
 
-datas <- sample(range_datas, n, replace = TRUE)
-
-range_data_nascimento <- seq(ISOdate(1950,1,1), ISOdate(2008,1,1), "days")
-
-data_nascimento <- sample(range_data_nascimento, n)
+for(i in 1:n){
+  data.pop <- sample(1:length(datasGerais),1)
+  dataHora[i] <- datasGerais[data.pop]
+}
 
 dataCalcados = data.frame(id = 1:n,
                           idConsumidor, 
-                          data_nascimento,
+                          idade,
                           preco,
                           nome,
                           categoria,
                           fkcupom,
                           status,
                           fkEcommerce=1,
-                          sexo,
-                          dataCompra = datas)
+                          dataCompra = dataHora[1:n])
 print(dataCalcados)
 x <- toJSON(dataCalcados, pretty = T)
 
 
 write(x, "dado.json")
 
-processamentoDb <- dbConnect(RMariaDB::MariaDB(), user='admin', password='bandtec',
+processamentoDb <- dbConnect(RMariaDB::MariaDB(), user='root', password='bandtec', 
                              dbname='processamento_db', host='localhost')
 
 dbListTables(processamentoDb)
 
-print("Iniciando inserção")
 for(i in 1:nrow(dataCalcados)){
-  
-  sql <- paste("INSERT INTO eventos(idConsumidor, dataNascimento, preco, nome, categoria, fkCupom, statusEvento, fkEcommerce,
-  sexo, dataCompra) VALUES(",dataCalcados[i, 2],", '",format(as.Date(dataCalcados[i,3]), "%Y/%m/%d"),"', "
+  sql <- paste("INSERT INTO eventos(idConsumidor, idade, preco, nome, categoria, fkCupom, statusEvento, fkEcommerce,
+  dataCompra) VALUES(",dataCalcados[i, 2],", ",dataCalcados[i, 3],", "
   ,dataCalcados[i, 4],", '",dataCalcados[i, 5],"', '",dataCalcados[i, 6],"', "
-  ,dataCalcados[i, 7],", ",dataCalcados[i, 8],", ",dataCalcados[i, 9],", '",dataCalcados[i, 10],"', '"
-  ,dataCalcados[i, 11],"')", sep = "")
+  ,dataCalcados[i, 7],", ",dataCalcados[i, 8],", ",dataCalcados[i, 9],", ",dataCalcados[i, 10],")")
+  print(sql)
   
   insert<-dbSendQuery(processamentoDb, sql)
   dbClearResult(insert)
 }
-print("Inserção concluída com sucesso")
 
 dbDisconnect(processamentoDb)

@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/acessos")
@@ -23,6 +24,12 @@ public class AcessoController {
     @PostMapping
     public ResponseEntity postAcesso(@RequestBody @Valid Acesso novoAcesso) {
         acessoService.inserirAcesso(novoAcesso);
+        return ResponseEntity.status(201).build();
+    }
+
+    @PostMapping("/list")
+    public ResponseEntity postAcessoList(@RequestBody List<@Valid Acesso> acessoList){
+        acessoList.forEach(acessoService::inserirAcesso);
         return ResponseEntity.status(201).build();
     }
 
