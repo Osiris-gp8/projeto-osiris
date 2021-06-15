@@ -31,16 +31,14 @@ public class EventoService {
     private final EventoRepository eventoRepository;
     private final EventoProtocoloRepository protocoloRepository;
 
-    private final TokenService tokenService;
     private final PilhaObj<EventoPilha> eventosPilasObj;
     private final EventoConverterImplementation eventoConverter;
     private final ScheduleService scheduleService;
+    private final UserInfo userInfo;
 
-    public List<Evento> getEventos(HttpServletRequest httpRequest){
+    public List<Evento> getEventos(){
 
-        String token = tokenService.getTokenViaCookie(httpRequest);
-
-        UsuarioResponse usuario = tokenService.getUsuarioViaToken(token);
+        UsuarioResponse usuario = userInfo.getUsuario();
 
         List<Evento> eventos = eventoRepository.findAllByIdEcommerce(usuario.getEcommerce().getIdEcommerce());
 
@@ -51,9 +49,9 @@ public class EventoService {
         return eventos;
     }
 
-    public String inserirEventoAssincrono(Evento evento, HttpServletRequest httpRequest) {
+    public String inserirEventoAssincrono(Evento evento) {
 
-        if (eventoContemErros(evento, httpRequest) == true){
+        if (eventoContemErros(evento)){
             throw new ApiRequestException("Não autorizado para adicionar eventos em outro ecommerce",
                     HttpStatus.UNAUTHORIZED);
         }
@@ -76,9 +74,9 @@ public class EventoService {
         eventoRepository.save(evento);
     }
 
-    private boolean eventoContemErros(Evento evento, HttpServletRequest httpRequest) {
+    private boolean eventoContemErros(Evento evento) {
 
-        UsuarioResponse usuario = tokenService.getUsuarioViaToken(tokenService.getTokenViaCookie(httpRequest));
+        UsuarioResponse usuario = userInfo.getUsuario();
 
         if (!evento.getEcommerce().getIdEcommerce().equals(usuario.getEcommerce().getIdEcommerce())){
             return true;
@@ -87,18 +85,16 @@ public class EventoService {
         return false;
     }
 
-    public void deletarEvento(int idEvento, HttpServletRequest httpRequest) {
-
-        String token = tokenService.getTokenViaCookie(httpRequest);
-        UsuarioResponse usuario = tokenService.getUsuarioViaToken(token);
+    public void deletarEvento(int idEvento) {
 
         if (!eventoRepository.existsById(idEvento)) {
              throw new ApiRequestException("Esse evento não existe", HttpStatus.NOT_FOUND);
         }
 
         Evento evento = eventoRepository.findById(idEvento).get();
-        if (evento.getEcommerce().getIdEcommerce() != usuario.getEcommerce().getIdEcommerce()){
-            throw new ApiRequestException("", HttpStatus.UNAUTHORIZED);
+        if (eventoContemErros(evento)){
+            throw new ApiRequestException("Não autorizado para atualizar eventos em outro ecommerce",
+                    HttpStatus.UNAUTHORIZED);
         }
 
         eventosPilasObj.push(new EventoPilha(idEvento, eventoRepository.findById(idEvento).get() ,"delete"));
@@ -107,26 +103,18 @@ public class EventoService {
 
     public Evento atualizarEvento(Integer idEvento, Evento evento) {
 
-        Optional<Evento> eventoParaAtualizarOptional = eventoRepository.findById(idEvento);
-
-        if (!eventoParaAtualizarOptional.isPresent()){
-            throw new ApiRequestException("Esse evento não existe", HttpStatus.NOT_FOUND);
+        if (eventoContemErros(evento)){
+            throw new ApiRequestException("Não autorizado para atualizar eventos em outro ecommerce",
+                    HttpStatus.UNAUTHORIZED);
         }
 
-        Evento eventoParaAtualizar = eventoParaAtualizarOptional.get();
-        //TODO CRIAR UM CONVERTER
-        eventoParaAtualizar.setCupom(evento.getCupom());
-        eventoParaAtualizar.setDataCompra(evento.getDataCompra());
-        eventoParaAtualizar.setDominioStatus(evento.getDominioStatus());
-        eventoParaAtualizar.setIdConsumidorEcommerce(eventoParaAtualizar.getIdConsumidorEcommerce());
-        eventoParaAtualizar.setNomeCategoria(evento.getNomeCategoria());
-        eventoParaAtualizar.setNomeProduto(evento.getNomeProduto());
-        eventoParaAtualizar.setPreco(evento.getPreco());
-        eventoParaAtualizar.setEcommerce(evento.getEcommerce());
-        eventoParaAtualizar.setCupom(evento.getCupom());
+        if (eventoRepository.existsById(idEvento)){
+            evento.setIdEvento(idEvento);
+            eventoRepository.save(evento);
+        }
 
         eventosPilasObj.push(new EventoPilha(evento.getIdEvento(), evento,"update"));
-        return eventoRepository.save(eventoParaAtualizar);
+        return eventoRepository.save(evento);
 
     }
 
@@ -157,10 +145,9 @@ public class EventoService {
         return novoEvento;
     }
 
-    public EventoProtocoloResponse getEventoProtocolo(String idProtocolo, HttpServletRequest httpRequest) {
+    public EventoProtocoloResponse getEventoProtocolo(String idProtocolo) {
 
-        String token = tokenService.getTokenViaCookie(httpRequest);
-        UsuarioResponse usuario = tokenService.getUsuarioViaToken(token);
+        UsuarioResponse usuario = userInfo.getUsuario();
 
         Optional<EventoProtocolo> eventoProtocolo = protocoloRepository.findAllByIdEcommerceAndIdProtocolo(
                 usuario.getEcommerce().getIdEcommerce(),
@@ -174,10 +161,9 @@ public class EventoService {
         return eventoConverter.eventoProtocoloToEventoProtocoloResponse(eventoProtocolo.get());
     }
 
-    public List<EventoProtocoloResponse> getEventosProtocolo(HttpServletRequest httpRequest) {
+    public List<EventoProtocoloResponse> getEventosProtocolo() {
 
-        String token = tokenService.getTokenViaCookie(httpRequest);
-        UsuarioResponse usuario = tokenService.getUsuarioViaToken(token);
+        UsuarioResponse usuario = userInfo.getUsuario();
 
         List<EventoProtocolo> eventosProtocolo = protocoloRepository.findAllEventoProtocoloByIdEcommerce(
                 usuario.getEcommerce().getIdEcommerce());
