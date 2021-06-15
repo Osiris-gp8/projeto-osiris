@@ -1,12 +1,12 @@
 package br.com.bandtec.osirisapi.service;
 
+import br.com.bandtec.osirisapi.converter.MetaConverter;
 import br.com.bandtec.osirisapi.domain.Meta;
+import br.com.bandtec.osirisapi.dto.response.MetaResponse;
 import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.repository.MetaRepository;
-import javassist.NotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,15 +17,16 @@ import java.util.Optional;
 public class MetaService {
 
     private MetaRepository metaRepository;
+    private final MetaConverter metaConverter;
 
-    public List<Meta> getMetas() {
+    public List<MetaResponse> getMetas() {
 
         List<Meta> metas = metaRepository.findAll();
         if (metas.isEmpty()) {
             throw new ApiRequestException("Não existem metas", HttpStatus.NO_CONTENT);
         }
 
-        return metas;
+        return metaConverter.metaListToMetaResponseList(metas);
     }
 
     public Meta inserirMeta(Meta meta){
