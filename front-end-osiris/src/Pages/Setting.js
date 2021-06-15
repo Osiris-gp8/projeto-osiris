@@ -200,7 +200,7 @@ export default () =>{
                         
                     </div>
 
-                    <div className="user-config">
+                    {/* <div className="user-config">
                         <div className="configs-head">
                             <h2>Conexão</h2>
                         </div>
@@ -214,7 +214,7 @@ export default () =>{
                                 defaultValue="http://osiris/netshoes/WJNjs5"
                             />
                         </div>
-                    </div>
+                    </div> */}
 
                     {/* <ButtonNoLink
                         type="btn-preenchido"

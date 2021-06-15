@@ -5,7 +5,6 @@ function ChartPie(props){
     const options={
         title: props.title,
         pieHole: props.pieHole,
-        pieSliceText: "none",
         colors: props.colors,
         backgroundColor: "#ECF0F7",
         chartArea: {
