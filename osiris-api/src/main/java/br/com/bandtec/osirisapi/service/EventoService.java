@@ -4,6 +4,7 @@ import br.com.bandtec.osirisapi.converter.implementation.EventoConverterImplemen
 import br.com.bandtec.osirisapi.domain.Evento;
 import br.com.bandtec.osirisapi.domain.EventoProtocolo;
 import br.com.bandtec.osirisapi.dto.response.EventoProtocoloResponse;
+import br.com.bandtec.osirisapi.dto.response.EventosComSemCupomResponse;
 import br.com.bandtec.osirisapi.dto.response.UsuarioResponse;
 import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.repository.EventoProtocoloRepository;
@@ -16,7 +17,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
@@ -182,5 +182,15 @@ public class EventoService {
         }
 
         return eventoConverter.eventoProtocoloToEventoProtocoloResponse(eventosProtocolo);
+    }
+
+    public EventosComSemCupomResponse getEventosSemCupom() {
+
+        UsuarioResponse usuario = userInfo.getUsuario();
+
+        Integer contagemSemCupom = eventoRepository.findByEventoSemCupom(usuario.getEcommerce().getIdEcommerce());
+        Integer contagemComCupom = eventoRepository.findByEventoComCupom(usuario.getEcommerce().getIdEcommerce());
+
+        return eventoConverter.eventoToEventosSemCupomResponse(contagemSemCupom, contagemComCupom);
     }
 }
