@@ -33,7 +33,6 @@ public class ScheduleService {
     }
 
     private void processamentoAssicrono(){
-        setterEventoFilaObj();
 
         Thread processarEvento = new Thread(() -> {
             if (eventosFilaObj.isEmpty()){
@@ -58,21 +57,5 @@ public class ScheduleService {
         });
 
         processarEvento.start();
-    }
-
-    private void setterEventoFilaObj() {
-        List<EventoProtocolo> eventosProtocolo = eventoProtocoloRepository.findAllByStatusEquals(EventoFilaEnum.PROCESSANDO);
-
-        if (eventosProtocolo.isEmpty()){
-            return;
-        }
-
-        for (EventoProtocolo eventoProtocolo : eventosProtocolo){
-            if (eventosFilaObj.isFull()){
-                break;
-            }
-
-            eventosFilaObj.insert(eventoProtocolo);
-        }
     }
 }
