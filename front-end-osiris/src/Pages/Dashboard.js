@@ -1,4 +1,4 @@
-import { React, useEffect } from 'react';
+import { React, useEffect, useState } from 'react';
 import MenuNovo from '../Components/MenuNovo/MenuNovo';
 import Metricas from '../Components/Metricas/Metricas';
 import arrowUpCircleFill from '@iconify-icons/bi/arrow-up-circle-fill';
@@ -10,6 +10,7 @@ import api from '../api';
 
 export default () =>{ 
     const history = useHistory();
+    const [calcados, setCalcados] = useState([]);
     useEffect(() =>{
         if(!sessionStorage.getItem("token")){
             return history.push('/login');
@@ -20,6 +21,20 @@ export default () =>{
         }).catch(err => {
             console.log(err);
         });
+
+        api.get("/metricas/ranque-categoria").then(res => {
+            console.log(res);
+            let calcadosApi = [];
+            calcadosApi.push(['Tipo de calçado', 'Valor']);
+            res.data.forEach(e => {
+                calcadosApi.push([e.nome, e.quantidades]);
+            });
+            setCalcados(calcadosApi);
+            console.log(calcados);
+        }).catch(err => {
+            console.log(err);
+        });
+
     }, []);
 
     const cores = ["#666BC2", "#8CA8D1", "#B3C8E1", "#D9E2F0", "#ECF0F7"];
@@ -108,7 +123,7 @@ export default () =>{
                         <ChartPie
                             title="Tipo de Venda"
                             width="100%"
-                            data={dadosPie2}
+                            data={calcados}
                             pieHole= {0.4}
                             colors={cores}
                         />

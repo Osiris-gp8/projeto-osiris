@@ -13,7 +13,7 @@ import java.util.List;
 
 public interface EventoRepository extends JpaRepository<Evento, Integer> {
     @Query(value = "select nome_categoria as categoria, count(*) as quantidade from evento " +
-            "group by nome_categoria order by quantidade desc limit 5", nativeQuery = true)
+            "group by nome_categoria order by quantidade desc", nativeQuery = true)
     List<RanqueCategoriaView> ranque();
 
     @Query(value = "select * from evento where id_consumidor_ecommerce = ?", nativeQuery = true)

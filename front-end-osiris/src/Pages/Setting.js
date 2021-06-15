@@ -65,14 +65,17 @@ export default () =>{
 
     function atualizarUser(e){
         e.preventDefault();
-        api.put(`/usuarios/${JSON.parse(sessionStorage.getItem("usuario")).idUsuario}`, user)
+        api.post(`/usuarios/${JSON.parse(sessionStorage.getItem("usuario")).idUsuario}`, user, {
+            headers: {
+                Authorization: `${sessionStorage.getItem("tipo")} ${sessionStorage.getItem("token")}`
+            }
+        })
             .then(res => {
                 console.log(res)
                 if(res.status == 200){
                     alert("Usuário alterado com sucesso");
-                }else{
-                    alert("Ops, houve um erro :(")
                 }
+                sessionStorage.setItem("usuario", JSON.stringify(user));
             }).catch(err => {
                 console.log(err);
                 alert("Ops, houve um erro :(");
@@ -81,11 +84,13 @@ export default () =>{
 
     function atualizarEcommerce(e){
         e.preventDefault();
-        api.put(`/ecommerces/${JSON.parse(sessionStorage.getItem("usuario")).ecommerce.idEcommerce}`, ecommerce)
+        api.post(`/ecommerces/${JSON.parse(sessionStorage.getItem("usuario")).ecommerce.idEcommerce}`, ecommerce)
             .then(res => {
                 console.log(res)
                 if(res.status == 200){
                     alert("Ecommerce alterado com sucesso");
+                    user.ecommerce = ecommerce;
+                    sessionStorage.setItem("usuario", JSON.stringify(user));
                 }else{
                     alert("Ops, houve um erro :(");
                 }
