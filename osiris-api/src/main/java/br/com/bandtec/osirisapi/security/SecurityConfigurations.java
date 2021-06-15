@@ -3,6 +3,7 @@ package br.com.bandtec.osirisapi.security;
 import br.com.bandtec.osirisapi.repository.UsuarioRepository;
 import br.com.bandtec.osirisapi.service.AutenticacaoService;
 import br.com.bandtec.osirisapi.service.TokenService;
+import com.google.common.collect.ImmutableList;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -53,6 +54,7 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 // Forma de liberar endpoints das controllers
                 .antMatchers("/auth").permitAll()
+                .antMatchers("/**").permitAll()
 //                .antMatchers("/usuarios").permitAll()
                 .antMatchers("/usuarios/**").permitAll()
                 .anyRequest().authenticated()
@@ -60,8 +62,7 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().addFilterBefore(
                         new AutenticacaoViaTokenFilter(tokenService, usuarioRepository),
-                        UsernamePasswordAuthenticationFilter.class)
-                .cors();
+                        UsernamePasswordAuthenticationFilter.class);
     }
 
     // Configurações de recursos estáticos (js, css, imagens, etc..)
