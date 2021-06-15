@@ -110,7 +110,7 @@ public class ArquivoService {
         Ecommerce logedEcommerce = userInfo.getEcommerce();
 
         List<Evento> eventos = eventoRepository
-                .findByDataInclusaoBetweenAndEcommerceEquals(dataInicial.atStartOfDay(), dataFinal.atStartOfDay(), logedEcommerce);
+                .findByDataInclusaoBetweenAndEcommerceEquals(dataInicial, dataFinal, logedEcommerce);
 
         return eventos.stream()
                 .map(eventoToLayoutEvento::convert)
