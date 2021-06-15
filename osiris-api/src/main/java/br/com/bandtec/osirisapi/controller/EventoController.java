@@ -69,7 +69,7 @@ public class EventoController {
         return ResponseEntity.status(200).build();
     }
 
-    @GetMapping("/sem-cupom")
+    @GetMapping("/com-sem-cupom")
     public ResponseEntity getSemCupom(){
         return ResponseEntity.status(200).body(eventoService.getEventosSemCupom());
     }

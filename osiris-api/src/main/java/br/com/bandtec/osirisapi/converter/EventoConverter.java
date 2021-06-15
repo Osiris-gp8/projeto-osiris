@@ -3,7 +3,7 @@ package br.com.bandtec.osirisapi.converter;
 import br.com.bandtec.osirisapi.domain.Evento;
 import br.com.bandtec.osirisapi.domain.EventoProtocolo;
 import br.com.bandtec.osirisapi.dto.response.EventoProtocoloResponse;
-import br.com.bandtec.osirisapi.dto.response.EventosSemCupomResponse;
+import br.com.bandtec.osirisapi.dto.response.EventosComSemCupomResponse;
 
 import java.util.List;
 
@@ -15,5 +15,5 @@ public interface EventoConverter {
 
     List<EventoProtocoloResponse> eventoProtocoloToEventoProtocoloResponse(List<EventoProtocolo> eventoProtocolos);
 
-    EventosSemCupomResponse eventoToEventosSemCupomResponse(Integer contagemEventos);
+    EventosComSemCupomResponse eventoToEventosSemCupomResponse(Integer contagemEventos, Integer contagemEventosComCupom);
 }

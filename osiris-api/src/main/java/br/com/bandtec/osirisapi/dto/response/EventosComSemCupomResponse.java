@@ -7,6 +7,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class EventosSemCupomResponse {
+public class EventosComSemCupomResponse {
     private Integer contagemEventosSemCupom;
+    private Integer contagemEventosComCupom;
 }
