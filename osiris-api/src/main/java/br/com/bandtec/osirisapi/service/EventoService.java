@@ -4,6 +4,7 @@ import br.com.bandtec.osirisapi.converter.implementation.EventoConverterImplemen
 import br.com.bandtec.osirisapi.domain.Evento;
 import br.com.bandtec.osirisapi.domain.EventoProtocolo;
 import br.com.bandtec.osirisapi.dto.response.EventoProtocoloResponse;
+import br.com.bandtec.osirisapi.dto.response.EventosSemCupomResponse;
 import br.com.bandtec.osirisapi.dto.response.UsuarioResponse;
 import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.repository.EventoProtocoloRepository;
@@ -182,5 +183,14 @@ public class EventoService {
         }
 
         return eventoConverter.eventoProtocoloToEventoProtocoloResponse(eventosProtocolo);
+    }
+
+    public EventosSemCupomResponse getEventosSemCupom() {
+
+        UsuarioResponse usuario = userInfo.getUsuario();
+
+        Integer contagem = eventoRepository.findByEventoSemCupom(usuario.getEcommerce().getIdEcommerce());
+
+        return eventoConverter.eventoToEventosSemCupomResponse(contagem);
     }
 }

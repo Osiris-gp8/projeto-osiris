@@ -4,6 +4,7 @@ import br.com.bandtec.osirisapi.converter.EventoConverter;
 import br.com.bandtec.osirisapi.domain.Evento;
 import br.com.bandtec.osirisapi.domain.EventoProtocolo;
 import br.com.bandtec.osirisapi.dto.response.EventoProtocoloResponse;
+import br.com.bandtec.osirisapi.dto.response.EventosSemCupomResponse;
 import br.com.bandtec.osirisapi.utils.enums.EventoFilaEnum;
 import org.springframework.stereotype.Component;
 
@@ -48,5 +49,12 @@ public class EventoConverterImplementation implements EventoConverter {
         }
 
         return eventosProtocoloResponse;
+    }
+
+    @Override
+    public EventosSemCupomResponse eventoToEventosSemCupomResponse(Integer contagemEventos) {
+        return EventosSemCupomResponse.builder()
+                .contagemEventosSemCupom(contagemEventos)
+                .build();
     }
 }
