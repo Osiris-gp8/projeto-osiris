@@ -38,7 +38,7 @@ public interface EventoRepository extends JpaRepository<Evento, Integer> {
             nativeQuery = true)
     List<Evento> findAllByIdEcommerce(Integer idEcommerce);
 
-    List<Evento> findByDataInclusaoBetweenAndEcommerceEquals(LocalDateTime dataInicial, LocalDateTime dataFinal, Ecommerce ecommerce);
+    List<Evento> findByDataInclusaoBetweenAndEcommerceEquals(LocalDate dataInicial, LocalDate dataFinal, Ecommerce ecommerce);
 
     @Query(value = "select count(*) from evento e, ecommerce ec where e.ecommerce_id_ecommerce = ?1" +
             " and e.ecommerce_id_ecommerce = ec.id_ecommerce" +

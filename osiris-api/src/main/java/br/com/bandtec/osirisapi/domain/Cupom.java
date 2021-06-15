@@ -27,12 +27,10 @@ public class Cupom {
 
     @NotNull
     @PastOrPresent
-    @JsonFormat(shape= JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss[.SSS][.SS][.S][XXX]")
     private LocalDateTime dataEmitido;
 
     @NotNull
     @Future
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss[.SSS][.SS][.S][XXX]")
     private LocalDateTime dataValidado;
 
     @NotNull

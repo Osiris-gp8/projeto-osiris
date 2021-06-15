@@ -1,14 +1,19 @@
 package br.com.bandtec.osirisapi.dto.request;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.PositiveOrZero;
 import java.time.LocalDate;
 
-@Data
+
+@Getter
+@Setter
+@AllArgsConstructor
 @NoArgsConstructor
 public class ExportacaoRequest {
 
@@ -21,7 +26,6 @@ public class ExportacaoRequest {
     private LocalDate dataInicio;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    @PastOrPresent
     private LocalDate dataFim;
 
     @PositiveOrZero
