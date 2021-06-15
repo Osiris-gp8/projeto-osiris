@@ -9,3 +9,6 @@ def random_dates(start, end, n=10):
 def fill_dataFrame( data, column, value):
         data[column] = list([value]) * data.shape[0]
         return data
+
+def normalize_data(value, data, column):
+    return data.loc[data['idConsumidor'] == value].iloc[0][column]
