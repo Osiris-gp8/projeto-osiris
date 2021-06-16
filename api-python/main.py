@@ -72,12 +72,8 @@ def main():
     cupons['valor'] = receber_cupom['media_preco'] / 100
 
     print( cupons.to_json(orient='records'))
-    # print( type(cupons.set_index('idConsumidor').T.to_dict('list')))
-    # result = cupons.to_json(orient="split")
-    # parsed = json.loads(result)
-    # print(json.dumps(parsed, indent=4))
     
-    # api.send_data("/cupons/list" , cupons)
+    api.send_data("/cupons/list" , cupons)
     
     
 

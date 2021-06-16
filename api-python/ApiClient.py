@@ -26,9 +26,14 @@ class ApiClient:
         data_json = json.loads(data_json.to_json(orient='records', date_format="iso"))
         print("Aqui " + self.domain)
         # self.login("/auth")
-        
+        tipo = "Cupom"
+        if(uri == "/eventos/list"):
+            tipo = "Evento"
+        print(f"Inserindo dados de {tipo} no BD...")
         requisicao =  requests.post(url = (self.domain + uri),  headers={'Authorization': 'Bearer {}'.format(self.token)},json = data_json)
-        print(requisicao)
+        if(requisicao.ok):
+            print("Inserção feita com sucesso")
+        
 
     def format_data(self, uri, df):
         if(uri == "/eventos/list"):
