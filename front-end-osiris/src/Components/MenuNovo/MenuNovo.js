@@ -4,7 +4,7 @@ import bxHome from '@iconify-icons/bx/bx-home';
 import lineChartOutlined from '@iconify-icons/ant-design/line-chart-outlined';
 import arrowUpCircleFill from '@iconify-icons/bi/arrow-up-circle-fill';
 import fileIcon from '@iconify-icons/akar-icons/file';
-import gearIcon from '@iconify-icons/akar-icons/gear';
+import personIcon from '@iconify-icons/akar-icons/person';
 import signOut from '@iconify-icons/akar-icons/sign-out';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import api from '../../api';
@@ -35,7 +35,7 @@ function MenuNovo(){
                 {/* <Item destino="/sales" icon={lineChartOutlined} aba="Vendas"/> */}
                 {/* <Item destino="/" icon={arrowUpCircleFill} aba="Metas"/> */}
                 <Item destino="/upload" icon={fileIcon} aba="Arquivos"/>
-                <Item destino="/config" icon={gearIcon} aba="Configuração"/>
+                <Item destino="/config" icon={personIcon} aba="Perfil"/>
                 <ItemSair function={logoff} id="item-sair" icon={signOut} aba="Sair"/>
             </div>
         </div>
