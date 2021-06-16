@@ -8,6 +8,7 @@ import br.com.bandtec.osirisapi.layout.LayoutEvento;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -43,6 +44,7 @@ public class LayoutEventoToEvento implements Converter<LayoutEvento, Evento> {
                 .dataCompra(layoutEvento.getDataCompra())
                 .ecommerce(ecommerce)
                 .cupom(cupom)
+                .dataInclusao(LocalDate.now())
                 .dominioStatus(dominioStatus)
                 .build();
     }
