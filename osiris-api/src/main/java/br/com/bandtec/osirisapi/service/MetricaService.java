@@ -1,7 +1,11 @@
 package br.com.bandtec.osirisapi.service;
 
+import br.com.bandtec.osirisapi.converter.implementation.EventoConverterImplementation;
 import br.com.bandtec.osirisapi.domain.Cupom;
 import br.com.bandtec.osirisapi.domain.Evento;
+import br.com.bandtec.osirisapi.dto.barChart.AcessoDto;
+import br.com.bandtec.osirisapi.dto.barChart.EventoAcessoChartResponse;
+import br.com.bandtec.osirisapi.dto.barChart.EventoDto;
 import br.com.bandtec.osirisapi.repository.*;
 import br.com.bandtec.osirisapi.views.CupomMaisUsadoView;
 import br.com.bandtec.osirisapi.views.RanqueCategoriaView;
@@ -18,6 +22,7 @@ public class MetricaService {
     private final EventoRepository eventoRepository;
     private final AcessoRepository acessoRepository;
     private final CupomRepository cupomRepository;
+    private final EventoConverterImplementation eventoConverter;
 
     public Integer getUltimaSemana(){
 
@@ -52,5 +57,13 @@ public class MetricaService {
     public List<Evento> getComprasSemCupom() {
 
         return eventoRepository.findAllByCupomAndEventoAndUsadoIsFalseAndFkStatus();
+    }
+
+    public List<EventoAcessoChartResponse> getAcessosEventosUltimaSemana() {
+
+        List<AcessoDto> acessoDtoList = acessoRepository.countAcessosByLastWeek();
+        List<EventoDto> eventoDtoList = eventoRepository.countEventosByLastWeek();
+
+        return eventoConverter.eventoDtoAcessoDtoToEventoAcessoChartResponse(eventoDtoList, acessoDtoList);
     }
 }
