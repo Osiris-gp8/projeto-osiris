@@ -2,6 +2,7 @@ package br.com.bandtec.osirisapi.repository;
 
 import br.com.bandtec.osirisapi.domain.Ecommerce;
 import br.com.bandtec.osirisapi.domain.Evento;
+import br.com.bandtec.osirisapi.dto.barChart.EventoDto;
 import br.com.bandtec.osirisapi.views.CupomMaisUsadoView;
 import br.com.bandtec.osirisapi.views.RanqueCategoriaView;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -39,4 +40,8 @@ public interface EventoRepository extends JpaRepository<Evento, Integer> {
     List<Evento> findAllByIdEcommerce(Integer idEcommerce);
 
     List<Evento> findByDataInclusaoBetweenAndEcommerceEquals(LocalDateTime dataInicial, LocalDateTime dataFinal, Ecommerce ecommerce);
+
+    @Query(value = "select count(id_evento) as evento from evento where data_compra between " +
+            "getdate()-6 and getdate() group by day(data_compra)", nativeQuery = true)
+    List<EventoDto> countEventosByLastWeek();
 }
