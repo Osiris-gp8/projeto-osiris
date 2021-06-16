@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react'
 import api from '../../api'
 import InputPicker from '../InputPicker'
 import { ButtonForm as Button} from '../Button' 
-const FileDownload = require('js-file-download');
+import {FileDownload} from 'js-file-download'
+// const FileDownload = require('js-file-download');
 
 function UploadFiles(props) {
   const [uploaded, setUploaded] = useState(false)

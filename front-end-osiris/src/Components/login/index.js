@@ -40,7 +40,7 @@ export default () => {
         api.post("/auth", {
             "login": usuarioData.login,
             "senha": usuarioData.senha
-        }).then( async response => {
+        }).then( response => {
             sessionStorage.setItem("token", response.data.token);
             sessionStorage.setItem("tipo", response.data.tipo);
             sessionStorage.setItem("usuario", JSON.stringify(response.data.usuario));
