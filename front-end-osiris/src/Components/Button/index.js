@@ -16,8 +16,10 @@ export function ButtonNoLink(props){
     );
 }
 
+
+
 export function ButtonForm(props){
     return(
-        <button type="submit" className={`btn ${props.type} ${props.side}`} style={props.style}>{props.children}</button>
+        <button type="submit" onClick={props.onClick} className={`btn ${props.type} ${props.side}`} style={props.style}>{props.children}</button>
     );
 }

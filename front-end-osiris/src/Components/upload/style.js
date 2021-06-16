@@ -61,11 +61,10 @@ export const BoxUpload = styled.div`
 export const BoxFile = styled.div`
 display: flex;
 position:relative;
-width: 90.5%;
+width: 96%;
 height: 100%;
 border: 2px solid black;
 top:50%;
-left: 5%;
 transform: translate(30% -50%);
 align-items: center;
 

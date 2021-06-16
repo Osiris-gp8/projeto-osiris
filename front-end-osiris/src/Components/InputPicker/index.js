@@ -3,9 +3,9 @@ import {DateContainer} from "./style"
 
 const DatePicker = (props) => {
 
-    const [options, setOptions] = useState(["Vendas"])
+    const [options, setOptions] = useState(["Ambos", "Vendas", "Cupom"])
 
-    const insertOptions = (value) => (<option value={value}>{value}</option>)
+    const insertOptions = (value, index) => (<option value={index}>{value}</option>)
     
     const Options = () => 
         <>
@@ -16,7 +16,7 @@ const DatePicker = (props) => {
     return(
         <DateContainer>
             <label for={props.id}>{props.label}</label>
-            {props.select ? (<select id={props.id}><Options/></select>): (<input id={props.id} type="date" />)}
+            {props.select ? (<select onChange={props.event} id={props.id}><Options/></select>): (<input onChange={props.event} id={props.id} type="date" />)}
         </DateContainer>
     )
 }

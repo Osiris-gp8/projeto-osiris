@@ -62,7 +62,7 @@ public class ArquivoService {
         List<LayoutEvento> layoutEventoList = getLayoutEventosByRequest(request);
         List<LayoutCupom> layoutCupomList = getLayoutCupomsByRequest(request);
 
-        if(layoutEventoList.isEmpty()){
+        if(layoutEventoList.isEmpty() && layoutCupomList.isEmpty()){
             throw new ApiRequestException("Não existem eventos", HttpStatus.NO_CONTENT);
         }
 
