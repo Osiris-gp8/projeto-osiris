@@ -32,7 +32,7 @@ public class EcommerceController {
         return ResponseEntity.status(200).build();
     }
 
-    @PutMapping("/{idEcommerce}")
+    @PostMapping("/{idEcommerce}")
     public ResponseEntity atualizarEcommerce(
             @PathVariable Integer idEcommerce,
             @RequestBody @Valid Ecommerce ecommerce) {

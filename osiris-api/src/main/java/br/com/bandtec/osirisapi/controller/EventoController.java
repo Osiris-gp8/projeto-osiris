@@ -18,9 +18,9 @@ public class EventoController {
     private final EventoService eventoService;
 
     @GetMapping
-    public ResponseEntity getEventos(HttpServletRequest httpRequest) {
+    public ResponseEntity getEventos() {
 
-        return ResponseEntity.status(200).body(eventoService.getEventos(httpRequest));
+        return ResponseEntity.status(200).body(eventoService.getEventos());
     }
 
     @PostMapping
@@ -28,7 +28,7 @@ public class EventoController {
 
         return ResponseEntity.status(202).header(
                 "protocolo",
-                eventoService.inserirEventoAssincrono(novoEvento, httpRequest)).build();
+                eventoService.inserirEventoAssincrono(novoEvento)).build();
     }
 
     @PostMapping("/list")
@@ -38,8 +38,8 @@ public class EventoController {
     }
 
     @DeleteMapping("/{idEvento}")
-    public ResponseEntity deleteEvento(@PathVariable int idEvento, HttpServletRequest httpRequest) {
-        eventoService.deletarEvento(idEvento, httpRequest);
+    public ResponseEntity deleteEvento(@PathVariable int idEvento) {
+        eventoService.deletarEvento(idEvento);
         return ResponseEntity.status(200).build();
     }
 
@@ -51,15 +51,15 @@ public class EventoController {
     }
 
     @GetMapping("/protocolos/{idProtocolo}")
-    public ResponseEntity getEventoPorProtocolo(@PathVariable String idProtocolo, HttpServletRequest httpRequest){
+    public ResponseEntity getEventoPorProtocolo(@PathVariable String idProtocolo){
 
-        return ResponseEntity.status(200).body(eventoService.getEventoProtocolo(idProtocolo, httpRequest));
+        return ResponseEntity.status(200).body(eventoService.getEventoProtocolo(idProtocolo));
     }
 
     @GetMapping("/protocolos")
-    public ResponseEntity getEventosProtocolo(HttpServletRequest httpRequest){
+    public ResponseEntity getEventosProtocolo(){
 
-        return ResponseEntity.status(200).body(eventoService.getEventosProtocolo(httpRequest));
+        return ResponseEntity.status(200).body(eventoService.getEventosProtocolo());
     }
 
     @PutMapping
@@ -67,6 +67,11 @@ public class EventoController {
         eventoService.desfazerEvento();
 
         return ResponseEntity.status(200).build();
+    }
+
+    @GetMapping("/com-sem-cupom")
+    public ResponseEntity getSemCupom(){
+        return ResponseEntity.status(200).body(eventoService.getEventosSemCupom());
     }
 
 }

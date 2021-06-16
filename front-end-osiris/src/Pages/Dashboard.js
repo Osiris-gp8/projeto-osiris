@@ -1,4 +1,4 @@
-import { React, useEffect } from 'react';
+import { React, useEffect, useState } from 'react';
 import MenuNovo from '../Components/MenuNovo/MenuNovo';
 import Metricas from '../Components/Metricas/Metricas';
 import arrowUpCircleFill from '@iconify-icons/bi/arrow-up-circle-fill';
@@ -9,17 +9,52 @@ import { useHistory } from 'react-router-dom';
 import api from '../api';
 
 export default () =>{ 
+
     const history = useHistory();
+    const [calcados, setCalcados] = useState([]);
+    const [metas, setMetas] = useState([{}, {}]);
+    const [cupons, setCupons] = useState([]);
+
+
     useEffect(() =>{
         if(!sessionStorage.getItem("token")){
             return history.push('/login');
         }
 
-        api.get("/metas").then(res => {
+        api.get("/metricas/ranque-categoria").then(res => {
             console.log(res);
+            let calcadosApi = [];
+            calcadosApi.push(['Tipo de calçado', 'Valor']);
+            res.data.forEach(e => {
+                calcadosApi.push([e.nome, e.quantidades]);
+            });
+            setCalcados(calcadosApi);
+            console.log(calcados);
         }).catch(err => {
             console.log(err);
         });
+
+        api.get("/eventos/com-sem-cupom").then(res => {
+            console.log(res);
+            setCupons([
+                ['cupom', 'valor'], 
+                ['Vendas com cupom', res.data.contagemEventosComCupom],
+                ['Vendas sem cupom', res.data.contagemEventosSemCupom]
+            ]);
+        }).catch(err => {
+            console.log(err);
+        })
+
+    }, []);
+
+    useEffect(() => {
+        async function getMetas(){
+            const resposta = await api.get("/metas");
+            setMetas(resposta.data);
+            console.log(resposta.data);
+        }
+
+        getMetas();
     }, []);
 
     const cores = ["#666BC2", "#8CA8D1", "#B3C8E1", "#D9E2F0", "#ECF0F7"];
@@ -27,26 +62,12 @@ export default () =>{
     const dados = [
         ['Dia da semana', 'Acessos', 'Vendas'],
         ['Domingo', 2014, 1000],
-        ['Segunda', 2015, 1170],
-        ['Terça', 2016, 660],
-        ['Quarta', 2017, 1030],
-        ['Quinta', 2017, 1030],
-        ['Sexta', 2017, 1030],
-        ['Sábado', 2017, 1030],
-    ];
-
-    const dadosPie1 = [
-        ['Tipo de venda', 'Valor'],
-        ['Vendas com cupom', 200],
-        ['Vendas sem cupom', 300],
-        ['Expirou o cupom', 200]];
-    
-    const dadosPie2 = [
-        ['Tipo de calçado', 'Valor'],
-        ['Skate', 200],
-        ['Social', 300],
-        ['Esportivo', 450],
-        ['Casual', 100]
+        ['Segunda', 1568, 1170],
+        ['Terça', 1233, 660],
+        ['Quarta', 1852, 500],
+        ['Quinta', 1233, 366],
+        ['Sexta', 2888, 963],
+        ['Sábado', 2600, 800],
     ];
 
     return (
@@ -54,18 +75,18 @@ export default () =>{
             <MenuNovo/>
             <div className="metricas">
                 <Metricas 
-                    metrica="Vendas" 
-                    valor="+1,569" 
-                    color="red"
-                    meta="3,600"
+                    metrica={metas[0].labelTipo}
+                    valor="+211" 
+                    color="green"
+                    meta={metas[0].valor}
                     icon={arrowUpCircleFill}
                 />
 
                 <Metricas 
-                    metrica="Clientes" 
+                    metrica={metas[1].labelTipo} 
                     valor="+56" 
-                    color="yellow"
-                    meta="300"
+                    color="orange"
+                    meta={metas[1].valor}
                     icon={arrowUpCircleFill}
                 />
 
@@ -97,7 +118,7 @@ export default () =>{
                         <h2>Vendas com Cupons</h2>
                         <ChartPie
                             width="100%"
-                            data={dadosPie1}
+                            data={cupons}
                             title="Tipo de Venda"
                             pieHole= {0.4}
                             colors={cores}
@@ -108,7 +129,7 @@ export default () =>{
                         <ChartPie
                             title="Tipo de Venda"
                             width="100%"
-                            data={dadosPie2}
+                            data={calcados}
                             pieHole= {0.4}
                             colors={cores}
                         />

@@ -6,6 +6,7 @@ import br.com.bandtec.osirisapi.dto.barChart.AcessoDto;
 import br.com.bandtec.osirisapi.dto.barChart.EventoAcessoChartResponse;
 import br.com.bandtec.osirisapi.dto.barChart.EventoDto;
 import br.com.bandtec.osirisapi.dto.response.EventoProtocoloResponse;
+import br.com.bandtec.osirisapi.dto.response.EventosComSemCupomResponse;
 
 import java.util.List;
 
@@ -19,4 +20,6 @@ public interface EventoConverter {
 
     List<EventoAcessoChartResponse> eventoDtoAcessoDtoToEventoAcessoChartResponse(List<EventoDto> eventoDtoList,
                                                                                   List<AcessoDto> acessoDtoList);
+
+    EventosComSemCupomResponse eventoToEventosSemCupomResponse(Integer contagemEventos, Integer contagemEventosComCupom);
 }

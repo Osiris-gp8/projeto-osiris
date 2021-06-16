@@ -37,10 +37,8 @@ public class Evento {
 
     @NotNull
     @PastOrPresent
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss[.SSS][.SS][.S][XXX]")
     private LocalDateTime dataCompra;
 
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss[.SSS][.SS][.S][XXX]")
     @JsonIgnore
     private LocalDate dataInclusao;
 
