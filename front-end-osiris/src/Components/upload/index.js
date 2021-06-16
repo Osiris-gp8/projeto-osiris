@@ -1,11 +1,13 @@
-import { BoxUpload, Container, BoxDownload, Button, BoxFile, Title, Subtitle } from './style'
+import { BoxUpload, Container, BoxDownload, BoxFile, Title, Subtitle } from './style'
 import DropZone from '../dragzone'
 import { useEffect, useState } from 'react'
 import api from '../../api'
 import InputPicker from '../InputPicker'
+import { ButtonForm as Button} from '../Button' 
+const FileDownload = require('js-file-download');
 
 function UploadFiles(props) {
-  let [uploaded, setUploaded] = useState(false)
+  const [uploaded, setUploaded] = useState(false)
   const [file, setFile] = useState({
     file: null,
     "nomeArquivo": "",
@@ -14,6 +16,12 @@ function UploadFiles(props) {
     "conteudoDoArquivo": "",
     "url": null,
   });
+
+   const [exportacao, setExportacao] = useState({
+     "dataInicio":"",
+     "dataFim":"",
+     "tipoCorpo":0
+   })
 
 
   const handleUpload = async ([fileUploaded]) => {
@@ -65,8 +73,8 @@ function UploadFiles(props) {
       return
     const data = new FormData();
     const newFile = file;
-    data.append("file", file.file, file.nomeArquivo);
-    let postType = file.tipoArquivo=='text/plain' ? "importacaoTXT" : "importacaoCSV"
+    data.append("arquivo", file.file, file.nomeArquivo);
+    let postType = "importacao-txt" 
     const config = {
       headers: {
           'content-type': 'multipart/form-data'
@@ -87,10 +95,22 @@ function UploadFiles(props) {
       });
   };
 
+  const handleClickDownload = () => {
+    api.request({method:"GET", url:"arquivos/relatorio-txt",  params:exportacao , responseType:"blob"})
+    .then(response => FileDownload(response.data, 'exportação.txt'))
+    .catch(e => console.log(e))
+  }
+
   useEffect(() => {
     console.log(`Você clicou ${file.uploaded} vezes`);
   }, [uploaded]);
 
+  const handleChange = (e) =>{
+    const newParameters = exportacao;
+    newParameters[e.target.id] = e.target.value
+    setExportacao(newParameters)
+    console.log(exportacao)
+  }
 
   return (
     <Container>
@@ -99,14 +119,20 @@ function UploadFiles(props) {
         <Subtitle>Selecione uma data e a categoria de dados que você deseja:</Subtitle>
         </div>
         <div>
-          <InputPicker label="Início:" id="inicio" />
-          <InputPicker label="Fim:" id="fim" />
-          <InputPicker select label="Dados:" id="Dados" />
+          <InputPicker event={handleChange} label="Início:" id="dataInicio" />
+          <InputPicker event={handleChange} label="Fim:" id="dataFim" />
+          <InputPicker select event={handleChange} label="Dados:" id="tipoCorpo" />
         </div>
         <div>
-          <Button>
+        
+          <Button
+              type="btn-preenchido" 
+              side="right" style={{width: "25%", marginRight: "1.8%"}}
+              onClick={handleClickDownload}
+              >
             Baixar
           </Button>
+          
         </div>
       </BoxDownload>
       <BoxUpload>
@@ -114,9 +140,13 @@ function UploadFiles(props) {
         <DropZone upload={handleUpload} uploaded={uploaded}/>
         <div>
           {uploaded && <BoxFile><p>{file["nomeArquivo"]} </p> <Button onClick={handleCancel}
-            cancelButton>Cancelar</Button> </BoxFile>}
+           style={{width: "10%", marginRight: "1.8%"}} >Cancelar</Button> </BoxFile>}
         </div>
-        <div><Button onClick={handleClick}>Enviar</Button></div>
+        <div><Button 
+              type="btn-preenchido" 
+
+               style={{width: "25%", marginRight: "4%", marginTop: "3%"}} 
+              onClick={handleClick}>Enviar</Button></div>
       </BoxUpload>
 
 

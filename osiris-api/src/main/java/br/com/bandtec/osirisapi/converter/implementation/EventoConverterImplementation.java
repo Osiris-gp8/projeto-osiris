@@ -3,7 +3,11 @@ package br.com.bandtec.osirisapi.converter.implementation;
 import br.com.bandtec.osirisapi.converter.EventoConverter;
 import br.com.bandtec.osirisapi.domain.Evento;
 import br.com.bandtec.osirisapi.domain.EventoProtocolo;
+import br.com.bandtec.osirisapi.dto.barChart.AcessoDto;
+import br.com.bandtec.osirisapi.dto.barChart.EventoAcessoChartResponse;
+import br.com.bandtec.osirisapi.dto.barChart.EventoDto;
 import br.com.bandtec.osirisapi.dto.response.EventoProtocoloResponse;
+import br.com.bandtec.osirisapi.dto.response.EventosComSemCupomResponse;
 import br.com.bandtec.osirisapi.utils.enums.EventoFilaEnum;
 import org.springframework.stereotype.Component;
 
@@ -48,5 +52,30 @@ public class EventoConverterImplementation implements EventoConverter {
         }
 
         return eventosProtocoloResponse;
+    }
+
+    @Override
+    public EventosComSemCupomResponse eventoToEventosSemCupomResponse(Integer contagemEventosSemCupom,
+                                                                      Integer contagemEventosComCupom) {
+        return EventosComSemCupomResponse.builder()
+                .contagemEventosSemCupom(contagemEventosSemCupom)
+                .contagemEventosComCupom(contagemEventosComCupom)
+                .build();
+    }
+
+    @Override
+    public List<EventoAcessoChartResponse> eventoDtoAcessoDtoToEventoAcessoChartResponse
+            (List<EventoDto> eventoDtoList, List<AcessoDto> acessoDtoList) {
+
+        List<EventoAcessoChartResponse> barChartResponse = new ArrayList<>();
+
+        for (int i = 0; i < acessoDtoList.size(); i++) {
+            barChartResponse.add(EventoAcessoChartResponse.builder()
+                    .eventoDto(eventoDtoList.get(i))
+                    .acessoDto(acessoDtoList.get(i))
+                    .build());
+        }
+
+        return barChartResponse;
     }
 }

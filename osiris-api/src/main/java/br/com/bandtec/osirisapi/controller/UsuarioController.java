@@ -34,7 +34,7 @@ public class UsuarioController {
         return ResponseEntity.status(200).build();
     }
 
-    @PutMapping("/{idUsuario}")
+    @PostMapping("/{idUsuario}")
     public ResponseEntity putUsuario(
             @PathVariable int idUsuario,
             @RequestBody @Valid UsuarioAtualizacaoRequest usuario) {

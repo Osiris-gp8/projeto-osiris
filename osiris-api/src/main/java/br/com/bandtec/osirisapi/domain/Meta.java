@@ -29,7 +29,7 @@ public class Meta {
     @Positive
     private Double valor;
 
-    @NotBlank
+    @NotNull
     @PositiveOrZero
     private Integer tipo;
 

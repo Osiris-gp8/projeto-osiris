@@ -19,7 +19,7 @@ export const DropContainer = styled.div.attrs({
   flex-direction: column;
   justify-content: space-between;
   background-color: white;
-  width: 95.4%;
+  width: 96%;
   transition: height 0.2s ease;
   outline: none;
   ${props => props.isDragActive && dragActive};

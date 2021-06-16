@@ -13,7 +13,7 @@ export default (props) => {
 
         if (isDragReject) {
             
-            return <UploadMessage type="error">Arquivo não suportado (TXT ou CSV)</UploadMessage>;
+            return <UploadMessage type="error">Arquivo não suportado (TXT)</UploadMessage>;
         }
 
         if (isUploded) {
@@ -30,7 +30,7 @@ export default (props) => {
     
 
     return (
-        <Dropzone accept="text/plain,application/vnd.ms-excel" maxFiles={1} onDropAccepted={upload}>
+        <Dropzone accept="text/plain" maxFiles={1} onDropAccepted={upload}>
             {({ getRootProps, getInputProps, isDragActive, isDragReject }) => (
                     <DropContainer {...getRootProps()}
                         isDragActive={isDragActive }
