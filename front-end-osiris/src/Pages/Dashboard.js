@@ -14,7 +14,7 @@ export default () =>{
     const [calcados, setCalcados] = useState([]);
     const [metas, setMetas] = useState([{}, {}]);
     const [cupons, setCupons] = useState([]);
-
+    const [eventos, setEventos] = useState(0);
 
     useEffect(() =>{
         if(!sessionStorage.getItem("token")){
@@ -41,6 +41,13 @@ export default () =>{
                 ['Vendas com cupom', res.data.contagemEventosComCupom],
                 ['Vendas sem cupom', res.data.contagemEventosSemCupom]
             ]);
+        }).catch(err => {
+            console.log(err);
+        });
+
+        api.get("/eventos").then(res => {
+            console.log(res);
+            setEventos(res.data.length);
         }).catch(err => {
             console.log(err);
         })
@@ -76,25 +83,22 @@ export default () =>{
             <div className="metricas">
                 <Metricas 
                     metrica={metas[0].labelTipo}
-                    valor="+211" 
-                    color="green"
+                    valor={eventos > 0 ? eventos : "Carregando"} 
                     meta={metas[0].valor}
                     icon={arrowUpCircleFill}
                 />
 
                 <Metricas 
                     metrica={metas[1].labelTipo} 
-                    valor="+56" 
-                    color="orange"
+                    valor="56" 
                     meta={metas[1].valor}
                     icon={arrowUpCircleFill}
                 />
 
                 <Metricas 
-                    metrica="Uso dos clientes" 
-                    valor="15min" 
-                    color="green"
-                    meta="12min"
+                    metrica="Acessos" 
+                    valor="655"
+                    meta="1023"
                     icon={clockCircleFilled}
                 />
             </div>
