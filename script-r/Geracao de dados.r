@@ -38,7 +38,7 @@ status <- rbinom(n,1,0.3) + 1
 idConsumidor <- abs(round(rnorm(n, 500, 10),0))
 
 time <- popular(c("Palmeiras","Corinthians", 
-                  "São Paulo", "Santos",
+                  "Sao Paulo", "Santos",
                   "Cruzeiro"))
 
 
@@ -88,17 +88,16 @@ for(i in 1:length(unique(dataCalcados$idConsumidor))){
   dataCalcados[dataCalcados$idConsumidor == id, "time"] = dataCalcados[dataCalcados$idConsumidor == id, "time"][1]
 }
 
-probabilidade <- rbinom(n,1, 0.75)
+probabilidade <- rbinom(n,1, 0.80)
 
 for(i in 1:length(probabilidade)){
-  if(probabilidade[i] == 1){
-    dataCalcados$nome[i] = switch(  
-      dataCalcados$time[i],  
-      "São Paulo"= "Adidas",  
-      "Palmeiras"= "Puma",  
-      "Cruzeiro"= "Adidas",  
-      "Santos"= "Nike",
-      "Corinthians"=  "Nike",
+  if(probabilidade){
+    dataCalcados$nome[i] = switch(as.character(dataCalcados$time[i]),
+                                  "Sao Paulo" = "Adidas",
+                                  "Palmeiras" = "Puma",
+                                  "Cruzeiro" = "Adidas",
+                                  "Santos" = "Nike",
+                                  "Corinthians" =  "Nike",
     )
   }
 }
