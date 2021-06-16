@@ -11,9 +11,11 @@ export default () => {
 
     const history = useHistory();
 
-    // if(localStorage.getItem("idUsuario")){
-    //     return history.push('/home');
-    // }
+    useEffect(() =>{
+        if(sessionStorage.getItem("token")){
+            return history.push('/home');
+        }
+    }, []);
 
     const [usuarioData, setUsuarioData] = useState({
         "login": "",
@@ -24,7 +26,6 @@ export default () => {
         const user = {...usuarioData};
         user[e.target.id] = e.target.value;
         setUsuarioData(user);
-        console.log(user);
     }
 
     function onSubmit(e){
@@ -36,11 +37,13 @@ export default () => {
             return;
         }
 
-        api.post("/usuarios/login", {
+        api.post("/auth", {
             "login": usuarioData.login,
             "senha": usuarioData.senha
         }).then( async response => {
-            sessionStorage.setItem("usuarioLogado", JSON.stringify(response.data));
+            sessionStorage.setItem("token", response.data.token);
+            sessionStorage.setItem("tipo", response.data.tipo);
+            sessionStorage.setItem("usuario", JSON.stringify(response.data.usuario));
             history.push('/home');
         }).catch( error => {
             {/* 
@@ -60,12 +63,12 @@ export default () => {
                     <h2>Login</h2>
                     <div>
                         <label for='cnpj'>Login usuário</label>
-                        <input id="login" type="text" onChange={handle}/>
+                        <input id="login" type="text" onBlur={handle}/>
                     </div>
                     <div>
                         <label for='senha'>Senha</label>
                         <input
-                        id='senha' type='password' onChange={handle}/>
+                        id='senha' type='password' onBlur={handle}/>
                     </div>
                     <div>
                         <Link>Esqueceu sua senha?</Link>

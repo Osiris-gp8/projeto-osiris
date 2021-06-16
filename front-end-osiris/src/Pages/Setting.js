@@ -1,6 +1,11 @@
-import Menu from '../Components/Menu'
-import Setting from '../Components/settings'
-import Suport_flex from '../Components/Style-Suport/Suport_flex'
+import {React, useEffect, useState} from 'react'
+import { useHistory } from 'react-router-dom'
+import MenuNovo from '../Components/MenuNovo/MenuNovo'
+import Input from '../Components/Input/Input'
+import Icon from '@iconify/react'
+import pencilIcon from '@iconify-icons/akar-icons/pencil';
+import {ButtonNoLink, ButtonForm} from '../Components/Button'
+import api from '../api';
 
 export default () =>{ 
 
@@ -60,14 +65,17 @@ export default () =>{
 
     function atualizarUser(e){
         e.preventDefault();
-        api.put(`/usuarios/${JSON.parse(sessionStorage.getItem("usuario")).idUsuario}`, user)
+        api.post(`/usuarios/${JSON.parse(sessionStorage.getItem("usuario")).idUsuario}`, user, {
+            headers: {
+                Authorization: `${sessionStorage.getItem("tipo")} ${sessionStorage.getItem("token")}`
+            }
+        })
             .then(res => {
                 console.log(res)
                 if(res.status == 200){
                     alert("Usuário alterado com sucesso");
-                }else{
-                    alert("Ops, houve um erro :(")
                 }
+                sessionStorage.setItem("usuario", JSON.stringify(user));
             }).catch(err => {
                 console.log(err);
                 alert("Ops, houve um erro :(");
@@ -76,11 +84,13 @@ export default () =>{
 
     function atualizarEcommerce(e){
         e.preventDefault();
-        api.put(`/ecommerces/${JSON.parse(sessionStorage.getItem("usuario")).ecommerce.idEcommerce}`, ecommerce)
+        api.post(`/ecommerces/${JSON.parse(sessionStorage.getItem("usuario")).ecommerce.idEcommerce}`, ecommerce)
             .then(res => {
                 console.log(res)
                 if(res.status == 200){
                     alert("Ecommerce alterado com sucesso");
+                    user.ecommerce = ecommerce;
+                    sessionStorage.setItem("usuario", JSON.stringify(user));
                 }else{
                     alert("Ops, houve um erro :(");
                 }
@@ -190,7 +200,7 @@ export default () =>{
                         
                     </div>
 
-                    <div className="user-config">
+                    {/* <div className="user-config">
                         <div className="configs-head">
                             <h2>Conexão</h2>
                         </div>
@@ -204,7 +214,7 @@ export default () =>{
                                 defaultValue="http://osiris/netshoes/WJNjs5"
                             />
                         </div>
-                    </div>
+                    </div> */}
 
                     {/* <ButtonNoLink
                         type="btn-preenchido"
