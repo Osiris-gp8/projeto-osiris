@@ -4,8 +4,7 @@ import { useEffect, useState } from 'react'
 import api from '../../api'
 import InputPicker from '../InputPicker'
 import { ButtonForm as Button} from '../Button' 
-import {FileDownload} from 'js-file-download'
-// const FileDownload = require('js-file-download');
+const FileDownload = require('js-file-download');
 
 function UploadFiles(props) {
   const [uploaded, setUploaded] = useState(false)
@@ -84,21 +83,25 @@ function UploadFiles(props) {
     api
       .post(`/arquivos/${postType}`, data, config )
       .then(response => {
-
+        alert("Importação inserida com Sucesso.")
         newFile['url'] = response.url
         setFile(newFile)
-
+        
       })
       .catch(() => {
         setFile(newFile)
         console.log(file)
         console.log("Deu erro no arquivo " + file.nomeArquivo)
+        alert("Erro de importação")
       });
   };
 
   const handleClickDownload = () => {
     api.request({method:"GET", url:"arquivos/relatorio-txt",  params:exportacao , responseType:"blob"})
-    .then(response => FileDownload(response.data, 'exportação.txt'))
+    .then(response => {
+      FileDownload(response.data, 'exportação.txt')
+      alert("Download efetuado com sucesso")
+    })
     .catch(e => console.log(e))
   }
 
