@@ -1,0 +1,53 @@
+name: CI
+on:
+  push:
+    branches: main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - name: Configurando versão do Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: '8'
+
+      - name: Configurando versão do Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+
+      - name: Build e Package da API Java
+        working-directory: osiris-api/
+        run: |
+          mvn clean install
+          mvn package
+
+      - name: Exibindo diretório
+        working-directory: osiris-api/
+        run: ls -la target/
+
+      - name: npm install, build, and test
+        working-directory: front-end-osiris/
+        run: |
+          npm install
+          npm run build --if-present
+          npm run test --if-present
+
+      - name: Imagem docker do back-end
+        uses: DrSkunk/gp-docker-action@1.1.9
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          image-name: osiris-rest-api
+          dockerfile: docker/springboot.dockerfile
+
+      - name: Imagem docker do front-end
+        uses: DrSkunk/gp-docker-action@1.1.9
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          image-name: osiris-rest-api
+          dockerfile: docker/react.dockerfile
