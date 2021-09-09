@@ -33,10 +33,7 @@ jobs:
 
       - name: npm install, build, and test
         working-directory: front-end-osiris/
-        run: |
-          npm install
-          npm run build --if-present
-          npm run test --if-present
+        run: npm install
 
       - name: Imagem docker do back-end
         uses: DrSkunk/gp-docker-action@1.1.9
