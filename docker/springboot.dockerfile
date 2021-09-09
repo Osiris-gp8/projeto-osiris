@@ -5,7 +5,7 @@ FROM maven
 LABEL maintainer="Kaio Baleeiro"
 
 #Copiando o projeto pra dentro do container
-COPY ./osiris-api/target/*.jar /var/www
+COPY ./osiris-api /var/www
 
 #Diretório de trabalho (onde ele roda comandos como mvnw clean install)
 WORKDIR /var/www
