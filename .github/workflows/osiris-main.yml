@@ -1,82 +1,82 @@
-name: Esteira de desenvolvimento da Osiris
-on:
-  push:
-    branches: main
-  workflow_dispatch:
+# name: Esteira de desenvolvimento da Osiris
+# on:
+#   push:
+#     branches: main
+#   workflow_dispatch:
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
 
-      - uses: actions/checkout@v2
+#       - uses: actions/checkout@v2
 
-      - name: Configurando versão do Java
-        uses: actions/setup-java@v1
-        with:
-          java-version: '8'
+#       - name: Configurando versão do Java
+#         uses: actions/setup-java@v1
+#         with:
+#           java-version: '8'
 
-      - name: Configurando versão do Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
+#       - name: Configurando versão do Node.js
+#         uses: actions/setup-node@v1
+#         with:
+#           node-version: '14.x'
 
-      - name: Build e Package da API Java
-        working-directory: osiris-api/
-        run: |
-          mvn clean install
-          mvn package
+#       - name: Build e Package da API Java
+#         working-directory: osiris-api/
+#         run: |
+#           mvn clean install
+#           mvn package
 
-      - name: Exibindo diretório
-        working-directory: osiris-api/
-        run: ls -la target/
+#       - name: Exibindo diretório
+#         working-directory: osiris-api/
+#         run: ls -la target/
 
-      - name: npm install, build, and test
-        working-directory: front-end-osiris/
-        run: npm install
+#       - name: npm install, build, and test
+#         working-directory: front-end-osiris/
+#         run: npm install
 
-      - name: Imagem docker do back-end
-        uses: DrSkunk/gp-docker-action@1.1.9
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          image-name: osiris-rest-api
-          dockerfile: docker/springboot.dockerfile
+#       - name: Imagem docker do back-end
+#         uses: DrSkunk/gp-docker-action@1.1.9
+#         with:
+#           github-token: ${{ secrets.GITHUB_TOKEN }}
+#           image-name: osiris-rest-api
+#           dockerfile: docker/springboot.dockerfile
 
-      - name: Imagem docker do front-end
-        uses: DrSkunk/gp-docker-action@1.1.9
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          image-name: osiris-front-end
-          dockerfile: docker/react.dockerfile
+#       - name: Imagem docker do front-end
+#         uses: DrSkunk/gp-docker-action@1.1.9
+#         with:
+#           github-token: ${{ secrets.GITHUB_TOKEN }}
+#           image-name: osiris-front-end
+#           dockerfile: docker/react.dockerfile
 
-  deploy-dev:
-    runs-on: ubuntu-latest
-    environment:
-      name: TI
-    needs: build
-    steps:
-      - uses: actions/checkout@v2
+#   deploy-dev:
+#     runs-on: ubuntu-latest
+#     environment:
+#       name: TI
+#     needs: build
+#     steps:
+#       - uses: actions/checkout@v2
 
-      - name: Subindo aplicação na EC2
-        env:
-          PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY }}
-          HOSTNAME: ${{ secrets.AWS_ADRESS }}
-          USER: ${{ secrets.AWS_USER }}
-          DOCKER_USER: ${{ github.actor }}
-          DOCKER_PASS: ${{ secrets.GITHUB_TOKEN }}
-          REGISTRY: https://docker.pkg.github.com
+#       - name: Subindo aplicação na EC2
+#         env:
+#           PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY }}
+#           HOSTNAME: ${{ secrets.AWS_ADRESS }}
+#           USER: ${{ secrets.AWS_USER }}
+#           DOCKER_USER: ${{ github.actor }}
+#           DOCKER_PASS: ${{ secrets.GITHUB_TOKEN }}
+#           REGISTRY: https://docker.pkg.github.com
 
-        run: |
-          docker logout "$REGISTRY"
-          docker login "$REGISTRY" -u "$DOCKER_USER" -p "$DOCKER_PASS"
-          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
-            cd /home/ubuntu/3CCO-2021-1-Grupo-08 &&
-            git pull &&
-            docker stop ghcr.io/bandtec/3cco-2021-1-grupo-08/osiris-rest-api &&
-            docker stop ghcr.io/bandtec/3cco-2021-1-grupo-08/osiris-front-end &&
-            docker rmi ghcr.io/bandtec/3cco-2021-1-grupo-08/osiris-rest-api:latest &&
-            docker rmi ghcr.io/bandtec/3cco-2021-1-grupo-08/osiris-front-end:latest &&
-            docker run --rm ghcr.io/bandtec/3cco-2021-1-grupo-08/osiris-rest-api:latest &&
-            docker run --rm ghcr.io/bandtec/3cco-2021-1-grupo-08/osiris-front-end:latest
-          '
+#         run: |
+#           docker logout "$REGISTRY"
+#           docker login "$REGISTRY" -u "$DOCKER_USER" -p "$DOCKER_PASS"
+#           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+#           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
+#             cd /home/ubuntu/3CCO-2021-1-Grupo-08 &&
+#             git pull &&
+#             docker stop ghcr.io/bandtec/3cco-2021-1-grupo-08/osiris-rest-api &&
+#             docker stop ghcr.io/bandtec/3cco-2021-1-grupo-08/osiris-front-end &&
+#             docker rmi ghcr.io/bandtec/3cco-2021-1-grupo-08/osiris-rest-api:latest &&
+#             docker rmi ghcr.io/bandtec/3cco-2021-1-grupo-08/osiris-front-end:latest &&
+#             docker run --rm ghcr.io/bandtec/3cco-2021-1-grupo-08/osiris-rest-api:latest &&
+#             docker run --rm ghcr.io/bandtec/3cco-2021-1-grupo-08/osiris-front-end:latest
+#           '
