@@ -1,10 +1,10 @@
-# name: Esteira de desenvolvimento da Osiris
-# on:
-#   push:
-#     branches: main
-#   workflow_dispatch:
+name: Esteira de desenvolvimento da Osiris
+on:
+  push:
+    branches: main
+  workflow_dispatch:
 
-# jobs:
+jobs:
 #   build:
 #     runs-on: ubuntu-latest
 #     steps:
@@ -53,7 +53,7 @@
     runs-on: ubuntu-latest
     environment:
       name: TI
-    needs: build
+#     needs: build
     steps:
       - uses: actions/checkout@v2
 
