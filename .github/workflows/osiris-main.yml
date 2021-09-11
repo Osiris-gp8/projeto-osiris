@@ -67,16 +67,10 @@ jobs:
           REGISTRY: https://docker.pkg.github.com
 
         run: |
-          docker logout "$REGISTRY"
-          docker login "$REGISTRY" -u "$DOCKER_USER" -p "$DOCKER_PASS"
+          echo ${PRIVATE_KEY}
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
+          ssh -oStrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
             cd /home/ubuntu/3CCO-2021-1-Grupo-08 &&
             git pull &&
-            docker stop ghcr.io/bandtec/3cco-2021-1-grupo-08/osiris-rest-api &&
-            docker stop ghcr.io/bandtec/3cco-2021-1-grupo-08/osiris-front-end &&
-            docker rmi ghcr.io/bandtec/3cco-2021-1-grupo-08/osiris-rest-api:latest &&
-            docker rmi ghcr.io/bandtec/3cco-2021-1-grupo-08/osiris-front-end:latest &&
-            docker run --rm ghcr.io/bandtec/3cco-2021-1-grupo-08/osiris-rest-api:latest &&
-            docker run --rm ghcr.io/bandtec/3cco-2021-1-grupo-08/osiris-front-end:latest
+            docker-compose up --build
           '
