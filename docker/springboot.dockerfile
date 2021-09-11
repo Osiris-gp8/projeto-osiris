@@ -11,7 +11,7 @@ COPY ./osiris-api/target/*.jar /var/www/
 WORKDIR /var/www/
 
 #Comando de entrada para rodar a aplicação
-ENTRYPOINT java -jar ./target/osiris-api-0.0.1-SNAPSHOT.jar
+ENTRYPOINT java -jar osiris-api-0.0.1-SNAPSHOT.jar
 
 #Expondo a porta que a aplicação roda
 EXPOSE 8080
