@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: "http://localhost:8080",
+    baseURL: "http://54.175.15.172:8080",
     headers: {
         "Access-Control-Allow-Origin": "http://localhost:8080",
         "Access-Control-Allow-Headers": "Authorization",
