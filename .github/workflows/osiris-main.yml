@@ -5,37 +5,37 @@ on:
   workflow_dispatch:
 
 jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
+  build:
+    runs-on: ubuntu-latest
+    steps:
 
-#       - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-#       - name: Configurando versão do Java
-#         uses: actions/setup-java@v1
-#         with:
-#           java-version: '8'
+      - name: Configurando versão do Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: '8'
 
-#       - name: Configurando versão do Node.js
-#         uses: actions/setup-node@v1
-#         with:
-#           node-version: '14.x'
+      - name: Configurando versão do Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
 
-#       - name: Build e Package da API Java
-#         working-directory: osiris-api/
-#         run: |
-#           mvn clean install
-#           mvn package
+      - name: Build e Package da API Java
+        working-directory: osiris-api/
+        run: |
+          mvn clean install
+          mvn package
 
-#       - name: npm install
-#         working-directory: front-end-osiris/
-#         run: npm install
+      - name: npm install
+        working-directory: front-end-osiris/
+        run: npm install
 
   deploy-dev:
     runs-on: ubuntu-latest
     environment:
       name: TI
-#     needs: build
+    needs: build
     steps:
       - uses: actions/checkout@v2
 
@@ -49,9 +49,8 @@ jobs:
           REGISTRY: https://docker.pkg.github.com
 
         run: |
-          echo ${PRIVATE_KEY}
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-          ssh -i private_key ${USER_NAME}@${HOSTNAME} '
+          ssh -O StrictHostKeyChecking=no  -i private_key ${USER_NAME}@${HOSTNAME} '
             cd /home/ubuntu/3CCO-2021-1-Grupo-08 &&
             git pull &&
             docker-compose up -d --build
