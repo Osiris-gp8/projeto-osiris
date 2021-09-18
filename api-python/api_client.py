@@ -22,8 +22,10 @@ class ApiClient:
         
 
     def send_data(self, uri, data):
-        data_json = self.format_data(uri, data)
-        data_json = json.loads(data_json.to_json(orient='records', date_format="iso"))
+        data_json = data
+        if(type(data) != list):
+            data_json = self.format_data(uri, data)
+            data_json = json.loads(data_json.to_json(orient='records', date_format="iso"))
         print("Aqui " + self.domain)
         # self.login("/auth")
         tipo = "Cupom"

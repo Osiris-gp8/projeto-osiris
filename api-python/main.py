@@ -4,6 +4,7 @@ from api_client import ApiClient
 from commons.utils import *
 import numpy as np
 import pandas as pd
+from acessos_pipeline import AcessosPipeline
 from  datetime import date, timedelta
 import json
 def main():
@@ -15,6 +16,10 @@ def main():
         'sexo' : 'category',
         'dataNascimento':'datetime64[ns]'
         })
+
+    #Inserindo acessos
+    AcessosPipeline().send_data()
+
     data_frame['categoria'] = data_frame['categoria'].cat.codes
     data_frame['sexo'] = data_frame['sexo'].cat.codes
     data_frame['idade'] = date.today().year - data_frame['dataNascimento'].dt.year - (
@@ -29,7 +34,6 @@ def main():
         'Terceira Faixa')
     )
 
-    print(data_frame)
     max_categoria_faixa = data_frame[data_frame['statusEvento'] == 1]\
         .groupby(['faixa_etaria', 'categoria'], as_index=False).agg(
             maxPreco = ('preco' , 'max'),
@@ -80,8 +84,6 @@ def main():
     eventos = format_eventos(data_frame)
     api.send_data("/eventos/list", eventos)
     print(eventos)
-    # print(random_dates("01-01-2021", "31-01-2021"))
-    # db.clean_table("eventos")
     
     categorias_consumidor = data_frame.groupby(['idConsumidor','categoria']).agg(
         freq = ('idEvento', 'count')
