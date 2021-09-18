@@ -17,12 +17,17 @@ create table if not exists eventos(
     dataCompra date
 );
 
-select   count(distinct idConsumidor) from eventos;
+create table if not exists acessos(
+	idAcesso int primary key auto_increment,
+	idConsumidor int,
+	inicioAcesso datetime,
+	fimAcesso datetime,
+	fkEcommerce int
+);
 
-select  idConsumidor from eventos group by idConsumidor;
 
-select * from eventos;
+select count(1) from eventos;
+select count(1) from acessos;
 
-select count(*) from eventos;
-
--- delete from eventos where idEvento > 0
+truncate eventos;
+truncate acessos;
