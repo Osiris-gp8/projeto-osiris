@@ -1,3 +1,4 @@
+from datetime import datetime
 from db_manager import DbManager
 from api_client import ApiClient
 import json
@@ -31,8 +32,10 @@ class AcessosPipeline:
     
     def __group_data(self,data_frame:pd.DataFrame) -> pd.DataFrame:
         data_frame['duracao_sessao'] = self.__get_duration(data_frame) 
-        return data_frame.groupby(['fkEcommerce', 'idConsumidor'])\
+        data_group = data_frame.groupby(['fkEcommerce', 'idConsumidor'])\
             .agg(quantidade_acessos=('idAcessos','count'),total_Duracao_sessao=('duracao_sessao', 'sum'))\
             .reset_index()
+        data_group['updated_at'] = datetime.now()
+        return data_group
     def __get_duration(self, data_frame):
         return (data_frame.fimAcesso - data_frame['inicioAcesso']).dt.seconds
