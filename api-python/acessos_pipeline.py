@@ -35,7 +35,7 @@ class AcessosPipeline:
         data_group = data_frame.groupby(['fkEcommerce', 'idConsumidor'])\
             .agg(quantidade_acessos=('idAcessos','count'),total_Duracao_sessao=('duracao_sessao', 'sum'))\
             .reset_index()
-        data_group['updated_at'] = datetime.now()
+        data_group['created_at'] = datetime.now()
         return data_group
     def __get_duration(self, data_frame):
         return (data_frame.fimAcesso - data_frame['inicioAcesso']).dt.seconds
