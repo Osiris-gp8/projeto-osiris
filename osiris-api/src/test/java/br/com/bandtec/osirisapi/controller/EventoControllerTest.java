@@ -1,7 +1,11 @@
 package br.com.bandtec.osirisapi.controller;
 
 import br.com.bandtec.osirisapi.domain.Evento;
+import br.com.bandtec.osirisapi.dto.request.ChartFilterRequest;
+import br.com.bandtec.osirisapi.dto.response.EventosComSemCupomResponse;
 import br.com.bandtec.osirisapi.repository.EventoRepository;
+import br.com.bandtec.osirisapi.service.UserInfo;
+import br.com.bandtec.osirisapi.util.MockUtils;
 import org.junit.jupiter.api.Test;
 import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.utils.EventoPilha;
@@ -12,11 +16,10 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDate;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -35,6 +38,9 @@ class EventoControllerTest {
 
     @MockBean
     private PilhaObj<EventoPilha> pilhaObj;
+
+    @MockBean
+    private UserInfo userInfo;
 
 //    @Test
 //    @DisplayName("PUT /{idEvento} - Atualizar um evento existente")
@@ -56,9 +62,10 @@ class EventoControllerTest {
     @DisplayName("PUT /{idEvento} - Atualizar um evento não existente")
     void atualizarEventoNaoOk() {
         int idTeste = 31;
-        Evento evento = new Evento();
+        Evento evento = MockUtils.getDummyEvento();
+        Optional<Evento> optionalEvento = Optional.of(evento);
 
-        Optional<Evento> optionalEvento = Optional.of(new Evento());
+        MockUtils.mockUserInfo(userInfo);
         Mockito.when(eventoRepository.findById(idTeste))
                 .thenReturn(optionalEvento);
 
@@ -129,5 +136,51 @@ class EventoControllerTest {
         ResponseEntity responseEntity = eventoController.putDesfazer();
 
         assertEquals(200, responseEntity.getStatusCodeValue());
+    }
+
+    @Test
+    @DisplayName("GET /eventos/com-sem-cupom - Quando não existem dados no filtro")
+    void getEventosComSemCupomSemDados(){
+        ChartFilterRequest request = new ChartFilterRequest(
+                LocalDate.now(), LocalDate.now());
+
+       MockUtils.mockUserInfo(userInfo);
+        Mockito.when(
+                eventoRepository.findByEventoSemCupomAndDataCompraBetween(Mockito.anyInt(), Mockito.any(), Mockito.any())
+        ).thenReturn(0);
+        Mockito.when(
+                eventoRepository.findByEventoComCupomAndDataCompraBetween(Mockito.anyInt(), Mockito.any(), Mockito.any())
+        ).thenReturn(0);
+
+        ResponseEntity<EventosComSemCupomResponse> response = eventoController.getSemCupom(request);
+        EventosComSemCupomResponse body = response.getBody();
+
+        assertEquals(response.getStatusCodeValue(), 200);
+        assertEquals(body.getContagemEventosComCupom(), 0);
+        assertEquals(body.getContagemEventosSemCupom(), 0);
+    }
+
+
+
+    @Test
+    @DisplayName("GET /eventos/com-sem-cupom - Quando existem dados no filtro")
+    void getEventosComSemCupomComDados(){
+        ChartFilterRequest request = new ChartFilterRequest(
+                LocalDate.now(), LocalDate.now());
+
+        MockUtils.mockUserInfo(userInfo);
+        Mockito.when(
+                eventoRepository.findByEventoSemCupomAndDataCompraBetween(Mockito.anyInt(), Mockito.any(), Mockito.any())
+        ).thenReturn(153);
+        Mockito.when(
+                eventoRepository.findByEventoComCupomAndDataCompraBetween(Mockito.anyInt(), Mockito.any(), Mockito.any())
+        ).thenReturn(2010);
+
+        ResponseEntity<EventosComSemCupomResponse> response = eventoController.getSemCupom(request);
+        EventosComSemCupomResponse body = response.getBody();
+
+        assertEquals(response.getStatusCodeValue(), 200);
+        assertEquals(body.getContagemEventosSemCupom(), 153);
+        assertEquals(body.getContagemEventosComCupom(), 2010);
     }
 }
