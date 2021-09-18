@@ -57,4 +57,7 @@ public interface EventoRepository extends JpaRepository<Evento, Integer> {
             " and e.cupom_id_cupom is not null",
             nativeQuery = true)
     Integer findByEventoComCupom(Integer idEcommerce);
+
+    @Query(value = "select count(fkCupom) from evento ", nativeQuery = true)
+    Integer countAllByEventoQuantidadeCuponsUsados();
 }

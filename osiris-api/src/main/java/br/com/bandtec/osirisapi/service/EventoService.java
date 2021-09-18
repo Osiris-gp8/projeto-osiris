@@ -49,6 +49,10 @@ public class EventoService {
         return eventos;
     }
 
+    public Integer quantEventosComCuponsUsados(){
+        return eventoRepository.countAllByEventoQuantidadeCuponsUsados();
+    }
+
     public String inserirEventoAssincrono(Evento evento) {
 
         if (eventoContemErros(evento)){
