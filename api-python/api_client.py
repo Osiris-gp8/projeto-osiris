@@ -27,7 +27,7 @@ class ApiClient:
             data_json = self.format_data(uri, data)
             data_json = json.loads(data_json.to_json(orient='records', date_format="iso"))
         print("Aqui " + self.domain)
-        # self.login("/auth")
+        
         tipo = "Cupom"
         if(uri == "/eventos/list"):
             tipo = "Evento"
@@ -52,4 +52,3 @@ class ApiClient:
 
     
 
-    # def send_evento(self, uri, data):

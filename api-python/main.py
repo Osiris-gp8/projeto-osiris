@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 from acessos_pipeline import AcessosPipeline
 from  datetime import date, timedelta
-import json
+
 def main():
     db = DbManager("root", "bandtec123", "localhost", "processamento_db")
     api = ApiClient("http://localhost:8080")
@@ -52,7 +52,6 @@ def main():
         .query('maxPreco == preco').reset_index()['idConsumidor']
     cupons['ecommerce'] = ""
 
-    # api.send_data("/cupons" , cupons)
 
 
     sem_cupom = data_frame[data_frame['fkCupom'] == 0]
@@ -85,9 +84,6 @@ def main():
     api.send_data("/eventos/list", eventos)
     print(eventos)
     
-    categorias_consumidor = data_frame.groupby(['idConsumidor','categoria']).agg(
-        freq = ('idEvento', 'count')
-    )
 
 
 def format_eventos(dataFrame):
