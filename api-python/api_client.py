@@ -1,4 +1,3 @@
-from numpy import datetime64
 import requests
 import json
 from commons.utils import *
@@ -22,17 +21,16 @@ class ApiClient:
         
 
     def send_data(self, uri, data):
-        data_json = self.format_data(uri, data)
-        data_json = json.loads(data_json.to_json(orient='records', date_format="iso"))
-        print("Aqui " + self.domain)
-        # self.login("/auth")
-        tipo = "Cupom"
-        if(uri == "/eventos/list"):
-            tipo = "Evento"
-        print(f"Inserindo dados de {tipo} no BD...")
+        data_json = data
+        if(type(data) != list):
+            data_json = self.format_data(uri, data)
+            data_json = json.loads(data_json.to_json(orient='records', date_format="iso"))
+
         requisicao =  requests.post(url = (self.domain + uri),  headers={'Authorization': 'Bearer {}'.format(self.token)},json = data_json)
         if(requisicao.ok):
             print("Inserção feita com sucesso")
+            return
+        print('Ocorreu Algum erro durante a execução')
         
 
     def format_data(self, uri, df):
@@ -50,4 +48,3 @@ class ApiClient:
 
     
 
-    # def send_evento(self, uri, data):
