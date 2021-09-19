@@ -7,6 +7,7 @@ import com.google.common.collect.ImmutableList;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -51,18 +52,15 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
     // Configurações de autorização
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                // Forma de liberar endpoints das controllers
-                .antMatchers("/auth").permitAll()
-                .antMatchers("/**").permitAll()
-//                .antMatchers("/usuarios").permitAll()
-                .antMatchers("/usuarios/**").permitAll()
-                .anyRequest().authenticated()
-                .and().csrf().disable()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and().addFilterBefore(
-                        new AutenticacaoViaTokenFilter(tokenService, usuarioRepository),
-                        UsernamePasswordAuthenticationFilter.class);
+        http.cors().and().csrf().disable()
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+            .authorizeRequests().antMatchers("/auth").permitAll()
+            .antMatchers(HttpMethod.POST,"/usuarios").permitAll()
+            .anyRequest().authenticated();
+
+        http.addFilterBefore(
+            new AutenticacaoViaTokenFilter(tokenService, usuarioRepository),
+            UsernamePasswordAuthenticationFilter.class);
     }
 
     // Configurações de recursos estáticos (js, css, imagens, etc..)
