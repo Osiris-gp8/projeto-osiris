@@ -1,12 +1,13 @@
 package br.com.bandtec.osirisapi.service;
 
 import br.com.bandtec.osirisapi.converter.DashConverter;
-import br.com.bandtec.osirisapi.dto.request.dash.AcessosVendasUltimosSeteDias;
+import br.com.bandtec.osirisapi.dto.request.FiltroDataRequest;
+import br.com.bandtec.osirisapi.dto.response.dash.AcessosVendasDiasResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.sql.SQLOutput;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,28 +19,29 @@ public class DashService {
     private EventoService eventoService;
     private DashConverter dashConverter;
 
-    public List<AcessosVendasUltimosSeteDias> buscarAcessosVendasUltimosSeteDias() {
+    public List<AcessosVendasDiasResponse> buscarAcessosVendasUltimosSeteDias(FiltroDataRequest filtroDataRequest) {
 
-        List<AcessosVendasUltimosSeteDias> listaAcessosVendasUltimosSeteDias = new ArrayList<>();
+        List<AcessosVendasDiasResponse> listaAcessosVendasDiaResponses = new ArrayList<>();
 
-        for (int i = 6; i >= 0; i--){
+        // TODO ABSTRAIR LÓGICA EM FUNÇÃO
+        Integer diferencaEmDias = filtroDataRequest.getDiferencaDatas();
 
-            LocalDate data = LocalDate.of(
-                    LocalDate.now().getYear(),
-                    LocalDate.now().getMonthValue(),
-                    LocalDate.now().getDayOfMonth() - i);
+        for (int i = 0; i <= diferencaEmDias; i++){
 
-            listaAcessosVendasUltimosSeteDias.add(rebeceDataRetornaAcessosVendasUltimosSeteDias(data));
+            LocalDate data = LocalDate.ofYearDay(
+                    filtroDataRequest.getDataIncio().getYear(), filtroDataRequest.getDataIncio().getDayOfYear() + i);
+
+            listaAcessosVendasDiaResponses.add(converterDataFiltrada(data));
         }
 
-        return listaAcessosVendasUltimosSeteDias;
+        return listaAcessosVendasDiaResponses;
     }
 
-    private AcessosVendasUltimosSeteDias rebeceDataRetornaAcessosVendasUltimosSeteDias(LocalDate data){
+    private AcessosVendasDiasResponse converterDataFiltrada(LocalDate data){
 
             Integer vendasData = eventoService.getEventosPorDia(data);
             Integer acessosData = acessoService.getAcessosPorDia(data);
 
-            return dashConverter.intEventosIntAcessosDataToAcessosVendasUltimosSeteDias(vendasData, acessosData, data);
+            return dashConverter.intEventosIntAcessosDataToAcessosVendasResponse(vendasData, acessosData, data);
     }
 }

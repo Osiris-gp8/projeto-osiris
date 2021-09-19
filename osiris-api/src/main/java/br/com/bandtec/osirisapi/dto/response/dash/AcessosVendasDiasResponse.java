@@ -1,4 +1,4 @@
-package br.com.bandtec.osirisapi.dto.request.dash;
+package br.com.bandtec.osirisapi.dto.response.dash;
 
 import lombok.*;
 import org.springframework.stereotype.Component;
@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Builder
-public class AcessosVendasUltimosSeteDias {
+public class AcessosVendasDiasResponse {
 
     private Integer vendas;
     private Integer acessos;

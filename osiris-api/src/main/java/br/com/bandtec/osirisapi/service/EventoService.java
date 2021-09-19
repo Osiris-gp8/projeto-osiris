@@ -200,11 +200,13 @@ public class EventoService {
 
         UsuarioResponse usuario = userInfo.getUsuario();
 
-        LocalDateTime fimDiaCompra = calcularFinalDoDia(data);
         LocalDateTime inicioDiaCompra = calcularInicioDoDia(data);
+        LocalDateTime fimDiaCompra = calcularFinalDoDia(data);
 
         Integer contagemEventosPorData = eventoRepository.countAllByDataCompraAndIdEcommerce(
-                inicioDiaCompra, fimDiaCompra, usuario.getEcommerce().getIdEcommerce()
+                inicioDiaCompra,
+                fimDiaCompra,
+                usuario.getEcommerce().getIdEcommerce()
         );
 
         return contagemEventosPorData;

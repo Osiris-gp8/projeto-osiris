@@ -1,6 +1,7 @@
 package br.com.bandtec.osirisapi.controller;
 
-import br.com.bandtec.osirisapi.dto.request.dash.AcessosVendasUltimosSeteDias;
+import br.com.bandtec.osirisapi.dto.request.FiltroDataRequest;
+import br.com.bandtec.osirisapi.dto.response.dash.AcessosVendasDiasResponse;
 import br.com.bandtec.osirisapi.service.DashService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,10 +17,10 @@ public class DashController {
 
     private DashService dashService;
 
-    @GetMapping("/acessos-vendas")
-    public List<AcessosVendasUltimosSeteDias> getAcessosVendasUltimosSeteDias(){
+    @GetMapping("/contagem-acessos-vendas")
+    public List<AcessosVendasDiasResponse> getAcessosVendasUltimosSeteDias(FiltroDataRequest filtroDataRequest){
 
-        return dashService.buscarAcessosVendasUltimosSeteDias();
+        return dashService.buscarAcessosVendasUltimosSeteDias(filtroDataRequest);
     }
 
 }

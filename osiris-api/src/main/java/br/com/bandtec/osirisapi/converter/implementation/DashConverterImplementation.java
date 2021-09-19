@@ -1,7 +1,7 @@
 package br.com.bandtec.osirisapi.converter.implementation;
 
 import br.com.bandtec.osirisapi.converter.DashConverter;
-import br.com.bandtec.osirisapi.dto.request.dash.AcessosVendasUltimosSeteDias;
+import br.com.bandtec.osirisapi.dto.response.dash.AcessosVendasDiasResponse;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -10,8 +10,8 @@ import java.time.LocalDate;
 public class DashConverterImplementation implements DashConverter {
 
     @Override
-    public AcessosVendasUltimosSeteDias intEventosIntAcessosDataToAcessosVendasUltimosSeteDias(Integer eventos, Integer acessos, LocalDate data) {
-        return AcessosVendasUltimosSeteDias.builder()
+    public AcessosVendasDiasResponse intEventosIntAcessosDataToAcessosVendasResponse(Integer eventos, Integer acessos, LocalDate data) {
+        return AcessosVendasDiasResponse.builder()
                 .vendas(eventos)
                 .acessos(acessos)
                 .data(data)
