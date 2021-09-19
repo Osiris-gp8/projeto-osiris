@@ -18,6 +18,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -192,5 +194,34 @@ public class EventoService {
         Integer contagemComCupom = eventoRepository.findByEventoComCupom(usuario.getEcommerce().getIdEcommerce());
 
         return eventoConverter.eventoToEventosSemCupomResponse(contagemSemCupom, contagemComCupom);
+    }
+
+    public Integer getEventosPorDia(LocalDate data) {
+
+        UsuarioResponse usuario = userInfo.getUsuario();
+
+        LocalDateTime inicioDiaCompra = calcularInicioDoDia(data);
+        LocalDateTime fimDiaCompra = calcularFinalDoDia(data);
+
+        Integer contagemEventosPorData = eventoRepository.countAllByDataCompraAndIdEcommerce(
+                inicioDiaCompra,
+                fimDiaCompra,
+                usuario.getEcommerce().getIdEcommerce()
+        );
+
+        return contagemEventosPorData;
+    }
+
+    private LocalDateTime calcularFinalDoDia(LocalDate data){
+
+        LocalTime ltFimDiaCompra = LocalTime.of(23,59,59);
+
+        return LocalDateTime.of(data, ltFimDiaCompra);
+    }
+
+    private LocalDateTime calcularInicioDoDia(LocalDate data){
+        LocalTime ltInicioDiaCompra = LocalTime.of(0,0,0);
+
+        return LocalDateTime.of(data, ltInicioDiaCompra);
     }
 }

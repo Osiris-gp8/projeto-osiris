@@ -5,6 +5,7 @@ import br.com.bandtec.osirisapi.dto.barChart.AcessoDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface AcessoRepository extends JpaRepository<Acesso, Integer> {
@@ -17,4 +18,11 @@ public interface AcessoRepository extends JpaRepository<Acesso, Integer> {
                     "where inicio_acesso between getdate()-6 and getdate() " +
                     "group by day(inicio_acesso)", nativeQuery = true)
     List<AcessoDto> countAcessosByLastWeek();
+
+
+    @Query(value = "select count(*) from acesso a, ecommerce ec where a.ecommerce_id_ecommerce = ?3" +
+            " and a.ecommerce_id_ecommerce = ec.id_ecommerce" +
+            " and a.inicio_acesso between ?1 and ?2",
+            nativeQuery = true)
+    Integer countAllByInicioAcessoAndIdEcommerce(LocalDateTime inicioDiaDataAcesso, LocalDateTime finalDiaDataAcesso, Integer idEcommerce);
 }
