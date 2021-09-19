@@ -19,7 +19,7 @@ public class DashService {
     private EventoService eventoService;
     private DashConverter dashConverter;
 
-    public List<AcessosVendasDiasResponse> buscarAcessosVendasUltimosSeteDias(FiltroDataRequest filtroDataRequest) {
+    public List<AcessosVendasDiasResponse> buscarAcessosVendas(FiltroDataRequest filtroDataRequest) {
 
         List<AcessosVendasDiasResponse> listaAcessosVendasDiaResponses = new ArrayList<>();
 

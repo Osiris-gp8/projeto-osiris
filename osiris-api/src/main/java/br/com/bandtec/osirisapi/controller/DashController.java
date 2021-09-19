@@ -20,7 +20,7 @@ public class DashController {
     @GetMapping("/contagem-acessos-vendas")
     public List<AcessosVendasDiasResponse> getAcessosVendasUltimosSeteDias(FiltroDataRequest filtroDataRequest){
 
-        return dashService.buscarAcessosVendasUltimosSeteDias(filtroDataRequest);
+        return dashService.buscarAcessosVendas(filtroDataRequest);
     }
 
 }
