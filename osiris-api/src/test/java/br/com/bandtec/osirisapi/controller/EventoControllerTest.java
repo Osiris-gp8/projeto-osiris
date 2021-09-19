@@ -1,17 +1,17 @@
 package br.com.bandtec.osirisapi.controller;
 
 import br.com.bandtec.osirisapi.domain.Evento;
-import br.com.bandtec.osirisapi.dto.request.ChartFilterRequest;
+import br.com.bandtec.osirisapi.dto.request.FiltroDataRequest;
 import br.com.bandtec.osirisapi.dto.response.EventosComSemCupomResponse;
+import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.repository.EventoRepository;
 import br.com.bandtec.osirisapi.service.UserInfo;
 import br.com.bandtec.osirisapi.util.MockUtils;
-import org.junit.jupiter.api.Test;
-import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.utils.EventoPilha;
 import br.com.bandtec.osirisapi.utils.PilhaObj;
 import br.com.bandtec.osirisapi.utils.enums.EventoPilhaEnum;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,7 +20,7 @@ import org.springframework.http.ResponseEntity;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -141,7 +141,7 @@ class EventoControllerTest {
     @Test
     @DisplayName("GET /eventos/com-sem-cupom - Quando não existem dados no filtro")
     void getEventosComSemCupomSemDados(){
-        ChartFilterRequest request = new ChartFilterRequest(
+        FiltroDataRequest request = new FiltroDataRequest(
                 LocalDate.now(), LocalDate.now());
 
        MockUtils.mockUserInfo(userInfo);
@@ -165,7 +165,7 @@ class EventoControllerTest {
     @Test
     @DisplayName("GET /eventos/com-sem-cupom - Quando existem dados no filtro")
     void getEventosComSemCupomComDados(){
-        ChartFilterRequest request = new ChartFilterRequest(
+        FiltroDataRequest request = new FiltroDataRequest(
                 LocalDate.now(), LocalDate.now());
 
         MockUtils.mockUserInfo(userInfo);

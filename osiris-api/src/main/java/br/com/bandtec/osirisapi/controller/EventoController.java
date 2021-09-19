@@ -1,7 +1,7 @@
 package br.com.bandtec.osirisapi.controller;
 
 import br.com.bandtec.osirisapi.domain.Evento;
-import br.com.bandtec.osirisapi.dto.request.ChartFilterRequest;
+import br.com.bandtec.osirisapi.dto.request.FiltroDataRequest;
 import br.com.bandtec.osirisapi.dto.response.EventosComSemCupomResponse;
 import br.com.bandtec.osirisapi.service.EventoService;
 import lombok.AllArgsConstructor;
@@ -72,9 +72,9 @@ public class EventoController {
     }
 
     @GetMapping("/com-sem-cupom")
-    public ResponseEntity<EventosComSemCupomResponse> getSemCupom(@Valid ChartFilterRequest request){
+    public ResponseEntity<EventosComSemCupomResponse> getSemCupom(@Valid FiltroDataRequest request){
         return ResponseEntity.status(200).body(
-                eventoService.getEventosSemCupom(request.getDataInicial(), request.getDataFinal()));
+                eventoService.getEventosSemCupom(request.getDataIncio(), request.getDataFinal()));
     }
 
 }
