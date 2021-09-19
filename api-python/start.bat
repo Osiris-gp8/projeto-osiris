@@ -1,3 +1,3 @@
-call ./.venv/Scripts/activate
+call ./env/Scripts/activate
 python ./main.py
 pause
