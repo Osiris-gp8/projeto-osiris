@@ -48,15 +48,17 @@ public interface EventoRepository extends JpaRepository<Evento, Integer> {
 
     @Query(value = "select count(*) from evento e, ecommerce ec where e.ecommerce_id_ecommerce = ?1" +
             " and e.ecommerce_id_ecommerce = ec.id_ecommerce" +
-            " and e.cupom_id_cupom is null",
+            " and e.cupom_id_cupom is null" +
+            " and e.data_compra between ?2 and ?3",
             nativeQuery = true)
-    Integer findByEventoSemCupom(Integer idEcommerce);
+    Integer findByEventoSemCupomAndDataCompraBetween(Integer idEcommerce, LocalDate dataInicial, LocalDate dataFinal);
 
     @Query(value = "select count(*) from evento e, ecommerce ec where e.ecommerce_id_ecommerce = ?1" +
             " and e.ecommerce_id_ecommerce = ec.id_ecommerce" +
-            " and e.cupom_id_cupom is not null",
+            " and e.cupom_id_cupom is not null" +
+            " and e.data_compra between ?2 and ?3",
             nativeQuery = true)
-    Integer findByEventoComCupom(Integer idEcommerce);
+    Integer findByEventoComCupomAndDataCompraBetween(Integer idEcommerce, LocalDate dataInicial, LocalDate dataFinal);
 
     @Query(value = "select count(*) from evento e, ecommerce ec where e.ecommerce_id_ecommerce = ?3" +
             " and e.ecommerce_id_ecommerce = ec.id_ecommerce" +
