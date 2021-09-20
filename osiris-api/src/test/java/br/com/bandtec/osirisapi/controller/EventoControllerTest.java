@@ -139,7 +139,7 @@ class EventoControllerTest {
     }
 
     @Test
-    @DisplayName("GET /eventos/com-sem-cupom - Quando não existem dados no filtro")
+    @DisplayName("GET /eventos/com-sem-cupom - Quando a consulta retorna zero nas contagens")
     void getEventosComSemCupomSemDados(){
         FiltroDataRequest request = new FiltroDataRequest(
                 LocalDate.now(), LocalDate.now());
@@ -163,7 +163,7 @@ class EventoControllerTest {
 
 
     @Test
-    @DisplayName("GET /eventos/com-sem-cupom - Quando existem dados no filtro")
+    @DisplayName("GET /eventos/com-sem-cupom - Quando a consulta retorna os valores corretor na contagem")
     void getEventosComSemCupomComDados(){
         FiltroDataRequest request = new FiltroDataRequest(
                 LocalDate.now(), LocalDate.now());
