@@ -38,4 +38,9 @@ public class EcommerceController {
             @RequestBody @Valid Ecommerce ecommerce) {
         return ResponseEntity.status(200).body(ecommerceService.atualizarEcommerce(idEcommerce, ecommerce));
     }
+
+    @GetMapping("/nome/{nomeEcommerce}")
+    public ResponseEntity getEcommercePeloNome(@PathVariable String nomeEcommerce) {
+        return ResponseEntity.status(200).body(ecommerceService.getEcommercePeloNome(nomeEcommerce));
+    }
 }
