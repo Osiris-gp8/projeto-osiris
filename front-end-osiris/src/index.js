@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import "./style/bootstrap.min.css"
 import ResetStyle from "./style/globalStyle"
 import './style/style.css';
 
