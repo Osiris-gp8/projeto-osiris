@@ -9,6 +9,7 @@ import NotFound from './Pages/NotFound'
 import Institucional from './Pages/Institucional';
 import upload from './Pages/upload'
 import Password from './Pages/Password'
+import AddCollaborator from './Pages/AddCollaborator'
 
 function Routes(){
     return(
@@ -22,6 +23,7 @@ function Routes(){
                 <Route exact path="/config" component={Setting} />
                 <Route exact path="/upload" component={upload} />
                 <Route exact path="/password" component={Password} />
+                <Route exact path="/addCollaborator" component={AddCollaborator}/>
                 <Route component={NotFound} />
             </Switch>
         </Router>
