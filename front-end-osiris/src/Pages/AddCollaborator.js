@@ -1,9 +1,13 @@
-import React from 'react';
+import {React, useState, useEffect} from 'react';
 import { ButtonForm } from '../Components/Button'
 import MenuNovo from '../Components/MenuNovo/MenuNovo';
 import { Table } from 'react-bootstrap';
 
 export default () => {
+
+    useEffect(() => {
+        setIdEcommerce(JSON.parse(sessionStorage.getItem("usuario")).ecommerce.idEcommerce);
+    })
 
     function createData(id, name, login, email) {
         return { 
@@ -12,15 +16,35 @@ export default () => {
             login: login, 
             email: email 
         };
-      }
-      
-      const rows = [
+    }
+
+    const [idEcommerce, setIdEcommerce] = useState(0);
+
+    const [rows, setRows] = useState([
         createData(1, "Patrick Lessa", "patrick03", "p@gmail.com"),
         createData(2, "Rodrigo Busto", "busto10", "r@gmail.com"),
         createData(3, "Kaio Baleeiro", "kaio45", "k@gmail.com"),
-      ];
+    ]);
 
-      console.log(rows)
+    const [collaboratorData, setCollaboratorData]= useState({
+        loginUsuario: "",
+        email: "",
+        nomeCompleto: "",
+        ecommerce: {
+            idEcommerce: idEcommerce
+        }
+    })
+
+    function addCollaborator(e){
+        const newCollaborator = { ...collaboratorData}
+        newCollaborator[e.target.id] = e.target.value
+        setCollaboratorData(newCollaborator)
+    }
+
+    function addInList(e){
+        e.preventDefault();
+        setRows([...rows, createData(1, collaboratorData.nomeCompleto, collaboratorData.loginUsuario, collaboratorData.email)])
+    }
 
     return (
 
@@ -30,7 +54,7 @@ export default () => {
                 <div className="container">
                     <h1>Adicionar Colaborador</h1>
                     <div className="user-config">
-                        <form>
+                        <form onSubmit={e => addInList(e)}>
                             <div className="row-configs">
 
                                 <div style={{width: "35%"}} className="col-settings">
@@ -39,6 +63,7 @@ export default () => {
                                         className="input-settings"
                                         id="nomeCompleto"
                                         type="text"
+                                        onBlur={(e) => addCollaborator(e)}
                                     />
                                 </div>
 
@@ -48,6 +73,7 @@ export default () => {
                                         className="input-settings"
                                         id="loginUsuario"
                                         type="text"
+                                        onBlur={(e) => addCollaborator(e)}
                                     />
                                 </div>
 
@@ -61,6 +87,7 @@ export default () => {
                                         className="input-settings"
                                         id="email"
                                         type="text"
+                                        onBlur={(e) => addCollaborator(e)}
                                     />
                                 </div>
 
