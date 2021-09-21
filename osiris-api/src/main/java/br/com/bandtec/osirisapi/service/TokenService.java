@@ -31,6 +31,9 @@ public class TokenService {
     @Value("${osiris.jwt.secret}")
     private String secret;
 
+    @Value("${osiris.jwt.expiration.password.reset}")
+    private String expirationPasswordReset;
+
     private final Gson gson;
 
     public String gerarToken(Authentication authentication, HttpServletResponse response) {
@@ -58,7 +61,7 @@ public class TokenService {
     public String gerarUrlAssinada(String email){
 
         Date hoje = new Date();
-        Date dataExpiracao = new Date(hoje.getTime() + Integer.parseInt(expiration));
+        Date dataExpiracao = new Date(hoje.getTime() + Integer.parseInt(expirationPasswordReset));
 
         String token = Jwts.builder()
                 .setIssuer("Api da Osiris")
