@@ -28,7 +28,7 @@ public class CupomController {
 
     }
 
-    @GetMapping
+    @GetMapping("/teste")
     public  ResponseEntity getQuantidadeCupons(){
         Integer TotalCupons = cupomService.quantCupom();
         Integer CuponsUsados = eventoService.quantEventosComCuponsUsados();
@@ -45,7 +45,7 @@ public class CupomController {
         return ResponseEntity.status(200).body(cupomService.buscarCupom(idCupom));
     }
 
-    @PostMapping
+    @PostMapping("/teste")
     public ResponseEntity postCupom(@RequestBody @Valid Cupom novoCupom) {
         cupomService.inserirCupom(novoCupom);
         return ResponseEntity.status(201).build();
