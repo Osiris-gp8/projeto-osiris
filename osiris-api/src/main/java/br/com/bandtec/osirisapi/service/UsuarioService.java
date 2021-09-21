@@ -4,8 +4,11 @@ import br.com.bandtec.osirisapi.converter.implementation.UsuarioConverterImpleme
 import br.com.bandtec.osirisapi.domain.Usuario;
 import br.com.bandtec.osirisapi.dto.request.UsuarioAcessoRequest;
 import br.com.bandtec.osirisapi.dto.request.UsuarioAtualizacaoRequest;
+import br.com.bandtec.osirisapi.dto.request.UsuarioRecuperarSenhaRequest;
 import br.com.bandtec.osirisapi.dto.response.UsuarioResponse;
 import br.com.bandtec.osirisapi.exception.ApiRequestException;
+import br.com.bandtec.osirisapi.mensageria.Constants;
+import br.com.bandtec.osirisapi.mensageria.EmailConfig;
 import br.com.bandtec.osirisapi.repository.EcommerceRepository;
 import br.com.bandtec.osirisapi.repository.UsuarioRepository;
 import lombok.AllArgsConstructor;
@@ -23,7 +26,10 @@ public class UsuarioService {
     private final UsuarioConverterImplementation usuarioConverter;
     private final UsuarioRepository usuarioRepository;
     private final EcommerceRepository ecommerceRepository;
+    private final TokenService tokenService;
     private List<UsuarioResponse> sessoes;
+    private Constants constants;
+
 
     public List<UsuarioResponse> getUsuarios(){
 
@@ -53,18 +59,20 @@ public class UsuarioService {
 
     public UsuarioResponse atualizarUsuario(int idUsuario , UsuarioAtualizacaoRequest usuario) {
 
-        Optional<Usuario> usuarioParaAtualizarOptional = usuarioRepository.findById(idUsuario);
+        Optional<Usuario> optionalUsuario = usuarioRepository.findById(idUsuario);
 
-        if(!usuarioParaAtualizarOptional.isPresent()){
+        if(!optionalUsuario.isPresent()){
             throw new ApiRequestException("Usuário não existe", HttpStatus.NOT_FOUND);
         }
 
-        Usuario usuarioParaAtualizar = usuarioParaAtualizarOptional.get();
+        Usuario usuarioParaAtualizar = optionalUsuario.get();
 
         usuarioParaAtualizar.setLoginUsuario(usuario.getLoginUsuario());
         usuarioParaAtualizar.setNomeCompleto(usuario.getNomeCompleto());
 
-        return usuarioConverter.usuarioToUsuarioResponse(usuarioRepository.save(usuarioParaAtualizar));
+        Usuario resposta = usuarioRepository.saveAndFlush(usuarioParaAtualizar);
+
+        return usuarioConverter.usuarioToUsuarioResponse(resposta);
     }
 
     public UsuarioResponse logarUsuario(UsuarioAcessoRequest usuarioAcessoRequest) {
@@ -98,4 +106,59 @@ public class UsuarioService {
         throw new ApiRequestException("Usuário não está logado", HttpStatus.BAD_REQUEST);
     }
 
+    public String solicitacaoRecuperarSenha(String emailUsuario) {
+
+        EmailConfig emailConfig = new EmailConfig();
+
+        if (!validarEmailUsuario(emailUsuario)){
+
+            throw new ApiRequestException("E-mail não encontrado na base ou incorreto", HttpStatus.BAD_REQUEST);
+        }
+
+        String mensagem = gerarMesagemResetDeSenha(emailUsuario);
+        boolean enviado = emailConfig.enviarEmail(
+                mensagem,
+                constants.ASSUNTO_RECUPERAR_SENHA,
+                emailUsuario);
+
+        if (enviado){
+
+            return tokenService.gerarUrlAssinada(emailUsuario);
+        }else {
+
+            throw new ApiRequestException("E-mail de recuperação de senha não foi enviado", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    private String gerarMesagemResetDeSenha(String emailUsuario){
+
+        String mensagem =
+                String.format(constants.MENSAGEM_RECUPERAR_SENHA,
+                        emailUsuario);
+
+        return mensagem;
+    }
+
+    private boolean validarEmailUsuario(String email){
+
+        Optional<Usuario> optionalUsuario = usuarioRepository.findByLoginUsuario(email);
+
+        return optionalUsuario.isPresent() ? true : false;
+    }
+
+    public UsuarioResponse recuperarSenha(String token, UsuarioRecuperarSenhaRequest recuperarSenhaRequest) {
+
+        if (tokenService.isTokenValido(token)){
+            String email = tokenService.getUrlAssinadaViaToken(token);
+            Usuario usuario = usuarioRepository.findByLoginUsuario(email).get();
+
+            usuario.setSenha(new BCryptPasswordEncoder().encode(recuperarSenhaRequest.getSenha()));
+
+            return usuarioConverter.usuarioToUsuarioResponse(usuarioRepository.saveAndFlush(usuario));
+
+        } else {
+            throw new ApiRequestException("Token expirado", HttpStatus.FORBIDDEN);
+        }
+
+    }
 }
