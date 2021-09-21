@@ -1,9 +1,27 @@
 import React from 'react';
-import Input from '../Components/Input/Input'
 import { ButtonForm } from '../Components/Button'
 import MenuNovo from '../Components/MenuNovo/MenuNovo';
+import { Table } from 'react-bootstrap';
 
 export default () => {
+
+    function createData(id, name, login, email) {
+        return { 
+            id: id, 
+            name: name, 
+            login: login, 
+            email: email 
+        };
+      }
+      
+      const rows = [
+        createData(1, "Patrick Lessa", "patrick03", "p@gmail.com"),
+        createData(2, "Rodrigo Busto", "busto10", "r@gmail.com"),
+        createData(3, "Kaio Baleeiro", "kaio45", "k@gmail.com"),
+      ];
+
+      console.log(rows)
+
     return (
 
         <>
@@ -60,6 +78,30 @@ export default () => {
                         </form>
                         
                     </div>
+
+                    <Table striped bordered hover>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Nome</th>
+                                <th>Login</th>
+                                <th>E-mail</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {rows.map((item) => {
+                                return (
+                                    <tr>
+                                        <td>{item.id}</td>
+                                        <td>{item.name}</td>
+                                        <td>{item.login}</td>
+                                        <td>{item.email}</td>
+                                    </tr>
+                                )
+                            })}
+                            
+                        </tbody>
+                    </Table>
 
                 </div>
             </div>
