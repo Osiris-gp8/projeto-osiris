@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -22,16 +23,13 @@ public class Usuario implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idUsuario;
 
-    @NotBlank
     @Size(min = 5, max = 45)
     private String nomeCompleto;
 
-    @NotBlank
-    @Size(min = 4, max = 8)
+    @Size(min = 4, max = 255)
     private String loginUsuario;
 
     @NotBlank
-//    @Size(min = 8, max = 16)
     private String senha;
 
     @NotNull

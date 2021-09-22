@@ -15,9 +15,10 @@ public class MockUtils {
     public static void mockUserInfo(UserInfo mockedUserInfo){
         Ecommerce ecommerce = new Ecommerce();
         ecommerce.setIdEcommerce(1);
-        UsuarioResponse usuario = new UsuarioResponse(0, "Teste", "Login", ecommerce);
+        UsuarioResponse usuario = new UsuarioResponse(1, "Teste", "login@teste.com", ecommerce);
 
         Mockito.when(mockedUserInfo.getUsuario()).thenReturn(usuario);
+        Mockito.when(mockedUserInfo.getEcommerce()).thenReturn(ecommerce);
     }
 
     /**
