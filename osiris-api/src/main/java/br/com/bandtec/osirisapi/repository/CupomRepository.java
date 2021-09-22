@@ -18,5 +18,8 @@ public interface CupomRepository extends JpaRepository<Cupom, Integer> {
             "and data_validado < current_timestamp()", nativeQuery = true)
     Integer countAllByUsadoIsFalseAndDataValidadoLessThanTodayNow();
 
+    @Query(value = "select count(id_Cupom) from cupom ", nativeQuery = true)
+    Integer countAllByCupomQuantidadeId();
+
     List<Cupom> findByDataEmitidoBetweenAndEcommerceEquals(LocalDateTime dataInicial, LocalDateTime dataFinal, Ecommerce ecommerce);
 }

@@ -71,7 +71,7 @@ export default () => {
                         id='senha' type='password' onBlur={handle}/>
                     </div>
                     <div>
-                        <Link>Esqueceu sua senha?</Link>
+                        <Link to="/password">Esqueceu sua senha?</Link>
                         <Link to="/register">Não possui cadastro?</Link>
                     </div>
                 </ContainerForm>

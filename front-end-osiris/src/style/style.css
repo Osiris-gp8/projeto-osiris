@@ -3,7 +3,7 @@ html{
 }
 
 .container{
-    width: 90%;
+    width: 90% !important;
     margin: 0 auto;
 }
 
@@ -36,6 +36,14 @@ html{
 .btn-preenchido{
     background-color: #666BC2;
     color: #ECF0F7;
+}
+
+.fonte-14{
+    font-size: 14px !important;
+}
+
+.fonte-25{
+    font-size: 25px !important;
 }
 
 /* Site institucional */
@@ -387,7 +395,7 @@ html{
 /* Menu */
 .menu{
     width: 20%;
-    height: 86vh;
+    height: 94vh;
     position: absolute;
     top: 3%;
     left: 2%;
@@ -594,4 +602,21 @@ html{
     display: flex;
     flex-direction: column;
     margin-right: 5%;
+}
+
+/*Password*/
+
+.body-password{
+    height: 100vh;
+    align-items: center;
+}
+
+.card-password{
+    width: 30%;
+    height: 35vh;
+    background-color: #ECF0F7;
+}
+
+.error-valid{
+    color: red;
 }

@@ -1,8 +1,10 @@
 package br.com.bandtec.osirisapi.controller;
 
 import br.com.bandtec.osirisapi.domain.Cupom;
+import br.com.bandtec.osirisapi.domain.Evento;
 import br.com.bandtec.osirisapi.repository.CupomRepository;
 import br.com.bandtec.osirisapi.service.CupomService;
+import br.com.bandtec.osirisapi.service.EventoService;
 import javassist.NotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,7 @@ import java.util.List;
 public class CupomController {
 
     private final CupomService cupomService;
+    private final EventoService eventoService;
 
     @GetMapping
     public ResponseEntity getCupons() {
@@ -25,13 +28,24 @@ public class CupomController {
 
     }
 
+    @GetMapping("/porcentagem")
+    public  ResponseEntity getQuantidadeCupons(){
+        Integer totalCupons = cupomService.quantCupom();
+        Integer cuponsUsados = eventoService.quantEventosComCuponsUsados();
+
+        Integer total = cuponsUsados * 100;
+        total = total / totalCupons;
+
+        return ResponseEntity.status(200).body(total);
+    }
+
     @GetMapping("/{idCupom}")
     public ResponseEntity getCupom(@PathVariable Integer idCupom) {
 
         return ResponseEntity.status(200).body(cupomService.buscarCupom(idCupom));
     }
 
-    @PostMapping
+    @PostMapping("/teste")
     public ResponseEntity postCupom(@RequestBody @Valid Cupom novoCupom) {
         cupomService.inserirCupom(novoCupom);
         return ResponseEntity.status(201).build();
@@ -58,4 +72,6 @@ public class CupomController {
             return ResponseEntity.status(200).body(cupomService.atualizarCupom(idCupom, cupomAtualizar));
 
     }
+
+
 }
