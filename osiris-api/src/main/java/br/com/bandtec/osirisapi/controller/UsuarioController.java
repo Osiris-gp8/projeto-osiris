@@ -60,4 +60,10 @@ public class UsuarioController {
 
         return ResponseEntity.status(201).body(usuarioService.recuperarSenha(token, recuperarSenhaRequest));
     }
+
+    @GetMapping("/ecommerce/{idEcommerce}")
+    public ResponseEntity getUsuariosPorEcommerce(@PathVariable Integer idEcommerce){
+
+        return ResponseEntity.status(200).body(usuarioService.buscarUsuarioPorEcommerce(idEcommerce));
+    }
 }

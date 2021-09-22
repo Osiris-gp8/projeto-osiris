@@ -6,6 +6,8 @@ import br.com.bandtec.osirisapi.dto.request.UsuarioAtualizacaoRequest;
 import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.repository.EcommerceRepository;
 import br.com.bandtec.osirisapi.repository.UsuarioRepository;
+import br.com.bandtec.osirisapi.service.UserInfo;
+import br.com.bandtec.osirisapi.util.MockUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -31,6 +33,9 @@ class UsuarioControllerTest {
 
     @MockBean
     EcommerceRepository ecommerceRepository;
+
+    @MockBean
+    UserInfo userInfo;
 
     @Test
     @DisplayName("GET / - Quando há usuários na base")
@@ -112,25 +117,71 @@ class UsuarioControllerTest {
     @Test
     @DisplayName("PUT /{idUsuario} - Atualizar um usuário")
     void putUsuario() {
-        int idTeste = 31;
+        MockUtils.mockUserInfo(userInfo);
+
+        Integer idTeste = 1;
         Ecommerce ecommerce = new Ecommerce();
-        ecommerce.setIdEcommerce(6);
+        ecommerce.setIdEcommerce(1);
         ecommerce.setNome("TESTE");
         ecommerce.setCnpj("99.999.999/9999-99");
 
-        UsuarioAtualizacaoRequest usuario = new UsuarioAtualizacaoRequest();
-        usuario.setNomeCompleto("USER_TESTE");
+        Usuario usuario = new Usuario();
+        usuario.setIdUsuario(idTeste);
         usuario.setLoginUsuario("USER_TESTE");
+        usuario.setNomeCompleto("USER_TESTE");
+        usuario.setEcommerce(ecommerce);
 
-        Optional<Usuario> usuarioParaAtualizarOptional = Optional.of(new Usuario());
+        UsuarioAtualizacaoRequest usuarioAtualizacaoRequest = new UsuarioAtualizacaoRequest();
+        usuarioAtualizacaoRequest.setNomeCompleto("USER_TESTE");
+        usuarioAtualizacaoRequest.setLoginUsuario("USER_TESTE");
+
+        Optional<Usuario> usuarioParaAtualizarOptional = Optional.of(usuario);
         Usuario usuarioParaAtualizar = usuarioParaAtualizarOptional.get();
 
-        Mockito.when(usuarioRepository.save(usuarioParaAtualizar)).thenReturn(usuarioParaAtualizar);
-        Mockito.when(usuarioRepository.findById(idTeste)).thenReturn(usuarioParaAtualizarOptional);
+        Mockito.when(usuarioRepository.saveAndFlush(usuarioParaAtualizar)).thenReturn(usuarioParaAtualizar);
+        Mockito.when(usuarioRepository.findById(Mockito.anyInt())).thenReturn(usuarioParaAtualizarOptional);
 
         ResponseEntity resposta =
-                usuarioController.putUsuario(idTeste, usuario);
+                usuarioController.putUsuario(idTeste, usuarioAtualizacaoRequest);
 
         assertEquals(201, resposta.getStatusCodeValue());
+    }
+
+    @Test
+    @DisplayName("GET /usuarios/eecommerce/1 - Quando usuário é autorizado")
+    void getUsuariosPorEcommerceOk() {
+
+        MockUtils.mockUserInfo(userInfo);
+
+        List<Usuario> usuarios = new ArrayList<>();
+        Usuario usuario = new Usuario();
+        usuarios.add(usuario);
+
+        Mockito.when(usuarioRepository.findAllByEcommerceIdEcommerce(Mockito.anyInt())).thenReturn(usuarios);
+        Mockito.when(ecommerceRepository.existsById(Mockito.anyInt())).thenReturn(true);
+
+        ResponseEntity response = usuarioController.getUsuariosPorEcommerce(1);
+
+        assertEquals(200, response.getStatusCodeValue());
+    }
+
+    @Test
+    @DisplayName("GET /usuarios/eecommerce/1 - Quando usuário não é autorizado")
+    void getUsuariosPorEcommerceSemAutorizacao() {
+
+        MockUtils.mockUserInfo(userInfo);
+
+        assertThrows(ApiRequestException.class, () -> usuarioController.getUsuariosPorEcommerce(2));
+    }
+
+    @Test
+    @DisplayName("GET /usuarios/eecommerce/500 - Quando ecommerce não existe")
+    void getUsuariosPorEcommerceEcommerceNaoExiste() {
+
+        MockUtils.mockUserInfo(userInfo);
+
+        Mockito.when(ecommerceRepository.existsById(Mockito.anyInt())).thenReturn(false);
+
+        assertThrows(ApiRequestException.class, () -> usuarioController.getUsuariosPorEcommerce(500));
     }
 }
