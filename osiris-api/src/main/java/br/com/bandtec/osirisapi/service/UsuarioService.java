@@ -29,6 +29,7 @@ public class UsuarioService {
     private final TokenService tokenService;
     private List<UsuarioResponse> sessoes;
     private Constants constants;
+    private final UserInfo userInfo;
 
 
     public List<UsuarioResponse> getUsuarios(){
@@ -59,20 +60,29 @@ public class UsuarioService {
 
     public UsuarioResponse atualizarUsuario(int idUsuario , UsuarioAtualizacaoRequest usuario) {
 
+        UsuarioResponse usuarioInfo = userInfo.getUsuario();
+
         Optional<Usuario> optionalUsuario = usuarioRepository.findById(idUsuario);
 
         if(!optionalUsuario.isPresent()){
             throw new ApiRequestException("Usuário não existe", HttpStatus.NOT_FOUND);
         }
 
+        if (usuarioInfo.getIdUsuario() != idUsuario){
+            throw new ApiRequestException("Não é possível alterar outro usuário", HttpStatus.UNAUTHORIZED);
+        }
+
         Usuario usuarioParaAtualizar = optionalUsuario.get();
 
-        usuarioParaAtualizar.setLoginUsuario(usuario.getLoginUsuario());
-        usuarioParaAtualizar.setNomeCompleto(usuario.getNomeCompleto());
+        if (!usuario.getLoginUsuario().isEmpty()){
+            usuarioParaAtualizar.setLoginUsuario(usuario.getLoginUsuario());
+        }
 
-        Usuario resposta = usuarioRepository.saveAndFlush(usuarioParaAtualizar);
+        if (!usuario.getNomeCompleto().isEmpty()) {
+            usuarioParaAtualizar.setNomeCompleto(usuario.getNomeCompleto());
+        }
 
-        return usuarioConverter.usuarioToUsuarioResponse(resposta);
+        return usuarioConverter.usuarioToUsuarioResponse(usuarioRepository.saveAndFlush(usuarioParaAtualizar));
     }
 
     public UsuarioResponse logarUsuario(UsuarioAcessoRequest usuarioAcessoRequest) {
@@ -123,7 +133,7 @@ public class UsuarioService {
 
         if (enviado){
 
-            return tokenService.gerarUrlAssinada(emailUsuario);
+            return tokenService.gerarTokenAssinado(emailUsuario);
         }else {
 
             throw new ApiRequestException("E-mail de recuperação de senha não foi enviado", HttpStatus.INTERNAL_SERVER_ERROR);

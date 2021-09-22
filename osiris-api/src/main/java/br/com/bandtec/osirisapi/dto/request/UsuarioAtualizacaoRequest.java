@@ -14,9 +14,6 @@ public class UsuarioAtualizacaoRequest {
     @Size(min = 5, max = 45)
     private String nomeCompleto;
 
-    @Size(min = 4, max = 8)
+    @Size(min = 4, max = 255)
     private String loginUsuario;
-
-    @NotBlank
-    private String email;
 }

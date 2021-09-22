@@ -58,14 +58,14 @@ public class TokenService {
         return token;
     }
 
-    public String gerarUrlAssinada(String email){
+    public String gerarTokenAssinado(String info){
 
         Date hoje = new Date();
         Date dataExpiracao = new Date(hoje.getTime() + Integer.parseInt(expirationPasswordReset));
 
         String token = Jwts.builder()
                 .setIssuer("Api da Osiris")
-                .setSubject(email)
+                .setSubject(info)
                 .setIssuedAt(hoje)
                 .setExpiration(dataExpiracao)
                 .signWith(SignatureAlgorithm.HS256, secret)

@@ -56,7 +56,7 @@ public class UsuarioController {
     @PostMapping("/recuperar-senha/{token}")
     public ResponseEntity recuperarSenha(
             @PathVariable String token,
-            @RequestBody UsuarioRecuperarSenhaRequest recuperarSenhaRequest){
+            @RequestBody @Valid UsuarioRecuperarSenhaRequest recuperarSenhaRequest){
 
         return ResponseEntity.status(201).body(usuarioService.recuperarSenha(token, recuperarSenhaRequest));
     }
