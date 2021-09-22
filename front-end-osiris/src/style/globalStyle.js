@@ -61,9 +61,6 @@ export default createGlobalStyle`
     body::before{
         content:'';
         width: 100%;
-        height: 7vh;
-        position: absolute;
-        background:var(--primary);
         z-index: -1
         
     }
