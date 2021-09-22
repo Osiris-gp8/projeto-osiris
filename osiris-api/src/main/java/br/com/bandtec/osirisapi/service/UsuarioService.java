@@ -171,4 +171,21 @@ public class UsuarioService {
         }
 
     }
+
+    public List<UsuarioResponse> buscarUsuarioPorEcommerce(Integer idEcommerce){
+
+        UsuarioResponse usuarioInfo = userInfo.getUsuario();
+
+        if (!ecommerceRepository.existsById(idEcommerce)){
+            throw new ApiRequestException("", HttpStatus.BAD_REQUEST);
+        }
+
+        if (usuarioInfo.getEcommerce().getIdEcommerce() != idEcommerce){
+            throw new ApiRequestException("", HttpStatus.UNAUTHORIZED);
+        }
+
+        List<Usuario> usuario = usuarioRepository.findAllByEcommerceIdEcommerce(idEcommerce);
+
+        return usuarioConverter.usuarioListToUsuarioResponseList(usuario);
+    }
 }
