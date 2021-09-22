@@ -1,8 +1,8 @@
 package br.com.bandtec.osirisapi.controller;
 
 import br.com.bandtec.osirisapi.domain.Usuario;
-import br.com.bandtec.osirisapi.dto.request.UsuarioAcessoRequest;
 import br.com.bandtec.osirisapi.dto.request.UsuarioAtualizacaoRequest;
+import br.com.bandtec.osirisapi.dto.request.UsuarioRecuperarSenhaRequest;
 import br.com.bandtec.osirisapi.service.UsuarioService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -37,7 +37,7 @@ public class UsuarioController {
     @PostMapping("/{idUsuario}")
     public ResponseEntity putUsuario(
             @PathVariable int idUsuario,
-            @RequestBody @Valid UsuarioAtualizacaoRequest usuario) {
+            @RequestBody UsuarioAtualizacaoRequest usuario) {
         return ResponseEntity.status(201).body(usuarioService.atualizarUsuario(idUsuario ,usuario));
     }
 
@@ -45,5 +45,19 @@ public class UsuarioController {
     public ResponseEntity logoff( @RequestParam Integer idUsuario ) {
         usuarioService.logoffUsuario(idUsuario);
         return ResponseEntity.status(200).build();
+    }
+
+    @GetMapping("/recuperar-senha/solicitacao/{emailUsuario}")
+    public ResponseEntity solicitarRecuperarSenha(@PathVariable String emailUsuario){
+
+        return ResponseEntity.status(200).body(usuarioService.solicitacaoRecuperarSenha(emailUsuario));
+    }
+
+    @PostMapping("/recuperar-senha/{token}")
+    public ResponseEntity recuperarSenha(
+            @PathVariable String token,
+            @RequestBody @Valid UsuarioRecuperarSenhaRequest recuperarSenhaRequest){
+
+        return ResponseEntity.status(201).body(usuarioService.recuperarSenha(token, recuperarSenhaRequest));
     }
 }

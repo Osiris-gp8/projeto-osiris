@@ -17,6 +17,7 @@ import org.springframework.web.util.WebUtils;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -29,6 +30,9 @@ public class TokenService {
 
     @Value("${osiris.jwt.secret}")
     private String secret;
+
+    @Value("${osiris.jwt.expiration.password.reset}")
+    private String expirationPasswordReset;
 
     private final Gson gson;
 
@@ -54,6 +58,22 @@ public class TokenService {
         return token;
     }
 
+    public String gerarTokenAssinado(String info){
+
+        Date hoje = new Date();
+        Date dataExpiracao = new Date(hoje.getTime() + Integer.parseInt(expirationPasswordReset));
+
+        String token = Jwts.builder()
+                .setIssuer("Api da Osiris")
+                .setSubject(info)
+                .setIssuedAt(hoje)
+                .setExpiration(dataExpiracao)
+                .signWith(SignatureAlgorithm.HS256, secret)
+                .compact();
+
+        return token;
+    }
+
     public boolean isTokenValido(String token) {
         try {
             Jwts.parser().setSigningKey(this.secret).parseClaimsJws(token);
@@ -75,6 +95,14 @@ public class TokenService {
                 .parseClaimsJws(token)
                 .getBody().getSubject(),
                 UsuarioResponse.class);
+    }
+
+    public String getUrlAssinadaViaToken(String token){
+        return gson.fromJson(Jwts.parser()
+                        .setSigningKey(this.secret)
+                        .parseClaimsJws(token)
+                        .getBody().getSubject(),
+                String.class);
     }
 
 
