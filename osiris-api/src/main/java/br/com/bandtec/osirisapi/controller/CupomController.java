@@ -28,7 +28,7 @@ public class CupomController {
 
     }
 
-    @GetMapping("/teste")
+    @GetMapping("/porcentagem")
     public  ResponseEntity getQuantidadeCupons(){
         Integer TotalCupons = cupomService.quantCupom();
         Integer CuponsUsados = eventoService.quantEventosComCuponsUsados();
