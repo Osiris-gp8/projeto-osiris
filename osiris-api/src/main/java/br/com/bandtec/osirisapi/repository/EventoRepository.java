@@ -71,5 +71,9 @@ public interface EventoRepository extends JpaRepository<Evento, Integer> {
             " and e.data_compra between ?1 and ?2" +
             " group by day(e.data_compra)",
             nativeQuery = true)
+    Integer findByEventoComCupom(Integer idEcommerce);
+
+    @Query(value = "select count(fkCupom) from evento ", nativeQuery = true)
+    Integer countAllByEventoQuantidadeCuponsUsados();
     List<Integer> novaFuncaoTeste(LocalDate diaIncial, LocalDate diaFinal, Integer idEcommerce);
 }
