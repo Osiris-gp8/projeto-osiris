@@ -51,6 +51,10 @@ public class EventoService {
         return eventos;
     }
 
+    public Integer quantEventosComCuponsUsados(){
+        return eventoRepository.countAllByEventoQuantidadeCuponsUsados();
+    }
+
     public String inserirEventoAssincrono(Evento evento) {
 
         if (eventoContemErros(evento)){
@@ -186,12 +190,15 @@ public class EventoService {
         return eventoConverter.eventoProtocoloToEventoProtocoloResponse(eventosProtocolo);
     }
 
-    public EventosComSemCupomResponse getEventosSemCupom() {
+    public EventosComSemCupomResponse getEventosSemCupom(LocalDate dataInicial, LocalDate dataFinal) {
 
         UsuarioResponse usuario = userInfo.getUsuario();
 
-        Integer contagemSemCupom = eventoRepository.findByEventoSemCupom(usuario.getEcommerce().getIdEcommerce());
-        Integer contagemComCupom = eventoRepository.findByEventoComCupom(usuario.getEcommerce().getIdEcommerce());
+        Integer contagemSemCupom = eventoRepository
+                .findByEventoSemCupomAndDataCompraBetween(usuario.getEcommerce().getIdEcommerce(), dataInicial, dataFinal);
+
+        Integer contagemComCupom = eventoRepository
+                .findByEventoComCupomAndDataCompraBetween(usuario.getEcommerce().getIdEcommerce(), dataInicial, dataFinal);
 
         return eventoConverter.eventoToEventosSemCupomResponse(contagemSemCupom, contagemComCupom);
     }

@@ -23,7 +23,6 @@ public class DashService {
 
         List<AcessosVendasDiasResponse> listaAcessosVendasDiaResponses = new ArrayList<>();
 
-        // TODO ABSTRAIR LÓGICA EM FUNÇÃO
         Integer diferencaEmDias = filtroDataRequest.getDiferencaDatas();
 
         for (int i = 0; i <= diferencaEmDias; i++){
