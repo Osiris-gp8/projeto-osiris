@@ -10,6 +10,5 @@ public interface EcommerceRepository extends JpaRepository<Ecommerce, Integer> {
 //    @Query(value = "select idEcommerce from evento where cnpj = ? and nome = ?", nativeQuery = true)
 //    int findEcommerceByCnpjEqualsAndNomeEquals();
 
-    int findEcommerceByCnpjEqualsAndNomeEquals(String cnpj, String nomeEcommerce);
-    public Optional<Ecommerce> findByNome(String nome);
+    Optional<Ecommerce> findEcommerceByCnpjAndNome(String cnpj, String nomeEcommerce);
 }
