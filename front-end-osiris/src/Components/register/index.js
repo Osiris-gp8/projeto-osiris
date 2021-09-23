@@ -14,7 +14,7 @@ export default () => {
     const [next, setNext]= useState(false);
     const [cnpj, setCNPJ]= useState('');
     const [nomeEcommerce, setNomeEcommerce]= useState('');
-    const [idEcommerce, setIdEcommerce]= useState('');
+    const [id, setId]= useState('');
     const [erroEcommerce, setErroEcommerce]= useState('');
 
     const [usuarioData, setUsuarioData]= useState({
@@ -22,7 +22,7 @@ export default () => {
         senha: "",
         nomeCompleto: "",
         ecommerce: {
-            idEcommerce: 1
+            idEcommerce: id
         }
     });
 
@@ -35,31 +35,45 @@ export default () => {
 
     function enviar(e) {
         e.preventDefault();
-        api.post("/usuarios", {
+        let usuarioPost = {
             loginUsuario: usuarioData.loginUsuario,
             senha: usuarioData.senha,
             nomeCompleto: usuarioData.nomeCompleto,
             ecommerce: {
-                idEcommerce: Number(idEcommerce)
+                idEcommerce: id
             }
-        }).then((resposta) => {
+        }
+        console.log(usuarioPost)
+        api.post("/usuarios", usuarioPost).then((resposta) => {
+            console.log("teste")
             console.log("post ok", resposta);
             history.push("/login");
         });
     }
 
     function receberEcommerce(cnpj, nomeEcommerce) {
-        const resposta = api.get(`/ecommerces/id/${cnpj}/${nomeEcommerce}`);
-        console.log(resposta)
-        return resposta;
+        // const resposta = api.get(`/ecommerces/id/${cnpj}/${nomeEcommerce}`);
+        // console.log(resposta)
+        // return resposta
+        api.get(`/ecommerces/id/${cnpj}/${nomeEcommerce}`).then((resposta) => {
+            console.log(resposta);
+            setId(resposta.data);
+            console.log(id);
+            setErroEcommerce('');
+            return resposta.data;
+        }).catch((error) => { 
+            console.log(error);
+            setNext(false); 
+            setErroEcommerce("Nome do Ecommerce ou CNPJ estão inválidos");
+            console.log(error)    
+        });
     }
 
     function changeForm(e){
         receberEcommerce(cnpj, nomeEcommerce)
-            .then((resposta) => {
-                setIdEcommerce(resposta.data);
-                setNext(e.target.id != 'first');
-            }, setErroEcommerce("Nome do Ecommerce ou CNPJ estão inválidos!"))
+        console.log(next);
+        setNext(e.target.id != 'first')
+        console.log(next);
     }
 
     return (
