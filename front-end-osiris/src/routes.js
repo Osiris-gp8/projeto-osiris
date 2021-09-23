@@ -22,7 +22,7 @@ function Routes(){
                 <Route exact path="/sales" component={Relation} />
                 <Route exact path="/config" component={Setting} />
                 <Route exact path="/upload" component={upload} />
-                <Route exact path="/password" component={Password} />
+                <Route exact path="/password/:token?" component={Password} />
                 <Route exact path="/addCollaborator" component={AddCollaborator}/>
                 <Route component={NotFound} />
             </Switch>
