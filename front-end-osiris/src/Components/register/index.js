@@ -49,8 +49,8 @@ export default () => {
     }
 
     function receberEcommerce(cnpj, nomeEcommerce) {
-        const resposta = api.get(`/ecommerces/id/${cnpj}/${nomeEcommerce}`).then();
-        console.log("Id do Ecommerce: ", resposta);
+        const resposta = api.get(`/ecommerces/id/${cnpj}/${nomeEcommerce}`);
+        console.log(resposta)
         return resposta;
     }
 
