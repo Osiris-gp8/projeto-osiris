@@ -12,7 +12,10 @@ export default () => {
     const history = useHistory();
 
     const [next, setNext]= useState(false);
-    const [cnpj, setCNPJ]= useState('')
+    const [cnpj, setCNPJ]= useState('');
+    const [nomeEcommerce, setNomeEcommerce]= useState('');
+    const [idEcommerce, setIdEcommerce]= useState('');
+    const [erroEcommerce, setErroEcommerce]= useState('');
 
     const [usuarioData, setUsuarioData]= useState({
         loginUsuario: "",
@@ -21,7 +24,7 @@ export default () => {
         ecommerce: {
             idEcommerce: 1
         }
-    })
+    });
 
     function handle(e) {
         const newUsuario = { ...usuarioData }
@@ -37,16 +40,26 @@ export default () => {
             senha: usuarioData.senha,
             nomeCompleto: usuarioData.nomeCompleto,
             ecommerce: {
-                idEcommerce: Number(usuarioData.idEcommerce)
+                idEcommerce: Number(idEcommerce)
             }
         }).then((resposta) => {
             console.log("post ok", resposta);
             history.push("/login");
-        })
+        });
+    }
+
+    function receberEcommerce(cnpj, nomeEcommerce) {
+        const resposta = api.get(`/ecommerces/id/${cnpj}/${nomeEcommerce}`).then();
+        console.log("Id do Ecommerce: ", resposta);
+        return resposta;
     }
 
     function changeForm(e){
-        setNext(e.target.id != 'first')
+        receberEcommerce(cnpj, nomeEcommerce)
+            .then((resposta) => {
+                setIdEcommerce(resposta.data);
+                setNext(e.target.id != 'first');
+            }, setErroEcommerce("Nome do Ecommerce ou CNPJ estão inválidos!"))
     }
 
     return (
@@ -56,36 +69,35 @@ export default () => {
                 <ContainerForm next={!next}>
                     <h2>Cadastro</h2>
                     <div>
+                        <label>Nome do Comércio</label>
+                        <input id="nome" value={nomeEcommerce}
+                        onChange={(e) => setNomeEcommerce(e.target.value)} />
+                    </div>
+                    <div>
                         <label>CNPJ</label>
-                        {/* <MaskedInput id="cnpj" value={cnpj}
-                        onChange={(e) => setCNPJ(e.target.value)} /> */}
-                        <input id="cnpj" />
+                        <input id="cnpj" value={cnpj}
+                        onChange={(e) => setCNPJ(e.target.value)} />
                     </div>
-                    <div>
-                        <label>Usuário</label>
-                        <input id="loginUsuario" onChange={(e) => handle(e)} />
-                    </div>
-                    <div>
-                        <label>Nome Completo</label>
-                        <input id="nomeCompleto" onChange={(e) => handle(e)} />
-                    </div>
-                    <Link to="/">Voltar para tela de Login</Link>
+                    <span id="erro" >
+                        {erroEcommerce}
+                    </span>
+                    <Link to="/login">Voltar para tela de Login</Link>
                 </ContainerForm>
                 <ContainerForm   next={next}>
                     <h2>Cadastro</h2>
                     <div>
-                        <label>Nome do Comércio</label>
-                        <input id="nome" />
+                        <label>Nome Completo</label>
+                        <input id="nomeCompleto" onChange={(e) => handle(e)} />
+                    </div>
+                    <div>
+                        <label>Login</label>
+                        <input id="loginUsuario" onChange={(e) => handle(e)} />
                     </div>
                     <div>
                         <label>Senha</label>
                         <input id="senha" type='password' onChange={(e) => handle(e)} />
                     </div>
-                    <div>
-                        <label>Id do ecommerce</label>
-                        <input id="idEcommerce" type='password' onChange={(e) => handle(e)} />
-                    </div>
-                    <Link to="/">Voltar para tela de Login</Link>
+                    <Link to="/login">Voltar para tela de Login</Link>
                 </ContainerForm>
                 <RadioBox>
                     <input type="radio" name='radio' defaultChecked
