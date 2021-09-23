@@ -41,6 +41,8 @@ public class CupomService {
         return cupomRepository.save(cupom);
     }
 
+    public Integer quantCupom(){return cupomRepository.countAllByCupomQuantidadeId();}
+
     public Cupom atualizarCupom(Integer idCupom, Cupom cupomAtualizar) {
 
         Optional<Cupom> cupomOptional = cupomRepository.findById(idCupom);
