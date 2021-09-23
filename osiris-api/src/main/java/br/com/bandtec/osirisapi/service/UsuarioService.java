@@ -116,7 +116,7 @@ public class UsuarioService {
         throw new ApiRequestException("Usuário não está logado", HttpStatus.BAD_REQUEST);
     }
 
-    public String solicitacaoRecuperarSenha(String emailUsuario) {
+    public boolean solicitacaoRecuperarSenha(String emailUsuario) {
 
         EmailConfig emailConfig = new EmailConfig();
 
@@ -125,7 +125,9 @@ public class UsuarioService {
             throw new ApiRequestException("E-mail não encontrado na base ou incorreto", HttpStatus.BAD_REQUEST);
         }
 
-        String mensagem = gerarMesagemResetDeSenha(emailUsuario);
+        String token = tokenService.gerarTokenAssinado(emailUsuario);
+        String mensagem = gerarMesagemResetDeSenha(emailUsuario, token);
+
         boolean enviado = emailConfig.enviarEmail(
                 mensagem,
                 constants.ASSUNTO_RECUPERAR_SENHA,
@@ -133,18 +135,18 @@ public class UsuarioService {
 
         if (enviado){
 
-            return tokenService.gerarTokenAssinado(emailUsuario);
+            return true;
         }else {
 
             throw new ApiRequestException("E-mail de recuperação de senha não foi enviado", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    private String gerarMesagemResetDeSenha(String emailUsuario){
+    private String gerarMesagemResetDeSenha(String emailUsuario, String token){
 
         String mensagem =
                 String.format(constants.MENSAGEM_RECUPERAR_SENHA,
-                        emailUsuario);
+                        emailUsuario, token);
 
         return mensagem;
     }
