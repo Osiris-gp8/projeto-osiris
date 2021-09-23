@@ -50,7 +50,8 @@ public class UsuarioController {
     @GetMapping("/recuperar-senha/solicitacao/{emailUsuario}")
     public ResponseEntity solicitarRecuperarSenha(@PathVariable String emailUsuario){
 
-        return ResponseEntity.status(200).body(usuarioService.solicitacaoRecuperarSenha(emailUsuario));
+        usuarioService.solicitacaoRecuperarSenha(emailUsuario);
+        return ResponseEntity.status(200).build();
     }
 
     @PostMapping("/recuperar-senha/{token}")
