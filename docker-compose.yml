@@ -16,7 +16,8 @@ services:
     networks:
       - osiris-network
     depends_on:
-      - springboot
+      - springboot1
+      - springboot2
 
   springboot1:
     build:
@@ -40,7 +41,8 @@ services:
     networks:
       - osiris-network
     depends_on:
-      - springboot
+      - springboot1
+      - springboot2
 
   springboot2:
     build:
