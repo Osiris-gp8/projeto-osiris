@@ -36,10 +36,10 @@ public class AcessoController {
     }
 
     @GetMapping("/{inicioDia}/{fimDia}")
-    public ResponseEntity getAcessosDeterminadoDia(@PathVariable LocalDate inicioDia, LocalDate fimDia)
+    public ResponseEntity getAcessosDeterminadoDia(@Valid FiltroDataRequest request)
     {
-        LocalDateTime inicio = inicioDia.atStartOfDay();
-        LocalDateTime fim = fimDia.atStartOfDay();
+        LocalDateTime inicio = request.getDataIncio().atStartOfDay();
+        LocalDateTime fim = request.getDataFinal().atStartOfDay();
         return ResponseEntity.status(200).body(acessoService.countAcessoDeterminadoDia(inicio,fim));
     }
 
