@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -31,6 +32,12 @@ public class AcessoController {
     public ResponseEntity postAcessoList(@RequestBody List<@Valid Acesso> acessoList){
         acessoList.forEach(acessoService::inserirAcesso);
         return ResponseEntity.status(201).build();
+    }
+
+    @GetMapping("/{inicioDia}/{fimDia}")
+    public ResponseEntity getAcessosDeterminadoDia(@PathVariable LocalDateTime inicioDia, LocalDateTime fimDia)
+    {
+        return ResponseEntity.status(200).body(acessoService.countAcessoDeterminadoDia(inicioDia,fimDia));
     }
 
 }
