@@ -40,8 +40,8 @@ services:
     build:
       dockerfile: ./docker/react.dockerfile
       context: .
-    image: osiris/front-end
-    container_name: osiris-front-end
+    image: osiris/front-end1
+    container_name: osiris-front-end1
     ports:
       - "3000"
     networks:
@@ -53,8 +53,8 @@ services:
     build:
       dockerfile: ./docker/springboot.dockerfile
       context: .
-    image: osiris/springboot-api
-    container_name: osiris-api
+    image: osiris/springboot-api1
+    container_name: osiris-api1
     ports:
       - "8081"
     networks:
@@ -64,8 +64,8 @@ services:
     build:
       dockerfile: ./docker/react.dockerfile
       context: .
-    image: osiris/front-end
-    container_name: osiris-front-end
+    image: osiris/front-end2
+    container_name: osiris-front-end2
     ports:
       - "3001"
     networks:
@@ -77,8 +77,8 @@ services:
     build:
       dockerfile: ./docker/springboot.dockerfile
       context: .
-    image: osiris/springboot-api
-    container_name: osiris-api
+    image: osiris/springboot-api2
+    container_name: osiris-api2
     ports:
       - "8082"
     networks:
