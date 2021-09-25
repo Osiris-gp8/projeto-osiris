@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -35,9 +36,11 @@ public class AcessoController {
     }
 
     @GetMapping("/{inicioDia}/{fimDia}")
-    public ResponseEntity getAcessosDeterminadoDia(@PathVariable LocalDateTime inicioDia, LocalDateTime fimDia)
+    public ResponseEntity getAcessosDeterminadoDia(@PathVariable LocalDate inicioDia, LocalDate fimDia)
     {
-        return ResponseEntity.status(200).body(acessoService.countAcessoDeterminadoDia(inicioDia,fimDia));
+        LocalDateTime inicio = inicioDia.atStartOfDay();
+        LocalDateTime fim = fimDia.atStartOfDay();
+        return ResponseEntity.status(200).body(acessoService.countAcessoDeterminadoDia(inicio,fim));
     }
 
 }
