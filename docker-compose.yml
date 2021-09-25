@@ -28,8 +28,7 @@ services:
     image: osiris/back-loadbalance
     container_name: osiris-back-end-loadbalance
     ports:
-      - "80:80"
-      - "443:443"
+      - "85"
     networks:
       - osiris-network
     depends_on:
