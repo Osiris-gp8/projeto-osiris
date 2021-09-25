@@ -5,6 +5,37 @@ networks:
     driver: bridge
 
 services:
+
+  front-loadbalance:
+    build:
+      dockerfile: ./docker/frontend-nginx.dockerfile
+      context: .
+    image: osiris/front-loadbalance
+    container_name: osiris-front-end-loadbalance
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - osiris-network
+    depends_on:
+      - react1
+      - react2
+
+  back-loadbalance:
+    build:
+      dockerfile: ./docker/backend-nginx.dockerfile
+      context: .
+    image: osiris/back-loadbalance
+    container_name: osiris-back-end-loadbalance
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - osiris-network
+    depends_on:
+      - springboot1
+      - springboot2
+
   react1:
     build:
       dockerfile: ./docker/react.dockerfile
@@ -16,8 +47,7 @@ services:
     networks:
       - osiris-network
     depends_on:
-      - springboot1
-      - springboot2
+      - back-loadbalance
 
   springboot1:
     build:
@@ -26,7 +56,7 @@ services:
     image: osiris/springboot-api
     container_name: osiris-api
     ports:
-      - "8080"
+      - "8081"
     networks:
       - osiris-network
   
@@ -41,8 +71,7 @@ services:
     networks:
       - osiris-network
     depends_on:
-      - springboot1
-      - springboot2
+      - back-loadbalance
 
   springboot2:
     build:
@@ -51,6 +80,6 @@ services:
     image: osiris/springboot-api
     container_name: osiris-api
     ports:
-      - "8081"
+      - "8082"
     networks:
       - osiris-network
