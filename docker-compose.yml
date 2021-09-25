@@ -39,7 +39,7 @@ services:
     build:
       dockerfile: ./docker/react.dockerfile
       context: .
-    image: osiris/front-end1
+    image: osiris/front-end
     container_name: osiris-front-end1
     ports:
       - "3000"
@@ -63,7 +63,7 @@ services:
     build:
       dockerfile: ./docker/react.dockerfile
       context: .
-    image: osiris/front-end2
+    image: osiris/front-end
     container_name: osiris-front-end2
     ports:
       - "3001"
