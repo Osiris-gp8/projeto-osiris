@@ -65,7 +65,7 @@ services:
     image: osiris/front-end
     container_name: osiris-front-end2
     ports:
-      - "3001"
+      - "3000"
     networks:
       - osiris-network
     # depends_on:
