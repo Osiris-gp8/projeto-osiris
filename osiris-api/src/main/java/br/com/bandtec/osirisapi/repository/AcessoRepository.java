@@ -27,7 +27,7 @@ public interface AcessoRepository extends JpaRepository<Acesso, Integer> {
             nativeQuery = true)
     Integer countAllByInicioAcessoAndIdEcommerce(LocalDateTime inicioDiaDataAcesso, LocalDateTime finalDiaDataAcesso, Integer idEcommerce);
 
-    @Query(value = "select count(id_acessos) as quantidade from acessos where inicio_acesso " +
+    @Query(value = "select count(id_acessos) as quantidade from acesso where inicio_acesso " +
             "between ?1 and ?2", nativeQuery = true)
     Integer countAcessosDeterminadoDia(LocalDateTime inicioDia, LocalDateTime fimDia);
 }
