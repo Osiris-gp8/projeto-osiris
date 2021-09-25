@@ -1,6 +1,7 @@
 package br.com.bandtec.osirisapi.controller;
 
 import br.com.bandtec.osirisapi.domain.Acesso;
+import br.com.bandtec.osirisapi.dto.request.FiltroDataRequest;
 import br.com.bandtec.osirisapi.service.AcessoService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
