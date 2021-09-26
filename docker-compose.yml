@@ -8,7 +8,7 @@ services:
 
   front-loadbalance:
     build:
-      dockerfile: ./docker/react.dockerfile
+      dockerfile: ./docker/frontend-nginx.dockerfile
       context: .
     image: osiris/front-loadbalance
     container_name: osiris-front-end-loadbalance
@@ -34,16 +34,16 @@ services:
   #     - springboot1
   #     - springboot2
 
-  # react1:
-  #   build:
-  #     dockerfile: ./docker/react.dockerfile
-  #     context: .
-  #   image: osiris/front-end
-  #   container_name: osiris-front-end1
-  #   ports:
-  #     - "3000"
-  #   networks:
-  #     - osiris-network
+  react1:
+    build:
+      dockerfile: ./docker/react.dockerfile
+      context: .
+    image: osiris/front-end
+    container_name: osiris-front-end1
+    ports:
+      - "3000"
+    networks:
+      - osiris-network
     # depends_on:
     #   - back-loadbalance
 
@@ -58,16 +58,16 @@ services:
   #   networks:
   #     - osiris-network
   
-  # react2:
-  #   build:
-  #     dockerfile: ./docker/react.dockerfile
-  #     context: .
-  #   image: osiris/front-end
-  #   container_name: osiris-front-end2
-  #   ports:
-  #     - "3001"
-  #   networks:
-  #     - osiris-network
+  react2:
+    build:
+      dockerfile: ./docker/react.dockerfile
+      context: .
+    image: osiris/front-end
+    container_name: osiris-front-end2
+    ports:
+      - "3001"
+    networks:
+      - osiris-network
     # depends_on:
     #   - back-loadbalance
 
