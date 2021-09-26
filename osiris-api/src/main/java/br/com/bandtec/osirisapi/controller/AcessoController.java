@@ -36,7 +36,7 @@ public class AcessoController {
         return ResponseEntity.status(201).build();
     }
 
-    @GetMapping("/contagem/{inicio}/{fim}")
+    @GetMapping("/contagem")
     public ResponseEntity getAcessosDeterminadoDia(@Valid FiltroDataRequest request)
     {
         LocalDateTime inicio = request.getDataIncio().atStartOfDay();

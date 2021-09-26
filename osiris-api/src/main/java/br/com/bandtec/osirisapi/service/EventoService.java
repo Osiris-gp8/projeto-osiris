@@ -231,4 +231,9 @@ public class EventoService {
 
         return LocalDateTime.of(data, ltInicioDiaCompra);
     }
+
+    public Integer countVendasDeterminadoDia(LocalDateTime inicioDia,LocalDateTime fimDia,Ecommerce ecommerce)
+    {
+        return eventoRepository.countAcessosDeterminadoDia(inicioDia,fimDia,ecommerce);
+    }
 }
