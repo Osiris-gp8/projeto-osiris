@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: "http://osiris-network:85",
+    baseURL: "http://localhost:90",
     headers: {
-        "Access-Control-Allow-Origin": "http://osiris-network:85",
+        "Access-Control-Allow-Origin": "http://localhost:90",
         "Access-Control-Allow-Headers": "Authorization",
         "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, PATCH, DELETE",
         "Authorization": `${sessionStorage.getItem("tipo")} ${sessionStorage.getItem("token")}`
