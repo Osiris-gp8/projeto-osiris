@@ -39,11 +39,9 @@ public class EcommerceController {
         return ResponseEntity.status(200).body(ecommerceService.atualizarEcommerce(idEcommerce, ecommerce));
     }
 
-    @GetMapping("/id/{cnpj1}/{cnpj2}/{nomeEcommerce}")
-    public ResponseEntity getIdEcommercePeloNomeECnpj(@PathVariable String cnpj1,
-                                                    @PathVariable String cnpj2,
-                                                    @PathVariable String nomeEcommerce) {
-        String cnpj = cnpj1 + "/" + cnpj2;
+    @GetMapping("/id")
+    public ResponseEntity getIdEcommercePeloNomeECnpj(@RequestParam String cnpj,
+                                                    @RequestParam String nomeEcommerce) {;
         return ResponseEntity.status(200).body(ecommerceService.getIdEcommercePeloCnpjENome(cnpj, nomeEcommerce));
     }
 }
