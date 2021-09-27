@@ -56,6 +56,8 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
             .authorizeRequests().antMatchers("/auth").permitAll()
             .antMatchers(HttpMethod.POST,"/usuarios").permitAll()
+            .antMatchers(HttpMethod.GET,"/usuarios/recuperar-senha/**").permitAll()
+            .antMatchers(HttpMethod.POST,"/usuarios/recuperar-senha/*").permitAll()
             .anyRequest().authenticated();
 
         http.addFilterBefore(

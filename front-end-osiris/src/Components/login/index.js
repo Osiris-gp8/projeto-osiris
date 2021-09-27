@@ -3,17 +3,26 @@ import {React, useEffect, useState} from 'react';
 import leftblob from '../../Images/left-blob.svg'
 import rightblob from '../../Images/right-blob.svg'
 import { Container, Form, ContainerForm, Button } from './style';
-import {Link,useHistory} from 'react-router-dom';
+import {Link,useHistory, useParams} from 'react-router-dom';
+import { ToastContainerTop } from '../Toast';
+import { toast } from 'react-toastify';
 
 import api from '../../api';
 
 export default () => {
 
     const history = useHistory();
+    const setSenha = useParams();
 
     useEffect(() =>{
         if(sessionStorage.getItem("token")){
             return history.push('/home');
+        }
+
+        console.log(setSenha.setSenha);
+
+        if(setSenha.setSenha){
+            toast.success("Senha trocada com sucesso.")
         }
     }, []);
 
@@ -56,9 +65,11 @@ export default () => {
 
     return (
     <Container>
+        
         <img src={leftblob} alt="Blob a esquerda" />
             <Form onSubmit={onSubmit}>
-            <ContainerForm>
+                <ContainerForm>
+                    <ToastContainerTop/>
                     <label></label>
                     <h2>Login</h2>
                     <div>
