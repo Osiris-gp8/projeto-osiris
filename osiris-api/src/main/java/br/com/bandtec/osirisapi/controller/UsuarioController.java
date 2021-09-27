@@ -67,4 +67,10 @@ public class UsuarioController {
 
         return ResponseEntity.status(200).body(usuarioService.buscarUsuarioPorEcommerce(idEcommerce));
     }
+
+    @GetMapping("/{login}")
+    public ResponseEntity getUsuarioPorEmail(@PathVariable String login){
+
+        return ResponseEntity.status(200).body(usuarioService.findUsuarioPorEmail(login));
+    }
 }

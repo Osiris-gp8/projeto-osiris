@@ -15,6 +15,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
@@ -189,5 +191,16 @@ public class UsuarioService {
         List<Usuario> usuario = usuarioRepository.findAllByEcommerceIdEcommerce(idEcommerce);
 
         return usuarioConverter.usuarioListToUsuarioResponseList(usuario);
+    }
+
+    public UsuarioResponse findUsuarioPorEmail(String login){
+
+        Optional<Usuario> optionalUsuario = usuarioRepository.findByLoginUsuario(login);
+
+        if (!optionalUsuario.isPresent()){
+            throw new ApiRequestException("Usuário não encontrado.", HttpStatus.BAD_REQUEST);
+        }
+
+        return usuarioConverter.usuarioToUsuarioResponse(optionalUsuario.get());
     }
 }
