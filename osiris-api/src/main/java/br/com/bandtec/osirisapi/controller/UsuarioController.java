@@ -69,8 +69,8 @@ public class UsuarioController {
     }
 
     @GetMapping("/{login}")
-    public ResponseEntity getUsuarioPorEmail(@PathVariable String login){
+    public ResponseEntity getUsuarioPorLogin(@PathVariable String login){
 
-        return ResponseEntity.status(200).body(usuarioService.findUsuarioPorEmail(login));
+        return ResponseEntity.status(200).body(usuarioService.findUsuarioPorLogin(login));
     }
 }

@@ -193,7 +193,7 @@ public class UsuarioService {
         return usuarioConverter.usuarioListToUsuarioResponseList(usuario);
     }
 
-    public UsuarioResponse findUsuarioPorEmail(String login){
+    public UsuarioResponse findUsuarioPorLogin(String login){
 
         Optional<Usuario> optionalUsuario = usuarioRepository.findByLoginUsuario(login);
 
