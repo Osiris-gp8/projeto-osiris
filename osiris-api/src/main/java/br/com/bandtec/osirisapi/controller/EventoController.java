@@ -80,8 +80,8 @@ public class EventoController {
                 eventoService.getEventosSemCupom(request.getDataIncio(), request.getDataFinal()));
     }
 
-    @GetMapping("/contagem")
-    public ResponseEntity getAcessosDeterminadoDia(@Valid FiltroDataRequest request)
+    @GetMapping("/contagemEvento")
+    public ResponseEntity getEventoDeterminadoDia(@Valid FiltroDataRequest request)
     {
         LocalDateTime inicio = request.getDataIncio().atStartOfDay();
         LocalDateTime fim = request.getDataFinal().atStartOfDay();

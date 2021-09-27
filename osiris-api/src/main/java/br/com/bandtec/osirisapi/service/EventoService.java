@@ -1,6 +1,7 @@
 package br.com.bandtec.osirisapi.service;
 
 import br.com.bandtec.osirisapi.converter.implementation.EventoConverterImplementation;
+import br.com.bandtec.osirisapi.domain.Ecommerce;
 import br.com.bandtec.osirisapi.domain.Evento;
 import br.com.bandtec.osirisapi.domain.EventoProtocolo;
 import br.com.bandtec.osirisapi.dto.response.EventoProtocoloResponse;
@@ -232,7 +233,7 @@ public class EventoService {
         return LocalDateTime.of(data, ltInicioDiaCompra);
     }
 
-    public Integer countVendasDeterminadoDia(LocalDateTime inicioDia,LocalDateTime fimDia,Ecommerce ecommerce)
+    public Integer countVendasDeterminadoDia(LocalDateTime inicioDia, LocalDateTime fimDia, Ecommerce ecommerce)
     {
         return eventoRepository.countAcessosDeterminadoDia(inicioDia,fimDia,ecommerce);
     }
