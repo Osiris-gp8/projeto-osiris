@@ -19,8 +19,6 @@ export default () => {
             return history.push('/home');
         }
 
-        console.log(setSenha.setSenha);
-
         if(setSenha.setSenha){
             toast.success("Senha trocada com sucesso.")
         }
@@ -40,9 +38,7 @@ export default () => {
     function onSubmit(e){
         e.preventDefault()
         if(usuarioData.login == '' || usuarioData.senha == ''){
-            {/* 
-                TODO CRIAR COMPONENTE DE RETORNO DE ERRO
-            */}
+            toast.error("Campo de e-mail ou senha está vazio")
             return;
         }
 
@@ -55,10 +51,13 @@ export default () => {
             sessionStorage.setItem("usuario", JSON.stringify(response.data.usuario));
             history.push('/home');
         }).catch( error => {
-            {/* 
-                TODO CRIAR COMPONENTE DE RETORNO DE ERRO
-            */}
-            console.log(error);
+            if(error.response != undefined){
+                if(error.response.status == 400){
+                    toast.error("Usuário ou senha inválidos.")
+                }
+            }else{
+                toast.error("Desculpe tivemos um erro. Tente mais tarde.")
+            }
         })
     }
 
