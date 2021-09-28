@@ -51,7 +51,7 @@ export default () => {
         });
     }
 
-    function receberEcommerce(cnpj, nomeEcommerce) {
+    function receberEcommerce(cnpj, nomeEcommerce) {    
         api.get(`/ecommerces/id`, { params: { cnpj: cnpj, nomeEcommerce: nomeEcommerce}}).then((resposta) => {
             console.log(resposta);
             setId(resposta.data);
@@ -79,34 +79,58 @@ export default () => {
             <Form onSubmit={(e) => enviar(e)} >
                 <ContainerForm next={!next}>
                     <h2>Cadastro</h2>
-                    <div>
-                        <label>Nome do Comércio</label>
-                        <input id="nome" value={nomeEcommerce}
-                        onChange={(e) => setNomeEcommerce(e.target.value)} />
+                    <div className="col-settings">
+                        <label 
+                            className="label-settings">Nome do Comércio:</label>
+                        <input 
+                            className="input-settings" 
+                            id="nomeEcommerce"
+                            type="text"
+                            value={nomeEcommerce}
+                            onChange={(e) => setNomeEcommerce(e.target.value)} 
+                        />
                     </div>
-                    <div>
-                        <label>CNPJ</label>
-                        <input id="cnpj" value={cnpj}
-                        onChange={(e) => setCNPJ(e.target.value)} />
+                    <div className="col-settings">
+                        <label 
+                            className="label-settings">CNPJ:</label>
+                        <input 
+                            className="input-settings" 
+                            id="cnpj" 
+                            type="text"
+                            value={cnpj}
+                            onChange={(e) => setCNPJ(e.target.value)} 
+                        />
                     </div>
-                    <span id="erro" >
-                        {erroEcommerce}
-                    </span>
                     <Link to="/login">Voltar para tela de Login</Link>
                 </ContainerForm>
                 <ContainerForm   next={next}>
                     <h2>Cadastro</h2>
-                    <div>
-                        <label>Nome Completo</label>
-                        <input id="nomeCompleto" onChange={(e) => handle(e)} />
+                    <div className="col-settings">
+                        <label 
+                            className="label-settings">Nome Completo:</label>
+                        <input 
+                        className="input-settings" 
+                        id="nomeCompleto" 
+                        type="text"
+                        onChange={(e) => handle(e)} />
                     </div>
-                    <div>
-                        <label>Login</label>
-                        <input id="loginUsuario" onChange={(e) => handle(e)} />
+                    <div className="col-settings">
+                        <label
+                            className="label-settings">Email:</label>
+                        <input 
+                            className="input-settings"
+                            id="loginUsuario" 
+                            type="text"
+                            onChange={(e) => handle(e)} />
                     </div>
-                    <div>
-                        <label>Senha</label>
-                        <input id="senha" type='password' onChange={(e) => handle(e)} />
+                    <div className="col-settings">
+                        <label 
+                            className="label-settings">Senha:</label>
+                        <input 
+                            className="input-settings"
+                            id="senha" 
+                            type='password' 
+                            onChange={(e) => handle(e)} />
                     </div>
                     <Link to="/login">Voltar para tela de Login</Link>
                 </ContainerForm>
