@@ -38,4 +38,10 @@ public class EcommerceController {
             @RequestBody @Valid Ecommerce ecommerce) {
         return ResponseEntity.status(200).body(ecommerceService.atualizarEcommerce(idEcommerce, ecommerce));
     }
+
+    @GetMapping("/id")
+    public ResponseEntity getIdEcommercePeloNomeECnpj(@RequestParam String cnpj,
+                                                    @RequestParam String nomeEcommerce) {;
+        return ResponseEntity.status(200).body(ecommerceService.getIdEcommercePeloCnpjENome(cnpj, nomeEcommerce));
+    }
 }
