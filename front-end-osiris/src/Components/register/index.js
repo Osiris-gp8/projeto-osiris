@@ -12,16 +12,19 @@ export default () => {
     const history = useHistory();
 
     const [next, setNext]= useState(false);
-    const [cnpj, setCNPJ]= useState('')
+    const [cnpj, setCNPJ]= useState('');
+    const [nomeEcommerce, setNomeEcommerce]= useState('');
+    const [id, setId]= useState('');
+    const [erroEcommerce, setErroEcommerce]= useState('');
 
     const [usuarioData, setUsuarioData]= useState({
         loginUsuario: "",
         senha: "",
         nomeCompleto: "",
         ecommerce: {
-            idEcommerce: 1
+            idEcommerce: id
         }
-    })
+    });
 
     function handle(e) {
         const newUsuario = { ...usuarioData }
@@ -32,21 +35,42 @@ export default () => {
 
     function enviar(e) {
         e.preventDefault();
-        api.post("/usuarios", {
+        let usuarioPost = {
             loginUsuario: usuarioData.loginUsuario,
             senha: usuarioData.senha,
             nomeCompleto: usuarioData.nomeCompleto,
             ecommerce: {
-                idEcommerce: Number(usuarioData.idEcommerce)
+                idEcommerce: id
             }
-        }).then((resposta) => {
+        }
+        console.log(usuarioPost)
+        api.post("/usuarios", usuarioPost).then((resposta) => {
+            console.log("teste")
             console.log("post ok", resposta);
             history.push("/login");
-        })
+        });
+    }
+
+    function receberEcommerce(cnpj, nomeEcommerce) {    
+        api.get(`/ecommerces/id`, { params: { cnpj: cnpj, nomeEcommerce: nomeEcommerce}}).then((resposta) => {
+            console.log(resposta);
+            setId(resposta.data);
+            console.log(id);
+            setErroEcommerce('');
+            return resposta.data;
+        }).catch((error) => { 
+            console.log(error);
+            setNext(false); 
+            setErroEcommerce("Nome do Ecommerce ou CNPJ estão inválidos");
+            console.log(error)    
+        });
     }
 
     function changeForm(e){
+        receberEcommerce(cnpj, nomeEcommerce)
+        console.log(next);
         setNext(e.target.id != 'first')
+        console.log(next);
     }
 
     return (
@@ -55,37 +79,60 @@ export default () => {
             <Form onSubmit={(e) => enviar(e)} >
                 <ContainerForm next={!next}>
                     <h2>Cadastro</h2>
-                    <div>
-                        <label>CNPJ</label>
-                        {/* <MaskedInput id="cnpj" value={cnpj}
-                        onChange={(e) => setCNPJ(e.target.value)} /> */}
-                        <input id="cnpj" />
+                    <div className="col-settings">
+                        <label 
+                            className="label-settings">Nome do Comércio:</label>
+                        <input 
+                            className="input-settings" 
+                            id="nomeEcommerce"
+                            type="text"
+                            value={nomeEcommerce}
+                            onChange={(e) => setNomeEcommerce(e.target.value)} 
+                        />
                     </div>
-                    <div>
-                        <label>Usuário</label>
-                        <input id="loginUsuario" onChange={(e) => handle(e)} />
+                    <div className="col-settings">
+                        <label 
+                            className="label-settings">CNPJ:</label>
+                        <input 
+                            className="input-settings" 
+                            id="cnpj" 
+                            type="text"
+                            value={cnpj}
+                            onChange={(e) => setCNPJ(e.target.value)} 
+                        />
                     </div>
-                    <div>
-                        <label>Nome Completo</label>
-                        <input id="nomeCompleto" onChange={(e) => handle(e)} />
-                    </div>
-                    <Link to="/">Voltar para tela de Login</Link>
+                    <Link to="/login">Voltar para tela de Login</Link>
                 </ContainerForm>
                 <ContainerForm   next={next}>
                     <h2>Cadastro</h2>
-                    <div>
-                        <label>Nome do Comércio</label>
-                        <input id="nome" />
+                    <div className="col-settings">
+                        <label 
+                            className="label-settings">Nome Completo:</label>
+                        <input 
+                        className="input-settings" 
+                        id="nomeCompleto" 
+                        type="text"
+                        onChange={(e) => handle(e)} />
                     </div>
-                    <div>
-                        <label>Senha</label>
-                        <input id="senha" type='password' onChange={(e) => handle(e)} />
+                    <div className="col-settings">
+                        <label
+                            className="label-settings">Email:</label>
+                        <input 
+                            className="input-settings"
+                            id="loginUsuario" 
+                            type="text"
+                            onChange={(e) => handle(e)} />
                     </div>
-                    <div>
-                        <label>Id do ecommerce</label>
-                        <input id="idEcommerce" type='password' onChange={(e) => handle(e)} />
+                    <div className="col-settings">
+                        <label 
+                            className="label-settings">Senha:</label>
+                        <input 
+                            className="input-settings"
+                            id="senha" 
+                            type='password' 
+                            onChange={(e) => handle(e)} />
                     </div>
-                    <Link to="/">Voltar para tela de Login</Link>
+                    <Link to="/login">Voltar para tela de Login</Link>
                 </ContainerForm>
                 <RadioBox>
                     <input type="radio" name='radio' defaultChecked
