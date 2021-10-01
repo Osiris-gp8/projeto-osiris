@@ -50,7 +50,8 @@ public class UsuarioController {
     @GetMapping("/recuperar-senha/solicitacao/{emailUsuario}")
     public ResponseEntity solicitarRecuperarSenha(@PathVariable String emailUsuario){
 
-        return ResponseEntity.status(200).body(usuarioService.solicitacaoRecuperarSenha(emailUsuario));
+        usuarioService.solicitacaoRecuperarSenha(emailUsuario);
+        return ResponseEntity.status(200).build();
     }
 
     @PostMapping("/recuperar-senha/{token}")
@@ -65,5 +66,11 @@ public class UsuarioController {
     public ResponseEntity getUsuariosPorEcommerce(@PathVariable Integer idEcommerce){
 
         return ResponseEntity.status(200).body(usuarioService.buscarUsuarioPorEcommerce(idEcommerce));
+    }
+
+    @GetMapping("/{login}")
+    public ResponseEntity getUsuarioPorLogin(@PathVariable String login){
+
+        return ResponseEntity.status(200).body(usuarioService.findUsuarioPorLogin(login));
     }
 }
