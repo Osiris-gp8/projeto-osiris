@@ -17,13 +17,13 @@ import java.time.temporal.ChronoUnit;
 public class FiltroDataRequest {
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private LocalDate dataIncio;
+    private LocalDate dataInicio;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate dataFinal;
 
     public Integer getDiferencaDatas(){
         return Integer.parseInt(Long.toString(
-                ChronoUnit.DAYS.between(dataIncio, dataFinal)));
+                ChronoUnit.DAYS.between(dataInicio, dataFinal)));
     }
 }

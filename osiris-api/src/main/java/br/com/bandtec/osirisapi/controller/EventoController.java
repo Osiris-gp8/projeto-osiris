@@ -81,7 +81,7 @@ public class EventoController {
     }
 
     @GetMapping("/contagemEvento")
-    public ResponseEntity getEventoDeterminadoDia(@Valid @RequestParam FiltroDataRequest request)
+    public ResponseEntity getEventoDeterminadoDia(@Valid FiltroDataRequest request)
     {
         LocalDateTime inicio = request.getDataIncio().atStartOfDay();
         LocalDateTime fim = request.getDataFinal().atStartOfDay();
