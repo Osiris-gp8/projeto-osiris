@@ -5,6 +5,7 @@ from pandas.core.frame import DataFrame
 from pipelines.base_pipeline import Pipeline
 from commons.db_manager import DbManager
 import numpy as np
+from datetime import datetime
 
 class EventosPipeline(Pipeline):
     def __init__(self, db: DbManager, api: ApiClient, output_database: DbManager):
@@ -52,9 +53,10 @@ class EventosPipeline(Pipeline):
         newDf['preco']= df['preco']
         newDf['nome_categoria']= df['categoria']
         newDf['data_compra']= df['dataCompra']
-        newDf['dominio_status_id_dominio_status'] =  df['statusEvento']
+        newDf['dominio_status_id_dominio_status'] = 1
         newDf['ecommerce_id_ecommerce'] = 1
         newDf['cupom_id_cupom'] =  None
+        newDf["data_inclusao"] = datetime.now()
 
         return newDf
     

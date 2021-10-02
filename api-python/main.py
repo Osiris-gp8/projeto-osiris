@@ -8,12 +8,12 @@ from pipelines.eventos_pipeline import EventosPipeline
 from pipelines.cupons_pipeline import CuponsPipeline
 
 def main():
-    db = DbManager("root", "bandtec123", "localhost", "processamento_db", DbType.MYSQL)
+    db = DbManager("root", "bandtec", "localhost", "processamento_db", DbType.MYSQL)
     api = ApiClient("http://localhost:8080")
-    
+    remote_db = DbManager("root", "bandtec", "3.233.173.254", "osiris", DbType.MYSQL)
     pipelines: List[Pipeline] = [
-        AcessosPipeline(db, api), 
-        EventosPipeline(db, api),
+        #AcessosPipeline(db, api), 
+        EventosPipeline(db, api, remote_db),
         # CuponsPipeline()
     ]
     for p in pipelines:
