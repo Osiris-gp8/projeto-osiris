@@ -39,3 +39,18 @@ def test_connection_remote_database():
     except :
         print(traceback.format_exc())
         pytest.fail(f"Connection to database failed {ip, user, password, db}")
+
+def test_connection_remote_database_aws():
+    # Azure
+    # ! Deprecated
+    ip = "3.233.173.254"
+    user = "root"
+    password = "bandtec"
+    db = "osiris"
+    try:
+        connection = DbManager(username=user, password=password, host=ip, db=db, type= DbType.MYSQL)
+        df = connection.read("SELECT 1")
+        print(df.head())
+    except :
+        print(traceback.format_exc())
+        pytest.fail(f"Connection to database failed {ip, user, password, db}")
