@@ -51,4 +51,13 @@ public class EcommerceService {
 
         return ecommerceRepository.save(ecommerceParaAtualizar);
     }
+
+    public Integer getIdEcommercePeloCnpjENome(String cnpj, String nome) {
+        Optional<Ecommerce> ecommerceOptional = ecommerceRepository.findEcommerceByCnpjAndNome(cnpj, nome);
+
+        if (!ecommerceOptional.isPresent()) {
+            throw new ApiRequestException("Esse ecommerce não existe", HttpStatus.NOT_FOUND);
+        }
+        return ecommerceOptional.get().getIdEcommerce();
+    }
 }
