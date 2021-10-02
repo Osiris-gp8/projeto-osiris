@@ -40,6 +40,7 @@ def test_connection_remote_database_aws():
         print(traceback.format_exc())
         pytest.fail(f"Connection to database failed {ip, user, password, db}")
 
+@pytest.mark_skip(reason = "Azure database is no longer supported")
 def test_connection_remote_database():
     # Azure
     # ! Deprecated
