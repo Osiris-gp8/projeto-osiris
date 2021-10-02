@@ -126,3 +126,11 @@ CREATE TABLE IF NOT EXISTS osiris.usuario_perfis (
   FOREIGN KEY (usuario_id_usuario) REFERENCES osiris.usuario (id_usuario),
   FOREIGN KEY (perfis_id_perfil) REFERENCES osiris.perfil (id_perfil)
 );
+
+
+-- -----------------------------------------------------
+-- Dados iniciais
+-- -----------------------------------------------------
+
+INSERT INTO osiris.ecommerce
+VALUES (null, '85.002.488/0001-49', 'Ecommerce do Kaique')
