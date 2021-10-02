@@ -7,10 +7,11 @@ from commons.db_manager import DbManager
 import numpy as np
 
 class EventosPipeline(Pipeline):
-    def __init__(self, db: DbManager, api: ApiClient):
+    def __init__(self, db: DbManager, api: ApiClient, output_database: DbManager):
         super().__init__()
         self.db = db
         self.api = api
+        self.output_database = output_database
 
     
     def get_data(self) -> DataFrame:
@@ -45,17 +46,20 @@ class EventosPipeline(Pipeline):
     
     def _format_eventos(self, df):
         newDf = pd.DataFrame()
-        newDf['idConsumidorEcommerce'] = df['idConsumidor']
-        newDf['nomeProduto']= df['nome']
+        newDf["id_evento"] = None
+        newDf['id_consumidor_ecommerce'] = df['idConsumidor']
+        newDf['nome_produto']= df['nome']
         newDf['preco']= df['preco']
-        newDf['nomeCategoria']= df['categoria']
-        newDf['dataCompra']= df['dataCompra']
-        newDf['dominioStatus'] =  df['statusEvento']
-        newDf['ecommerce'] = ''
-        newDf['cupom'] = ''
+        newDf['nome_categoria']= df['categoria']
+        newDf['data_compra']= df['dataCompra']
+        newDf['dominio_status_id_dominio_status'] =  df['statusEvento']
+        newDf['ecommerce_id_ecommerce'] = 1
+        newDf['cupom_id_cupom'] =  None
 
         return newDf
     
     def save_data(self, df: DataFrame) -> None:
         self.logger.info("Saving data")
-        self.api.send_data("/eventos/list", df)
+        self.output_database.insert(df, "evento")
+        self.logger.info("Saved successfully")
+        
