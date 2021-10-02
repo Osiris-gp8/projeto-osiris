@@ -24,9 +24,9 @@ CREATE TABLE IF NOT EXISTS osiris.acesso (
   fim_acesso DATETIME(6) NOT NULL,
   id_consumidor_ecommerce INT NOT NULL,
   inicio_acesso DATETIME(6) NOT NULL,
-  id_ecommerce INT NOT NULL,
+  ecommerce_id_ecommerce INT NOT NULL,
   PRIMARY KEY (id_acessos),
-  FOREIGN KEY (id_ecommerce) REFERENCES ecommerce(id_ecommerce
+  FOREIGN KEY (ecommerce_id_ecommerce) REFERENCES ecommerce(id_ecommerce)
 );
 
 
@@ -42,9 +42,9 @@ CREATE TABLE IF NOT EXISTS osiris.cupom (
   nome_cupom VARCHAR(255) NULL DEFAULT NULL,
   usado BIT(1) NOT NULL,
   valor DOUBLE NOT NULL,
-  id_ecommerce INT NOT NULL,
+  ecommerce_id_ecommerce INT NOT NULL,
   PRIMARY KEY (id_cupom),
-  FOREIGN KEY (id_ecommerce) REFERENCES ecommerce(id_ecommerce)
+  FOREIGN KEY (ecommerce_id_ecommerce) REFERENCES ecommerce(id_ecommerce)
 );
 
 
