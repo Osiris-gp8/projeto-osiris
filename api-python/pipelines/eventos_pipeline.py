@@ -1,4 +1,3 @@
-from commons.api_client import ApiClient
 from datetime import date
 import pandas as pd
 from pandas.core.frame import DataFrame
@@ -8,10 +7,9 @@ import numpy as np
 from datetime import datetime
 
 class EventosPipeline(Pipeline):
-    def __init__(self, db: DbManager, api: ApiClient, output_database: DbManager):
+    def __init__(self, db: DbManager, output_database: DbManager):
         super().__init__()
         self.db = db
-        self.api = api
         self.output_database = output_database
 
     
