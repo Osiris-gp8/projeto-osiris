@@ -54,6 +54,8 @@ class EventosPipeline(Pipeline):
         newDf['dominio_status_id_dominio_status'] = 1
         newDf['ecommerce_id_ecommerce'] = 1
         newDf['cupom_id_cupom'] =  None
+        newDf['faixa_etaria'] = df['faixa_etaria']
+        newDf['sexo'] = df['sexo']
         newDf["data_inclusao"] = datetime.now()
 
         return newDf

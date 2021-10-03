@@ -8,11 +8,11 @@ from pipelines.cupons_pipeline import CuponsPipeline
 
 def main():
     db = DbManager("root", "bandtec", "localhost", "processamento_db", DbType.MYSQL)
-    remote_db = DbManager("root", "bandtec", "3.233.173.254", "osiris", DbType.MYSQL)
+    remote_db = DbManager("admin", "bandtec", "18.211.88.253", "osiris", DbType.MYSQL)
     pipelines: List[Pipeline] = [
         # AcessosPipeline(db, remote_db), 
-        EventosPipeline(db, remote_db),
-        # CuponsPipeline()
+        # EventosPipeline(db, remote_db),
+        # CuponsPipeline(remote_db)
     ]
     for p in pipelines:
         p.run()
