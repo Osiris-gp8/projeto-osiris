@@ -36,7 +36,7 @@ public class UsuarioService {
 
     public UsuarioResponse addNovoColaborador(NovoUsuarioRequest novoUsuarioRequest) {
 
-        if (!validarEmailUsuario(novoUsuarioRequest.getLoginUsuario())){
+        if (validarEmailUsuario(novoUsuarioRequest.getLoginUsuario())){
             throw new ApiRequestException("E-mail já cadastrado", HttpStatus.BAD_REQUEST);
         }
 
