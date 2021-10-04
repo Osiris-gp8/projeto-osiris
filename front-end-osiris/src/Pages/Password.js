@@ -94,7 +94,7 @@ export default () => {
                             <input 
                                 className="input-settings"
                                 id="senha"
-                                type="text"
+                                type="password"
                                 onChange={handleSenha}
                             />
 
@@ -102,7 +102,7 @@ export default () => {
                             <input 
                                 className="input-settings"
                                 id="confirmaSenha"
-                                type="text"
+                                type="password"
                                 onChange={handleSenha}
                             />
                             <ButtonForm type="btn-preenchido" style={{width: "30%", marginTop: "2vh"}}>Enviar</ButtonForm>
