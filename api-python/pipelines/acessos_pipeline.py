@@ -1,16 +1,14 @@
 from datetime import datetime
 from pipelines.base_pipeline import Pipeline
-
 from commons.db_manager import DbManager
-from commons.api_client import ApiClient
 import json
 from commons.utils import *
 
 class AcessosPipeline(Pipeline):
-    def __init__(self, db: DbManager, api: ApiClient, group: bool = False):
+    def __init__(self, db: DbManager, output_database: DbManager, group: bool = False):
         super().__init__()
         self.db = db
-        self.api = api
+        self.output_database = output_database
         self.group = group
 
     def get_data(self) -> pd.DataFrame:
@@ -24,6 +22,7 @@ class AcessosPipeline(Pipeline):
     
     def process_data(self, df: pd.DataFrame) -> pd.DataFrame:
         self.logger.info("Processing data")
+        data_frame = self.__format_to_request(df)
         if self.group:
             data_frame = self.__group_data(df)
         return data_frame
@@ -41,11 +40,16 @@ class AcessosPipeline(Pipeline):
     
     def save_data(self, df: pd.DataFrame) -> None:
         self.logger.info("Saving data")
-        data_json = self.__format_to_request(df)
-        data_json = json.loads(df.to_json(orient='records', date_format="iso"))
-        self.api.send_data('/acessos/list',data_json)
+        self.output_database.insert(df, "acesso")
+        self.logger.info("Saved successfully")
     
     def __format_to_request(self, df: pd.DataFrame) -> pd.DataFrame:
-        df.rename(columns = {'idConsumidor':'idConsumidorEcommerce', 'fkEcommerce':'ecommerce'}, inplace=True)
-        df['ecommerce'] = df['ecommerce'].apply(lambda x : {"idEcommerce":x})
+        df.rename(columns = {
+        'idConsumidor':'id_consumidor_ecommerce',
+        'fkEcommerce':'ecommerce_id_ecommerce',
+        'idAcesso':'id_acessos',
+        'inicioAcesso':'inicio_acesso',
+        'fimAcesso':'fim_acesso'
+        },
+        inplace=True)
         return df

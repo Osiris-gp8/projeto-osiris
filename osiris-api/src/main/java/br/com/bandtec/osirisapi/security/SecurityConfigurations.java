@@ -56,6 +56,8 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
             .authorizeRequests().antMatchers("/auth").permitAll()
             .antMatchers(HttpMethod.POST,"/usuarios").permitAll()
+            .antMatchers(HttpMethod.GET, "/ecommerces/id").permitAll()
+            .antMatchers(HttpMethod.POST, "/ecommerces").permitAll()
             .anyRequest().authenticated();
 
         http.addFilterBefore(

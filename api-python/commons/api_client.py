@@ -6,7 +6,7 @@ class ApiClient:
     def __init__(self, domain):
         self.domain = domain
         self.token = ''
-        self.login()
+        #self.login()
         
     def login(self, uri='/auth'):
         user = "user8"

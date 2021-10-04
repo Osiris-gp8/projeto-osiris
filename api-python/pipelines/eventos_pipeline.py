@@ -1,16 +1,16 @@
-from commons.api_client import ApiClient
 from datetime import date
 import pandas as pd
 from pandas.core.frame import DataFrame
 from pipelines.base_pipeline import Pipeline
 from commons.db_manager import DbManager
 import numpy as np
+from datetime import datetime
 
 class EventosPipeline(Pipeline):
-    def __init__(self, db: DbManager, api: ApiClient):
+    def __init__(self, db: DbManager, output_database: DbManager):
         super().__init__()
         self.db = db
-        self.api = api
+        self.output_database = output_database
 
     
     def get_data(self) -> DataFrame:
@@ -45,17 +45,23 @@ class EventosPipeline(Pipeline):
     
     def _format_eventos(self, df):
         newDf = pd.DataFrame()
-        newDf['idConsumidorEcommerce'] = df['idConsumidor']
-        newDf['nomeProduto']= df['nome']
+        newDf["id_evento"] = None
+        newDf['id_consumidor_ecommerce'] = df['idConsumidor']
+        newDf['nome_produto']= df['nome']
         newDf['preco']= df['preco']
-        newDf['nomeCategoria']= df['categoria']
-        newDf['dataCompra']= df['dataCompra']
-        newDf['dominioStatus'] =  df['statusEvento']
-        newDf['ecommerce'] = ''
-        newDf['cupom'] = ''
+        newDf['nome_categoria']= df['categoria']
+        newDf['data_compra']= df['dataCompra']
+        newDf['dominio_status_id_dominio_status'] = 1
+        newDf['ecommerce_id_ecommerce'] = 1
+        newDf['cupom_id_cupom'] =  None
+        newDf['faixa_etaria'] = df['faixa_etaria']
+        newDf['sexo'] = df['sexo']
+        newDf["data_inclusao"] = datetime.now()
 
         return newDf
     
     def save_data(self, df: DataFrame) -> None:
         self.logger.info("Saving data")
-        self.api.send_data("/eventos/list", df)
+        self.output_database.insert(df, "evento")
+        self.logger.info("Saved successfully")
+        
