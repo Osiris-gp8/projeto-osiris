@@ -7,7 +7,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 
 @Data
-public class NovoColaboradorRequest {
+public class NovoUsuarioRequest {
 
     @Size(min = 5, max = 45)
     private String nomeCompleto;
