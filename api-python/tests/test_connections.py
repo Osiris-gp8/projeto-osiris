@@ -26,10 +26,13 @@ def test_connection_local_database():
         pytest.fail(f"Connection to database failed {ip, user, password, db}")
         
 
+
+
+
 def test_connection_remote_database_aws():
     # MySql
-    ip = "3.233.173.254"
-    user = "root"
+    ip = "18.211.88.253"
+    user = "admin"
     password = "bandtec"
     db = "osiris"
     try:
@@ -40,6 +43,7 @@ def test_connection_remote_database_aws():
         print(traceback.format_exc())
         pytest.fail(f"Connection to database failed {ip, user, password, db}")
 
+@pytest.mark.skip(reason = "Azure database is no longer supported")
 def test_connection_remote_database():
     # Azure
     # ! Deprecated
@@ -49,6 +53,21 @@ def test_connection_remote_database():
     db = "db_osiris"
     try:
         connection = DbManager(ip, password, user, db, DbType.MSSQL)
+        df = connection.read("SELECT 1")
+        print(df.head())
+    except :
+        print(traceback.format_exc())
+        pytest.fail(f"Connection to database failed {ip, user, password, db}")
+
+@pytest.mark.skip(reason = "Old EC2 database")
+def test_connection_remote_old_database_aws():
+    # MySql
+    ip = "3.233.173.254"
+    user = "root"
+    password = "bandtec"
+    db = "osiris"
+    try:
+        connection = DbManager(username=user, password=password, host=ip, db=db, type= DbType.MYSQL)
         df = connection.read("SELECT 1")
         print(df.head())
     except :

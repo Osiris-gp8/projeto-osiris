@@ -132,5 +132,15 @@ CREATE TABLE IF NOT EXISTS osiris.usuario_perfis (
 -- Dados iniciais
 -- -----------------------------------------------------
 
+-- -----------------------------------------------------
+-- Adicionando campos de Evento
+-- -----------------------------------------------------
+
+ALTER TABLE osiris.evento
+ADD sexo CHAR(1);
+
+ALTER TABLE osiris.evento
+ADD faixa_etaria VARCHAR(14);
+
 INSERT INTO osiris.ecommerce
 VALUES (null, '85.002.488/0001-49', 'Ecommerce do Kaique')
