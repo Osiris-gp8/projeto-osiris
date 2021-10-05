@@ -1,12 +1,15 @@
 package br.com.bandtec.osirisapi.controller;
 
 import br.com.bandtec.osirisapi.domain.Acesso;
+import br.com.bandtec.osirisapi.dto.request.FiltroDataRequest;
 import br.com.bandtec.osirisapi.service.AcessoService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -31,6 +34,14 @@ public class AcessoController {
     public ResponseEntity postAcessoList(@RequestBody List<@Valid Acesso> acessoList){
         acessoList.forEach(acessoService::inserirAcesso);
         return ResponseEntity.status(201).build();
+    }
+
+    @GetMapping("/contagem")
+    public ResponseEntity getAcessosDeterminadoDia(@Valid FiltroDataRequest request)
+    {
+        LocalDateTime inicio = request.getDataIncio().atStartOfDay();
+        LocalDateTime fim = request.getDataFinal().atStartOfDay();
+        return ResponseEntity.status(200).body(acessoService.countAcessoDeterminadoDia(inicio,fim));
     }
 
 }

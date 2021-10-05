@@ -1,15 +1,18 @@
 package br.com.bandtec.osirisapi.controller;
 
+import br.com.bandtec.osirisapi.domain.Ecommerce;
 import br.com.bandtec.osirisapi.domain.Evento;
 import br.com.bandtec.osirisapi.dto.request.FiltroDataRequest;
 import br.com.bandtec.osirisapi.dto.response.EventosComSemCupomResponse;
 import br.com.bandtec.osirisapi.service.EventoService;
+import br.com.bandtec.osirisapi.service.UserInfo;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -18,7 +21,7 @@ import java.util.List;
 public class EventoController {
 
     private final EventoService eventoService;
-
+    private final UserInfo userInfo;
     @GetMapping
     public ResponseEntity getEventos() {
 
@@ -75,6 +78,15 @@ public class EventoController {
     public ResponseEntity<EventosComSemCupomResponse> getSemCupom(@Valid FiltroDataRequest request){
         return ResponseEntity.status(200).body(
                 eventoService.getEventosSemCupom(request.getDataIncio(), request.getDataFinal()));
+    }
+
+    @GetMapping("/contagemEvento")
+    public ResponseEntity getEventoDeterminadoDia(@Valid FiltroDataRequest request)
+    {
+        LocalDateTime inicio = request.getDataIncio().atStartOfDay();
+        LocalDateTime fim = request.getDataFinal().atStartOfDay();
+        Integer ecommerce = userInfo.getUsuario().getEcommerce().getIdEcommerce();
+        return ResponseEntity.status(200).body(eventoService.countVendasDeterminadoDia(inicio,fim,ecommerce));
     }
 
 }
