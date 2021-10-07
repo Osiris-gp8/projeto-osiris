@@ -2,6 +2,7 @@ package br.com.bandtec.osirisapi.converter.implementation;
 
 import br.com.bandtec.osirisapi.converter.UsuarioConverter;
 import br.com.bandtec.osirisapi.domain.Usuario;
+import br.com.bandtec.osirisapi.dto.request.NovoUsuarioRequest;
 import br.com.bandtec.osirisapi.dto.response.UsuarioResponse;
 import org.springframework.stereotype.Component;
 
@@ -27,5 +28,14 @@ public class UsuarioConverterImplementation implements UsuarioConverter {
                 .stream()
                 .map(usuario -> usuarioToUsuarioResponse(usuario))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Usuario novoUsuarioRequestToUsuario(NovoUsuarioRequest request) {
+        return Usuario.builder()
+                .loginUsuario(request.getLoginUsuario())
+                .ecommerce(request.getEcommerce())
+                .nomeCompleto(request.getNomeCompleto())
+                .build();
     }
 }
