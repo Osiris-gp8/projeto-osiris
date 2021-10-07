@@ -14,8 +14,7 @@ services:
     networks:
       - osiris-network
     depends_on:
-      - react1
-      - react2
+      - react
 
   back-loadbalance:
     image: osiris/back-loadbalance
@@ -25,8 +24,7 @@ services:
     networks:
       - osiris-network
     depends_on:
-      - springboot1
-      - springboot2
+      - springboot
 
   react:
     image: osiris/front-end
