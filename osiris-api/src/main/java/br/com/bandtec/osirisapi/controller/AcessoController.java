@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -39,7 +38,7 @@ public class AcessoController {
     @GetMapping("/contagem")
     public ResponseEntity getAcessosDeterminadoDia(@Valid FiltroDataRequest request)
     {
-        LocalDateTime inicio = request.getDataIncio().atStartOfDay();
+        LocalDateTime inicio = request.getDataInicio().atStartOfDay();
         LocalDateTime fim = request.getDataFinal().atStartOfDay();
         return ResponseEntity.status(200).body(acessoService.countAcessoDeterminadoDia(inicio,fim));
     }

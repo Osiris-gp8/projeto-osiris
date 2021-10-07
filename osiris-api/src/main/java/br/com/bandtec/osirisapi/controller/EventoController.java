@@ -1,6 +1,5 @@
 package br.com.bandtec.osirisapi.controller;
 
-import br.com.bandtec.osirisapi.domain.Ecommerce;
 import br.com.bandtec.osirisapi.domain.Evento;
 import br.com.bandtec.osirisapi.dto.request.FiltroDataRequest;
 import br.com.bandtec.osirisapi.dto.response.EventosComSemCupomResponse;
@@ -77,13 +76,13 @@ public class EventoController {
     @GetMapping("/com-sem-cupom")
     public ResponseEntity<EventosComSemCupomResponse> getSemCupom(@Valid FiltroDataRequest request){
         return ResponseEntity.status(200).body(
-                eventoService.getEventosSemCupom(request.getDataIncio(), request.getDataFinal()));
+                eventoService.getEventosSemCupom(request.getDataInicio(), request.getDataFinal()));
     }
 
     @GetMapping("/contagemEvento")
     public ResponseEntity getEventoDeterminadoDia(@Valid FiltroDataRequest request)
     {
-        LocalDateTime inicio = request.getDataIncio().atStartOfDay();
+        LocalDateTime inicio = request.getDataInicio().atStartOfDay();
         LocalDateTime fim = request.getDataFinal().atStartOfDay();
         Integer ecommerce = userInfo.getUsuario().getEcommerce().getIdEcommerce();
         return ResponseEntity.status(200).body(eventoService.countVendasDeterminadoDia(inicio,fim,ecommerce));
