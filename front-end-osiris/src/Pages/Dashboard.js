@@ -15,13 +15,16 @@ export default () =>{
     const [metas, setMetas] = useState([{}, {}]);
     const [cupons, setCupons] = useState([]);
     const [eventos, setEventos] = useState(0);
+    const [header, setHeader] = useState({
+        "Authorization": `${sessionStorage.getItem("tipo")} ${sessionStorage.getItem("token")}`
+    });
 
     useEffect(() =>{
         if(!sessionStorage.getItem("token")){
             return history.push('/login');
         }
 
-        api.get("/metricas/ranque-categoria").then(res => {
+        api.get("/metricas/ranque-categoria", {headers: header}).then(res => {
             console.log(res);
             let calcadosApi = [];
             calcadosApi.push(['Tipo de calçado', 'Valor']);
@@ -34,7 +37,7 @@ export default () =>{
             console.log(err);
         });
 
-        api.get("/eventos/com-sem-cupom").then(res => {
+        api.get("/eventos/com-sem-cupom", {headers:  header}).then(res => {
             console.log(res);
             setCupons([
                 ['cupom', 'valor'], 
@@ -45,7 +48,7 @@ export default () =>{
             console.log(err);
         });
 
-        api.get("/eventos").then(res => {
+        api.get("/eventos", {headers: header}).then(res => {
             console.log(res);
             setEventos(res.data.length);
         }).catch(err => {
@@ -56,7 +59,7 @@ export default () =>{
 
     useEffect(() => {
         async function getMetas(){
-            const resposta = await api.get("/metas");
+            const resposta = await api.get("/metas", {headers: header});
             setMetas(resposta.data);
             console.log(resposta.data);
         }
