@@ -4,8 +4,10 @@ from commons.db_manager import DbManager, DbType
 import traceback
 import pytest
 
+@pytest.mark.skip(reason = "Api connection is no longer supported")
 def test_connection_api():
     ip = "http://localhost:8080"
+    # ! Deprecated
     try:
         connection = ApiClient(ip)
     except :
@@ -27,12 +29,10 @@ def test_connection_local_database():
         
 
 
-
-
 def test_connection_remote_database_aws():
     # MySql
     ip = "18.211.88.253"
-    user = "admin"
+    user = "root"
     password = "bandtec"
     db = "osiris"
     try:
