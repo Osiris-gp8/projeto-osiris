@@ -9,17 +9,26 @@ export default () => {
 
     const history = useHistory();
     const [idEcommerce, setIdEcommerce] = useState(JSON.parse(sessionStorage.getItem("usuario")).ecommerce.idEcommerce);
-    const [header, setHeader] = useState({});
+    const [header, setHeader] = useState({
+        "Authorization": `${sessionStorage.getItem("tipo")} ${sessionStorage.getItem("token")}`
+    });
     const [rows, setRows] = useState([]);
 
-    useEffect( async () => {
+    useEffect(() => {
         if(!sessionStorage.getItem("token")){
             return history.push('/login');
         }
+        // }else{
+        //     setHeader({
+        //         "Authorization": `${sessionStorage.getItem("tipo")} ${sessionStorage.getItem("token")}`
+        //     })
+    
+        //     console.log(header)
+        //     setIdEcommerce(JSON.parse(sessionStorage.getItem("usuario")).ecommerce.idEcommerce)
+        //     console.log(idEcommerce)
+        // }
 
-        setHeader(`Authorization: ${sessionStorage.getItem("tipo")} ${sessionStorage.getItem("token")}`)
-
-        await api.get("/usuarios/ecommerce/"+idEcommerce, {headers: { header }}).then(res => {
+        api.get("/usuarios/ecommerce/"+idEcommerce, {headers: header}).then(res => {
             console.log(res)
             setRows(res.data);
         }).catch(err => {
