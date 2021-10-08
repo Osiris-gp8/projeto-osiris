@@ -41,7 +41,6 @@ export default () => {
     const [collaboratorData, setCollaboratorData]= useState({
         idUsuario: "",
         loginUsuario: "",
-        senha: "12345",
         nomeCompleto: "",
         ecommerce: {
             idEcommerce: idEcommerce
@@ -56,7 +55,7 @@ export default () => {
 
     function addInList(e){
         e.preventDefault();
-        api.post("/usuarios", collaboratorData, {headers: {header}}).then( res => {
+        api.post("/usuarios/colaborador", collaboratorData, {headers: header}).then( res => {
             console.log(res)
             const newCollaborator = {...collaboratorData};
             newCollaborator.idUsuario = res.data.idUsuario
