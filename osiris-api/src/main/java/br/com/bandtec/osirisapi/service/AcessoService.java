@@ -60,4 +60,9 @@ public class AcessoService {
 
         return LocalDateTime.of(data, ltInicioDiaCompra);
     }
+
+    public Integer countAcessoDeterminadoDia(LocalDateTime inicioDia,LocalDateTime fimDia)
+    {
+        return acessoRepository.countAcessosDeterminadoDia(inicioDia,fimDia);
+    }
 }

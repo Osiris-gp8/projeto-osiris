@@ -49,6 +49,10 @@ public class Evento {
     @ManyToOne
     private Cupom cupom;
 
+    private String sexo;
+
+    private String faixaEtaria;
+
     @NotNull
     @OneToOne
     private DominioStatus dominioStatus;
