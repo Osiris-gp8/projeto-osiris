@@ -1,7 +1,6 @@
 from enum import Enum
 from sqlalchemy import create_engine
 import pandas as pd
-import pyodbc
 import logging
 
 class DbType(Enum):
@@ -15,8 +14,7 @@ class DbType(Enum):
 
 class DbManager:
     def __init__(self, username, password, host, db, type: DbType):
-        logging.basicConfig()
-        logging.setLevel(logging.INFO)
+        logging.basicConfig(level=logging.INFO)
         self.type = type
         self.connection_str = self.type.value.format(
             username = username, password = password,
@@ -28,7 +26,7 @@ class DbManager:
             return create_engine(self.connection_str)
         elif self.type is DbType.MSSQL:
             # ! Deprecated
-            return pyodbc.connect(self.connection_str)
+            raise NotImplementedError()
         
     def read(self, query):
         con = self._create_connection()
