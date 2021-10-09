@@ -2,33 +2,45 @@ import {React, useState, useEffect} from 'react';
 import { ButtonForm } from '../Components/Button'
 import MenuNovo from '../Components/MenuNovo/MenuNovo';
 import { Table } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
+import api from '../api';
 
 export default () => {
 
+    const history = useHistory();
+    const [idEcommerce, setIdEcommerce] = useState(JSON.parse(sessionStorage.getItem("usuario")).ecommerce.idEcommerce);
+    const [header, setHeader] = useState({
+        "Authorization": `${sessionStorage.getItem("tipo")} ${sessionStorage.getItem("token")}`
+    });
+    const [rows, setRows] = useState([]);
+
     useEffect(() => {
-        setIdEcommerce(JSON.parse(sessionStorage.getItem("usuario")).ecommerce.idEcommerce);
-    })
+        if(!sessionStorage.getItem("token")){
+            return history.push('/login');
+        }
+        // }else{
+        //     setHeader({
+        //         "Authorization": `${sessionStorage.getItem("tipo")} ${sessionStorage.getItem("token")}`
+        //     })
+    
+        //     console.log(header)
+        //     setIdEcommerce(JSON.parse(sessionStorage.getItem("usuario")).ecommerce.idEcommerce)
+        //     console.log(idEcommerce)
+        // }
 
-    function createData(id, name, login, email) {
-        return { 
-            id: id, 
-            name: name, 
-            login: login, 
-            email: email 
-        };
-    }
+        api.get("/usuarios/ecommerce/"+idEcommerce, {headers: header}).then(res => {
+            console.log(res)
+            setRows(res.data);
+        }).catch(err => {
+            console.log(err)
+        })
+    }, [])
 
-    const [idEcommerce, setIdEcommerce] = useState(0);
-
-    const [rows, setRows] = useState([
-        createData(1, "Patrick Lessa", "patrick03", "p@gmail.com"),
-        createData(2, "Rodrigo Busto", "busto10", "r@gmail.com"),
-        createData(3, "Kaio Baleeiro", "kaio45", "k@gmail.com"),
-    ]);
+    
 
     const [collaboratorData, setCollaboratorData]= useState({
+        idUsuario: "",
         loginUsuario: "",
-        email: "",
         nomeCompleto: "",
         ecommerce: {
             idEcommerce: idEcommerce
@@ -43,7 +55,14 @@ export default () => {
 
     function addInList(e){
         e.preventDefault();
-        setRows([...rows, createData(1, collaboratorData.nomeCompleto, collaboratorData.loginUsuario, collaboratorData.email)])
+        api.post("/usuarios/colaborador", collaboratorData, {headers: header}).then( res => {
+            console.log(res)
+            const newCollaborator = {...collaboratorData};
+            newCollaborator.idUsuario = res.data.idUsuario
+            setRows([...rows, newCollaborator])
+        }).catch(err => {
+            console.log(err);
+        })
     }
 
     return (
@@ -68,24 +87,10 @@ export default () => {
                                 </div>
 
                                 <div style={{width: "35%"}} className="col-settings">
-                                    <label className="label-settings">Login:</label>
-                                    <input 
-                                        className="input-settings"
-                                        id="loginUsuario"
-                                        type="text"
-                                        onBlur={(e) => addCollaborator(e)}
-                                    />
-                                </div>
-
-                            </div>
-
-                            <div className="row-configs" style={{marginTop: "3vh"}}>
-
-                                <div style={{width: "35%"}} className="col-settings">
                                     <label className="label-settings">Email:</label>
                                     <input 
                                         className="input-settings"
-                                        id="email"
+                                        id="loginUsuario"
                                         type="text"
                                         onBlur={(e) => addCollaborator(e)}
                                     />
@@ -111,18 +116,16 @@ export default () => {
                             <tr>
                                 <th></th>
                                 <th>Nome</th>
-                                <th>Login</th>
-                                <th>E-mail</th>
+                                <th>Email</th>
                             </tr>
                         </thead>
                         <tbody>
                             {rows.map((item) => {
                                 return (
                                     <tr>
-                                        <td>{item.id}</td>
-                                        <td>{item.name}</td>
-                                        <td>{item.login}</td>
-                                        <td>{item.email}</td>
+                                        <td>{item.idUsuario}</td>
+                                        <td>{item.nomeCompleto}</td>
+                                        <td>{item.loginUsuario}</td>
                                     </tr>
                                 )
                             })}

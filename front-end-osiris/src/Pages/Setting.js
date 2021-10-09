@@ -13,6 +13,7 @@ export default () =>{
 
     const [user, setUser] = useState({});
     const [ecommerce, setEcommerce] = useState({});
+    const [header, setHeader] = useState({});
 
     const [editUser, setEditUser] = useState({
         nome: true,
@@ -47,6 +48,7 @@ export default () =>{
             return history.push('/login');
         }
 
+        setHeader(`Authorization: ${sessionStorage.getItem("tipo")} ${sessionStorage.getItem("token")}`)
         setUser(JSON.parse(sessionStorage.getItem("usuario")));
         setEcommerce(JSON.parse(sessionStorage.getItem("usuario")).ecommerce);
     }, []);
@@ -65,11 +67,7 @@ export default () =>{
 
     function atualizarUser(e){
         e.preventDefault();
-        api.post(`/usuarios/${JSON.parse(sessionStorage.getItem("usuario")).idUsuario}`, user, {
-            headers: {
-                Authorization: `${sessionStorage.getItem("tipo")} ${sessionStorage.getItem("token")}`
-            }
-        })
+        api.post(`/usuarios/${JSON.parse(sessionStorage.getItem("usuario")).idUsuario}`, user, {headers: { header }})
             .then(res => {
                 console.log(res)
                 if(res.status == 200){
