@@ -3,6 +3,7 @@ from pipelines.base_pipeline import Pipeline
 from commons.db_manager import DbManager
 import json
 from commons.utils import *
+from commons.location import LocationBR
 
 class AcessosPipeline(Pipeline):
     def __init__(self, db: DbManager, output_database: DbManager, group: bool = False):
@@ -10,6 +11,7 @@ class AcessosPipeline(Pipeline):
         self.db = db
         self.output_database = output_database
         self.group = group
+        self.location_df = LocationBR().get_location_data_frame()
 
     def get_data(self) -> pd.DataFrame:
         self.logger.info("Getting data from database")
@@ -23,16 +25,23 @@ class AcessosPipeline(Pipeline):
     def process_data(self, df: pd.DataFrame) -> pd.DataFrame:
         self.logger.info("Processing data")
         data_frame = self.__format_to_request(df)
+        data_frame['localidade'] = data_frame['localidade'].apply(self.append_location)
         if self.group:
             data_frame = self.__group_data(df)
         return data_frame
-    
+
+    def append_location(self, id_location:int):
+        location_data_frame = self.location_df
+        location_data_frame= location_data_frame.iloc[id_location]
+        return location_data_frame['UF'] + ' - ' + location_data_frame['nome']
+
     def __group_data(self,data_frame:pd.DataFrame) -> pd.DataFrame:
         data_frame['duracao_sessao'] = self.__get_duration(data_frame) 
         data_group = data_frame.groupby(['fkEcommerce', 'idConsumidor'])\
             .agg(quantidade_acessos=('idAcessos','count'),total_Duracao_sessao=('duracao_sessao', 'sum'))\
             .reset_index()
         data_group['created_at'] = datetime.now()
+        location_data_frame = LocationBR().get_location_data_frame()
         return data_group
     
     def __get_duration(self, data_frame: pd.DataFrame):
