@@ -3,17 +3,24 @@ import {React, useEffect, useState} from 'react';
 import leftblob from '../../Images/left-blob.svg'
 import rightblob from '../../Images/right-blob.svg'
 import { Container, Form, ContainerForm, Button } from './style';
-import {Link,useHistory} from 'react-router-dom';
+import {Link,useHistory, useParams} from 'react-router-dom';
+import { ToastContainerTop } from '../Toast';
+import { toast } from 'react-toastify';
 
 import api from '../../api';
 
 export default () => {
 
     const history = useHistory();
+    const setSenha = useParams();
 
     useEffect(() =>{
         if(sessionStorage.getItem("token")){
             return history.push('/home');
+        }
+
+        if(setSenha.setSenha){
+            toast.success("Senha trocada com sucesso.")
         }
     }, []);
 
@@ -31,9 +38,7 @@ export default () => {
     function onSubmit(e){
         e.preventDefault()
         if(usuarioData.login == '' || usuarioData.senha == ''){
-            {/* 
-                TODO CRIAR COMPONENTE DE RETORNO DE ERRO
-            */}
+            toast.error("Campo de e-mail ou senha está vazio")
             return;
         }
 
@@ -46,19 +51,24 @@ export default () => {
             sessionStorage.setItem("usuario", JSON.stringify(response.data.usuario));
             history.push('/home');
         }).catch( error => {
-            {/* 
-                TODO CRIAR COMPONENTE DE RETORNO DE ERRO
-            */}
-            console.log(error);
+            if(error.response != undefined){
+                if(error.response.status == 400){
+                    toast.error("Usuário ou senha inválidos.")
+                }
+            }else{
+                toast.error("Desculpe tivemos um erro. Tente mais tarde.")
+            }
         })
     }
 
 
     return (
     <Container>
+        
         <img src={leftblob} alt="Blob a esquerda" />
             <Form onSubmit={onSubmit}>
-            <ContainerForm>
+                <ContainerForm>
+                    <ToastContainerTop/>
                     <label></label>
                     <h2>Login</h2>
                     <div>
