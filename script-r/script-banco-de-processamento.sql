@@ -26,7 +26,8 @@ create table if not exists acessos(
 	idConsumidor int,
 	inicioAcesso datetime,
 	fimAcesso datetime,
-	fkEcommerce int
+	fkEcommerce int,
+    localidade int
 );
 
 create table if not exists metas(
@@ -38,6 +39,7 @@ create table if not exists metas(
     fkEcommerce int
 );
 
+select * from acessos;
 select count(1) from eventos;
 select count(1) from acessos;
 
