@@ -22,10 +22,11 @@ create table if not exists acessos(
 	idConsumidor int,
 	inicioAcesso datetime,
 	fimAcesso datetime,
-	fkEcommerce int
+	fkEcommerce int,
+    localidade int
 );
 
-
+select * from acessos;
 select count(1) from eventos;
 select count(1) from acessos;
 
