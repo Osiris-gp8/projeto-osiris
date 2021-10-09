@@ -25,7 +25,7 @@ class AcessosPipeline(Pipeline):
     def process_data(self, df: pd.DataFrame) -> pd.DataFrame:
         self.logger.info("Processing data")
         data_frame = self.__format_to_request(df)
-        data_frame['cidade'] = data_frame['localidade'].apply(self.append_location)
+        data_frame['localidade'] = data_frame['localidade'].apply(self.append_location)
         if self.group:
             data_frame = self.__group_data(df)
         return data_frame

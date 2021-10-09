@@ -142,5 +142,8 @@ ADD sexo CHAR(1);
 ALTER TABLE osiris.evento
 ADD faixa_etaria VARCHAR(14);
 
+ALTER TABLE osiris.acesso
+ADD localidade VARCHAR(14);
+
 INSERT INTO osiris.ecommerce
 VALUES (null, '85.002.488/0001-49', 'Ecommerce do Kaique')
