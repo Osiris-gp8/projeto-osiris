@@ -16,7 +16,7 @@ function Routes(){
         <Router>
             <Switch>
                 <Route exact path="/" component={Institucional} />
-                <Route exact path="/login" component={Login} />
+                <Route exact path="/login/:setSenha?" component={Login} />
                 <Route exact path="/register" component={Register} />
                 <Route exact path="/home" component={Dashboard} />
                 <Route exact path="/sales" component={Relation} />

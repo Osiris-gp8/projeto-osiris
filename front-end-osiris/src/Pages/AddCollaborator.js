@@ -4,6 +4,8 @@ import MenuNovo from '../Components/MenuNovo/MenuNovo';
 import { Table } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import api from '../api';
+import { ToastContainerTop } from '../Components/Toast';
+import { toast } from 'react-toastify';
 
 export default () => {
 
@@ -60,8 +62,10 @@ export default () => {
             const newCollaborator = {...collaboratorData};
             newCollaborator.idUsuario = res.data.idUsuario
             setRows([...rows, newCollaborator])
+            toast.success("Colaborador adicionado com sucesso.")
         }).catch(err => {
             console.log(err);
+            toast.error("Desculpe tivemos um erro. Tente mais tarde.")
         })
     }
 
@@ -71,6 +75,7 @@ export default () => {
             <MenuNovo/>
             <div className="body-config">
                 <div className="container">
+                    <ToastContainerTop/>
                     <h1>Adicionar Colaborador</h1>
                     <div className="user-config">
                         <form onSubmit={e => addInList(e)}>
