@@ -12,6 +12,9 @@ hora_compra.pop <- abs(round(rnorm(pop, 4800, 600),0))
 hora_compra <- hora_compra.pop[ sample( which(hora_compra.pop > 500), n) ]
 hora_compra <- seconds_to_period(hora_compra)
 
+localidade.pop<- abs(round(rnorm(pop, 3829, 1000),0))
+localidade.pop[which(localidade.pop > 5569)] = 3829
+localidade <- sample(localidade.pop, n)
 
 hoje <- Sys.Date()
 inicio <- hoje - pop / 10
@@ -34,7 +37,8 @@ acessos <- data.frame(
   id_consumidor,
   inicio_acesso,
   fim_acesso,
-  fk_ecommerce = 1
+  fk_ecommerce = 1,
+  localidade
 )
 
 processamento_db <- dbConnect(
@@ -45,12 +49,12 @@ dbListTables(processamento_db)
 
 print("Iniciando inserção")
 sql <- "INSERT INTO acessos(idConsumidor, inicioAcesso, 
-          fimAcesso, fkEcommerce) VALUES"
+          fimAcesso, fkEcommerce,localidade) VALUES"
 for(i in 1:nrow(acessos)){
   
   sql <- paste(
     sql, "(", acessos[i, 1], ", '", acessos[i, 2], "', ", 
-    "'", acessos[i, 3], "', ", acessos[i, 4], ") ",
+    "'", acessos[i, 3], "', ", acessos[i, 4],",",acessos[i,5], ") ",
     sep = ""
   )
   if(i != nrow(acessos)){
