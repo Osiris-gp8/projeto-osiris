@@ -1,6 +1,7 @@
 package br.com.bandtec.osirisapi.controller;
 
 import br.com.bandtec.osirisapi.domain.Meta;
+import br.com.bandtec.osirisapi.dto.request.FiltroDataRequest;
 import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.repository.MetaRepository;
 import org.junit.jupiter.api.DisplayName;
@@ -11,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.ResponseEntity;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -32,11 +34,12 @@ class MetaControllerTest {
     void getMetasOk() {
         List<Meta> metaList =
                 Arrays.asList(new Meta(), new Meta(), new Meta());
+        FiltroDataRequest request = new FiltroDataRequest(LocalDate.now(), LocalDate.now());
 
         Mockito.when(metaRepository.findAll())
                 .thenReturn(metaList);
         ResponseEntity<List<Meta>> resposta =
-                metaController.getMetas();
+                metaController.getMetas(request);
 
         assertEquals(200, resposta.getStatusCodeValue());
     }
@@ -44,11 +47,13 @@ class MetaControllerTest {
     @Test
     @DisplayName("GET / - Quando não há Metas na base")
     void getMetasNaoOk() {
+        FiltroDataRequest request = new FiltroDataRequest(LocalDate.now(), LocalDate.now());
+
         Mockito.when(metaRepository.findAll())
                 .thenReturn(new ArrayList<>());
         try {
             ResponseEntity<List<Meta>> resposta =
-                    metaController.getMetas();
+                    metaController.getMetas(request);
         } catch (ApiRequestException e) {
             assertEquals(204, e.getStatus().value());
         }

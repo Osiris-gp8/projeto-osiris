@@ -1,6 +1,8 @@
 package br.com.bandtec.osirisapi.controller;
 
 import br.com.bandtec.osirisapi.domain.Meta;
+import br.com.bandtec.osirisapi.dto.request.FiltroDataRequest;
+import br.com.bandtec.osirisapi.dto.response.MetaResponse;
 import br.com.bandtec.osirisapi.repository.MetaRepository;
 import br.com.bandtec.osirisapi.service.MetaService;
 import javassist.NotFoundException;
@@ -19,8 +21,11 @@ public class MetaController {
     private MetaService metaService;
 
     @GetMapping
-    public ResponseEntity getMetas() {
-        return ResponseEntity.status(200).body(metaService.getMetas());
+    public ResponseEntity getMetas(@Valid FiltroDataRequest request) {
+        List<MetaResponse> result = metaService.getMetas(
+                request.getDataInicio().atStartOfDay(), request.getDataFinal().atStartOfDay()
+        );
+        return ResponseEntity.status(200).body(result);
     }
 
     @PostMapping
