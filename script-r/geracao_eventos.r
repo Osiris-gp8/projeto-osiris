@@ -108,8 +108,8 @@ for(i in 1:length(probabilidade)){
 
 print("Iniciando inserção dos eventos")
 processamento_db <- dbConnect(
-  RMariaDB::MariaDB(), user='root', password='bandtec',
-  dbname='processamento_db', host='localhost'
+  RMariaDB::MariaDB(), user='admin', password='bandtec',
+  dbname='processamento_db', host="127.0.0.1"
 )
 
 sql <- "INSERT INTO eventos(idConsumidor, dataNascimento, preco, nome, categoria, fkCupom, statusEvento, fkEcommerce,
