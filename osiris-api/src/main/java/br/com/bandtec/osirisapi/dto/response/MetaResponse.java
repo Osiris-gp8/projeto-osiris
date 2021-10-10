@@ -1,6 +1,7 @@
 package br.com.bandtec.osirisapi.dto.response;
 
 import br.com.bandtec.osirisapi.domain.Ecommerce;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,7 +17,10 @@ public class MetaResponse {
 
     private Integer idMeta;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dataInicio;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dataFim;
 
     private Double valor;

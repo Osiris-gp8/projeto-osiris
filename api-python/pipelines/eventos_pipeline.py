@@ -61,7 +61,6 @@ class EventosPipeline(Pipeline):
         return newDf
     
     def save_data(self, df: DataFrame) -> None:
-        self.logger.info("Saving data")
         self.output_database.insert(df, "evento")
         self.logger.info("Saved successfully")
         

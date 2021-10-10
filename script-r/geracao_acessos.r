@@ -6,6 +6,7 @@ set.seed(500)
 pop = 10000
 n = 1000
 ## Acessos
+id_consumidor <- abs(round(rnorm(n, 500, 10),0))
 
 hora_compra.pop <- abs(round(rnorm(pop, 4800, 600),0))
 hora_compra <- hora_compra.pop[ sample( which(hora_compra.pop > 500), n) ]
@@ -36,13 +37,13 @@ acessos <- data.frame(
   id_consumidor,
   inicio_acesso,
   fim_acesso,
-  fk_ecommerce,
+  fk_ecommerce = 1,
   localidade
 )
 
 processamento_db <- dbConnect(
-  RMariaDB::MariaDB(), user='root', password='bandtec',
-  dbname='processamento_db', host='localhost'
+  RMariaDB::MariaDB(), user='admin', password='bandtec',
+  dbname='processamento_db', host='127.0.0.1'
 )
 dbListTables(processamento_db)
 

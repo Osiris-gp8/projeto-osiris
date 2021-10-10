@@ -1,7 +1,7 @@
 from enum import Enum
 from sqlalchemy import create_engine
 import pandas as pd
-import pyodbc
+import logging
 
 class DbType(Enum):
     MYSQL = 'mysql+mysqlconnector://{username}:{password}@{host}/{db}'
@@ -14,6 +14,7 @@ class DbType(Enum):
 
 class DbManager:
     def __init__(self, username, password, host, db, type: DbType):
+        logging.basicConfig(level=logging.INFO)
         self.type = type
         self.connection_str = self.type.value.format(
             username = username, password = password,
@@ -24,19 +25,19 @@ class DbManager:
         if self.type is DbType.MYSQL:
             return create_engine(self.connection_str)
         elif self.type is DbType.MSSQL:
-            # FIXME conexão com mssql não está funcionando
-            return pyodbc.connect(self.connection_str)
+            # ! Deprecated
+            raise NotImplementedError()
         
     def read(self, query):
         con = self._create_connection()
-        print('Conectado ao banco')
+        logging.info('Connected successfully')
         result = pd.read_sql(query, con = con, parse_dates=["dataCompra"])
         data_frame = pd.DataFrame(result)
         data_frame.columns = result.keys()
         return data_frame
 
     def clean_table(self, table):
-        # FIXME ajustar para novo modelo, usando ENUM 
+        # ! Deprecated
         engine = create_engine(self.connection_str)
         print('Limpando banco de processamento')
         with engine.connect() as con:
@@ -44,6 +45,6 @@ class DbManager:
             
 
     def insert(self, df: pd.DataFrame, table: str):
-        print("Inserting data")
+        logging.info("Inserting data")
         con = self._create_connection()
         df.to_sql(table, con, if_exists = "append", index = False)
