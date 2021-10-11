@@ -12,5 +12,6 @@ import lombok.NoArgsConstructor;
 public class RanqueCategoriaResponse {
 
     private String posisao;
+    private String categoria;
     private Integer quantidade;
 }

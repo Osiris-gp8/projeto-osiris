@@ -10,6 +10,7 @@ import br.com.bandtec.osirisapi.dto.barChart.EventoDto;
 import br.com.bandtec.osirisapi.dto.response.dash.RanqueCategoriaResponse;
 import br.com.bandtec.osirisapi.repository.*;
 import br.com.bandtec.osirisapi.views.CupomMaisUsadoView;
+import br.com.bandtec.osirisapi.views.RanqueCategoriaView;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,8 +40,9 @@ public class MetricaService {
     public List<RanqueCategoriaResponse> getRanqueCategoriaView(){
 
         List<Integer> ranques = eventoRepository.ranqueCategoria();
+        List<RanqueCategoriaView> nomes = eventoRepository.ranqueNomeCategoriaView();
 
-        return dashConverter.integerListToRanqueCategoriaResponse(ranques);
+        return dashConverter.integerListToRanqueCategoriaResponse(ranques, nomes);
     }
 
     public List<CupomMaisUsadoView> getCupomMaisUsadoView(){
