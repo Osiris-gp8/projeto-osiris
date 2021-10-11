@@ -59,6 +59,7 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
             .antMatchers("/usuarios/recuperar-senha/**").permitAll()
             .antMatchers(HttpMethod.GET, "/ecommerces/id").permitAll()
             .antMatchers(HttpMethod.POST, "/ecommerces").permitAll()
+            .antMatchers("/metricas/**").permitAll()
             .anyRequest().authenticated();
 
         http.addFilterBefore(
