@@ -13,9 +13,17 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface EventoRepository extends JpaRepository<Evento, Integer> {
-    @Query(value = "select nome_categoria as categoria, count(*) as quantidade from evento " +
-            "group by nome_categoria order by quantidade desc", nativeQuery = true)
-    List<RanqueCategoriaView> ranque();
+
+    String ranque = "select count(e.nome_categoria) as quantidade from evento e group by nome_categoria " +
+            "order by quantidade desc limit 5";
+    @Query(value = ranque, nativeQuery = true)
+    List<Integer> ranqueCategoria();
+
+    @Query(value = "select e.nome_categoria as categoria, count(*) as quantidade from evento e, ecommerce ec " +
+            "where e.ecommerce_id_ecommerce = ?1 and e.ecommerce_id_ecommerce = ec.id_ecommerce " +
+            "group by e.nome_categoria order by quantidade " +
+            "desc limit 5", nativeQuery = true)
+    List<RanqueCategoriaView> ranqueNomeCategoriaView(Integer idEcommerce);
 
     @Query(value = "select * from evento where id_consumidor_ecommerce = ?", nativeQuery = true)
     List<Evento> findAllByIdConsumidorEcommerce(Integer consumidor);
