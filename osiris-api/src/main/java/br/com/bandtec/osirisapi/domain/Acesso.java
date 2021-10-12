@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Positive;
@@ -35,5 +36,11 @@ public class Acesso {
     @NotNull
     @ManyToOne
     private Ecommerce ecommerce;
+
+    @NotBlank
+    private String uf;
+
+    @NotBlank
+    private String cidade;
 }
 
