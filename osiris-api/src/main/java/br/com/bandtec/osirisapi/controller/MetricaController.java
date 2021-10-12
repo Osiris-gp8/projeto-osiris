@@ -1,6 +1,7 @@
 package br.com.bandtec.osirisapi.controller;
 
 import br.com.bandtec.osirisapi.dto.barChart.EventoAcessoChartResponse;
+import br.com.bandtec.osirisapi.dto.response.dash.RanqueCategoriaResponse;
 import br.com.bandtec.osirisapi.service.MetricaService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -36,7 +37,7 @@ public class MetricaController {
     }
 
     @GetMapping("/ranque-categoria")
-    public ResponseEntity getRanqueCategoria() {
+    public ResponseEntity<List<RanqueCategoriaResponse>> getRanqueCategoria() {
 
         return ResponseEntity.status(200).body(metricaService.getRanqueCategoriaView());
     }

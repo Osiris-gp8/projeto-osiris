@@ -1,11 +1,14 @@
 package br.com.bandtec.osirisapi.service;
 
+import br.com.bandtec.osirisapi.converter.DashConverter;
 import br.com.bandtec.osirisapi.converter.implementation.EventoConverterImplementation;
 import br.com.bandtec.osirisapi.domain.Cupom;
+import br.com.bandtec.osirisapi.domain.Ecommerce;
 import br.com.bandtec.osirisapi.domain.Evento;
 import br.com.bandtec.osirisapi.dto.barChart.AcessoDto;
 import br.com.bandtec.osirisapi.dto.barChart.EventoAcessoChartResponse;
 import br.com.bandtec.osirisapi.dto.barChart.EventoDto;
+import br.com.bandtec.osirisapi.dto.response.dash.RanqueCategoriaResponse;
 import br.com.bandtec.osirisapi.repository.*;
 import br.com.bandtec.osirisapi.views.CupomMaisUsadoView;
 import br.com.bandtec.osirisapi.views.RanqueCategoriaView;
@@ -23,6 +26,8 @@ public class MetricaService {
     private final AcessoRepository acessoRepository;
     private final CupomRepository cupomRepository;
     private final EventoConverterImplementation eventoConverter;
+    private final DashConverter dashConverter;
+    private final UserInfo userInfo;
 
     public Integer getUltimaSemana(){
 
@@ -34,9 +39,14 @@ public class MetricaService {
         return (double) acessoRepository.count() / eventoRepository.count();
     }
 
-    public List<RanqueCategoriaView> getRanqueCategoriaView(){
+    public List<RanqueCategoriaResponse> getRanqueCategoriaView(){
 
-        return eventoRepository.ranque();
+        Ecommerce ecommerce = userInfo.getUsuario().getEcommerce();
+
+        List<Integer> ranques = eventoRepository.ranqueCategoria();
+        List<RanqueCategoriaView> nomes = eventoRepository.ranqueNomeCategoriaView(ecommerce.getIdEcommerce());
+
+        return dashConverter.integerListToRanqueCategoriaResponse(ranques, nomes);
     }
 
     public List<CupomMaisUsadoView> getCupomMaisUsadoView(){
