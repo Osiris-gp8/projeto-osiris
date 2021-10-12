@@ -11,10 +11,10 @@ def main():
     db = DbManager("admin", "bandtec", "127.0.0.1", "processamento_db", DbType.MYSQL)
     remote_db = DbManager("root", "bandtec", "18.211.88.253", "osiris", DbType.MYSQL)
     pipelines: List[Pipeline] = [
-        # AcessosPipeline(db, remote_db), 
+        AcessosPipeline(db, remote_db), 
         # EventosPipeline(db, remote_db),
         # CuponsPipeline(remote_db),
-        MetasPipeline(db, remote_db)
+        # MetasPipeline(db, remote_db)
     ]
     for p in pipelines:
         p.run()

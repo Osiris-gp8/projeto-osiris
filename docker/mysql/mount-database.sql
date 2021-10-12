@@ -25,6 +25,8 @@ CREATE TABLE IF NOT EXISTS osiris.acesso (
   id_consumidor_ecommerce INT NOT NULL,
   inicio_acesso DATETIME(6) NOT NULL,
   ecommerce_id_ecommerce INT NOT NULL,
+  uf CHAR(3) NOT NULL,
+  cidade VARCHAR(50) NOT NULL,
   PRIMARY KEY (id_acessos),
   FOREIGN KEY (ecommerce_id_ecommerce) REFERENCES ecommerce(id_ecommerce)
 );
