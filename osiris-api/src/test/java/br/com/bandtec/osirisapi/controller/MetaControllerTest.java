@@ -4,6 +4,8 @@ import br.com.bandtec.osirisapi.domain.Meta;
 import br.com.bandtec.osirisapi.dto.request.FiltroDataRequest;
 import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.repository.MetaRepository;
+import br.com.bandtec.osirisapi.service.UserInfo;
+import br.com.bandtec.osirisapi.util.MockUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -29,6 +31,9 @@ class MetaControllerTest {
     @MockBean
     MetaRepository metaRepository;
 
+    @MockBean
+    UserInfo userInfo;
+
     @Test
     @DisplayName("GET / - Quando há Metas na base")
     void getMetasOk() {
@@ -36,7 +41,10 @@ class MetaControllerTest {
                 Arrays.asList(new Meta(), new Meta(), new Meta());
         FiltroDataRequest request = new FiltroDataRequest(LocalDate.now(), LocalDate.now());
 
-        Mockito.when(metaRepository.findAll())
+        MockUtils.mockUserInfo(userInfo);
+        Mockito.when(metaRepository.findAllByDataInicioBetweenAndEcommerceEquals(
+                    Mockito.any(), Mockito.any(), Mockito.any()
+                ))
                 .thenReturn(metaList);
         ResponseEntity<List<Meta>> resposta =
                 metaController.getMetas(request);
@@ -49,7 +57,10 @@ class MetaControllerTest {
     void getMetasNaoOk() {
         FiltroDataRequest request = new FiltroDataRequest(LocalDate.now(), LocalDate.now());
 
-        Mockito.when(metaRepository.findAll())
+        MockUtils.mockUserInfo(userInfo);
+        Mockito.when(metaRepository.findAllByDataInicioBetweenAndEcommerceEquals(
+                        Mockito.any(), Mockito.any(), Mockito.any()
+                ))
                 .thenReturn(new ArrayList<>());
         try {
             ResponseEntity<List<Meta>> resposta =
