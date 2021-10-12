@@ -24,8 +24,6 @@ class LocationBR():
         data = self.__process_data(data)
         frame = pd.DataFrame(data=data)
         frame.to_json(self.file_name)
-        # with open(self.file_name, 'w', encoding='utf-8') as f:
-        #     json.dump(data, f, ensure_ascii=False, indent=4)
         return frame
 
     def __process_data(self, data_frame):
