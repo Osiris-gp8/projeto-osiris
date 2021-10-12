@@ -8,14 +8,18 @@ import br.com.bandtec.osirisapi.domain.Evento;
 import br.com.bandtec.osirisapi.dto.barChart.AcessoDto;
 import br.com.bandtec.osirisapi.dto.barChart.EventoAcessoChartResponse;
 import br.com.bandtec.osirisapi.dto.barChart.EventoDto;
+import br.com.bandtec.osirisapi.dto.response.dash.AcessoUfResponse;
 import br.com.bandtec.osirisapi.dto.response.dash.RanqueCategoriaResponse;
+import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.repository.*;
 import br.com.bandtec.osirisapi.views.CupomMaisUsadoView;
 import br.com.bandtec.osirisapi.views.RanqueCategoriaView;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @AllArgsConstructor
@@ -75,5 +79,16 @@ public class MetricaService {
         List<EventoDto> eventoDtoList = eventoRepository.countEventosByLastWeek();
 
         return eventoConverter.eventoDtoAcessoDtoToEventoAcessoChartResponse(eventoDtoList, acessoDtoList);
+    }
+
+    public List<AcessoUfResponse> getAcessosByUf(LocalDateTime inicioContagem, LocalDateTime fimContagem){
+        List<AcessoUfResponse> result = acessoRepository
+                .countAcessosByUfAndInicioAcessoBetween(inicioContagem, fimContagem);
+
+        if (result.isEmpty()){
+            throw new ApiRequestException("", HttpStatus.NO_CONTENT);
+        }else {
+            return result;
+        }
     }
 }
