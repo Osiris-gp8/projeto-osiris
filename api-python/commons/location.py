@@ -6,7 +6,7 @@ import pandas as pd
 
 class LocationBR():
     def __init__(self):
-        self.file_name = './data.json'
+        self.file_name = './temp/localidades.json'
         self.data = self.__read_file()
 
     def get_location_data_frame(self) -> pd.DataFrame:
@@ -15,27 +15,27 @@ class LocationBR():
     def __read_file(self):
         if(not os.path.exists(f'./{self.file_name}')):
             return self.__write_file()
-        # file_data = open(f'./{self.file_name}')
         return pd.read_json(f'./{self.file_name}', encoding='UTF-8')
 
     def __write_file(self):
-        data = json.loads(requests
-                               .get("https://servicodados.ibge.gov.br/api/v1/localidades/municipios").text)
+        data = json.loads(
+                requests.get("https://servicodados.ibge.gov.br/api/v1/localidades/municipios").text
+            )
         data = self.__process_data(data)
-        with open('data.json', 'w', encoding='utf-8') as f:
-            json.dump(data, f, ensure_ascii=False, indent=4)
-        return pd.DataFrame(data=data)
+        frame = pd.DataFrame(data=data)
+        frame.to_json(self.file_name)
+        # with open(self.file_name, 'w', encoding='utf-8') as f:
+        #     json.dump(data, f, ensure_ascii=False, indent=4)
+        return frame
 
     def __process_data(self, data_frame):
         cidade_list = []
-        cont = 0
-        for cidade in data_frame:
+        for cont, cidade in enumerate(data_frame):
             cidade_list.append(
                 {
                     'id': cont,
-                    'UF': cidade['microrregiao']['mesorregiao']['UF']['sigla'],
-                    'nome': cidade['nome']
+                    'uf': cidade['microrregiao']['mesorregiao']['UF']['sigla'],
+                    'cidade': cidade['nome']
                 }
             )
-            cont = cont + 1
         return cidade_list
