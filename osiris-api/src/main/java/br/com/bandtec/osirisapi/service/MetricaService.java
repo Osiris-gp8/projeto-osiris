@@ -3,6 +3,7 @@ package br.com.bandtec.osirisapi.service;
 import br.com.bandtec.osirisapi.converter.DashConverter;
 import br.com.bandtec.osirisapi.converter.implementation.EventoConverterImplementation;
 import br.com.bandtec.osirisapi.domain.Cupom;
+import br.com.bandtec.osirisapi.domain.Ecommerce;
 import br.com.bandtec.osirisapi.domain.Evento;
 import br.com.bandtec.osirisapi.dto.barChart.AcessoDto;
 import br.com.bandtec.osirisapi.dto.barChart.EventoAcessoChartResponse;
@@ -26,6 +27,7 @@ public class MetricaService {
     private final CupomRepository cupomRepository;
     private final EventoConverterImplementation eventoConverter;
     private final DashConverter dashConverter;
+    private final UserInfo userInfo;
 
     public Integer getUltimaSemana(){
 
@@ -39,8 +41,10 @@ public class MetricaService {
 
     public List<RanqueCategoriaResponse> getRanqueCategoriaView(){
 
+        Ecommerce ecommerce = userInfo.getUsuario().getEcommerce();
+
         List<Integer> ranques = eventoRepository.ranqueCategoria();
-        List<RanqueCategoriaView> nomes = eventoRepository.ranqueNomeCategoriaView();
+        List<RanqueCategoriaView> nomes = eventoRepository.ranqueNomeCategoriaView(ecommerce.getIdEcommerce());
 
         return dashConverter.integerListToRanqueCategoriaResponse(ranques, nomes);
     }

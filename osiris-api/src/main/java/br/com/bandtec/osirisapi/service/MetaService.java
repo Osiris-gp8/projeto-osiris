@@ -24,7 +24,7 @@ public class MetaService {
 
     public List<MetaResponse> getMetas(LocalDateTime dataInicio, LocalDateTime dataFim) {
 
-        Ecommerce loggedEcommerce = userInfo.getEcommerce();
+        Ecommerce loggedEcommerce = userInfo.getUsuario().getEcommerce();
         List<Meta> metas = metaRepository.findAllByDataInicioBetweenAndEcommerceEquals(dataInicio, dataFim, loggedEcommerce);
         if (metas.isEmpty()) {
             throw new ApiRequestException("Não existem metas", HttpStatus.NO_CONTENT);
