@@ -107,7 +107,7 @@ public class ArquivoService {
 
     private List<LayoutEvento> getLayoutEventosByDataInclusaoBetween(LocalDate dataInicial, LocalDate dataFinal){
 
-        Ecommerce logedEcommerce = userInfo.getEcommerce();
+        Ecommerce logedEcommerce = userInfo.getUsuario().getEcommerce();
 
         List<Evento> eventos = eventoRepository
                 .findByDataInclusaoBetweenAndEcommerceEquals(dataInicial, dataFinal, logedEcommerce);
@@ -118,7 +118,7 @@ public class ArquivoService {
     }
 
     private List<LayoutCupom> getLayoutCupomsByDataEmitidoBetween(LocalDate dataInicial, LocalDate dataFinal){
-        Ecommerce logedEcommerce = userInfo.getEcommerce();
+        Ecommerce logedEcommerce = userInfo.getUsuario().getEcommerce();
 
         List<Cupom> cupoms = cupomRepository.findByDataEmitidoBetweenAndEcommerceEquals(
                 dataInicial.atStartOfDay(), dataFinal.atStartOfDay(), logedEcommerce);
