@@ -6,6 +6,7 @@ from pipelines.acessos_pipeline import AcessosPipeline
 from pipelines.eventos_pipeline import EventosPipeline
 from pipelines.cupons_pipeline import CuponsPipeline
 from pipelines.metas_pipeline import MetasPipeline
+from pipelines.fill_cupons_pipeline import FillCupons
 
 def main():
     db = DbManager("admin", "bandtec", "127.0.0.1", "processamento_db", DbType.MYSQL)
@@ -14,6 +15,7 @@ def main():
         AcessosPipeline(db, remote_db), 
         # EventosPipeline(db, remote_db),
         # CuponsPipeline(remote_db),
+        # FillCupons(remote_db)
         # MetasPipeline(db, remote_db)
     ]
     for p in pipelines:
