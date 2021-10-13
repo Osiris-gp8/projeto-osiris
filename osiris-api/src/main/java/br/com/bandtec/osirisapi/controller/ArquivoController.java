@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -52,9 +52,13 @@ public class ArquivoController {
         String conteudo = "";
 
         try {
-            conteudo = new String(arquivo.getBytes());
+            InputStream inputStream = arquivo.getInputStream();
+            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+            BufferedReader bufferedInputStream = new BufferedReader(inputStreamReader);
 
-            arquivoService.importarTXT(conteudo);
+//            conteudo = new String(arquivo.getBytes());
+
+            arquivoService.importarTXT(bufferedInputStream);
 
         } catch (IOException e) {
             e.printStackTrace();
