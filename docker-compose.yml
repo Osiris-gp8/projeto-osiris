@@ -17,6 +17,8 @@ services:
 
   back-loadbalance:
     image: osiris/back-loadbalance
+    ports:
+      - "90:90" 
     networks:
       - osiris-network
     depends_on:
