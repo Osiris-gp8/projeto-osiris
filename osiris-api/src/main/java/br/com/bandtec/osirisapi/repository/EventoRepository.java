@@ -87,4 +87,7 @@ public interface EventoRepository extends JpaRepository<Evento, Integer> {
     @Query(value = "select count(id_consumidor_ecommerce) from evento where id_consumidor_ecommerce = ?3" +
             " and data_compra between ?1 and ?2 ", nativeQuery = true)
     Integer countAcessosDeterminadoDia(LocalDateTime inicioDia, LocalDateTime fimDia,Integer ecommerce);
+
+    @Query(value = "select count(distinct id_consumidor_ecommerce) from evento where ecommerce_id_ecommerce = ?1", nativeQuery = true)
+    Integer countClientesDistintos(Integer ecommerce);
 }

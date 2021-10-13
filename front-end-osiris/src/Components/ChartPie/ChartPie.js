@@ -2,6 +2,8 @@ import React from 'react'
 import {Chart} from 'react-google-charts'
 
 function ChartPie(props){
+    const data = props.data
+    console.log(data)
     const options={
         title: props.title,
         pieHole: props.pieHole,
@@ -20,6 +22,9 @@ function ChartPie(props){
         }
     }
     return (
+        <>
+        {
+        data?.length > 1 ?
         <Chart
             id={props.id}
             width={props.width}
@@ -29,6 +34,10 @@ function ChartPie(props){
             data={props.data}
             options={options}
         />
+        :
+        <span className="load">Carregando Dados</span>
+        }
+        </>
     );
 }
 
