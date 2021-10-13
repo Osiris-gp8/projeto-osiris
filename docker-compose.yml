@@ -9,7 +9,7 @@ services:
   front-loadbalance:
     image: osiris/front-loadbalance
     ports:
-      - "80:80"
+      - "80:80" 
     networks:
       - osiris-network
     depends_on:
