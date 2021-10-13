@@ -88,4 +88,13 @@ public class EventoController {
         return ResponseEntity.status(200).body(eventoService.countVendasDeterminadoDia(inicio,fim,ecommerce));
     }
 
+    @GetMapping("/countClientes")
+    public ResponseEntity getCountClientes(@Valid FiltroDataRequest request)
+    {
+        LocalDateTime inicio = request.getDataInicio().atStartOfDay();
+        LocalDateTime fim = request.getDataFinal().atStartOfDay();
+        Integer ecommerce = userInfo.getUsuario().getEcommerce().getIdEcommerce();
+        return ResponseEntity.status(200).body(eventoService.getClientesDistintos(inicio,fim,ecommerce));
+    }
+
 }
