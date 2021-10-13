@@ -74,7 +74,7 @@ class AutenticacaoControllerTest {
     @DisplayName("POST /auth - Testando autenticação caso o login e senha esteja incorreta")
     void autenticarLoginCorretoESenhaCorreta() throws Exception {
         URI path = new URI("/auth");
-        String json = "{\"login\": \"user8\", \"senha\": \"user8\"}";
+        String json = "{\"login\": \"jorge@silva.com\", \"senha\": \"12345\"}";
 
         mockMvc
                 .perform(MockMvcRequestBuilders

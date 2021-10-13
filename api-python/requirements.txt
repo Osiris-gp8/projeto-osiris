@@ -74,6 +74,7 @@ urllib3==1.26.4
 wcwidth==0.2.5
 webencodings==0.5.1
 widgetsnbextension==3.5.1
+requests==2.26.0
 
 # Windows only
 # pywin32==300

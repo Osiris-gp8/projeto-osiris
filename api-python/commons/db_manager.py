@@ -44,7 +44,7 @@ class DbManager:
             con.execute("DELETE FROM {}".format(table))
             
 
-    def insert(self, df: pd.DataFrame, table: str):
+    def insert(self, df: pd.DataFrame, table: str, if_exists = "append"):
         logging.info("Inserting data")
         con = self._create_connection()
-        df.to_sql(table, con, if_exists = "append", index = False)
+        df.to_sql(table, con, if_exists = if_exists, index = False)

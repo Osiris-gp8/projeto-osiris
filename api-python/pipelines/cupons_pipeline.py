@@ -1,4 +1,3 @@
-from commons.api_client import ApiClient
 from datetime import date, timedelta
 import numpy as np
 import pandas as pd

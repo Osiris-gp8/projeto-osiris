@@ -2,6 +2,7 @@ package br.com.bandtec.osirisapi.repository;
 
 import br.com.bandtec.osirisapi.domain.Acesso;
 import br.com.bandtec.osirisapi.dto.barChart.AcessoDto;
+import br.com.bandtec.osirisapi.dto.response.dash.AcessoUfResponse;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -30,4 +31,12 @@ public interface AcessoRepository extends JpaRepository<Acesso, Integer> {
     @Query(value = "select count(id_acessos) as quantidade from acesso where inicio_acesso " +
             "between ?1 and ?2", nativeQuery = true)
     Integer countAcessosDeterminadoDia(LocalDateTime inicioDia, LocalDateTime fimDia);
+
+    @Query(value = "" +
+            "SELECT count(1) as contagem, uf " +
+            "from acesso a " +
+            "where inicio_acesso BETWEEN ?1 and ?2 " +
+            "group by uf",
+            nativeQuery = true)
+    List<AcessoUfResponse> countAcessosByUfAndInicioAcessoBetween(LocalDateTime inicio, LocalDateTime fim);
 }
