@@ -17,8 +17,6 @@ services:
 
   back-loadbalance:
     image: osiris/back-loadbalance
-    ports:
-      - "80"
     networks:
       - osiris-network
     depends_on:
@@ -26,8 +24,6 @@ services:
 
   react:
     image: osiris/frontend
-    ports:
-      - "3000"
     networks:
       - osiris-network
     depends_on:
@@ -35,7 +31,5 @@ services:
 
   springboot:
     image: osiris/backend
-    ports:
-      - "8080"
     networks:
       - osiris-network
