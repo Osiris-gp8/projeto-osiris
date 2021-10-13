@@ -49,7 +49,6 @@ export const ContainerForm = styled.div`
         height: 50px;
         /* height:30px; */
         font-size:34px;
-        border: 3px solid rgba(0, 0, 0, 0.6);
     }
 
     >div > label{
