@@ -1,33 +1,33 @@
 package br.com.bandtec.osirisapi.utils;
 
+import br.com.bandtec.osirisapi.utils.hashing.HashTable;
+import br.com.bandtec.osirisapi.utils.hashing.ListaLigada;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-import java.io.InputStream;
-
 @SpringBootTest
 class BucketTest {
 
     @Autowired
-    Bucket bucket;
+    BucketService bucket;
+
+    @Autowired
+    HashTable hashTable;
 
     @Test
-    void saveAnyObj() throws IOException {
+    void saveAnyObj(){
         MultipartFile multipartFile = new MockMultipartFile("sourceFile.tmp", "Hello World".getBytes());
+        hashTable.insere(multipartFile);
+    }
 
-        InputStream inputStream;
-        try {
-            inputStream = multipartFile.getInputStream();
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new IOException(e.getCause());
-        }
-
-        bucket.saveFile("src/test/resources/teste.txt", inputStream);
+    @Test
+    void getAnyObjs(){
+        String prefix = "2021-10-15";
+        ListaLigada<String> lista = bucket.getFiles(prefix);
+        lista.exibe();
     }
 
 }

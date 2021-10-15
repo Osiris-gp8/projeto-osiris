@@ -1,61 +1,58 @@
 package br.com.bandtec.osirisapi.utils.hashing;
 
-import java.time.LocalDateTime;
-import java.util.Objects;
+import br.com.bandtec.osirisapi.exception.ApiRequestException;
+import br.com.bandtec.osirisapi.service.UserInfo;
+import br.com.bandtec.osirisapi.utils.BucketService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+@Component
+@RequiredArgsConstructor
 public class HashTable {
 
     private ListaLigada[] tab;
+    private final UserInfo userInfo;
+    private final BucketService bucket;
+    private final static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-    public HashTable(Integer numEntradas) {
-        this.tab = new ListaLigada[numEntradas];
-        iniciarListaLigada();
-    }
 
     // Função Hash devolve o número da entrada de um elemento x
-    public Integer funcaoHash(Integer num){
-
-        return num % tab.length;
+    public String funcaoHash(LocalDateTime date){
+        Integer ecommerce = userInfo.getUsuario().getEcommerce().getIdEcommerce();
+        return ecommerce + "/" + date.format(formatter);
     }
 
-    public Integer funcaoHash(LocalDateTime localDateTime){
 
-        return localDateTime.getDayOfMonth() % tab.length;
-    }
+    public void insere(MultipartFile file){
+        try {
+            String path = funcaoHash(LocalDateTime.now());
+            bucket.uploadFile(path, file);
 
-    public void insere(Integer num){
-
-        Integer indice = funcaoHash(num);
-        tab[indice].insereNode(num);
-    }
-
-    private void iniciarListaLigada(){
-        for (int i = 0; i < tab.length; i++){
-            tab[i] = new ListaLigada();
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new ApiRequestException("File not found", HttpStatus.BAD_REQUEST);
         }
     }
 
-    public boolean buscar(Integer num){
-
-        Integer indice = funcaoHash(num);
-
-        Node node = tab[indice].buscaNode(num);
-
-        if (Objects.isNull(node)){
-            return false;
-        }
-
-        return true;
+    public ListaLigada<String> buscar(LocalDateTime partition){
+        String index = funcaoHash(partition);
+        return this.bucket.getFiles(index);
     }
-
-    public boolean remove(Integer num){
-
-        if (!buscar(num)){
-            return false;
-        }
-
-        tab[funcaoHash(num)].removeNode(num);
-        return true;
-    }
+//
+//    public boolean remove(Integer num){
+//
+//        if (!buscar(num)){
+//            return false;
+//        }
+//
+//        tab[funcaoHash(num)].removeNode(num);
+//        return true;
+//    }
 }
 

@@ -14,7 +14,7 @@ import br.com.bandtec.osirisapi.layout.LayoutEvento;
 import br.com.bandtec.osirisapi.layout.LayoutGenerico;
 import br.com.bandtec.osirisapi.repository.CupomRepository;
 import br.com.bandtec.osirisapi.repository.EventoRepository;
-import br.com.bandtec.osirisapi.utils.Bucket;
+import br.com.bandtec.osirisapi.utils.BucketService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -40,7 +40,7 @@ public class ArquivoService {
     private final LayoutCupomToCupom layoutCupomToCupom;
     private final CupomToLayoutCupom cupomToLayoutCupom;
 
-    private final Bucket bucket;
+    private final BucketService bucket;
 
     private final UserInfo userInfo;
 
