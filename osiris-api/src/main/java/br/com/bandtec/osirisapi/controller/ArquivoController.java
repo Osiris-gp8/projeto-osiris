@@ -52,9 +52,8 @@ public class ArquivoController {
         String conteudo = "";
 
         try {
-            conteudo = new String(arquivo.getBytes());
 
-            arquivoService.importarTXT(conteudo);
+            arquivoService.importarTXT(arquivo);
 
         } catch (IOException e) {
             e.printStackTrace();

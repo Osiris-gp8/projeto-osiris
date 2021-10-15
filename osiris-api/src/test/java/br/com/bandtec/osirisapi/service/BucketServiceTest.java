@@ -1,4 +1,4 @@
-package br.com.bandtec.osirisapi.utils;
+package br.com.bandtec.osirisapi.service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,28 +6,24 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 
 @SpringBootTest
-class BucketTest {
+class BucketServiceTest {
 
     @Autowired
-    Bucket bucket;
+    private BucketService bucketService;
 
     @Test
-    void saveAnyObj() throws IOException {
+    void saveToS3() {
         MultipartFile multipartFile = new MockMultipartFile("sourceFile.tmp", "Hello World".getBytes());
 
-        InputStream inputStream;
         try {
-            inputStream = multipartFile.getInputStream();
+            File file = bucketService.saveToS3(multipartFile);
         } catch (IOException e) {
             e.printStackTrace();
-            throw new IOException(e.getCause());
         }
 
-        bucket.saveFile("src/test/resources/teste.txt", inputStream);
     }
-
 }

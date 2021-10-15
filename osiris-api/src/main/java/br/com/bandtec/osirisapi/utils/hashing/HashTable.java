@@ -1,5 +1,6 @@
 package br.com.bandtec.osirisapi.utils.hashing;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class HashTable {
@@ -15,6 +16,11 @@ public class HashTable {
     public Integer funcaoHash(Integer num){
 
         return num % tab.length;
+    }
+
+    public Integer funcaoHash(LocalDateTime localDateTime){
+
+        return localDateTime.getDayOfMonth() % tab.length;
     }
 
     public void insere(Integer num){
