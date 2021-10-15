@@ -1,20 +1,20 @@
 package br.com.bandtec.osirisapi.utils.hashing;
 
-public class Node {
+public class Node<T> {
 
-    private int info;
+    private T info;
     private Node next;
 
-    public Node(int info) {
+    public Node(T info) {
         this.info = info;
         this.next = null;
     }
 
-    public int getInfo() {
+    public T getInfo() {
         return info;
     }
 
-    public void setInfo(int info) {
+    public void setInfo(T info) {
         this.info = info;
     }
 

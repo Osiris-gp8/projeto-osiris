@@ -1,6 +1,6 @@
 package br.com.bandtec.osirisapi.utils.hashing;
 
-public class ListaLigada {
+public class ListaLigada<T> {
 
     private Node head;
 
@@ -9,25 +9,25 @@ public class ListaLigada {
     }
 
 
-    public void insereNode(int valor) {
-        Node atual = head.getNext();
-        Node anterior = head;
+    public void insereNode(T valor) {
+        Node<T> atual = head.getNext();
+        Node<T> anterior = head;
         boolean inseriu;
-        Node novo = new Node(valor);
+        Node<T> novo = new Node(valor);
         novo.setNext(head.getNext());
         head.setNext(novo);
     }
 
     public void exibe() {
-        Node atual = head.getNext();
+        Node<T> atual = head.getNext();
         while (atual != null) {
             System.out.println(atual.getInfo());
             atual = atual.getNext();
         }
     }
 
-    public Node buscaNode(int valor) {
-        Node atual = head.getNext();
+    public Node buscaNode(T valor) {
+        Node<T> atual = head.getNext();
         while (atual != null) {
             if (atual.getInfo() == valor) {
                 return atual;
@@ -38,9 +38,9 @@ public class ListaLigada {
         return null;
     }
 
-    public boolean removeNode(int valor) {
-        Node ant = head;
-        Node atual = head.getNext();
+    public boolean removeNode(T valor) {
+        Node<T> ant = head;
+        Node<T> atual = head.getNext();
         while (atual != null) {
             if (atual.getInfo() == valor) {
                 ant.setNext(atual.getNext());
@@ -54,7 +54,7 @@ public class ListaLigada {
     }
 
     public int getTamanho() {
-        Node atual = head.getNext();
+        Node<T> atual = head.getNext();
         int tamanho = 0;
         while (atual != null) {
             tamanho = tamanho + 1;
