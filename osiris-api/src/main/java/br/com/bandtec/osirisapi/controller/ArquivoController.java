@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -49,11 +49,13 @@ public class ArquivoController {
     @PostMapping("/importacao-txt")
     public ResponseEntity importarTXT(@RequestParam MultipartFile arquivo){
 
-        String conteudo = "";
-
         try {
+            InputStream inputStream = arquivo.getInputStream();
+            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+            BufferedReader bufferedInputStream = new BufferedReader(inputStreamReader);
 
-            arquivoService.importarTXT(arquivo);
+
+            arquivoService.importarTXT(bufferedInputStream);
 
         } catch (IOException e) {
             e.printStackTrace();

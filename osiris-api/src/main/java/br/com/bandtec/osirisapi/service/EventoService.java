@@ -204,6 +204,13 @@ public class EventoService {
         return eventoConverter.eventoToEventosSemCupomResponse(contagemSemCupom, contagemComCupom);
     }
 
+    public Integer getClientesDistintos(LocalDateTime dataInicial, LocalDateTime dataFinal, Integer ecommerce) {
+        return eventoRepository
+                .countClientesDistintos( ecommerce);
+
+
+    }
+
     public Integer getEventosPorDia(LocalDate data) {
 
         UsuarioResponse usuario = userInfo.getUsuario();

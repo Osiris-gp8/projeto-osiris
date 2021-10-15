@@ -15,16 +15,13 @@ import br.com.bandtec.osirisapi.layout.LayoutGenerico;
 import br.com.bandtec.osirisapi.repository.CupomRepository;
 import br.com.bandtec.osirisapi.repository.EventoRepository;
 import br.com.bandtec.osirisapi.utils.Bucket;
-import br.com.bandtec.osirisapi.utils.hashing.HashTable;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.security.Timestamp;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -161,14 +158,15 @@ public class ArquivoService {
 
     }
 
-    public void importarTXT(MultipartFile arquivo) throws IOException {
+
+    public void importarTXT(BufferedReader conteudo){
         LayoutGenerico layoutGenerico = new LayoutGenerico();
 
-        String conteudo = new String(arquivo.getBytes());
-
-//        bucket.saveFile();
-
-        layoutGenerico.fromTXT(conteudo);
+        try {
+            layoutGenerico.importarLinhas(conteudo);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         if (layoutGenerico.hasEventoLayout()){
             eventoRepository.saveAll(
