@@ -6,7 +6,7 @@ export function getRankingSell(endpoint, header){
     api.get(endpoint, {headers:header}).then(res => {
         rankList.push(['Tipo de calçado', 'Valor']);
         res.data.forEach(e => {
-            rankList.push([e.nome, e.quantidades]);
+            rankList.push([e.categoria, e.quantidade]);
         });
         
     });
