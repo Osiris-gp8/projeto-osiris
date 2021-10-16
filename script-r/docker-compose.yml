@@ -1,0 +1,21 @@
+version: "3.3"
+services:
+
+  database:
+    build:
+      context: ./processamento_db
+    container_name: mysql-db
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      - MYSQL_ROOT_PASSWORD=bandtec
+      - MYSQL_DATABASE=processamento_db
+    network_mode: host
+  
+  r-scripts:
+    build:
+      context: .
+    container_name: scripts
+    depends_on:
+      - database
+    restart: "no"
+    network_mode: host

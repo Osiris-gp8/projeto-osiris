@@ -1,15 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import Input from '../Components/Input/Input'
-import { ButtonForm } from '../Components/Button'
+import { ButtonForm, Button } from '../Components/Button'
 import api from '../api';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import { ToastContainerTop } from '../Components/Toast';
+import { toast } from 'react-toastify';
+import { useHistory } from 'react-router-dom';
 
 export default () => {
+
+    const history = useHistory();
 
     const {token} = useParams();
     const [displayPassword, setDisplayPassword] = useState({display: "none"})
     const [displayEmail, setDisplayEmail] = useState({display: "block"})
-    const [displayEmailSent, setDisplayEmailSent] = useState({display: "none"})
+    const [displayEmailSent, setDisplayEmailSent] = useState({
+        display: "none",
+        marginTop: "6vh", 
+        fontSize: "18px"
+    })
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState({
         senha: "",
@@ -20,7 +29,9 @@ export default () => {
         if(token != undefined){
             setDisplayPassword({display: "block"});
             setDisplayEmail({display: "none"})
-            setDisplayEmailSent({display: "none"})
+            const newDisplaySent = {...displayEmailSent}
+            newDisplaySent.display = "none"
+            setDisplayEmailSent(newDisplaySent)
         }
     })
 
@@ -38,8 +49,11 @@ export default () => {
             .then(res => {
                 console.log(res)
                 setDisplayEmail({display: "none"})
-                setDisplayEmailSent({display: "block"})
+                const newDisplaySent = {...displayEmailSent}
+                newDisplaySent.display = "block"
+                setDisplayEmailSent(newDisplaySent)
             }).catch(err => {
+                toast.error(err.response.data.message);
                 console.log(err.response)
             })
     }
@@ -53,26 +67,34 @@ export default () => {
     function enviarSenha(e){
         e.preventDefault();
         if(password.senha !== password.confirmaSenha){
-            console.log("senha errada")
+            toast.error("As senhas não conferem.");
             return null;
         }
         api.post(`/usuarios/recuperar-senha/${token}`, {senha: password.senha})
             .then(res => {
                 console.log(res)
+                history.push("/login/true")
             }).catch(err => {
-                console.log(err.response)
+                console.log(err)
+                if(err.response != undefined){
+                    toast.error(err.response.data.message)
+                }else{
+                    toast.error("Desculpe tivemos um erro. Tente mais tarde")
+                }
             })
 
     }
 
     return(
         <>
+        <ToastContainerTop/>
         <div className="w-100 body-password d-flex justify-content-center">
             <div className="card-password">
                 <div className="container d-flex flex-column justify-content-center">
-                    <h1 className="mt-5 fonte-25">Esqueci Minha senha</h1>
+                    <h1 className="mt-5 fonte-25">Esqueci minha senha</h1>
 
-                    <label style={{marginTop: "5vh"}, displayEmailSent} className="label-settings">Um e-mail foi enviado para o endereço digitado</label>
+                    <label style={{marginTop: "6vh", fontSize: "18px"}, displayEmailSent} className="label-settings">Um e-mail foi enviado para o endereço digitado</label>
+                    <Button style={{marginTop: "6vh"}, displayEmailSent} uri="/login" side="left" type="btn-preenchido">Login</Button>
                     
                     <form style={displayEmail} onSubmit={e => enviarEmail(e)}>
                         <div className="col-settings justify-content-between" style={{height: "15vh", marginTop: 20}}>
@@ -94,7 +116,7 @@ export default () => {
                             <input 
                                 className="input-settings"
                                 id="senha"
-                                type="text"
+                                type="password"
                                 onChange={handleSenha}
                             />
 
@@ -102,7 +124,7 @@ export default () => {
                             <input 
                                 className="input-settings"
                                 id="confirmaSenha"
-                                type="text"
+                                type="password"
                                 onChange={handleSenha}
                             />
                             <ButtonForm type="btn-preenchido" style={{width: "30%", marginTop: "2vh"}}>Enviar</ButtonForm>

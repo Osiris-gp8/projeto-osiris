@@ -18,7 +18,6 @@ public class MockUtils {
         UsuarioResponse usuario = new UsuarioResponse(1, "Teste", "login@teste.com", ecommerce);
 
         Mockito.when(mockedUserInfo.getUsuario()).thenReturn(usuario);
-        Mockito.when(mockedUserInfo.getEcommerce()).thenReturn(ecommerce);
     }
 
     /**

@@ -19,7 +19,7 @@ public class EmailConfig {
     private SimpleEmail email;
 
     public EmailConfig() {
-        this.enderecoEmail = "kaique.lucena02@gmail.com";
+        this.enderecoEmail = "grupo.osiris.api@gmail.com";
         this.senhaEmail = "#GfGrupo08";
         this.email = new SimpleEmail();
 

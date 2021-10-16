@@ -18,6 +18,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -107,7 +110,7 @@ public class ArquivoService {
 
     private List<LayoutEvento> getLayoutEventosByDataInclusaoBetween(LocalDate dataInicial, LocalDate dataFinal){
 
-        Ecommerce logedEcommerce = userInfo.getEcommerce();
+        Ecommerce logedEcommerce = userInfo.getUsuario().getEcommerce();
 
         List<Evento> eventos = eventoRepository
                 .findByDataInclusaoBetweenAndEcommerceEquals(dataInicial, dataFinal, logedEcommerce);
@@ -118,7 +121,7 @@ public class ArquivoService {
     }
 
     private List<LayoutCupom> getLayoutCupomsByDataEmitidoBetween(LocalDate dataInicial, LocalDate dataFinal){
-        Ecommerce logedEcommerce = userInfo.getEcommerce();
+        Ecommerce logedEcommerce = userInfo.getUsuario().getEcommerce();
 
         List<Cupom> cupoms = cupomRepository.findByDataEmitidoBetweenAndEcommerceEquals(
                 dataInicial.atStartOfDay(), dataFinal.atStartOfDay(), logedEcommerce);
@@ -153,10 +156,14 @@ public class ArquivoService {
 
     }
 
-    public void importarTXT(String conteudo){
+    public void importarTXT(BufferedReader conteudo){
         LayoutGenerico layoutGenerico = new LayoutGenerico();
 
-        layoutGenerico.fromTXT(conteudo);
+        try {
+            layoutGenerico.importarLinhas(conteudo);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         if (layoutGenerico.hasEventoLayout()){
             eventoRepository.saveAll(

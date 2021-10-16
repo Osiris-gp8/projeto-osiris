@@ -7,7 +7,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +27,7 @@ public class DashService {
         for (int i = 0; i <= diferencaEmDias; i++){
 
             LocalDate data = LocalDate.ofYearDay(
-                    filtroDataRequest.getDataIncio().getYear(), filtroDataRequest.getDataIncio().getDayOfYear() + i);
+                    filtroDataRequest.getDataInicio().getYear(), filtroDataRequest.getDataInicio().getDayOfYear() + i);
 
             listaAcessosVendasDiaResponses.add(converterDataFiltrada(data));
         }

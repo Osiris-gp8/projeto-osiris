@@ -2,6 +2,10 @@ drop database if exists processamento_db;
 create database if not exists processamento_db;
 use processamento_db;
 
+create user 'admin'@'%' identified with mysql_native_password by 'bandtec';
+grant all privileges on *.* to 'admin'@'%';
+flush privileges;
+
 create table if not exists eventos(
 	idEvento int primary key auto_increment,
     idConsumidor int,
@@ -22,10 +26,20 @@ create table if not exists acessos(
 	idConsumidor int,
 	inicioAcesso datetime,
 	fimAcesso datetime,
-	fkEcommerce int
+	fkEcommerce int,
+    localidade int
 );
 
+create table if not exists metas(
+    idMeta int primary key auto_increment,
+    dataInicio datetime,
+    dataFim datetime,
+    valor decimal(10,2),
+    tipo int,
+    fkEcommerce int
+);
 
+select * from acessos;
 select count(1) from eventos;
 select count(1) from acessos;
 

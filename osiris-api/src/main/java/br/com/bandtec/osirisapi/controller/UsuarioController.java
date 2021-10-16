@@ -1,6 +1,7 @@
 package br.com.bandtec.osirisapi.controller;
 
 import br.com.bandtec.osirisapi.domain.Usuario;
+import br.com.bandtec.osirisapi.dto.request.NovoUsuarioRequest;
 import br.com.bandtec.osirisapi.dto.request.UsuarioAtualizacaoRequest;
 import br.com.bandtec.osirisapi.dto.request.UsuarioRecuperarSenhaRequest;
 import br.com.bandtec.osirisapi.service.UsuarioService;
@@ -72,5 +73,10 @@ public class UsuarioController {
     public ResponseEntity getUsuarioPorLogin(@PathVariable String login){
 
         return ResponseEntity.status(200).body(usuarioService.findUsuarioPorLogin(login));
+    }
+
+    @PostMapping("/colaborador")
+    public ResponseEntity postNovoColaborador(@RequestBody @Valid NovoUsuarioRequest novoUsuarioRequest){
+        return ResponseEntity.status(201).body(usuarioService.addNovoColaborador(novoUsuarioRequest));
     }
 }

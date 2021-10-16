@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-// import MaskedInput from '../MaskedInput'
+import MaskedInput from '../MaskedInput'
 import leftblob from '../../Images/left-blob.svg'
 import rightblob from '../../Images/right-blob.svg'
 import { Button, Container, ContainerForm, Form , RadioBox, RadioButton } from './style';
@@ -15,7 +15,6 @@ export default () => {
     const [cnpj, setCNPJ]= useState('');
     const [nomeEcommerce, setNomeEcommerce]= useState('');
     const [id, setId]= useState('');
-    const [erroEcommerce, setErroEcommerce]= useState('');
 
     const [usuarioData, setUsuarioData]= useState({
         loginUsuario: "",
@@ -52,16 +51,15 @@ export default () => {
     }
 
     function receberEcommerce(cnpj, nomeEcommerce) {    
+        console.log(cnpj);
         api.get(`/ecommerces/id`, { params: { cnpj: cnpj, nomeEcommerce: nomeEcommerce}}).then((resposta) => {
             console.log(resposta);
             setId(resposta.data);
             console.log(id);
-            setErroEcommerce('');
             return resposta.data;
         }).catch((error) => { 
             console.log(error);
             setNext(false); 
-            setErroEcommerce("Nome do Ecommerce ou CNPJ estão inválidos");
             console.log(error)    
         });
     }
@@ -83,6 +81,7 @@ export default () => {
                         <label 
                             className="label-settings">Nome do Comércio:</label>
                         <input 
+                            mask= "99.999.999/9999-99"
                             className="input-settings" 
                             id="nomeEcommerce"
                             type="text"
@@ -93,10 +92,8 @@ export default () => {
                     <div className="col-settings">
                         <label 
                             className="label-settings">CNPJ:</label>
-                        <input 
-                            className="input-settings" 
+                        <MaskedInput 
                             id="cnpj" 
-                            type="text"
                             value={cnpj}
                             onChange={(e) => setCNPJ(e.target.value)} 
                         />

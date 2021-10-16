@@ -115,3 +115,7 @@ venv.bak/
 
 #vscode
 .vscode
+
+#cache and temp folders
+datasets
+temp

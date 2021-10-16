@@ -43,10 +43,6 @@ export const ContainerForm = styled(CF)`
     display:${props =>  !props.next? 'none':'flex'}
 `
 
-export const Button = styled(BTN)`
-
-
-`
+export const Button = styled(BTN)``
 
 export const MaskedInput = styled.input``
-
