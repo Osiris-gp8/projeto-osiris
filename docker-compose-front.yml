@@ -1,0 +1,21 @@
+version: '3'
+
+networks:
+  osiris-network:
+    driver: bridge
+
+services:
+
+  front-loadbalance:
+    image: osiris/front-loadbalance
+    ports:
+      - "80:85" 
+    networks:
+      - osiris-network
+    depends_on:
+      - react
+
+  react:
+    image: osiris/frontend
+    networks:
+      - osiris-network
