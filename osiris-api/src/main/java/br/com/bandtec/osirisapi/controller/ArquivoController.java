@@ -1,14 +1,9 @@
 package br.com.bandtec.osirisapi.controller;
 
-import br.com.bandtec.osirisapi.domain.Cupom;
-import br.com.bandtec.osirisapi.domain.DominioStatus;
-import br.com.bandtec.osirisapi.domain.Ecommerce;
-import br.com.bandtec.osirisapi.domain.Evento;
 import br.com.bandtec.osirisapi.dto.request.ExportacaoRequest;
-import br.com.bandtec.osirisapi.layout.LayoutEvento;
 import br.com.bandtec.osirisapi.repository.EventoRepository;
 import br.com.bandtec.osirisapi.service.ArquivoService;
-import javassist.NotFoundException;
+import br.com.bandtec.osirisapi.utils.hashing.HashTable;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -16,9 +11,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
-import java.io.*;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 @RestController
 @RequestMapping("/arquivos")
@@ -27,6 +23,7 @@ public class ArquivoController {
 
     private final ArquivoService arquivoService;
     private final EventoRepository eventoRepository;
+    private final HashTable hashTable;
 
     @GetMapping(value = "/relatorio-csv", produces = "text/csv")
     @ResponseBody
@@ -49,22 +46,23 @@ public class ArquivoController {
     @PostMapping("/importacao-txt")
     public ResponseEntity importarTXT(@RequestParam MultipartFile arquivo){
 
-        String conteudo = "";
 
         try {
             InputStream inputStream = arquivo.getInputStream();
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
             BufferedReader bufferedInputStream = new BufferedReader(inputStreamReader);
 
-//            conteudo = new String(arquivo.getBytes());
 
             arquivoService.importarTXT(bufferedInputStream);
 
         } catch (IOException e) {
             e.printStackTrace();
             return ResponseEntity.status(400).build();
+        } catch (StringIndexOutOfBoundsException e){
+            return ResponseEntity.status(400).body("Layout inválido");
         }
 
+        hashTable.insere(arquivo);
 
         return ResponseEntity.status(201).build();
     }
