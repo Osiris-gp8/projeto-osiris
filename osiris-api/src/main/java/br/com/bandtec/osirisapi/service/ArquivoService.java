@@ -14,13 +14,13 @@ import br.com.bandtec.osirisapi.layout.LayoutEvento;
 import br.com.bandtec.osirisapi.layout.LayoutGenerico;
 import br.com.bandtec.osirisapi.repository.CupomRepository;
 import br.com.bandtec.osirisapi.repository.EventoRepository;
+import br.com.bandtec.osirisapi.utils.BucketService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -39,6 +39,8 @@ public class ArquivoService {
 
     private final LayoutCupomToCupom layoutCupomToCupom;
     private final CupomToLayoutCupom cupomToLayoutCupom;
+
+    private final BucketService bucket;
 
     private final UserInfo userInfo;
 
@@ -155,6 +157,7 @@ public class ArquivoService {
         return txt;
 
     }
+
 
     public void importarTXT(BufferedReader conteudo){
         LayoutGenerico layoutGenerico = new LayoutGenerico();
