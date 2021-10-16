@@ -1,0 +1,21 @@
+version: '3'
+
+networks:
+  osiris-network:
+    driver: bridge
+
+services:
+
+  back-loadbalance:
+    image: osiris/back-loadbalance
+    ports:
+      - "80:90" 
+    networks:
+      - osiris-network
+    depends_on:
+      - springboot
+
+  springboot:
+    image: osiris/backend
+    networks:
+      - osiris-network
