@@ -46,7 +46,6 @@ public class ArquivoController {
     @PostMapping("/importacao-txt")
     public ResponseEntity importarTXT(@RequestParam MultipartFile arquivo){
 
-        hashTable.insere(arquivo);
 
         try {
             InputStream inputStream = arquivo.getInputStream();
@@ -63,6 +62,7 @@ public class ArquivoController {
             return ResponseEntity.status(400).body("Layout inválido");
         }
 
+        hashTable.insere(arquivo);
 
         return ResponseEntity.status(201).build();
     }
