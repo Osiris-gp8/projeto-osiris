@@ -112,3 +112,10 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+
+#vscode
+.vscode
+
+#cache and temp folders
+datasets
+temp

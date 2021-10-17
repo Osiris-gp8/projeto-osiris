@@ -10,13 +10,14 @@ import Institucional from './Pages/Institucional';
 import upload from './Pages/upload'
 import Password from './Pages/Password'
 import AddCollaborator from './Pages/AddCollaborator'
+import Access from './Pages/Access'
 
 function Routes(){
     return(
         <Router>
             <Switch>
                 <Route exact path="/" component={Institucional} />
-                <Route exact path="/login" component={Login} />
+                <Route exact path="/login/:setSenha?" component={Login} />
                 <Route exact path="/register" component={Register} />
                 <Route exact path="/home" component={Dashboard} />
                 <Route exact path="/sales" component={Relation} />
@@ -24,6 +25,7 @@ function Routes(){
                 <Route exact path="/upload" component={upload} />
                 <Route exact path="/password/:token?" component={Password} />
                 <Route exact path="/addCollaborator" component={AddCollaborator}/>
+                <Route exact path="/access" component={Access}/>
                 <Route component={NotFound} />
             </Switch>
         </Router>

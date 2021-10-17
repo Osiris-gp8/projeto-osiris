@@ -1,12 +1,11 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: "54.160.69.199:8080",
+    baseURL: "http://54.196.128.247",
     headers: {
-        "Access-Control-Allow-Origin": "54.160.69.199:8080",
+        "Access-Control-Allow-Origin": "http://54.196.128.247",
         "Access-Control-Allow-Headers": "Authorization",
-        "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, PATCH, DELETE",
-        "Authorization": `${sessionStorage.getItem("tipo")} ${sessionStorage.getItem("token")}`
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, PATCH, DELETE"
     }
 })
 

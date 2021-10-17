@@ -1,12 +1,14 @@
 package br.com.bandtec.osirisapi.dto.request;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
@@ -16,14 +18,18 @@ import java.time.temporal.ChronoUnit;
 @NoArgsConstructor
 public class FiltroDataRequest {
 
+    @PastOrPresent
+    @NotNull
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private LocalDate dataIncio;
+    private LocalDate dataInicio;
 
+    @PastOrPresent
+    @NotNull
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate dataFinal;
 
     public Integer getDiferencaDatas(){
         return Integer.parseInt(Long.toString(
-                ChronoUnit.DAYS.between(dataIncio, dataFinal)));
+                ChronoUnit.DAYS.between(dataInicio, dataFinal)));
     }
 }

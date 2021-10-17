@@ -1,6 +1,7 @@
 package br.com.bandtec.osirisapi.service;
 
 import br.com.bandtec.osirisapi.converter.implementation.EventoConverterImplementation;
+import br.com.bandtec.osirisapi.domain.Ecommerce;
 import br.com.bandtec.osirisapi.domain.Evento;
 import br.com.bandtec.osirisapi.domain.EventoProtocolo;
 import br.com.bandtec.osirisapi.dto.response.EventoProtocoloResponse;
@@ -203,6 +204,13 @@ public class EventoService {
         return eventoConverter.eventoToEventosSemCupomResponse(contagemSemCupom, contagemComCupom);
     }
 
+    public Integer getClientesDistintos(LocalDateTime dataInicial, LocalDateTime dataFinal, Integer ecommerce) {
+        return eventoRepository
+                .countClientesDistintos( ecommerce);
+
+
+    }
+
     public Integer getEventosPorDia(LocalDate data) {
 
         UsuarioResponse usuario = userInfo.getUsuario();
@@ -230,5 +238,10 @@ public class EventoService {
         LocalTime ltInicioDiaCompra = LocalTime.of(0,0,0);
 
         return LocalDateTime.of(data, ltInicioDiaCompra);
+    }
+
+    public Integer countVendasDeterminadoDia(LocalDateTime inicioDia, LocalDateTime fimDia, Integer ecommerce)
+    {
+        return eventoRepository.countAcessosDeterminadoDia(inicioDia,fimDia,ecommerce);
     }
 }

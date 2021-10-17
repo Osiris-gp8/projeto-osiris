@@ -6,6 +6,7 @@ import arrowUpCircleFill from '@iconify-icons/bi/arrow-up-circle-fill';
 import fileIcon from '@iconify-icons/akar-icons/file';
 import personIcon from '@iconify-icons/akar-icons/person';
 import signOut from '@iconify-icons/akar-icons/sign-out';
+import peopleGroup from '@iconify-icons/akar-icons/people-group';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import api from '../../api';
 
@@ -36,6 +37,7 @@ function MenuNovo(){
                 {/* <Item destino="/" icon={arrowUpCircleFill} aba="Metas"/> */}
                 <Item destino="/upload" icon={fileIcon} aba="Arquivos"/>
                 <Item destino="/config" icon={personIcon} aba="Perfil"/>
+                <Item destino="/access" icon={peopleGroup} aba="Acessos"/>
                 <ItemSair function={logoff} id="item-sair" icon={signOut} aba="Sair"/>
             </div>
         </div>

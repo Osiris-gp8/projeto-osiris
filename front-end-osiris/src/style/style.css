@@ -531,7 +531,7 @@ html{
 
 .body-config{
     width: 65%;
-    height: 94vh;
+    min-height: 94vh;
     background-color: #ECF0F7;
     float: right;
     margin-top: 1.5%;

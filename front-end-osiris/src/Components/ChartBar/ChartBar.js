@@ -2,6 +2,7 @@ import React from 'react';
 import { Chart } from 'react-google-charts'
 
 function ChartBar(props){
+    const data = props.data
     const options = {
         title: props.title,
         titleTextStyle: {
@@ -21,9 +22,10 @@ function ChartBar(props){
         },
         vAxis: {
             title: props.titleY
-        }
+        },
     }
-    return(
+    return(<>
+        { data?.length > 1 ?
         <Chart
             id={props.id}
             width={props.width}
@@ -31,8 +33,13 @@ function ChartBar(props){
             chartType="ColumnChart"
             loader={<span className="load">Carregando Dados</span>}
             data={props.data}
+            
             options={options}
         />
+        :
+        <span className="load">Carregando Dados</span>
+        }
+        </>
     );
 }
 

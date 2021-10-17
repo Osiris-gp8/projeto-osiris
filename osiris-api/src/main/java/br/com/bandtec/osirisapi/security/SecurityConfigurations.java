@@ -56,6 +56,17 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
             .authorizeRequests().antMatchers("/auth").permitAll()
             .antMatchers(HttpMethod.POST,"/usuarios").permitAll()
+            .antMatchers("/usuarios/recuperar-senha/**").permitAll()
+            .antMatchers(HttpMethod.GET, "/ecommerces/id").permitAll()
+            .antMatchers(HttpMethod.POST, "/ecommerces").permitAll()
+            .antMatchers(
+                "/v2/api-docs",
+                    "/configuration/ui",
+                    "/swagger-resources/**",
+                    "/configuration/security",
+                    "/swagger-ui.html",
+                    "/webjars/**"
+            ).permitAll()
             .anyRequest().authenticated();
 
         http.addFilterBefore(

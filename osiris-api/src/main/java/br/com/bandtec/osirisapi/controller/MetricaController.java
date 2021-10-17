@@ -1,6 +1,9 @@
 package br.com.bandtec.osirisapi.controller;
 
 import br.com.bandtec.osirisapi.dto.barChart.EventoAcessoChartResponse;
+import br.com.bandtec.osirisapi.dto.request.FiltroDataRequest;
+import br.com.bandtec.osirisapi.dto.response.dash.AcessoUfResponse;
+import br.com.bandtec.osirisapi.dto.response.dash.RanqueCategoriaResponse;
 import br.com.bandtec.osirisapi.service.MetricaService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -34,7 +38,7 @@ public class MetricaController {
     }
 
     @GetMapping("/ranque-categoria")
-    public ResponseEntity getRanqueCategoria() {
+    public ResponseEntity<List<RanqueCategoriaResponse>> getRanqueCategoria() {
 
         return ResponseEntity.status(200).body(metricaService.getRanqueCategoriaView());
     }
@@ -71,4 +75,14 @@ public class MetricaController {
 
         return ResponseEntity.status(200).body(responseList);
     }
+
+    @GetMapping("/acessos-por-uf")
+    public ResponseEntity<List<AcessoUfResponse>> getAcessosPorUf(@Valid FiltroDataRequest request){
+        List<AcessoUfResponse> result = metricaService.getAcessosByUf(
+                request.getDataInicio().atStartOfDay(), request.getDataFinal().atStartOfDay());
+
+        return ResponseEntity.status(200).body(result);
+    }
+
+
 }

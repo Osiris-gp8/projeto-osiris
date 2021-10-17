@@ -1,6 +1,7 @@
 package br.com.bandtec.osirisapi.converter;
 
 import br.com.bandtec.osirisapi.domain.Cupom;
+import br.com.bandtec.osirisapi.domain.Ecommerce;
 import br.com.bandtec.osirisapi.layout.LayoutCupom;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
@@ -12,6 +13,8 @@ import java.util.stream.Collectors;
 public class LayoutCupomToCupom implements Converter<LayoutCupom, Cupom> {
     @Override
     public Cupom convert(LayoutCupom layoutCupom) {
+        Ecommerce ecommerce = new Ecommerce();
+        ecommerce.setIdEcommerce(1);
         return Cupom.builder()
                 .idCupom(layoutCupom.getIdCupom())
                 .idConsumidorEcommerce(layoutCupom.getIdConsumidor())
@@ -21,6 +24,7 @@ public class LayoutCupomToCupom implements Converter<LayoutCupom, Cupom> {
                 .dataValidado(layoutCupom.getDataValido())
                 .usado(layoutCupom.getUsado())
                 .cupomEcommerce(layoutCupom.getCupomEcommerce())
+                .ecommerce(ecommerce)
                 .build();
     }
 
