@@ -137,11 +137,11 @@ public class ArquivoService {
         String corpo = "";
 
         for (LayoutEvento layoutEvento : layoutEventoList) {
-            corpo += layoutEvento.toTXT();
+            corpo += layoutEvento.toTXT() + System.lineSeparator();
         }
 
         for (LayoutCupom layoutCupom: layoutCupomList) {
-            corpo += layoutCupom.toTXT();
+            corpo += layoutCupom.toTXT() + System.lineSeparator();
         }
 
         return corpo;
