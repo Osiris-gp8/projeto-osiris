@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import api from '../../api'
 import InputPicker from '../InputPicker'
 import { ButtonForm as Button} from '../Button' 
+import { ToastContainerTop } from '../Toast'
+import { toast } from 'react-toastify'
 const FileDownload = require('js-file-download');
 
 function UploadFiles(props) {
@@ -16,12 +18,15 @@ function UploadFiles(props) {
     "conteudoDoArquivo": "",
     "url": null,
   });
+  const [header, setHeader] = useState({
+    "Authorization": `${sessionStorage.getItem("tipo")} ${sessionStorage.getItem("token")}`
+  });
 
-   const [exportacao, setExportacao] = useState({
-     "dataInicio":"",
-     "dataFim":"",
-     "tipoCorpo":0
-   })
+  const [exportacao, setExportacao] = useState({
+    "dataInicio":"",
+    "dataFim":"",
+    "tipoCorpo":0
+  });
 
 
   const handleUpload = async ([fileUploaded]) => {
@@ -75,34 +80,36 @@ function UploadFiles(props) {
     const newFile = file;
     data.append("arquivo", file.file, file.nomeArquivo);
     let postType = "importacao-txt" 
-    const config = {
+    const headers = {
       headers: {
-          'content-type': 'multipart/form-data'
+          'content-type': 'multipart/form-data',
+          ...header
       }
-  }
+    }
     api
-      .post(`/arquivos/${postType}`, data, config )
+      .post(`/arquivos/${postType}`, data, headers )
       .then(response => {
-        alert("Importação inserida com Sucesso.")
         newFile['url'] = response.url
         setFile(newFile)
-        
+        toast.success("Importação realizada com Sucesso.")
       })
       .catch(() => {
         setFile(newFile)
-        console.log(file)
+        toast.error("Erro de importação")
         console.log("Deu erro no arquivo " + file.nomeArquivo)
-        alert("Erro de importação")
       });
   };
 
   const handleClickDownload = () => {
-    api.request({method:"GET", url:"arquivos/relatorio-txt",  params:exportacao , responseType:"blob"})
+    api.request({method:"GET", url:"arquivos/relatorio-txt", headers: header,  params:exportacao , responseType:"blob"})
     .then(response => {
       FileDownload(response.data, 'exportação.txt')
-      alert("Download efetuado com sucesso")
+      toast.success("Download efetuado com sucesso")
     })
-    .catch(e => console.log(e))
+    .catch((e) => {
+      toast.error("Erro no download do arquivo")
+      console.log(e)
+    })
   }
 
   useEffect(() => {
@@ -118,6 +125,7 @@ function UploadFiles(props) {
 
   return (
     <Container>
+      <ToastContainerTop/>
       <BoxDownload>
         <div><Title>Exportação</Title>
         <Subtitle>Selecione uma data e a categoria de dados que você deseja:</Subtitle>

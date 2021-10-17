@@ -3,6 +3,7 @@ package br.com.bandtec.osirisapi.repository;
 import br.com.bandtec.osirisapi.domain.Ecommerce;
 import br.com.bandtec.osirisapi.domain.Evento;
 import br.com.bandtec.osirisapi.dto.barChart.EventoDto;
+import br.com.bandtec.osirisapi.views.CountAcessoEventos;
 import br.com.bandtec.osirisapi.views.CupomMaisUsadoView;
 import br.com.bandtec.osirisapi.views.RanqueCategoriaView;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -90,4 +91,24 @@ public interface EventoRepository extends JpaRepository<Evento, Integer> {
 
     @Query(value = "select count(distinct id_consumidor_ecommerce) from evento where ecommerce_id_ecommerce = ?1", nativeQuery = true)
     Integer countClientesDistintos(Integer ecommerce);
+
+    @Query(value = "" +
+        "with eventos_days as ( " +
+            "SELECT dayname(data_compra) as data_compra , count(1) as vendas from evento " +
+            "where date(data_compra) BETWEEN ?1 and ?2 " +
+            "and ecommerce_id_ecommerce = ?3 " +
+            "group by dayname(data_compra) " +
+        ")," +
+        "acessos_days as ( " +
+            "SELECT dayname(inicio_acesso) as inicio_acesso, count(1) as acessos from acesso " +
+            "where date(inicio_acesso) BETWEEN ?1 and ?2 " +
+            "and ecommerce_id_ecommerce = ?3 " +
+            "group by dayname(inicio_acesso) " +
+        ")" +
+        "SELECT e.data_compra as diaDaSemana, e.vendas, a.acessos " +
+        "from eventos_days e " +
+        "inner join acessos_days a " +
+        " on e.data_compra = a.inicio_acesso" +
+            "", nativeQuery = true)
+    List<CountAcessoEventos> countEventosAndAcessosBetween(LocalDate inicio, LocalDate fim, Integer idEcommerce);
 }

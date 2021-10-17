@@ -9,6 +9,7 @@ import { useHistory } from 'react-router-dom';
 import api from '../api';
 import {getDataWeek,getAllEvents,getCountUser, getCountAccess} from '../services/textData'
 import {getRankingSell, getCountSell} from '../services/dashData'
+import {getIntervalSixMonths} from '../services/utils'
 
 export default () =>{ 
 
@@ -56,13 +57,16 @@ export default () =>{
     }, []);
 
     useEffect(async () => {
-        const data = (await getDataWeek("/dash/contagem-acessos-vendas", header)).data
+        const interval = getIntervalSixMonths()
+        const data = await api.get("/dash/contagem-acessos-vendas", { 
+            headers: header,
+            params: interval
+        })
         const arrayData = []
-        for (let index in data){
-                let value = data[index]
-                arrayData.push([translate_day[value['diaDaSemana']],value['vendas'], value['acessos']])
-            }
-                setWeekData(arrayData)
+        data.data.forEach((value) => {
+            arrayData.push([translate_day[value['diaDaSemana'].toUpperCase()],value['vendas'], value['acessos']])
+        })
+        setWeekData(arrayData)
     }, []);
 
     const cores = ["#666BC2", "#8CA8D1", "#B3C8E1", "#D9E2F0", "#ECF0F7"];
@@ -90,21 +94,21 @@ export default () =>{
                 <Metricas 
                     metrica={metas[0].labelTipo}
                     valor={eventos > 0 ? eventos : "Carregando"} 
-                    meta={metas[0].valor}
+                    meta={Math.floor(metas[0].valor)}
                     icon={arrowUpCircleFill}
                 />
 
                 <Metricas 
                     metrica={metas[1].labelTipo} 
                     valor={countUsers > 0 ? countUsers : "Carregando"}
-                    meta={metas[1].valor}
+                    meta={Math.floor(metas[1].valor)}
                     icon={arrowUpCircleFill}
                 />
 
                 <Metricas 
                     metrica="Acessos" 
                     valor={countAccess > 0 ? countAccess : "Carregando"}
-                    meta={metas[2] == null ? "Carregando" : metas[2].valor}
+                    meta={metas[2] == null ? "Carregando" : Math.floor(metas[2].valor)}
                     icon={clockCircleFilled}
                 />
             </div>

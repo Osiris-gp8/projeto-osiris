@@ -14,9 +14,24 @@ export function getIntervalWeekDays(){
     return [firstDay, lastDay]
 }
 
+export function getIntervalSixMonths(){
+    const seisMeses = 6 * 30 * 24 * 60 * 60 * 1000
+    const dataInicial = new Date(Math.abs( new Date() -  seisMeses))
+    const dataFinal = new Date()
+
+    return { 
+        dataInicio: formatDate(dataInicial), 
+        dataFinal: formatDate(dataFinal) 
+    }
+}
+
 function formatDate(date = new Date()){
-    if(date.getDate() < 10)
-        return `${date.getFullYear()}-${date.getMonth() + 1}-0${date.getDate()}`
-    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+    let year
+    let month
+    let day
+    day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate()
+    month = date.getMonth() < 10 ? `0${date.getMonth()}` : date.getMonth()
+    year = date.getFullYear()
+    return `${year}-${month}-${day}`
 }
 
