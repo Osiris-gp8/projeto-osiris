@@ -6,6 +6,7 @@ import br.com.bandtec.osirisapi.repository.CupomRepository;
 import br.com.bandtec.osirisapi.repository.EventoRepository;
 import br.com.bandtec.osirisapi.service.UserInfo;
 import br.com.bandtec.osirisapi.util.MockUtils;
+import br.com.bandtec.osirisapi.views.CountAcessoEventos;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -16,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -38,22 +40,32 @@ class DashControllerTest {
     @Test
     @DisplayName("GET /contagem-acessos-vendas - Quando a consulta retorna valores")
     void getAcessosVendasUltimosSeteDiasOk() {
-        LocalDateTime agora = LocalDateTime.now();
+        LocalDate agora = LocalDate.now();
 
         MockUtils.mockUserInfo(userInfo);
-        Mockito.when(acessoRepository.countAllByInicioAcessoAndIdEcommerce(
-                agora,
-                agora,
-                1))
-                .thenReturn(800);
 
-        Mockito.when(eventoRepository.countAllByDataCompraAndIdEcommerce(
-                agora,
-                agora,
-                1))
-                .thenReturn(100);
+        Mockito.when(
+                eventoRepository.countEventosAndAcessosBetween(agora, agora, 1)
+        ).thenReturn(
+                Collections.singletonList(new CountAcessoEventos() {
+                    @Override
+                    public String getDiaDaSemana() {
+                        return "Tuesday";
+                    }
 
-        FiltroDataRequest filtroDataRequest = new FiltroDataRequest(agora.toLocalDate(), agora.toLocalDate());
+                    @Override
+                    public Integer getVendas() {
+                        return 100;
+                    }
+
+                    @Override
+                    public Integer getAcessos() {
+                        return 200;
+                    }
+                })
+        );
+
+        FiltroDataRequest filtroDataRequest = new FiltroDataRequest(agora, agora);
         ResponseEntity response = dashController.getAcessosVendasUltimosSeteDias(filtroDataRequest);
 
         assertEquals(200, response.getStatusCodeValue());
