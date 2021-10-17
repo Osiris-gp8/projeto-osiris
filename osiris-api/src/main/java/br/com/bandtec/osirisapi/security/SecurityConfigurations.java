@@ -59,6 +59,14 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
             .antMatchers("/usuarios/recuperar-senha/**").permitAll()
             .antMatchers(HttpMethod.GET, "/ecommerces/id").permitAll()
             .antMatchers(HttpMethod.POST, "/ecommerces").permitAll()
+            .antMatchers(
+                "/v2/api-docs",
+                    "/configuration/ui",
+                    "/swagger-resources/**",
+                    "/configuration/security",
+                    "/swagger-ui.html",
+                    "/webjars/**"
+            ).permitAll()
             .anyRequest().authenticated();
 
         http.addFilterBefore(
