@@ -22,6 +22,7 @@ public class MetaConverterImplementation implements MetaConverter {
                 .dataFim(meta.getDataFim())
                 .valor(meta.getValor())
                 .ecommerce(meta.getEcommerce())
+                .tipo(meta.getTipo())
                 .labelTipo( TipoMetaEnum.getDescricaoById(meta.getTipo()) )
                 .build();
     }

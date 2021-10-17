@@ -2,6 +2,7 @@ package br.com.bandtec.osirisapi.layout;
 
 import lombok.*;
 
+import java.io.BufferedReader;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -49,11 +50,11 @@ public class LayoutCupom implements Layout{
     public void fromTXT(String conteudo) {
         idCupom = Integer.valueOf(conteudo.substring(2, 7));
         nomeCupom = conteudo.substring(7, 17);
-        valor = Double.valueOf(conteudo.substring(17, 21).replace(",", "."));
-        dataEmitido = LocalDateTime.parse(conteudo.substring(21, 40), FORMATO_DATA_HORA);
-        dataValido = LocalDateTime.parse(conteudo.substring(40, 59), FORMATO_DATA_HORA);
-        idConsumidor = Integer.valueOf(conteudo.substring(59, 64));
-        usado = Integer.valueOf( conteudo.substring(64, 65) ) == 1;
-        cupomEcommerce = Integer.valueOf( conteudo.substring(65, 66) ) == 1;
+        valor = Double.valueOf(conteudo.substring(17, 22).replace(",", "."));
+        dataEmitido = LocalDateTime.parse(conteudo.substring(22, 41), FORMATO_DATA_HORA);
+        dataValido = LocalDateTime.parse(conteudo.substring(41, 60), FORMATO_DATA_HORA);
+        idConsumidor = Integer.valueOf(conteudo.substring(60, 65));
+        usado = Integer.valueOf( conteudo.substring(65, 66) ) == 1;
+        cupomEcommerce = Integer.valueOf( conteudo.substring(66, 67) ) == 1;
     }
 }

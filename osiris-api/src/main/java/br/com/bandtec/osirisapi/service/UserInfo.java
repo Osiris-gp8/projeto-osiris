@@ -42,20 +42,4 @@ public class UserInfo {
             throw new ApiRequestException("", HttpStatus.UNAUTHORIZED);
         }
     }
-
-    public Integer getIdUsuario() {
-        return getUsuario().getIdUsuario();
-    }
-
-    public String getLoginUsuario() {
-        return getUsuario().getLoginUsuario();
-    }
-
-    public String getNomeCompleto() {
-        return getUsuario().getNomeCompleto();
-    }
-
-    public Ecommerce getEcommerce() {
-        return getUsuario().getEcommerce();
-    }
 }

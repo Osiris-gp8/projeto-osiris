@@ -6,6 +6,8 @@ import Icon from '@iconify/react'
 import pencilIcon from '@iconify-icons/akar-icons/pencil';
 import {ButtonNoLink, ButtonForm} from '../Components/Button'
 import api from '../api';
+import { ToastContainerTop } from '../Components/Toast';
+import { toast } from 'react-toastify';
 
 export default () =>{ 
 
@@ -13,6 +15,7 @@ export default () =>{
 
     const [user, setUser] = useState({});
     const [ecommerce, setEcommerce] = useState({});
+    const [header, setHeader] = useState({});
 
     const [editUser, setEditUser] = useState({
         nome: true,
@@ -47,6 +50,7 @@ export default () =>{
             return history.push('/login');
         }
 
+        setHeader({"Authorization": `${sessionStorage.getItem("tipo")} ${sessionStorage.getItem("token")}`})
         setUser(JSON.parse(sessionStorage.getItem("usuario")));
         setEcommerce(JSON.parse(sessionStorage.getItem("usuario")).ecommerce);
     }, []);
@@ -65,38 +69,28 @@ export default () =>{
 
     function atualizarUser(e){
         e.preventDefault();
-        api.post(`/usuarios/${JSON.parse(sessionStorage.getItem("usuario")).idUsuario}`, user, {
-            headers: {
-                Authorization: `${sessionStorage.getItem("tipo")} ${sessionStorage.getItem("token")}`
-            }
-        })
+        api.post(`/usuarios/${JSON.parse(sessionStorage.getItem("usuario")).idUsuario}`, user, {headers: header })
             .then(res => {
                 console.log(res)
-                if(res.status == 200){
-                    alert("Usuário alterado com sucesso");
-                }
+                toast.success("Usuário alterado com sucesso");
                 sessionStorage.setItem("usuario", JSON.stringify(user));
             }).catch(err => {
                 console.log(err);
-                alert("Ops, houve um erro :(");
+                toast.error("Desculpe tivemos um erro. Tente mais tarde.")
             })
     }
 
     function atualizarEcommerce(e){
         e.preventDefault();
-        api.post(`/ecommerces/${JSON.parse(sessionStorage.getItem("usuario")).ecommerce.idEcommerce}`, ecommerce)
+        api.post(`/ecommerces/${JSON.parse(sessionStorage.getItem("usuario")).ecommerce.idEcommerce}`, ecommerce, {headers: header} )
             .then(res => {
                 console.log(res)
-                if(res.status == 200){
-                    alert("Ecommerce alterado com sucesso");
-                    user.ecommerce = ecommerce;
-                    sessionStorage.setItem("usuario", JSON.stringify(user));
-                }else{
-                    alert("Ops, houve um erro :(");
-                }
+                toast.success("Ecommerce alterado com sucesso");
+                user.ecommerce = ecommerce;
+                sessionStorage.setItem("usuario", JSON.stringify(user));
             }).catch(err => {
                 console.log(err);
-                alert("Ops, houve um erro :(");
+                toast.error("Desculpe tivemos um erro. Tente mais tarde.")
             })
     }
 
@@ -104,6 +98,7 @@ export default () =>{
         <>
             <MenuNovo/>
             <div className="body-config">
+                <ToastContainerTop/>
                 <div className="container">
                     <h1>Configuração</h1>
                     <div className="user-config">

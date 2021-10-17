@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -11,7 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 @Getter
-public class LayoutGenerico implements Layout{
+public class LayoutGenerico{
 
     public static final String TIPO_REGISTRO_HEADER = "01";
     public static final String TIPO_REGISTRO_CORPO_EVENTO = "02";
@@ -27,26 +30,15 @@ public class LayoutGenerico implements Layout{
         this.layoutCupomList = new ArrayList<>();
     }
 
-    @Override
-    public String toCSV() {
-        return null;
-    }
-
-    @Override
-    public String toTXT() {
-        return null;
-    }
-
-    @Override
-    public void fromTXT(String conteudo) {
-        Integer indice = 0;
-        String[] linhas = conteudo.split(System.lineSeparator());
-        importarLinhas( linhas, indice );
-    }
 
 
-    private void importarLinhas(String[] linhas, Integer indice){
-        String linha = linhas[indice];
+
+    public void importarLinhas(BufferedReader reader) throws IOException {
+        String linha = reader.readLine();
+        if(linha == null){
+            return;
+        }
+
 
         String tipoLinha = linha.substring(0, 2);
         if (tipoLinha.equals(TIPO_REGISTRO_CORPO_EVENTO)){
@@ -56,9 +48,7 @@ public class LayoutGenerico implements Layout{
             importarCupom(linha);
         }
 
-        if (indice < linhas.length-1){
-            importarLinhas(linhas, ++indice);
-        }
+        importarLinhas(reader);
     }
 
     public static String header() {

@@ -2,6 +2,7 @@ package br.com.bandtec.osirisapi.service;
 
 import br.com.bandtec.osirisapi.converter.implementation.UsuarioConverterImplementation;
 import br.com.bandtec.osirisapi.domain.Usuario;
+import br.com.bandtec.osirisapi.dto.request.NovoUsuarioRequest;
 import br.com.bandtec.osirisapi.dto.request.UsuarioAcessoRequest;
 import br.com.bandtec.osirisapi.dto.request.UsuarioAtualizacaoRequest;
 import br.com.bandtec.osirisapi.dto.request.UsuarioRecuperarSenhaRequest;
@@ -15,6 +16,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,6 +33,25 @@ public class UsuarioService {
     private List<UsuarioResponse> sessoes;
     private Constants constants;
     private final UserInfo userInfo;
+
+    public UsuarioResponse addNovoColaborador(NovoUsuarioRequest novoUsuarioRequest) {
+
+        if (validarEmailUsuario(novoUsuarioRequest.getLoginUsuario())){
+            throw new ApiRequestException("E-mail já cadastrado", HttpStatus.BAD_REQUEST);
+        }
+
+        EmailConfig emailConfig = new EmailConfig();
+        String token = tokenService.gerarTokenAssinado(novoUsuarioRequest.getLoginUsuario());
+        String mensagem = gerarMensagemPrimeiroLogin(novoUsuarioRequest.getLoginUsuario(), token);
+
+        emailConfig.enviarEmail(
+                mensagem,
+                constants.ASSUNTO_PRIMEIRO_LOGIN,
+                novoUsuarioRequest.getLoginUsuario());
+
+        Usuario usuario = usuarioRepository.save(usuarioConverter.novoUsuarioRequestToUsuario(novoUsuarioRequest));
+        return usuarioConverter.usuarioToUsuarioResponse(usuario);
+    }
 
 
     public List<UsuarioResponse> getUsuarios(){
@@ -151,6 +173,14 @@ public class UsuarioService {
         return mensagem;
     }
 
+    private String gerarMensagemPrimeiroLogin(String email, String token){
+        String mensagem =
+                String.format(constants.MENSAGEM_PRIMERIO_LOGIN,
+                        email, token);
+
+        return mensagem;
+    }
+
     private boolean validarEmailUsuario(String email){
 
         Optional<Usuario> optionalUsuario = usuarioRepository.findByLoginUsuario(email);
@@ -189,5 +219,16 @@ public class UsuarioService {
         List<Usuario> usuario = usuarioRepository.findAllByEcommerceIdEcommerce(idEcommerce);
 
         return usuarioConverter.usuarioListToUsuarioResponseList(usuario);
+    }
+
+    public UsuarioResponse findUsuarioPorLogin(String login){
+
+        Optional<Usuario> optionalUsuario = usuarioRepository.findByLoginUsuario(login);
+
+        if (!optionalUsuario.isPresent()){
+            throw new ApiRequestException("Usuário não encontrado.", HttpStatus.BAD_REQUEST);
+        }
+
+        return usuarioConverter.usuarioToUsuarioResponse(optionalUsuario.get());
     }
 }

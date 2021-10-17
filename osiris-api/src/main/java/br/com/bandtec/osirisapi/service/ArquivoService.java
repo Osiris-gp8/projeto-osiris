@@ -14,10 +14,13 @@ import br.com.bandtec.osirisapi.layout.LayoutEvento;
 import br.com.bandtec.osirisapi.layout.LayoutGenerico;
 import br.com.bandtec.osirisapi.repository.CupomRepository;
 import br.com.bandtec.osirisapi.repository.EventoRepository;
+import br.com.bandtec.osirisapi.utils.BucketService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -36,6 +39,8 @@ public class ArquivoService {
 
     private final LayoutCupomToCupom layoutCupomToCupom;
     private final CupomToLayoutCupom cupomToLayoutCupom;
+
+    private final BucketService bucket;
 
     private final UserInfo userInfo;
 
@@ -107,7 +112,7 @@ public class ArquivoService {
 
     private List<LayoutEvento> getLayoutEventosByDataInclusaoBetween(LocalDate dataInicial, LocalDate dataFinal){
 
-        Ecommerce logedEcommerce = userInfo.getEcommerce();
+        Ecommerce logedEcommerce = userInfo.getUsuario().getEcommerce();
 
         List<Evento> eventos = eventoRepository
                 .findByDataInclusaoBetweenAndEcommerceEquals(dataInicial, dataFinal, logedEcommerce);
@@ -118,7 +123,7 @@ public class ArquivoService {
     }
 
     private List<LayoutCupom> getLayoutCupomsByDataEmitidoBetween(LocalDate dataInicial, LocalDate dataFinal){
-        Ecommerce logedEcommerce = userInfo.getEcommerce();
+        Ecommerce logedEcommerce = userInfo.getUsuario().getEcommerce();
 
         List<Cupom> cupoms = cupomRepository.findByDataEmitidoBetweenAndEcommerceEquals(
                 dataInicial.atStartOfDay(), dataFinal.atStartOfDay(), logedEcommerce);
@@ -132,11 +137,11 @@ public class ArquivoService {
         String corpo = "";
 
         for (LayoutEvento layoutEvento : layoutEventoList) {
-            corpo += layoutEvento.toTXT();
+            corpo += layoutEvento.toTXT() + System.lineSeparator();
         }
 
         for (LayoutCupom layoutCupom: layoutCupomList) {
-            corpo += layoutCupom.toTXT();
+            corpo += layoutCupom.toTXT() + System.lineSeparator();
         }
 
         return corpo;
@@ -153,10 +158,15 @@ public class ArquivoService {
 
     }
 
-    public void importarTXT(String conteudo){
+
+    public void importarTXT(BufferedReader conteudo){
         LayoutGenerico layoutGenerico = new LayoutGenerico();
 
-        layoutGenerico.fromTXT(conteudo);
+        try {
+            layoutGenerico.importarLinhas(conteudo);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         if (layoutGenerico.hasEventoLayout()){
             eventoRepository.saveAll(
