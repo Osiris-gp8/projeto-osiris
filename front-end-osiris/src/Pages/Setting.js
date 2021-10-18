@@ -4,7 +4,7 @@ import MenuNovo from '../Components/MenuNovo/MenuNovo'
 import Input from '../Components/Input/Input'
 import Icon from '@iconify/react'
 import pencilIcon from '@iconify-icons/akar-icons/pencil';
-import {ButtonNoLink, ButtonForm} from '../Components/Button'
+import {Button, ButtonNoLink, ButtonForm} from '../Components/Button'
 import api from '../api';
 import { ToastContainerTop } from '../Components/Toast';
 import { toast } from 'react-toastify';
@@ -194,6 +194,14 @@ export default () =>{
                         </form>
                         
                     </div>
+
+                    <Button
+                        uri="/addCollaborator"
+                        type="btn-preenchido"
+                        style={{width: "30%"}}
+                        >
+                        Adicionar Colaborador
+                    </Button>
 
                     {/* <div className="user-config">
                         <div className="configs-head">
