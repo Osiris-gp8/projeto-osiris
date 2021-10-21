@@ -15,12 +15,15 @@ import br.com.bandtec.osirisapi.layout.LayoutGenerico;
 import br.com.bandtec.osirisapi.repository.CupomRepository;
 import br.com.bandtec.osirisapi.repository.EventoRepository;
 import br.com.bandtec.osirisapi.utils.BucketService;
+import br.com.bandtec.osirisapi.utils.hashing.ListaLigada;
+import com.amazonaws.services.s3.model.S3Object;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.net.URI;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -180,4 +183,11 @@ public class ArquivoService {
 
     }
 
+    public URI buscarArquivoS3(ListaLigada<String> listaLigada) {
+
+        String path = (String) listaLigada.getHead().getNext().getInfo();
+
+        return bucket.getFile(path).getObjectContent().getHttpRequest().getURI();
+
+    }
 }
