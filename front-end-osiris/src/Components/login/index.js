@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 
 import api from '../../api';
 
-export default () => {
+const Component = () => {
 
     const history = useHistory();
     const setSenha = useParams();
@@ -22,7 +22,7 @@ export default () => {
         if(setSenha.setSenha){
             toast.success("Senha trocada com sucesso.")
         }
-    }, []);
+    });
 
     const [usuarioData, setUsuarioData] = useState({
         "login": "",
@@ -37,7 +37,7 @@ export default () => {
 
     function onSubmit(e){
         e.preventDefault()
-        if(usuarioData.login == '' || usuarioData.senha == ''){
+        if(usuarioData.login === '' || usuarioData.senha === ''){
             toast.error("Campo de e-mail ou senha está vazio")
             return;
         }
@@ -51,8 +51,8 @@ export default () => {
             sessionStorage.setItem("usuario", JSON.stringify(response.data.usuario));
             history.push('/home');
         }).catch( error => {
-            if(error.response != undefined){
-                if(error.response.status == 400){
+            if(error.response !== undefined){
+                if(error.response.status === 400){
                     toast.error("Usuário ou senha inválidos.")
                 }
             }else{
@@ -91,3 +91,5 @@ export default () => {
     </Container>
     );
 };
+
+export default Component;
