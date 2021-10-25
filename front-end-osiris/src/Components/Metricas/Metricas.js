@@ -1,10 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Icon from '@iconify/react';
 
 function Metricas(props){
-    const color = {
-        color: props.color
-    }
+
+    const [color,setColor] = useState({});
+
+    useEffect(() =>{
+        let percentValorToMeta = (props.valor * 100)/ props.meta;
+        let color = "#F07474";
+
+        if(percentValorToMeta > 46 && percentValorToMeta <= 80){
+            color = "#F0E49E"
+        }
+        if(percentValorToMeta > 81){
+            color = "#5EBD84"
+        }
+
+        setColor({
+            color: color
+        })
+
+    },  [props.valor, props.meta])
+
     return(
         <div className="metrica">
             <span className="titulo-metrica">{props.metrica}</span>

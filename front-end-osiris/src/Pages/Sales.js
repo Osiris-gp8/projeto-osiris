@@ -3,15 +3,15 @@ import MenuNovo from '../Components/MenuNovo/MenuNovo'
 import ChartLine from '../Components/ChartLine/ChartLine'
 import { useHistory } from 'react-router-dom';
 
-export default () =>{ 
+const Component = () => {
 
     const history = useHistory();
-    useEffect(() =>{
-        if(!sessionStorage.getItem("token")){
+    useEffect(() => {
+        if (!sessionStorage.getItem("token")) {
             return history.push('/login');
         }
-    }, []);
-    
+    }, [history]);
+
     const cores = ["#666BC2", "#8CA8D1", "#B3C8E1", "#D9E2F0", "#ECF0F7"];
     const dados = [
         ['Acessos', 'Vendas'],
@@ -31,8 +31,8 @@ export default () =>{
 
     return (
         <>
-            <MenuNovo/>
-            <div className="chart-area" style={{marginTop: "1.5%"}}>
+            <MenuNovo />
+            <div className="chart-area" style={{ marginTop: "1.5%" }}>
                 <ChartLine
                     width="95%"
                     height="30vh"
@@ -40,9 +40,9 @@ export default () =>{
                     title="Relação Acesso x Vendas"
                     colors={cores}
                     titleX="Acessos"
-                    titleY="Vendas"
-                />
+                    titleY="Vendas" />
             </div>
         </>
-    )
-}
+    );
+};
+export default Component;
