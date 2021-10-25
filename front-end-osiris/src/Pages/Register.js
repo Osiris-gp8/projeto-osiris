@@ -1,6 +1,7 @@
 import Register from "../Components/register";
-export default () =>{ 
-return (
-    <Register/>
-)
-}
+const Component = () => {
+    return (
+        <Register />
+    );
+};
+export default Component

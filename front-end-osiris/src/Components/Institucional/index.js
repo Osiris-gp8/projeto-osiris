@@ -17,7 +17,7 @@ import Icon2 from '../../Images/icon-instagram.svg';
 import Icon3 from '../../Images/icon-twitter.svg';
 import Logo from '../../Images/logo-osiris.svg';
 
-export default () => {
+const Component = () => {
 
     const btnContent = {
         marginTop: '5%'
@@ -34,8 +34,8 @@ export default () => {
                         </div>
                         <ButtonNoLink section="#section2" type="btn-preenchido" side="left" style={btnContent}>Começe agora</ButtonNoLink>
                     </div>
-                    <img src={Analytic}/>
-                    <img src={Blob1} id="blob1" className="blob"/>
+                    <img src={Analytic} alt="Pessoa apontando para tela de computador"/>
+                    <img src={Blob1} alt="" id="blob1" className="blob"/>
                 </section>
             </div>
 
@@ -44,8 +44,6 @@ export default () => {
                     <div className="container">
                         <div className="content">
                             Com a nossa solução, sua loja melhora o comportamento e o jeito de vender!
-                            {/* <Button uri="#" side="right" style={btnContent}>Saiba mais</Button> */}
-                            {/* <a href="#section3" className="btn link right" style={btnContent}>Saiba mais</a> */}
                             <ButtonNoLink section="#section3" side="right" style={btnContent}>Saiba mais</ButtonNoLink>
                         </div>
                     </div>
@@ -60,8 +58,8 @@ export default () => {
                         <Item img={iconShopping} txt="Saiba qual o perfil de comprador de seus clientes." id="item3"/>
                     </div>
                 </div>
-                <img src={Blob2} id="blob2" className="blob"/>
-                <img src={Blob3} id="blob3" className="blob"/>
+                <img src={Blob2} alt="" id="blob2" className="blob"/>
+                <img src={Blob3} alt="" id="blob3" className="blob"/>
             </section>
 
             <section className="section-4 min-section">
@@ -98,7 +96,7 @@ export default () => {
                         Entre em contato com a gente, mande sugestões ou seu objetivo com o nosso sistema.
                     </div>
                 </div>
-                <img src={Blob4} id="blob4" className="blob"/>
+                <img src={Blob4} id="blob4" alt="" className="blob"/>
             </section>
 
             <section className="section-6">
@@ -137,12 +135,12 @@ export default () => {
 
                     <div className="redes-sociais">
                         <div className="icons">
-                            <img src={Icon1}/>
-                            <img src={Icon2}/>
-                            <img src={Icon3}/>
+                            <img src={Icon1} alt="Logo do Facebook"/>
+                            <img src={Icon2} alt="Logo do Instagram"/>
+                            <img src={Icon3} alt="Logo do Twitter"/>
                         </div>
                         <div className="logo">
-                            <img src={Logo}/>
+                            <img src={Logo} alt="Logo Menor roxa escrito Osiris"/>
                         </div>
                     </div>
                 </div>
@@ -154,3 +152,5 @@ export default () => {
         </>
     );
 };
+
+export default Component;

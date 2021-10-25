@@ -1,15 +1,14 @@
 import {React, useEffect, useState} from 'react'
 import { useHistory } from 'react-router-dom'
 import MenuNovo from '../Components/MenuNovo/MenuNovo'
-import Input from '../Components/Input/Input'
 import Icon from '@iconify/react'
 import pencilIcon from '@iconify-icons/akar-icons/pencil';
-import {ButtonNoLink, ButtonForm} from '../Components/Button'
+import {ButtonForm} from '../Components/Button'
 import api from '../api';
 import { ToastContainerTop } from '../Components/Toast';
 import { toast } from 'react-toastify';
 
-export default () =>{ 
+const Component = () =>{ 
 
     const history = useHistory();
 
@@ -53,7 +52,7 @@ export default () =>{
         setHeader({"Authorization": `${sessionStorage.getItem("tipo")} ${sessionStorage.getItem("token")}`})
         setUser(JSON.parse(sessionStorage.getItem("usuario")));
         setEcommerce(JSON.parse(sessionStorage.getItem("usuario")).ecommerce);
-    }, []);
+    }, [history]);
 
     function handleUser(e){
         const newUser = {...user};
@@ -225,3 +224,5 @@ export default () =>{
 
     );
 }
+
+export default Component;

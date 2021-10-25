@@ -1,6 +1,6 @@
 import { BoxUpload, Container, BoxDownload, BoxFile, Title, Subtitle } from './style'
 import DropZone from '../dragzone'
-import { useEffect, useState } from 'react'
+import {useState} from 'react'
 import api from '../../api'
 import InputPicker from '../InputPicker'
 import { ButtonForm as Button} from '../Button' 
@@ -18,9 +18,9 @@ function UploadFiles(props) {
     "conteudoDoArquivo": "",
     "url": null,
   });
-  const [header, setHeader] = useState({
+  const header = {
     "Authorization": `${sessionStorage.getItem("tipo")} ${sessionStorage.getItem("token")}`
-  });
+  };
 
   const [exportacao, setExportacao] = useState({
     "dataInicio":"",
@@ -112,9 +112,6 @@ function UploadFiles(props) {
     })
   }
 
-  useEffect(() => {
-    console.log(`Você clicou ${file.uploaded} vezes`);
-  }, [uploaded]);
 
   const handleChange = (e) =>{
     const newParameters = exportacao;
