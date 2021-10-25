@@ -9,6 +9,5 @@ import java.time.LocalDateTime;
 public class FileS3Request {
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-
     private LocalDateTime data;
 }

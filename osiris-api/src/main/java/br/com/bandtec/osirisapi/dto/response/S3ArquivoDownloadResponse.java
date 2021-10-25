@@ -9,5 +9,5 @@ import java.net.URI;
 @Builder
 public class S3ArquivoDownloadResponse {
 
-    private URI uri;
+    private URI downloadURI;
 }

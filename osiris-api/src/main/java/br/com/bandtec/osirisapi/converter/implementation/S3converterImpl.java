@@ -12,7 +12,7 @@ public class S3converterImpl implements S3converter {
     @Override
     public S3ArquivoDownloadResponse uriToS3ArquivoDownloadResponse(URI uri) {
         return S3ArquivoDownloadResponse.builder()
-                .uri(uri)
+                .downloadURI(uri)
                 .build();
     }
 }

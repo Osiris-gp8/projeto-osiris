@@ -73,9 +73,10 @@ public class ArquivoController {
     @GetMapping("/file-s3")
     public ResponseEntity getFileFromS3(FileS3Request request){
 
-        S3ArquivoDownloadResponse s3ArquivoDownloadResponse
-                = s3converter.uriToS3ArquivoDownloadResponse(
+        S3ArquivoDownloadResponse s3ArquivoDownloadResponse = s3converter
+                .uriToS3ArquivoDownloadResponse(
                         arquivoService.buscarArquivoS3(hashTable.buscar(request.getData())));
+
         return ResponseEntity.status(200).body(s3ArquivoDownloadResponse);
     }
 
