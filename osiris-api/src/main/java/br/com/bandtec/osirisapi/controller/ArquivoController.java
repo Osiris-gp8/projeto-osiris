@@ -4,7 +4,6 @@ import br.com.bandtec.osirisapi.converter.S3converter;
 import br.com.bandtec.osirisapi.dto.request.ExportacaoRequest;
 import br.com.bandtec.osirisapi.dto.request.FileS3Request;
 import br.com.bandtec.osirisapi.dto.response.S3ArquivoDownloadResponse;
-import br.com.bandtec.osirisapi.repository.EventoRepository;
 import br.com.bandtec.osirisapi.service.ArquivoService;
 import br.com.bandtec.osirisapi.utils.hashing.HashTable;
 import lombok.AllArgsConstructor;
@@ -18,6 +17,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.List;
 
 @RestController
 @RequestMapping("/arquivos")
@@ -73,8 +73,8 @@ public class ArquivoController {
     @GetMapping("/file-s3")
     public ResponseEntity getFileFromS3(FileS3Request request){
 
-        S3ArquivoDownloadResponse s3ArquivoDownloadResponse = s3converter
-                .uriToS3ArquivoDownloadResponse(
+        List<S3ArquivoDownloadResponse> s3ArquivoDownloadResponse = s3converter
+                .S3ObjectsToS3ArquivoDownloadResponse(
                         arquivoService.buscarArquivoS3(hashTable.buscar(request.getData())));
 
         return ResponseEntity.status(200).body(s3ArquivoDownloadResponse);

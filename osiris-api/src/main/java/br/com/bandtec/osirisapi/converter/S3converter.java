@@ -1,10 +1,11 @@
 package br.com.bandtec.osirisapi.converter;
 
 import br.com.bandtec.osirisapi.dto.response.S3ArquivoDownloadResponse;
+import com.amazonaws.services.s3.model.S3Object;
 
-import java.net.URI;
+import java.util.List;
 
 public interface S3converter {
 
-    S3ArquivoDownloadResponse uriToS3ArquivoDownloadResponse(URI uri);
+    List<S3ArquivoDownloadResponse> S3ObjectsToS3ArquivoDownloadResponse(List<S3Object> s3Object);
 }
