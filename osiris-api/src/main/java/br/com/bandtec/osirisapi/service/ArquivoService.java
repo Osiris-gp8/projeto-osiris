@@ -15,6 +15,9 @@ import br.com.bandtec.osirisapi.layout.LayoutGenerico;
 import br.com.bandtec.osirisapi.repository.CupomRepository;
 import br.com.bandtec.osirisapi.repository.EventoRepository;
 import br.com.bandtec.osirisapi.utils.BucketService;
+import br.com.bandtec.osirisapi.utils.hashing.ListaLigada;
+import br.com.bandtec.osirisapi.utils.hashing.Node;
+import com.amazonaws.services.s3.model.S3Object;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -25,6 +28,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -180,4 +184,38 @@ public class ArquivoService {
 
     }
 
+    public List<S3Object> buscarArquivoS3(ListaLigada<String> listaLigada) {
+
+        List<String> paths = getPathsFromListaLigada(listaLigada);
+        List<S3Object> s3Objects = new ArrayList<>();
+        for (String path:
+             paths) {
+            s3Objects.add(bucket.getFile(path));
+        }
+
+        return s3Objects;
+
+    }
+
+    private List<String> getPathsFromListaLigada(ListaLigada<String> listaLigada){
+
+        Node head = listaLigada.getHead();
+        Boolean hasNext = head.getNext() != null;
+        Node actual = null;
+
+        List<String> paths = new ArrayList<>();
+        if (hasNext){
+            actual = head.getNext();
+        }
+        do {
+            paths.add((String) actual.getInfo());
+            if (Objects.isNull(actual.getNext())){
+                hasNext = false;
+            }else {
+                actual = actual.getNext();
+            }
+        }while (hasNext);
+
+        return paths;
+    }
 }
