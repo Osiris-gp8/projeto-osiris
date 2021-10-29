@@ -1,7 +1,9 @@
 import Dropzone from 'react-dropzone'
 import { DropContainer, UploadMessage } from './style'
 
-const Component = (props) => {
+
+
+export default (props) => {
     
     let isUploded = props.uploaded
     const renderDragMessage = (isDragActive, isDragReject) => {
@@ -44,5 +46,3 @@ const Component = (props) => {
 
         </Dropzone>)
 }
-
-export default Component;

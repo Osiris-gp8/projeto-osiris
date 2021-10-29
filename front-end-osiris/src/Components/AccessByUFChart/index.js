@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useHistory } from "react-router";
 import api from "../../api";
 import ChartBar from "../ChartBar/ChartBar"
 
@@ -6,7 +7,9 @@ export function AccessByUFChart(){
 
 
     const [dados, setDados] = useState([]);
-    const header ={"Authorization": `${sessionStorage.getItem("tipo")} ${sessionStorage.getItem("token")}`}
+    const [header, setHeader] = useState({
+        "Authorization": `${sessionStorage.getItem("tipo")} ${sessionStorage.getItem("token")}`
+    });
 
     useEffect(() => {
 
@@ -34,7 +37,7 @@ export function AccessByUFChart(){
 
         getDados()
 
-    })
+    }, [])
 
     return(
         <>
