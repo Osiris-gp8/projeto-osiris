@@ -1,8 +1,9 @@
+import { useState } from "react"
 import {DateContainer} from "./style"
 
 const DatePicker = (props) => {
 
-    const options = ["Ambos", "Vendas", "Cupom"]
+    const [options, setOptions] = useState(["Ambos", "Vendas", "Cupom"])
 
     const insertOptions = (value, index) => (<option value={index}>{value}</option>)
     

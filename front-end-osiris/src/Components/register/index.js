@@ -7,7 +7,8 @@ import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import api from '../../api'
 
-const Component = () => {
+
+export default () => {
     const history = useHistory();
 
     const [next, setNext]= useState(false);
@@ -66,7 +67,7 @@ const Component = () => {
     function changeForm(e){
         receberEcommerce(cnpj, nomeEcommerce)
         console.log(next);
-        setNext(e.target.id !== 'first')
+        setNext(e.target.id != 'first')
         console.log(next);
     }
 
@@ -143,6 +144,3 @@ const Component = () => {
         </Container>
     );
 };
-
-
-export default Component;
