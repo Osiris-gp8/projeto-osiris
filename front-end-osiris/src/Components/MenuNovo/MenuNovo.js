@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import {Item, ItemSair} from './Item/Item';
 import bxHome from '@iconify-icons/bx/bx-home';
+import lineChartOutlined from '@iconify-icons/ant-design/line-chart-outlined';
+import arrowUpCircleFill from '@iconify-icons/bi/arrow-up-circle-fill';
 import fileIcon from '@iconify-icons/akar-icons/file';
 import personIcon from '@iconify-icons/akar-icons/person';
 import signOut from '@iconify-icons/akar-icons/sign-out';
 import peopleGroup from '@iconify-icons/akar-icons/people-group';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import api from '../../api';
 
 function MenuNovo(){
     const history = useHistory();

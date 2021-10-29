@@ -1,11 +1,10 @@
 import React from 'react';
 
-const Component = (props) => {
-    return (
+export default (props) => {
+    return(
         <div className="item" id={props.id}>
-            <img src={props.img} alt=" " />
+            <img src={props.img}/>
             <span>{props.txt}</span>
         </div>
     );
-};
-export default Component
+}
