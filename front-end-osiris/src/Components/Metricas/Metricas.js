@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Icon from '@iconify/react';
 
 function Metricas(props){
-
     const [color,setColor] = useState({});
 
     useEffect(() =>{
@@ -21,7 +20,6 @@ function Metricas(props){
         })
 
     },  [props.valor, props.meta])
-
     return(
         <div className="metrica">
             <span className="titulo-metrica">{props.metrica}</span>

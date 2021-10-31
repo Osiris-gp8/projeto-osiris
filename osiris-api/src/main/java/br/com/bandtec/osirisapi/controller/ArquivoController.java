@@ -1,7 +1,9 @@
 package br.com.bandtec.osirisapi.controller;
 
+import br.com.bandtec.osirisapi.converter.S3converter;
 import br.com.bandtec.osirisapi.dto.request.ExportacaoRequest;
-import br.com.bandtec.osirisapi.repository.EventoRepository;
+import br.com.bandtec.osirisapi.dto.request.FileS3Request;
+import br.com.bandtec.osirisapi.dto.response.S3ArquivoDownloadResponse;
 import br.com.bandtec.osirisapi.service.ArquivoService;
 import br.com.bandtec.osirisapi.utils.hashing.HashTable;
 import lombok.AllArgsConstructor;
@@ -15,6 +17,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.List;
 
 @RestController
 @RequestMapping("/arquivos")
@@ -22,7 +25,7 @@ import java.io.InputStreamReader;
 public class ArquivoController {
 
     private final ArquivoService arquivoService;
-    private final EventoRepository eventoRepository;
+    private final S3converter s3converter;
     private final HashTable hashTable;
 
     @GetMapping(value = "/relatorio-csv", produces = "text/csv")
@@ -65,6 +68,16 @@ public class ArquivoController {
         hashTable.insere(arquivo);
 
         return ResponseEntity.status(201).build();
+    }
+
+    @GetMapping("/file-s3")
+    public ResponseEntity getFileFromS3(FileS3Request request){
+
+        List<S3ArquivoDownloadResponse> s3ArquivoDownloadResponse = s3converter
+                .S3ObjectsToS3ArquivoDownloadResponse(
+                        arquivoService.buscarArquivoS3(hashTable.buscar(request.getData())));
+
+        return ResponseEntity.status(200).body(s3ArquivoDownloadResponse);
     }
 
 }
