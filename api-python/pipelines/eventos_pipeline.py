@@ -41,6 +41,13 @@ class EventosPipeline(Pipeline):
         )
         
         eventos = self._format_eventos(df)
+
+        produtos = eventos["nome_produto"].drop_duplicates()
+        nomes_aleatorios = pd.DataFrame()
+        nomes = produtos.join(nomes_aleatorios, on="")
+        eventos.insert(column=nomes)
+
+
         return eventos
     
     def _format_eventos(self, df):
