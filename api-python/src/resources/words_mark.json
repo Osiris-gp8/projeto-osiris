@@ -1,0 +1,37 @@
+{
+  "nike": [
+    { "id_categoria": 1, "nome": "Mercurial" },
+    { "id_categoria": 0, "nome": "Legend Essencial 2" },
+    { "id_categoria": 1, "nome": "Court Royale" },
+    { "id_categoria": 1, "nome": "Phantom Venom" },
+    { "id_categoria": 5, "nome": "Revolution 5" },
+    { "id_categoria": 5, "nome": "Revolution 4" }
+  ],
+  "adidas": [
+    { "id_categoria": 0, "nome": "Court Vision 3" },
+    { "id_categoria": 5, "nome": "Fluidflow 2.0" },
+    { "id_categoria": 0, "nome": "NMD" },
+    { "id_categoria": 0, "nome": "Superstars" },
+    { "id_categoria": 5, "nome": "Ultimashow" }
+  ],
+  "oakley": [
+    { "id_categoria": 4, "nome": "Rest Mark II" },
+    { "id_categoria": 4, "nome": "Malibu" },
+    { "id_categoria": 0, "nome": "Aryzon" }
+  ],
+  "versace": [
+    { "id_categoria": 0, "nome": "Trigeca" },
+    { "id_categoria": 0, "nome": "Chain Reaction" }
+  ],
+  "lacoste": [
+    { "id_categoria": 3, "nome": "LCR BRZ" },
+    { "id_categoria": 3, "nome": "Graduate" }
+  ],
+  "puma": [
+    { "id_categoria": 0, "nome": "Smash V2" },
+    { "id_categoria": 0, "nome": "Rs-Z" },
+    { "id_categoria": 0, "nome": "Carina Lux" },
+    { "id_categoria": 0, "nome": "Rs-X" },
+    { "id_categoria": 5, "nome": "Rs-Fast Tech" }
+  ]
+}

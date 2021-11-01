@@ -13,9 +13,9 @@ class LocationBR():
         return self.data
 
     def __read_file(self):
-        if(not os.path.exists(f'./{self.file_name}')):
+        if(not os.path.exists(f'{self.file_name}')):
             return self.__write_file()
-        return pd.read_json(f'./{self.file_name}', encoding='UTF-8')
+        return pd.read_json(f'{self.file_name}', encoding='UTF-8')
 
     def __write_file(self):
         data = json.loads(
@@ -23,6 +23,8 @@ class LocationBR():
             )
         data = self.__process_data(data)
         frame = pd.DataFrame(data=data)
+        if not os.path.exists(self.file_name):
+            os.mkdir('./temp')
         frame.to_json(self.file_name)
         return frame
 
