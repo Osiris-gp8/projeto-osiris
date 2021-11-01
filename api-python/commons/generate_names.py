@@ -7,14 +7,9 @@ class GenerateNames():
 
         self.marks = ['nike', "adidas", ]
 
-    def __process_data(self, data) -> str:
-        # mark = random.choice(self.marks)
-        # list_names = self.names[mark].split('|')
-        # name = random.choice(list_names)
-        # return f'{mark.capitalize()} {name}'
-        for mark in data:
-            for value in data[mark]:
-                print(f'{mark} {value}') 
+    def __process_data(self, data:dict, mark : str) -> tuple:
+        value = random.choice(data[mark]);
+        return value['id_categoria'] , f'{mark} {value["nome"]}'
 
 
     def __read_file(self) -> str:
@@ -23,6 +18,5 @@ class GenerateNames():
             return file_data
             
 
-    def generate_name(self) -> str:
-        return self.__process_data(self.__read_file())
-        # return self.__read_file()
+    def generate_name(self, mark:str) -> str:
+        return self.__process_data(self.__read_file(), mark)
