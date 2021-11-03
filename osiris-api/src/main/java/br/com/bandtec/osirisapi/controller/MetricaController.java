@@ -38,9 +38,9 @@ public class MetricaController {
     }
 
     @GetMapping("/ranque-categoria")
-    public ResponseEntity<List<RanqueCategoriaResponse>> getRanqueCategoria() {
+    public ResponseEntity<List<RanqueCategoriaResponse>> getRanqueCategoria(@Valid FiltroDataRequest filtroDataRequest) {
 
-        return ResponseEntity.status(200).body(metricaService.getRanqueCategoriaView());
+        return ResponseEntity.status(200).body(metricaService.getRanqueCategoriaView(filtroDataRequest));
     }
 
     @GetMapping("/mais-usado")

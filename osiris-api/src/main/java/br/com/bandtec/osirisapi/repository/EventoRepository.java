@@ -22,9 +22,10 @@ public interface EventoRepository extends JpaRepository<Evento, Integer> {
 
     @Query(value = "select e.nome_categoria as categoria, count(*) as quantidade from evento e, ecommerce ec " +
             "where e.ecommerce_id_ecommerce = ?1 and e.ecommerce_id_ecommerce = ec.id_ecommerce " +
+            "between ?2 and ?3" +
             "group by e.nome_categoria order by quantidade " +
             "desc limit 5", nativeQuery = true)
-    List<RanqueCategoriaView> ranqueNomeCategoriaView(Integer idEcommerce);
+    List<RanqueCategoriaView> ranqueNomeCategoriaView(Integer idEcommerce, LocalDate inicio, LocalDate fim);
 
     @Query(value = "select * from evento where id_consumidor_ecommerce = ?", nativeQuery = true)
     List<Evento> findAllByIdConsumidorEcommerce(Integer consumidor);
