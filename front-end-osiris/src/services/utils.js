@@ -18,7 +18,6 @@ export function getIntervalSixMonths(){
     const seisMeses = 6 * 30 * 24 * 60 * 60 * 1000
     const dataInicial = new Date(Math.abs( new Date() -  seisMeses))
     const dataFinal = new Date()
-
     return { 
         dataInicio: formatDate(dataInicial), 
         dataFinal: formatDate(dataFinal) 
@@ -27,10 +26,10 @@ export function getIntervalSixMonths(){
 
 function formatDate(date = new Date()){
     let year
-    let month
+    let month = date.getMonth() + 1;
     let day
     day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate()
-    month = date.getMonth() < 10 ? `0${date.getMonth()}` : date.getMonth()
+    month = month< 10 ? `0${month}` : month
     year = date.getFullYear()
     return `${year}-${month}-${day}`
 }
