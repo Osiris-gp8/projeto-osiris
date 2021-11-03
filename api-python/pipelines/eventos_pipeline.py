@@ -5,6 +5,7 @@ from pipelines.base_pipeline import Pipeline
 from commons.db_manager import DbManager
 import numpy as np
 from datetime import datetime
+from commons.generate_names import GenerateNames
 
 class EventosPipeline(Pipeline):
     def __init__(self, db: DbManager, output_database: DbManager):
@@ -39,8 +40,10 @@ class EventosPipeline(Pipeline):
                 'Terceira Faixa'
             )
         )
-        
+        generate_names = GenerateNames()
+        df.loc[:,['categoria','nome']] = [generate_names.generate_name(mark.lower()) for mark in df['nome']]
         eventos = self._format_eventos(df)
+
         return eventos
     
     def _format_eventos(self, df):
