@@ -22,7 +22,7 @@ public class BucketService {
 
     public BucketService() {
         this.s3 = AmazonS3ClientBuilder.standard().withRegion(Regions.US_EAST_1).build();
-        this.bucketName = "osiris-arquivos";
+        this.bucketName = System.getenv("BUCKET_NAME");
     }
 
     public void uploadFile(String path, MultipartFile multipartFile) throws IOException {

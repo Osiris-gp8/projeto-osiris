@@ -19,3 +19,5 @@ services:
     image: osiris/frontend
     networks:
       - osiris-network
+    env-file:
+      - react.env
