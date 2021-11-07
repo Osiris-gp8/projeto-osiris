@@ -10,10 +10,12 @@ import br.com.bandtec.osirisapi.dto.barChart.EventoAcessoChartResponse;
 import br.com.bandtec.osirisapi.dto.barChart.EventoDto;
 import br.com.bandtec.osirisapi.dto.response.dash.AcessoUfResponse;
 import br.com.bandtec.osirisapi.dto.response.dash.RanqueCategoriaResponse;
+import br.com.bandtec.osirisapi.dto.response.dash.RanqueProdutoResponse;
 import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.repository.*;
 import br.com.bandtec.osirisapi.views.CupomMaisUsadoView;
 import br.com.bandtec.osirisapi.views.RanqueCategoriaView;
+import br.com.bandtec.osirisapi.views.RanqueProdutoView;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -51,6 +53,15 @@ public class MetricaService {
         List<RanqueCategoriaView> nomes = eventoRepository.ranqueNomeCategoriaView(ecommerce.getIdEcommerce());
 
         return dashConverter.integerListToRanqueCategoriaResponse(ranques, nomes);
+    }
+
+
+    public List<RanqueProdutoResponse> getRanqueProdutoView(){
+
+        Ecommerce ecommerce = userInfo.getUsuario().getEcommerce();
+        List<RanqueProdutoView> nomes = eventoRepository.ranqueProdutoView(ecommerce.getIdEcommerce());
+
+        return dashConverter.ranqueCategoriaViewToRanqueCategoriaViewResponse(nomes);
     }
 
     public List<CupomMaisUsadoView> getCupomMaisUsadoView(){

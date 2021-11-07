@@ -4,7 +4,9 @@ import br.com.bandtec.osirisapi.converter.DashConverter;
 import br.com.bandtec.osirisapi.domain.Evento;
 import br.com.bandtec.osirisapi.dto.response.dash.AcessosVendasDiasResponse;
 import br.com.bandtec.osirisapi.dto.response.dash.RanqueCategoriaResponse;
+import br.com.bandtec.osirisapi.dto.response.dash.RanqueProdutoResponse;
 import br.com.bandtec.osirisapi.views.RanqueCategoriaView;
+import br.com.bandtec.osirisapi.views.RanqueProdutoView;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -40,6 +42,21 @@ public class DashConverterImplementation implements DashConverter {
         }
 
         return ranqueCategoriaResponseList;
+    }
+
+    @Override
+    public List<RanqueProdutoResponse> ranqueCategoriaViewToRanqueCategoriaViewResponse(List<RanqueProdutoView> list) {
+        List<RanqueProdutoResponse> ranqueProdutoResponseList = new ArrayList<>(5);
+        for(int i = 0; i < list.size(); i++){
+            ranqueProdutoResponseList.add(
+                    RanqueProdutoResponse.builder()
+                            .posisao(String.valueOf(i + 1))
+                            .produto(list.get(i).getNome())
+                            .quantidade(list.get(i).getQuantidades())
+                            .build()
+            );
+        }
+        return ranqueProdutoResponseList;
     }
 
     private List<String> getPosicoes(){
