@@ -4,6 +4,7 @@ import br.com.bandtec.osirisapi.dto.barChart.EventoAcessoChartResponse;
 import br.com.bandtec.osirisapi.dto.request.FiltroDataRequest;
 import br.com.bandtec.osirisapi.dto.response.dash.AcessoUfResponse;
 import br.com.bandtec.osirisapi.dto.response.dash.RanqueCategoriaResponse;
+import br.com.bandtec.osirisapi.dto.response.dash.RanqueProdutoResponse;
 import br.com.bandtec.osirisapi.service.MetricaService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -41,6 +42,12 @@ public class MetricaController {
     public ResponseEntity<List<RanqueCategoriaResponse>> getRanqueCategoria() {
 
         return ResponseEntity.status(200).body(metricaService.getRanqueCategoriaView());
+    }
+
+    @GetMapping("/ranque-produtos")
+    public ResponseEntity<List<RanqueProdutoResponse>> getRanqueProdutos() {
+
+        return ResponseEntity.status(200).body(metricaService.getRanqueProdutoView());
     }
 
     @GetMapping("/mais-usado")
