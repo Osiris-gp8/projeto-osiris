@@ -30,7 +30,7 @@ export default () =>{
             return history.push('/login');
         }
 
-        setCalcados(getRankingSell("/metricas/ranque-categoria", header))
+        setCalcados(getRankingSell("/metricas/ranque-produtos", header))
         
         
         const eventos = (await getAllEvents(header));
