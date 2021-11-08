@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from 'react';
+import { React, useEffect, useState, useMemo } from 'react';
 import MenuNovo from '../Components/MenuNovo/MenuNovo';
 import Metricas from '../Components/Metricas/Metricas';
 import arrowUpCircleFill from '@iconify-icons/bi/arrow-up-circle-fill';
@@ -7,11 +7,17 @@ import ChartBar from '../Components/ChartBar/ChartBar';
 import ChartPie from '../Components/ChartPie/ChartPie';
 import { useHistory } from 'react-router-dom';
 import api from '../api';
-import {getDataWeek,getAllEvents,getCountUser, getCountAccess} from '../services/textData'
+import {getAllEvents,getCountUser, getCountAccess} from '../services/textData'
 import {getRankingSell, getCountSell} from '../services/dashData'
-import {getIntervalSixMonths} from '../services/utils'
+import {getIntervalMonthDays, getIntervalSixMonths} from '../services/utils'
 
-export default () =>{ 
+const Dashboard = () =>{ 
+
+    const [loading, setLoading] = useState({
+        clientes: true,
+        vendas: true,
+        acessos: true
+    });
 
     const history = useHistory();
     const [calcados, setCalcados] = useState([]);
@@ -21,67 +27,86 @@ export default () =>{
     const [eventos, setEventos] = useState(0);
     const [countUsers, setCountUsers] = useState(0);
     const [countAccess, setCountAccess] = useState(0);
-    const [header, setHeader] = useState({
-        "Authorization": `${sessionStorage.getItem("tipo")} ${sessionStorage.getItem("token")}`
-    });
+    const header = useMemo(() => {
+        return {"Authorization": `${sessionStorage.getItem("tipo")} ${sessionStorage.getItem("token")}`}
+    }, []);
+    const translate_day = useMemo(() => {
+        return {
+            'MONDAY': 'Segunda',
+            'TUESDAY': 'Terça',
+            'WEDNESDAY':'Quarta',
+            'THURSDAY':'Quinta',
+            'FRIDAY':'Sexta',
+            'SATURDAY':'Sabádo',
+            'SUNDAY':'Domingo',
+        };
+    }, []); 
 
-    useEffect(async () =>{
+    useEffect(() =>{
         if(!sessionStorage.getItem("token")){
             return history.push('/login');
         }
 
         setCalcados(getRankingSell("/metricas/ranque-categoria", header))
         
-        
-        const eventos = (await getAllEvents(header));
-        setEventos(eventos.data.length);
-        
-        
+        getAllEvents(header).then(
+            data => setEventos(data.data.length)
+        );
+    }, [header, history]);
 
-    }, []);
-
-    useEffect(async() => {
-        const dateNow = new Date()
-        const dateFormat = `${dateNow.getFullYear()}-${dateNow.getMonth() + 1}-${dateNow.getDate()}`
-        const intervalDays = [dateFormat, `2021-${dateNow.getMonth() + 1}-01`]
-        async function getMetas(){
-            const resposta = await api.get(`/metas?dataFinal=${intervalDays[0]}&dataInicio=${intervalDays[1]}`,
-             {headers: header});
-            setMetas(resposta.data);
-            console.log(resposta.data);
+    useEffect(() => {
+        function getMetas(){
+            // const interval = getIntervalMonthDays();
+            const interval = ['2021-07-01', '2021-07-30'];
+            return api.get('/metas', {
+                headers: header,
+                params: { dataInicio: interval[0], dataFinal: interval[1] }
+            });
         }
-        getMetas();
-        setCupons(await getCountSell(header))
-        setCountUsers(await getCountUser(header))
-        setCountAccess(await getCountAccess(header))
-    }, []);
+        getMetas()
+            .then(resposta => {
+                setLoading({
+                    vendas: false, clientes: false, acessos: false
+                })
+                setMetas(resposta.data)
+            });
 
-    useEffect(async () => {
+        getCountSell(header)
+            .then(data => {
+                setLoading({vendas: false})
+                setCupons(data)
+            });
+
+        getCountUser(header)
+            .then(data => {
+                setLoading({clientes: false})
+                setCountUsers(data)
+            })
+
+        getCountAccess(header)
+            .then(data => {
+                setLoading({acessos: false})
+                setCountAccess(data)
+            })
+
+    }, [header]);
+
+    useEffect(() => {
         const interval = getIntervalSixMonths()
-        const data = await api.get("/dash/contagem-acessos-vendas", { 
+
+        api.get("/dash/contagem-acessos-vendas", { 
             headers: header,
             params: interval
+        }).then(data => {
+            const arrayData = []
+            data.data.forEach((value) => {
+                arrayData.push([translate_day[value['diaDaSemana'].toUpperCase()],value['vendas'], value['acessos']])
+            })
+            setWeekData(arrayData)
         })
-        const arrayData = []
-        data.data.forEach((value) => {
-            arrayData.push([translate_day[value['diaDaSemana'].toUpperCase()],value['vendas'], value['acessos']])
-        })
-        setWeekData(arrayData)
-    }, []);
+    }, [header, translate_day]);
 
     const cores = ["#666BC2", "#8CA8D1", "#B3C8E1", "#D9E2F0", "#ECF0F7"];
-    
-    const translate_day = {
-        'MONDAY': 'Segunda',
-        'TUESDAY': 'Terça',
-        'WEDNESDAY':'Quarta',
-        'THURSDAY':'Quinta',
-        'FRIDAY':'Sexta',
-        'SATURDAY':'Sabádo',
-        'SUNDAY':'Domingo',
-
-    }
-
     const dados = [
         ['Dia da semana', 'Acessos', 'Vendas'],
         ...weekData
@@ -92,24 +117,27 @@ export default () =>{
             <MenuNovo/>
             <div className="metricas">
                 <Metricas 
-                    metrica={metas[0].labelTipo}
-                    valor={eventos > 0 ? eventos : "Carregando"} 
-                    meta={Math.floor(metas[0].valor)}
+                    metrica="Vendas"
+                    valor={eventos} 
+                    meta={Math.floor(metas[0]?.valor)}
                     icon={arrowUpCircleFill}
+                    isLoading={loading.vendas}
                 />
 
                 <Metricas 
-                    metrica={metas[1].labelTipo} 
-                    valor={countUsers > 0 ? countUsers : "Carregando"}
-                    meta={Math.floor(metas[1].valor)}
+                    metrica="Clientes"
+                    valor={countUsers}
+                    meta={Math.floor(metas[1]?.valor)}
                     icon={arrowUpCircleFill}
+                    isLoading={loading.clientes}
                 />
 
                 <Metricas 
                     metrica="Acessos" 
-                    valor={countAccess > 0 ? countAccess : "Carregando"}
-                    meta={metas[2] == null ? "Carregando" : Math.floor(metas[2].valor)}
+                    valor={countAccess}
+                    meta={Math.floor(metas[2]?.valor)}
                     icon={clockCircleFilled}
+                    isLoading={loading.acessos}
                 />
             </div>
 
@@ -153,3 +181,5 @@ export default () =>{
         </>
     );
 }
+
+export default Dashboard;
