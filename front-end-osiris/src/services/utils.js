@@ -25,12 +25,6 @@ export function getIntervalSixMonths(){
 }
 
 function formatDate(date = new Date()){
-    let year
-    let month = date.getMonth() + 1;
-    let day
-    day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate()
-    month = month< 10 ? `0${month}` : month
-    year = date.getFullYear()
-    return `${year}-${month}-${day}`
+    return date.toISOString().split('T')[0];
 }
 
