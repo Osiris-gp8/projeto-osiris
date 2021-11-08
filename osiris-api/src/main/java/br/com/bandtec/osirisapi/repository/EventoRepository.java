@@ -6,6 +6,7 @@ import br.com.bandtec.osirisapi.dto.barChart.EventoDto;
 import br.com.bandtec.osirisapi.views.CountAcessoEventos;
 import br.com.bandtec.osirisapi.views.CupomMaisUsadoView;
 import br.com.bandtec.osirisapi.views.RanqueCategoriaView;
+import br.com.bandtec.osirisapi.views.RanqueProdutoView;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -19,6 +20,12 @@ public interface EventoRepository extends JpaRepository<Evento, Integer> {
             "order by quantidade desc limit 5";
     @Query(value = ranque, nativeQuery = true)
     List<Integer> ranqueCategoria();
+
+    @Query(value = "select e.nome_produto as produto, count(*) as quantidade from evento e, ecommerce ec " +
+            "where e.ecommerce_id_ecommerce = ?1 and e.ecommerce_id_ecommerce = ec.id_ecommerce " +
+            "group by e.nome_produto order by quantidade " +
+            "desc limit 5", nativeQuery = true)
+    List<RanqueProdutoView> ranqueProdutoView(Integer idEcommerce);
 
     @Query(value = "select e.nome_categoria as categoria, count(*) as quantidade from evento e, ecommerce ec " +
             "where e.ecommerce_id_ecommerce = ?1 and e.ecommerce_id_ecommerce = ec.id_ecommerce " +
