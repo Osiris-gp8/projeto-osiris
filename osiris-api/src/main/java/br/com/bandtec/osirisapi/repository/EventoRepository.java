@@ -20,10 +20,10 @@ public interface EventoRepository extends JpaRepository<Evento, Integer> {
     @Query(value = ranque, nativeQuery = true)
     List<Integer> ranqueCategoria();
 
-    @Query(value = "select e.nome_categoria as categoria, count(*) as quantidade from evento e, ecommerce ec " +
+    @Query(value = "select e.nome_produto as produto, count(*) as quantidade from evento e, ecommerce ec " +
             "where e.ecommerce_id_ecommerce = ?1 and e.ecommerce_id_ecommerce = ec.id_ecommerce " +
             "between ?2 and ?3" +
-            "group by e.nome_categoria,quantidade " +
+            "group by produto" +
             "desc limit 5", nativeQuery = true)
     List<RanqueCategoriaView> ranqueNomeCategoriaView(Integer idEcommerce, LocalDate inicio, LocalDate fim);
 
