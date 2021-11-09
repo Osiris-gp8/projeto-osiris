@@ -5,53 +5,61 @@ on:
   workflow_dispatch:
 
 jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
+  build:
+    runs-on: ubuntu-latest
+    steps:
 
-#       - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-#       - name: Configurando versão do Java
-#         uses: actions/setup-java@v1
-#         with:
-#           java-version: '8'
+      - name: Configurando versão do Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: '8'
 
-#       - name: Configurando versão do Node.js
-#         uses: actions/setup-node@v1
-#         with:
-#           node-version: '14.x'
+      - name: Configurando versão do Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
 
-#       - name: Build e Package da API Java
-#         working-directory: osiris-api/
-#         run: |
-#           mvn clean install
-#           mvn package
+      - name: Build do back-end
+        working-directory: osiris-api/
+        run: |
+          mvn clean install
+          mvn package
 
-#       - name: npm install
-#         working-directory: front-end-osiris/
-#         run: npm install
+      - name: Build do front-end
+        working-directory: front-end-osiris/
+        run: |
+          npm install
+          npm test --if-present
 
   deploy-dev:
     runs-on: ubuntu-latest
     environment:
       name: TI
-#     needs: build
+    needs: build
     steps:
       - uses: actions/checkout@v2
 
-      - name: Subindo aplicação na EC2
+      - name: Build da imagem
+        run: docker build --no-cache -f -t ${{ env.REGISTRY }}/kaio-baleeiro/react-app:latest .
+
+      - name: Push da imagem
+        run: docker push ${{ env.REGISTRY }}/kaio-baleeiro/react-app:latest
+
+      - name: Entrega da aplicação em TI
         env:
-          PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY }}
+          PRIVATE_KEY: ${{ secrets.CHAVE_SSH }}
           HOSTNAME: ${{ secrets.AWS_ADRESS }}
           USER: ${{ secrets.AWS_USER }}
-          DOCKER_USER: ${{ github.actor }}
-          DOCKER_PASS: ${{ secrets.GITHUB_TOKEN }}
-          REGISTRY: https://docker.pkg.github.com
+          REGISTRY: ghcr.io
+          USER_REPO: ${{ USER_REPOSITORY }}
 
-        run: |
-          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-          ssh -O StrictHostKeyChecking=no  -i private_key ${USER_NAME}@${HOSTNAME} '
-            cd /home/ubuntu/3CCO-2021-1-Grupo-08 &&
-            git pull &&
-            docker-compose up -d --build
-          '
+        # run: |
+        #   echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+        #   ssh -O StrictHostKeyChecking=no  -i private_key ${USER_NAME}@${HOSTNAME} '
+        #     cd /home/ubuntu/3CCO-2021-1-Grupo-08 &&
+        #     git pull &&
+        #     docker pull $REGISTRY/$USER_REPO/
+        #     docker-compose up -d --build
+        #   '

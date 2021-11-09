@@ -1,2 +1,2 @@
-docker build -f ./docker/frontend-nginx.dockerfile -t osiris/front-loadbalance .
-docker build -f ./docker/react.dockerfile -t osiris/frontend .
+docker build --no-cache -f ./docker/frontend-nginx.dockerfile -t osiris/front-loadbalance .
+docker build --no-cache -f ./docker/react.dockerfile -t osiris/frontend .
