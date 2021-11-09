@@ -52,8 +52,3 @@ export function AccessByUFChart(){
         </>
     )
 }
-
-// [
-//     ["UF", "Acessos"],
-//     ["MT", 20]
-// ]
