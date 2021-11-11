@@ -2,6 +2,7 @@ import pandas as pd
 from sqlalchemy import create_engine
 import logging
 import os
+import pathlib
 
 logging.basicConfig()
 logger = logging.getLogger(__name__)
@@ -36,7 +37,7 @@ def extract(query, path):
 
 outdir = "./analysis/ml_models/datasets"
 if not os.path.exists(outdir):
-    os.mkdir(outdir, parents=True, exist_ok=True)
+    pathlib.Path(outdir).mkdir(parents=True, exist_ok=True)
 
 for t, q in extractions.items():
     extract(q, f"{outdir}/{t}.pkl")
