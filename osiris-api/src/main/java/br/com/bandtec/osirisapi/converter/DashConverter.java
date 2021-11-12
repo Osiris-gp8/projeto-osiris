@@ -12,5 +12,5 @@ public interface DashConverter {
 
     AcessosVendasDiasResponse intEventosIntAcessosDataToAcessosVendasResponse(Integer eventos, Integer Acessos, LocalDate data);
 
-    List<RanqueCategoriaResponse> integerListToRanqueCategoriaResponse(List<Integer> ranque, List<RanqueCategoriaView> nome);
+    List<RanqueCategoriaResponse> integerListToRanqueCategoriaResponse( List<RanqueCategoriaView> nome);
 }

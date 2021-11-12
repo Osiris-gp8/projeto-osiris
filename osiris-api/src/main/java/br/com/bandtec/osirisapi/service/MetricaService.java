@@ -51,10 +51,9 @@ public class MetricaService {
         LocalDate inicio = filtro.getDataInicio();
         LocalDate fim = filtro.getDataFinal();
 
-        List<Integer> ranques = eventoRepository.ranqueCategoria();
         List<RanqueCategoriaView> nomes = eventoRepository.ranqueNomeCategoriaView(ecommerce.getIdEcommerce(),inicio,fim);
 
-        return dashConverter.integerListToRanqueCategoriaResponse(ranques, nomes);
+        return dashConverter.integerListToRanqueCategoriaResponse(nomes);
     }
 
     public List<CupomMaisUsadoView> getCupomMaisUsadoView(){

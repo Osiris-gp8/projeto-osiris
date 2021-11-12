@@ -15,12 +15,17 @@ import java.util.List;
 
 public interface EventoRepository extends JpaRepository<Evento, Integer> {
 
-    String ranque = "select count(e.nome_categoria) as quantidade from evento e group by nome_categoria " +
-            "order by quantidade desc limit 5";
-    @Query(value = ranque, nativeQuery = true)
-    List<Integer> ranqueCategoria();
-
-    @Query(value = "select e.nome_produto as evento, count(*) as quantidade from evento e, ecommerce ec where e.ecommerce_id_ecommerce = ?1 and e.ecommerce_id_ecommerce = ec.id_ecommerce between ?2 and ?3 group by e.nome_produto order by e.nome_produto desc limit 5", nativeQuery = true)
+    @Query(value = "with top_products as (\n" +
+            "\tselect e.nome_produto as evento, count(*) as quantidade \n" +
+            "\tfrom evento e, ecommerce ec \n" +
+            "\twhere e.ecommerce_id_ecommerce = ?1 and e.ecommerce_id_ecommerce = ec.id_ecommerce \n" +
+            "\tand date(data_compra) between '2020-03-01' and '2021-10-20'\n" +
+            "\tgroup by e.nome_produto order by quantidade desc limit 5\n" +
+            ")\n" +
+            "select DENSE_RANK()\n" +
+            "over ( order by quantidade desc ) as ranque,\n" +
+            "evento, quantidade \n" +
+            "from top_products", nativeQuery = true)
     List<RanqueCategoriaView> ranqueNomeCategoriaView(Integer idEcommerce, LocalDate inicio, LocalDate fim);
 
     @Query(value = "select * from evento where id_consumidor_ecommerce = ?", nativeQuery = true)
