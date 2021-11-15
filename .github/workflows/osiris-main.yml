@@ -1,12 +1,40 @@
 name: Esteira de desenvolvimento da Osiris
 on:
   push:
-    branches: main
+    branches: 
+      - main
+      - develop
   workflow_dispatch:
 
 jobs:
-  build:
+
+  testes:
     runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - name: Configurando versão do Java 
+        uses: actions/setup-java@v1
+        with:
+          java-version: '8'
+
+      - name: Configurando versão do Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+
+      - name: Executando testes do back-end
+        working-directory: osiris-api/
+        run: mvn clean install
+
+      - name: Executando testes do front-end
+        working-directory: front-end-osiris/
+        run: npm test --if-present
+
+  build-teste:
+    runs-on: ubuntu-latest
+    needs: testes
     steps:
 
       - uses: actions/checkout@v2
@@ -23,43 +51,75 @@ jobs:
 
       - name: Build do back-end
         working-directory: osiris-api/
-        run: |
-          mvn clean install
-          mvn package
+        run: mvn package
 
       - name: Build do front-end
         working-directory: front-end-osiris/
         run: |
           npm install
-          npm test --if-present
+          npm run build
 
   deploy-dev:
     runs-on: ubuntu-latest
     environment:
       name: TI
-    needs: build
+    needs: build-teste
     steps:
       - uses: actions/checkout@v2
 
       - name: Build da imagem
-        run: docker build --no-cache -f -t ${{ env.REGISTRY }}/kaio-baleeiro/react-app:latest .
+        env:
+          REGISTRY: ghcr.io
+
+        run: |
+          docker build --no-cache -f ./docker/backend-nginx.dockerfile -t ${{ env.REGISTRY }}/Osiris-gp8/back-loadbalance:latest-ti .
+          docker build --no-cache -f ./docker/springboot.dockerfile -t ${{ env.REGISTRY }}/Osiris-gp8/backend:latest-ti .
+
+          docker build --no-cache -f ./docker/frontend-nginx.dockerfile -t ${{ env.REGISTRY }}/Osiris-gp8/front-loadbalance:latest-ti .
+          docker build --no-cache -f ./docker/react.dockerfile -t ${{ env.REGISTRY }}/Osiris-gp8/frontend:latest-ti .
 
       - name: Push da imagem
-        run: docker push ${{ env.REGISTRY }}/kaio-baleeiro/react-app:latest
+        env:
+          REGISTRY: ghcr.io
 
-      - name: Entrega da aplicação em TI
+        run: |
+          docker push ${{ env.REGISTRY }}/Osiris-gp8/back-loadbalance:latest-ti
+          docker push ${{ env.REGISTRY }}/Osiris-gp8/backend:latest-ti
+          docker push ${{ env.REGISTRY }}/Osiris-gp8/front-loadbalance:latest-ti
+          docker push ${{ env.REGISTRY }}/Osiris-gp8/frontend:latest-ti
+
+      - name: Entrega do Back-end em TI
         env:
           PRIVATE_KEY: ${{ secrets.CHAVE_SSH }}
           HOSTNAME: ${{ secrets.AWS_ADRESS }}
           USER: ${{ secrets.AWS_USER }}
           REGISTRY: ghcr.io
-          USER_REPO: ${{ USER_REPOSITORY }}
+          USER_REPO: ${{ secrets.USER_REPOSITORY }}
 
-        # run: |
-        #   echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-        #   ssh -O StrictHostKeyChecking=no  -i private_key ${USER_NAME}@${HOSTNAME} '
-        #     cd /home/ubuntu/3CCO-2021-1-Grupo-08 &&
-        #     git pull &&
-        #     docker pull $REGISTRY/$USER_REPO/
-        #     docker-compose up -d --build
-        #   '
+        run: |
+          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key ${USER}@${HOSTNAME} '
+            cd /home/ubuntu/3CCO-2021-1-Grupo-08 &&
+            git pull &&
+            docker pull $REGISTRY/$USER_REPO/back-loadbalance:latest-ti
+            docker pull $REGISTRY/$USER_REPO/backend:latest-ti
+            docker-compose up -d --scale springboot=2
+          '
+
+      - name: Entrega do Front-end em TI
+        env:
+          PRIVATE_KEY: ${{ secrets.CHAVE_SSH }}
+          HOSTNAME: ${{ secrets.AWS_ADRESS }}
+          USER: ${{ secrets.AWS_USER }}
+          REGISTRY: ghcr.io
+          USER_REPO: ${{ secrets.USER_REPOSITORY }}
+
+        run: |
+          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key ${USER}@${HOSTNAME} '
+            cd /home/ubuntu/3CCO-2021-1-Grupo-08 &&
+            git pull &&
+            docker pull $REGISTRY/$USER_REPO/front-loadbalance:latest-ti
+            docker pull $REGISTRY/$USER_REPO/frontend:latest-ti
+            docker-compose up -d --scale react=2
+          '
