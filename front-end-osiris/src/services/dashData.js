@@ -13,9 +13,9 @@ export function getRankingSell(endpoint, header){
     return rankList
 }
 
-export async function getCountSell( header){
+export async function getCountSell( header, dataInicio, dataFinal){
     let data
-    await api.get("/eventos/com-sem-cupom?dataFinal=2021-10-10&dataInicio=2021-10-01", {headers:header}).then(res => {
+    await api.get(`/eventos/com-sem-cupom?dataFinal=${dataInicio}&dataInicio=${dataFinal}`, {headers:header}).then(res => {
         data = ([
             ['cupom', 'valor'], 
             ['Vendas com cupom', res.data.contagemEventosComCupom],

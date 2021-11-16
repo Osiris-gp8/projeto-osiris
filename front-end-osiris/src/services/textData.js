@@ -21,8 +21,8 @@ export  async  function getAllEvents(header){
     return (await getData("/eventos",header))
 }
 
-export async function getCountUser(header){
-    let data = getData("/eventos/countClientes?dataFinal=2021-10-10&dataInicio=2021-10-01", header)
+export async function getCountUser(header, dataInicio, dataFinal){
+    let data = getData(`/eventos/countClientes?dataFinal=${dataFinal}&dataInicio=${dataInicio}`, header)
     return (await data).data
 }
 

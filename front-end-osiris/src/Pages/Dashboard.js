@@ -13,6 +13,8 @@ import {getIntervalMonthDays, getIntervalSixMonths} from '../services/utils'
 
 const Dashboard = () =>{ 
 
+    const dateNow = new Date()
+
     const [loading, setLoading] = useState({
         clientes: true,
         vendas: true,
@@ -27,6 +29,8 @@ const Dashboard = () =>{
     const [eventos, setEventos] = useState(0);
     const [countUsers, setCountUsers] = useState(0);
     const [countAccess, setCountAccess] = useState(0);
+    const [filtroInicio, setFiltroInicio] = useState(`${dateNow.getFullYear()}-${dateNow.getMonth() + 1}-01`);
+    const [filtroFinal, setFiltroFinal] = useState(`${dateNow.getFullYear()}-${dateNow.getMonth() + 1}-${dateNow.getDate() < 10 ? "0" + dateNow.getDate() : dateNow.getDate()}`);
     const header = useMemo(() => {
         return {"Authorization": `${sessionStorage.getItem("tipo")} ${sessionStorage.getItem("token")}`}
     }, []);
@@ -57,7 +61,7 @@ const Dashboard = () =>{
     useEffect(() => {
         function getMetas(){
             // const interval = getIntervalMonthDays();
-            const interval = ['2021-07-01', '2021-07-30'];
+            const interval = [filtroInicio, filtroFinal];
             return api.get('/metas', {
                 headers: header,
                 params: { dataInicio: interval[0], dataFinal: interval[1] }
@@ -71,13 +75,13 @@ const Dashboard = () =>{
                 setMetas(resposta.data)
             });
 
-        getCountSell(header)
+        getCountSell(header, filtroInicio, filtroFinal)
             .then(data => {
                 setLoading({vendas: false})
                 setCupons(data)
             });
 
-        getCountUser(header)
+        getCountUser(header, filtroInicio, filtroFinal)
             .then(data => {
                 setLoading({clientes: false})
                 setCountUsers(data)
@@ -92,7 +96,10 @@ const Dashboard = () =>{
     }, [header]);
 
     useEffect(() => {
-        const interval = getIntervalSixMonths()
+        const interval = { 
+            dataInicio: filtroInicio, 
+            dataFinal: filtroFinal 
+        }
 
         api.get("/dash/contagem-acessos-vendas", { 
             headers: header,
@@ -112,11 +119,19 @@ const Dashboard = () =>{
         ...weekData
     ];
 
+    function definirDataInicio(e){
+        setFiltroInicio(e.target.value);
+    }
+
+    function definirDataFinal(e){
+        setFiltroFinal(e.target.value);
+    }
+
     return (
         <>
             <MenuNovo/>
             <div className="metricas">
-                <Metricas 
+            <Metricas 
                     metrica="Vendas"
                     valor={eventos} 
                     meta={Math.floor(metas[0]?.valor)}
@@ -141,10 +156,23 @@ const Dashboard = () =>{
                 />
             </div>
 
-            <div className="chart-area">
+            <div className="chart-area position-relative">
+                <div className="filtro d-flex flex-colum justify-content-between position-absolute">
+                    <div className="d-flex flex-column">
+                        <label>Data inicial:</label>
+                        <input type="date" onChange={definirDataInicio} value={filtroInicio} className="date-picker"/>
+                    </div>
+
+                    <div className="d-flex flex-column">
+                        <label>Data final:</label>
+                        <input type="date" onChange={definirDataFinal} value={filtroFinal} className="date-picker"/>
+                    </div>
+
+                </div>
+                
                 <ChartBar
                     id="chart-acessos"
-                    width="95%"
+                    width="100%"
                     height="30vh"
                     data={dados}
                     title="Acessos da Semana"
@@ -152,9 +180,32 @@ const Dashboard = () =>{
                     titleX="Dias da semana"
                     titleY="Acessos x Vendas"
                 />
+
+                <div className="charts-pie">
+                    <div>
+                        <h2>Vendas com Cupons</h2>
+                        <ChartPie
+                            width="98%"
+                            data={cupons}
+                            title="Tipo de Venda"
+                            pieHole= {0.4}
+                            colors={cores}
+                        />
+                    </div>
+                    <div>
+                        <h2>Calçados mais vendidos</h2>
+                        <ChartPie
+                            title="Tipo de Venda"
+                            width="100%"
+                            data={calcados}
+                            pieHole= {0.4}
+                            colors={cores}
+                        />
+                    </div>
+                </div>
             </div>
 
-            <div className="chart-area">
+            {/* <div className="chart-area">
                 <div className="charts-pie">
                     <div>
                         <h2>Vendas com Cupons</h2>
@@ -177,7 +228,7 @@ const Dashboard = () =>{
                         />
                     </div>
                 </div>
-            </div>
+            </div> */}
         </>
     );
 }

@@ -496,7 +496,7 @@ html{
 
 .chart-area{
     width: 65%;
-    min-height: 35vh;
+    height: 77vh;
     background-color: #ECF0F7;
     float: right;
     margin-right: 2%;
@@ -504,6 +504,7 @@ html{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .charts-pie{
@@ -525,6 +526,25 @@ html{
 .charts-pie div h2{
     margin-left: 10%;
     margin-bottom: 5%;
+}
+
+/* Date Picker*/
+
+.filtro{
+    width: 30%;
+    top: 2%;
+    right: 2%;
+    z-index: 999;
+}
+
+.date-picker{
+    width: 90%;
+    border: 1px solid #666BC2;
+    height: 35px;
+    padding-left: 5px;
+    border-radius: 5px;
+    background-color: #ECF0F7;
+    margin-top: 5px;
 }
 
 /* settings */
