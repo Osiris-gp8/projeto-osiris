@@ -26,20 +26,20 @@ features = vendas_acessos[["count_compras", "sum_preco", "count_acessos"]]
 scaler = StandardScaler()
 scaled_features = scaler.fit_transform(features.fillna(method="ffill"))
 
-# sse = []
-# silhouette_coefficients = []
-# k_axis = range(2, 11)
-# for k in k_axis:
-#     kmeans = KMeans(random_state=42, n_clusters=k)
-#     kmeans.fit(scaled_features)
-#     sse.append(kmeans.inertia_)
+sse = []
+silhouette_coefficients = []
+k_axis = range(2, 11)
+for k in k_axis:
+    kmeans = KMeans(random_state=42, n_clusters=k)
+    kmeans.fit(scaled_features)
+    sse.append(kmeans.inertia_)
     
-#     score = silhouette_score(scaled_features, kmeans.labels_)
-#     silhouette_coefficients.append(score)
+    score = silhouette_score(scaled_features, kmeans.labels_)
+    silhouette_coefficients.append(score)
 
-# scores = pd.DataFrame(index=k_axis, data={"elbow": sse, "silhoutte": silhouette_coefficients})
-# sns.lineplot(data= scores)
-# plt.show()
+scores = pd.DataFrame(index=k_axis, data={"elbow": sse, "silhoutte": silhouette_coefficients})
+sns.lineplot(data= scores)
+plt.show()
 
 kmeans = KMeans(random_state=42, n_clusters=4)
 kmeans.fit(scaled_features)
