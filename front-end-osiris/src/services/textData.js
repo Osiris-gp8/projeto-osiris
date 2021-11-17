@@ -7,7 +7,8 @@ export async function getData(endpoint, header){
 }
 
 export async function getDataMonth(endpoint, header){
-    const intervalDays = getIntervalMonthDays()
+    // const intervalDays = getIntervalMonthDays()
+    const intervalDays = ['2021-07-01', '2021-07-30'];
     return await getData(`${endpoint}?dataInicio=${intervalDays[0]}&dataFinal=${intervalDays[1]}`, header)
 }
 
