@@ -640,3 +640,26 @@ html{
 .error-valid{
     color: red;
 }
+
+.styledTable{
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid black;
+    height: 8vh;
+}
+
+.styledTable th{
+    border-collapse: collapse;
+    border: 1px solid black;
+    vertical-align: middle;
+
+    font-size: 1.2rem;
+}
+
+.styledTable td{
+    border-collapse: collapse;
+    border: 1px solid black;
+    vertical-align: middle;
+
+    font-size: 1rem;
+}

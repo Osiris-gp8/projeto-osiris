@@ -6,6 +6,7 @@ import InputPicker from '../InputPicker'
 import { ButtonForm as Button} from '../Button' 
 import { ToastContainerTop } from '../Toast'
 import { toast } from 'react-toastify'
+import { Link } from 'react-router-dom'
 const FileDownload = require('js-file-download');
 
 function UploadFiles(props) {
@@ -154,11 +155,19 @@ function UploadFiles(props) {
           {uploaded && <BoxFile><p>{file["nomeArquivo"]} </p> <Button onClick={handleCancel}
            style={{width: "10%", marginRight: "1.8%"}} >Cancelar</Button> </BoxFile>}
         </div>
-        <div><Button 
+        <div>
+          <Button 
               type="btn-preenchido" 
 
                style={{width: "25%", marginRight: "4%", marginTop: "3%"}} 
-              onClick={handleClick}>Enviar</Button></div>
+              onClick={handleClick}>Enviar</Button>
+          <Button 
+          type="btn-preenchido" 
+
+          style={{width: "25%", marginRight: "4%", marginTop: "3%"}} 
+          ><Link style={{textDecoration: 'none', color: 'white'}} to="/files">Baixar arquivos</Link></Button>
+              
+        </div>
       </BoxUpload>
 
 

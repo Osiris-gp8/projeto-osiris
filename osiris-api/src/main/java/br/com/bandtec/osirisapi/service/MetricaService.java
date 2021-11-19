@@ -8,6 +8,7 @@ import br.com.bandtec.osirisapi.domain.Evento;
 import br.com.bandtec.osirisapi.dto.barChart.AcessoDto;
 import br.com.bandtec.osirisapi.dto.barChart.EventoAcessoChartResponse;
 import br.com.bandtec.osirisapi.dto.barChart.EventoDto;
+import br.com.bandtec.osirisapi.dto.request.FiltroDataRequest;
 import br.com.bandtec.osirisapi.dto.response.dash.AcessoUfResponse;
 import br.com.bandtec.osirisapi.dto.response.dash.RanqueCategoriaResponse;
 import br.com.bandtec.osirisapi.dto.response.dash.RanqueProdutoResponse;
@@ -21,6 +22,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -45,14 +47,15 @@ public class MetricaService {
         return (double) acessoRepository.count() / eventoRepository.count();
     }
 
-    public List<RanqueCategoriaResponse> getRanqueCategoriaView(){
+    public List<RanqueCategoriaResponse> getRanqueCategoriaView(FiltroDataRequest filtro){
 
         Ecommerce ecommerce = userInfo.getUsuario().getEcommerce();
+        LocalDate inicio = filtro.getDataInicio();
+        LocalDate fim = filtro.getDataFinal();
 
-        List<Integer> ranques = eventoRepository.ranqueCategoria();
-        List<RanqueCategoriaView> nomes = eventoRepository.ranqueNomeCategoriaView(ecommerce.getIdEcommerce());
+        List<RanqueCategoriaView> nomes = eventoRepository.ranqueNomeCategoriaView(ecommerce.getIdEcommerce(),inicio,fim);
 
-        return dashConverter.integerListToRanqueCategoriaResponse(ranques, nomes);
+        return dashConverter.integerListToRanqueCategoriaResponse(nomes);
     }
 
 

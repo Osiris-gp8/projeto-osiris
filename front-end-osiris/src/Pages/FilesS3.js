@@ -1,29 +1,25 @@
-import { AccessByUFChart } from "../Components/AccessByUFChart"
-import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
+import { useEffect } from "react"; 
 import MenuNovo from "../Components/MenuNovo/MenuNovo";
-import MapChart from "../Components/MapChart";
-import ReactToolTip from 'react-tooltip';
+import FilesS3Table from "../Components/FilesS3"
 
-export default () =>{
-
+export default () => {
+    
     const history = useHistory();
-
-    const [content, setContent] = useState('');
 
     useEffect(() => {
         if(!sessionStorage.getItem("token")){
             return history.push('/login');
         }
     }, [])
+
     return (
         <div>
             <MenuNovo />
             <div className="body-config">
             <div className="container">
-                <h1>Acessos</h1>
-                <MapChart setTooltipContent={setContent}/>
-                <ReactToolTip  multiline={true} html={true}>{content}</ReactToolTip>
+                <h1>Files S3</h1>
+                <FilesS3Table />
             </div>
             </div>
         </div>
