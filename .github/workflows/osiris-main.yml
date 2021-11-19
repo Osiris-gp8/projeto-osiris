@@ -31,7 +31,9 @@ jobs:
 
       - name: Executando testes do front-end
         working-directory: front-end-osiris/
-        run: npm test --if-present
+        run: |
+          npm install
+          npm test --if-present
 
   build-teste:
     runs-on: ubuntu-latest
