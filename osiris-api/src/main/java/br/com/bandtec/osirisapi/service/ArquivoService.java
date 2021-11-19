@@ -206,6 +206,8 @@ public class ArquivoService {
         List<String> paths = new ArrayList<>();
         if (hasNext){
             actual = head.getNext();
+        }else{
+            return paths;
         }
         do {
             paths.add((String) actual.getInfo());
