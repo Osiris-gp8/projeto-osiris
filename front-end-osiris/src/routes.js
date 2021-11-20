@@ -11,6 +11,7 @@ import upload from './Pages/upload'
 import Password from './Pages/Password'
 import AddCollaborator from './Pages/AddCollaborator'
 import Access from './Pages/Access'
+import FilesS3 from './Pages/FilesS3'
 
 function Routes(){
     return(
@@ -26,6 +27,7 @@ function Routes(){
                 <Route exact path="/password/:token?" component={Password} />
                 <Route exact path="/addCollaborator" component={AddCollaborator}/>
                 <Route exact path="/access" component={Access}/>
+                <Route exact path="/files" component={FilesS3} />
                 <Route component={NotFound} />
             </Switch>
         </Router>

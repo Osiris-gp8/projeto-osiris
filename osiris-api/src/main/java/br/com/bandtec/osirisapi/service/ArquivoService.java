@@ -19,6 +19,7 @@ import br.com.bandtec.osirisapi.utils.hashing.ListaLigada;
 import br.com.bandtec.osirisapi.utils.hashing.Node;
 import com.amazonaws.services.s3.model.S3Object;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -44,6 +45,7 @@ public class ArquivoService {
     private final LayoutCupomToCupom layoutCupomToCupom;
     private final CupomToLayoutCupom cupomToLayoutCupom;
 
+    @Autowired
     private final BucketService bucket;
 
     private final UserInfo userInfo;
@@ -206,6 +208,8 @@ public class ArquivoService {
         List<String> paths = new ArrayList<>();
         if (hasNext){
             actual = head.getNext();
+        }else{
+            return paths;
         }
         do {
             paths.add((String) actual.getInfo());
