@@ -44,11 +44,11 @@ public class MetricaController {
         return ResponseEntity.status(200).body(metricaService.getRanqueCategoriaView(filtroDataRequest));
     }
 
-    @GetMapping("/ranque-produtos")
-    public ResponseEntity<List<RanqueProdutoResponse>> getRanqueProdutos() {
-
-        return ResponseEntity.status(200).body(metricaService.getRanqueProdutoView());
-    }
+//    @GetMapping("/ranque-produtos")
+//    public ResponseEntity<List<RanqueProdutoResponse>> getRanqueProdutos() {
+//
+//        return ResponseEntity.status(200).body(metricaService.getRanqueProdutoView());
+//    }
 
     @GetMapping("/mais-usado")
     public ResponseEntity getCupomMaisUsado(){
