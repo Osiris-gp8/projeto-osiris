@@ -54,9 +54,7 @@ jobs:
 
       - name: Build do back-end
         working-directory: osiris-api/
-        run: |
-          mvn clean install
-          mvn package -Dmaven.test.skip
+        run: mvn clean package -Dmaven.test.skip
 
       - name: Build do front-end
         working-directory: front-end-osiris/
