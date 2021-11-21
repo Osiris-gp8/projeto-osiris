@@ -73,16 +73,16 @@ jobs:
           REGISTRY: ghcr.io
 
         run: |
-          docker build --no-cache -f ./docker/springboot.dockerfile -t ${{ env.REGISTRY }}/Osiris-gp8/backend:latest-ti .
-          docker build --no-cache -f ./docker/server.dockerfile -t ${{ env.REGISTRY }}/Osiris-gp8/server:latest-ti .
+          docker build --no-cache -f ./docker/springboot.dockerfile -t ${{ env.REGISTRY }}/osiris-gp8/backend:latest-ti .
+          docker build --no-cache -f ./docker/server.dockerfile -t ${{ env.REGISTRY }}/osiris-gp8/server:latest-ti .
 
       - name: Push da imagem
         env:
           REGISTRY: ghcr.io
 
         run: |
-          docker push ${{ env.REGISTRY }}/Osiris-gp8/backend:latest-ti
-          docker push ${{ env.REGISTRY }}/Osiris-gp8/server:latest-ti
+          docker push ${{ env.REGISTRY }}/osiris-gp8/backend:latest-ti
+          docker push ${{ env.REGISTRY }}/osiris-gp8/server:latest-ti
 
   deploy-dev:
     runs-on: ubuntu-latest
@@ -99,7 +99,7 @@ jobs:
           HOSTNAME: ${{ secrets.AWS_ADRESS }}
           USER: ${{ secrets.AWS_USER }}
           REGISTRY: ghcr.io
-          USER_REPO: ${{ secrets.USER_REPOSITORY }}
+          USER_REPO: osiris-gp8
 
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
