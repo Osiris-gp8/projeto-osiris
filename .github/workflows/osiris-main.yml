@@ -7,6 +7,9 @@ on:
       - feature/esteira
   workflow_dispatch:
 
+env:
+  REGISTRY: ghcr.io
+
 jobs:
 
 #   testes:
@@ -77,13 +80,16 @@ jobs:
         run: docker build --no-cache -f ./docker/springboot.dockerfile -t ${{ env.REGISTRY }}/osiris-gp8/backend:latest-ti .
 
       - name: Build imagem Front-end
-        env:
-          REGISTRY: ghcr.io
         run: docker build --no-cache -f ./docker/server.dockerfile -t ${{ env.REGISTRY }}/osiris-gp8/server:latest-ti .
+        
+      - name: Login no Github Packages
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push da imagem
-        env:
-          REGISTRY: ghcr.io
         run: |
           docker push ${{ env.REGISTRY }}/osiris-gp8/backend:latest-ti
           docker push ${{ env.REGISTRY }}/osiris-gp8/server:latest-ti
@@ -102,7 +108,6 @@ jobs:
           PRIVATE_KEY: ${{ secrets.CHAVE_SSH }}
           HOSTNAME: ${{ secrets.AWS_ADRESS }}
           USER: ${{ secrets.AWS_USER }}
-          REGISTRY: ghcr.io
           USER_REPO: osiris-gp8
 
         run: |
