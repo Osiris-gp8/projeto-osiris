@@ -59,13 +59,13 @@ public class MetricaService {
     }
 
 
-    public List<RanqueProdutoResponse> getRanqueProdutoView(){
-
-        Ecommerce ecommerce = userInfo.getUsuario().getEcommerce();
-        List<RanqueProdutoView> nomes = eventoRepository.ranqueProdutoView(ecommerce.getIdEcommerce());
-
-        return dashConverter.ranqueCategoriaViewToRanqueCategoriaViewResponse(nomes);
-    }
+//    public List<RanqueProdutoResponse> getRanqueProdutoView(){
+//
+//        Ecommerce ecommerce = userInfo.getUsuario().getEcommerce();
+//        List<RanqueProdutoView> nomes = eventoRepository.ranqueProdutoView(ecommerce.getIdEcommerce());
+//
+//        return dashConverter.ranqueCategoriaViewToRanqueCategoriaViewResponse(nomes);
+//    }
 
     public List<CupomMaisUsadoView> getCupomMaisUsadoView(){
 

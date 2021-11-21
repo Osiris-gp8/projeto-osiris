@@ -51,7 +51,7 @@ const Dashboard = () =>{
             return history.push('/login');
         }
 
-        setCalcados(getRankingSell("/metricas/ranque-produtos", header))
+        setCalcados(getRankingSell("/metricas/ranque-categoria", header))
         
         getAllEvents(header).then(
             data => setEventos(data.data.length)
