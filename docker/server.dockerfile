@@ -1,6 +1,6 @@
 FROM node:14-slim AS build
 
-COPY ./front-end-osiris/build/ /var/www
+COPY ./front-end-osiris /var/www
 
 WORKDIR /var/www
 
