@@ -56,7 +56,7 @@ jobs:
         working-directory: osiris-api/
         run: |
           mvn clean install
-          mvn package
+          mvn package -Dmaven.test.skip
 
       - name: Build do front-end
         working-directory: front-end-osiris/
@@ -64,34 +64,36 @@ jobs:
           npm install
           npm run build
 
-  deploy-dev:
+  build-imagens:
     runs-on: ubuntu-latest
     needs: build-teste
-    environment:
-      name: TI
     steps:
       - uses: actions/checkout@v2
 
-      - name: Build da imagem
+      - name: Build imagem Back-end
         env:
           REGISTRY: ghcr.io
 
         run: |
-          docker build --no-cache -f ./docker/backend-nginx.dockerfile -t ${{ env.REGISTRY }}/Osiris-gp8/back-loadbalance:latest-ti .
           docker build --no-cache -f ./docker/springboot.dockerfile -t ${{ env.REGISTRY }}/Osiris-gp8/backend:latest-ti .
-
-          docker build --no-cache -f ./docker/frontend-nginx.dockerfile -t ${{ env.REGISTRY }}/Osiris-gp8/front-loadbalance:latest-ti .
-          docker build --no-cache -f ./docker/react.dockerfile -t ${{ env.REGISTRY }}/Osiris-gp8/frontend:latest-ti .
+          docker build --no-cache -f ./docker/server.dockerfile -t ${{ env.REGISTRY }}/Osiris-gp8/server:latest-ti .
 
       - name: Push da imagem
         env:
           REGISTRY: ghcr.io
 
         run: |
-          docker push ${{ env.REGISTRY }}/Osiris-gp8/back-loadbalance:latest-ti
           docker push ${{ env.REGISTRY }}/Osiris-gp8/backend:latest-ti
-          docker push ${{ env.REGISTRY }}/Osiris-gp8/front-loadbalance:latest-ti
-          docker push ${{ env.REGISTRY }}/Osiris-gp8/frontend:latest-ti
+          docker push ${{ env.REGISTRY }}/Osiris-gp8/server:latest-ti
+
+  deploy-dev:
+    runs-on: ubuntu-latest
+    needs: build-imagens
+    environment:
+      name: TI
+    steps:
+
+      - uses: actions/checkout@v2
 
       - name: Entrega do Back-end em TI
         env:
@@ -109,22 +111,4 @@ jobs:
             docker pull $REGISTRY/$USER_REPO/back-loadbalance:latest-ti
             docker pull $REGISTRY/$USER_REPO/backend:latest-ti
             docker-compose up -d --scale springboot=2
-          '
-
-      - name: Entrega do Front-end em TI
-        env:
-          PRIVATE_KEY: ${{ secrets.CHAVE_SSH }}
-          HOSTNAME: ${{ secrets.AWS_ADRESS }}
-          USER: ${{ secrets.AWS_USER }}
-          REGISTRY: ghcr.io
-          USER_REPO: ${{ secrets.USER_REPOSITORY }}
-
-        run: |
-          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-          ssh -o StrictHostKeyChecking=no -i private_key ${USER}@${HOSTNAME} '
-            cd /home/ubuntu/3CCO-2021-1-Grupo-08 &&
-            git pull &&
-            docker pull $REGISTRY/$USER_REPO/front-loadbalance:latest-ti
-            docker pull $REGISTRY/$USER_REPO/frontend:latest-ti
-            docker-compose up -d --scale react=2
           '

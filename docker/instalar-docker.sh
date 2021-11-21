@@ -13,7 +13,7 @@ sudo apt-get update
 
 sudo apt-get install docker-ce -y
 
-sudo usermod -aG docker $(whoami)
+sudo adduser $(whoami) docker
 
 #Docker compose
 
