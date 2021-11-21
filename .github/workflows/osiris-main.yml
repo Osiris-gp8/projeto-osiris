@@ -42,6 +42,9 @@ jobs:
 
       - uses: actions/checkout@v2
 
+      - name: Confirmando Repositório
+        run: echo ${{ secrets.CONFIRM_REPO }}
+
       - name: Configurando versão do Java
         uses: actions/setup-java@v1
         with:
@@ -71,21 +74,16 @@ jobs:
       - name: Build imagem Back-end
         env:
           REGISTRY: ghcr.io
-
-        run: |
-          docker build --no-cache -f ./docker/springboot.dockerfile -t ${{ env.REGISTRY }}/osiris-gp8/backend:latest-ti .
+        run: docker build --no-cache -f ./docker/springboot.dockerfile -t ${{ env.REGISTRY }}/osiris-gp8/backend:latest-ti .
 
       - name: Build imagem Front-end
         env:
           REGISTRY: ghcr.io
-
-        run: |
-          docker build --no-cache -f ./docker/server.dockerfile -t ${{ env.REGISTRY }}/osiris-gp8/server:latest-ti .
+        run: docker build --no-cache -f ./docker/server.dockerfile -t ${{ env.REGISTRY }}/osiris-gp8/server:latest-ti .
 
       - name: Push da imagem
         env:
           REGISTRY: ghcr.io
-
         run: |
           docker push ${{ env.REGISTRY }}/osiris-gp8/backend:latest-ti
           docker push ${{ env.REGISTRY }}/osiris-gp8/server:latest-ti
