@@ -10,18 +10,16 @@ on:
 env:
   REGISTRY: ghcr.io
   USER_REPO: osiris-gp8
+  REPOSITORIO: ${{ secrets.CONFIRM_REPO }}
 
 jobs:
   build-imagens:
     runs-on: ubuntu-latest
+    if: github.repository == ${{ env.REPOSITORIO }}
     steps:
       
       - uses: actions/checkout@v2
-
-      - name: Confirmando repositório
-        env:
-          REPOSITORIO: ${{ secrets.CONFIRM_REPO }}
-        if: github.repository == ${{ env.REPOSITORIO }}
+          
         run: echo ${{ github.repository }}
 
       - name: Build imagem Back-end
