@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Confirmando repositório
-        if: ${{ github.repository == secrets.CONFIRM_REPO }}
+        if: github.repository == ${{ secrets.CONFIRM_REPO }}
         run: echo ${{ github.repository }}
 
       - name: Build imagem Back-end
