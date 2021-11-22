@@ -56,10 +56,8 @@ jobs:
           USER: ${{ secrets.AWS_USER }}
 
         run: |
-          mkdir ~/.ssh
-          echo "$KNOW_HOSTS" > ~/.ssh/know_hosts && chmod 600 know_hosts
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-          scp ./docker/docker-compose.yml -i private_key ${USER}@${HOSTNAME}:/home/ubuntu/docker-compose.yml
-          ssh -i private_key ${USER}@${HOSTNAME} '
+          scp -o StrictHostKeyChecking=no ./docker/docker-compose.yml -i private_key ${USER}@${HOSTNAME}:/home/ubuntu/docker-compose.yml
+          ssh -o StrictHostKeyChecking=no -i private_key ${USER}@${HOSTNAME} '
             docker-compose up -d --scale springboot=2
           '
