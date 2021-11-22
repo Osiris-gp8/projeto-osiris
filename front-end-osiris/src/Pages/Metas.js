@@ -194,6 +194,52 @@ export default () =>{
                         </form>
                         
                     </div>
+                    <div className="user-config">
+                        <div className="configs-head">
+                            <h2>Usuário</h2>
+                            <span onClick={editUserClick}><Icon icon={pencilIcon}/> Editar</span>
+                        </div>
+                        <form onSubmit={(e) => atualizarUser(e)}>
+                            <div className="row-configs">
+
+                                <div style={{width: "28%"}} className="col-settings">
+                                    <label className="label-settings">Nome:</label>
+                                    <input 
+                                        className="input-settings"
+                                        id="nomeCompleto"
+                                        type="text"
+                                        value={user.nomeCompleto}
+                                        defaultValue={user.nomeCompleto}
+                                        disabled={editUser.nome}
+                                        onChange={handleUser}
+                                    />
+                                </div>
+
+                                <div style={{width: "28%"}} className="col-settings">
+                                    <label className="label-settings">Login:</label>
+                                    <input 
+                                        className="input-settings"
+                                        id="loginUsuario"
+                                        type="text"
+                                        value={user.loginUsuario}
+                                        defaultValue={user.loginUsuario}
+                                        disabled={editUser.login}
+                                        onChange={handleUser}
+                                    />
+                                </div>
+
+                                <ButtonForm
+                                    type="btn-preenchido"
+                                    style={{width: "15%", 
+                                            marginTop: "20px",
+                                            display: editUser.button
+                                        }}>
+                                    Editar
+                                </ButtonForm>
+                            </div>
+                        </form>
+                        
+                    </div>
 
                     {/* <div className="user-config">
                         <div className="configs-head">
@@ -217,79 +263,6 @@ export default () =>{
                     >
                         Adicionar Colaborador
                     </ButtonNoLink> */}
-                    <div className="user-config">
-                        <div className="configs-head">
-                            <h2>Metas</h2>
-                            <span onClick={editEcommerceClick}><Icon icon={pencilIcon}/> Editar</span>
-                        </div>
-                        <form onSubmit={(e) => atualizarEcommerce(e)}>
-                            <div className="row-configs">
-                                
-                                <div style={{width: "28%"}} className="col-settings">
-                                    <label className="label-settings">Data Inicio</label>
-                                    <input 
-                                        className="input-settings"
-                                        id="data"
-                                        type="date"
-                                        value={ecommerce.dataInicio}
-                                        defaultValue={ecommerce.dataInicio}
-                                        disabled={editEcommerce.dataInicio}
-                                        onChange={handleEcommerce}
-                                    />
-                                </div>
-
-                                <div style={{width: "28%"}} className="col-settings">
-                                    <label className="label-settings">Valor</label>
-                                    <input 
-                                        className="input-settings"
-                                        id="valor"
-                                        type="Integer"
-                                        vvalue={ecommerce.valor}
-                                        defaultValue={ecommerce.valor}
-                                        disabled={editEcommerce.valor}
-                                        onChange={handleEcommerce}
-                                    />
-                                </div>
-
-                                <div style={{width: "28%"}} className="col-settings">
-                                    <label className="label-settings">Tipo</label>
-                                    <input 
-                                        className="input-settings"
-                                        id="Tipo"
-                                        type="?"
-                                        vvalue={ecommerce.tipo}
-                                        defaultValue={ecommerce.tipo}
-                                        disabled={editEcommerce.tipo}
-                                        onChange={handleEcommerce}
-                                    />
-                                </div>
-
-                                <div style={{width: "28%"}} className="col-settings">
-                                    <label className="label-settings">Data Fim</label>
-                                    <input 
-                                        className="input-settings"
-                                        id="data"
-                                        type="date"
-                                        value={ecommerce.dataFim}
-                                        defaultValue={ecommerce.dataFim}
-                                        disabled={editEcommerce.dataFim}
-                                        onChange={handleEcommerce}
-                                    />
-                                </div>
-
-                                <ButtonForm
-                                    type="btn-preenchido"
-                                    style={{width: "15%", 
-                                            marginTop: "20px",
-                                            display: editEcommerce.button
-                                        }}>
-                                    Editar
-                                </ButtonForm>
-                            </div>
-                        </form>
-                        
-                    </div>
-
 
                 </div>
             </div>
