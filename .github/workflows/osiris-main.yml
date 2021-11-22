@@ -15,7 +15,7 @@ env:
 jobs:
   build-imagens:
     runs-on: ubuntu-latest
-    if: github.repository == ${{ env.REPOSITORIO }}
+    if: contains(github.repository, 'Osiris-gp8') == true
     steps:
       
       - uses: actions/checkout@v2
