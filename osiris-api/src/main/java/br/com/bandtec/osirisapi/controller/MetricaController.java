@@ -39,16 +39,16 @@ public class MetricaController {
     }
 
     @GetMapping("/ranque-categoria")
-    public ResponseEntity<List<RanqueCategoriaResponse>> getRanqueCategoria() {
+    public ResponseEntity<List<RanqueCategoriaResponse>> getRanqueCategoria(@Valid FiltroDataRequest filtroDataRequest) {
 
-        return ResponseEntity.status(200).body(metricaService.getRanqueCategoriaView());
+        return ResponseEntity.status(200).body(metricaService.getRanqueCategoriaView(filtroDataRequest));
     }
 
-    @GetMapping("/ranque-produtos")
-    public ResponseEntity<List<RanqueProdutoResponse>> getRanqueProdutos() {
-
-        return ResponseEntity.status(200).body(metricaService.getRanqueProdutoView());
-    }
+//    @GetMapping("/ranque-produtos")
+//    public ResponseEntity<List<RanqueProdutoResponse>> getRanqueProdutos() {
+//
+//        return ResponseEntity.status(200).body(metricaService.getRanqueProdutoView());
+//    }
 
     @GetMapping("/mais-usado")
     public ResponseEntity getCupomMaisUsado(){
