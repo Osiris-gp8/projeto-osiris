@@ -2,7 +2,7 @@ FROM node:14-slim AS build
 
 COPY ./front-end-osiris /var/www/html
 
-WORKDIR /var/www
+WORKDIR /var/www/html
 
 RUN npm install
 RUN npm run build
