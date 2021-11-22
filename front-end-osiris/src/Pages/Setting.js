@@ -16,6 +16,7 @@ export default () =>{
     const [user, setUser] = useState({});
     const [ecommerce, setEcommerce] = useState({});
     const [header, setHeader] = useState({});
+    const [meta,setMeta] = useState({});
 
     const [editUser, setEditUser] = useState({
         nome: true,
@@ -39,11 +40,29 @@ export default () =>{
 
     function editEcommerceClick(){
         setEditEcommerce({
+            dataInicio: false,
+            valor: false,
+            tipo: false,
+            dataFim: false,
+            button: "block"
+        })
+    }
+
+    const [editMeta, setEditMeta] = useState({
+        dataInicio: true,
+        valor: true,
+        tipo: true,
+        dataFim: true,
+        button: "none"
+    });
+
+    function editMetaClick(){
+        setEditMeta({
             nome: false,
             cnpj: false,
             button: "block"
         })
-    }
+    }    
 
     useEffect(() =>{
         if(!sessionStorage.getItem("token")){
@@ -66,7 +85,12 @@ export default () =>{
         newEcommerce[e.target.id] = e.target.value;
         setEcommerce(newEcommerce);
     }
-
+ 
+    function handleMetas(m){
+        const newMeta = {...meta};
+        newMeta[m.target.id] = e.target.value;
+        setUser(newMeta);
+    }
     function atualizarUser(e){
         e.preventDefault();
         api.post(`/usuarios/${JSON.parse(sessionStorage.getItem("usuario")).idUsuario}`, user, {headers: header })
@@ -94,6 +118,19 @@ export default () =>{
             })
     }
 
+    function atualizarMeta(m){
+        m.preventDefault();
+        api.post(`/meta/${JSON.parse(sessionStorage.getItem("meta")).idMeta}`, meta, {headers: header} )
+            .then(res => {
+                console.log(res)
+                toast.success("Meta alterada com sucesso");
+                user.ecommerce = ecommerce;
+                sessionStorage.setItem("meta", JSON.stringify(meta));
+            }).catch(err => {
+                console.log(err);
+                toast.error("Desculpe tivemos um erro. Tente mais tarde.")
+            })
+    }
     return (
         <>
             <MenuNovo/>
