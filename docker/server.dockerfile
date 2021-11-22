@@ -12,9 +12,9 @@ FROM nginx
 
 COPY --from=build /var/www/ /usr/share/nginx/html
 
-COPY ./docker/nginx/backend-nginx.conf /etc/nginx/conf.d/default.conf
+COPY ./docker/nginx/server-nginx.conf /etc/nginx/conf.d/default.conf
 
-EXPOSE 80
+EXPOSE 85
 
 ENTRYPOINT ["nginx"]
 CMD ["-g", "daemon off;"]

@@ -6,16 +6,18 @@ networks:
 
 services:
 
-  back-loadbalance:
-    image: osiris/back-loadbalance
+  server:
+    image: ghcr.io/osiris-gp8/server:latest-ti
     ports:
-      - "80:90" 
+      - 80:85
     networks:
       - osiris-network
     depends_on:
       - springboot
 
   springboot:
-    image: osiris/backend
+    image: ghcr.io/osiris-gp8/backend:latest-ti
+    ports:
+      - 8080:8080
     networks:
       - osiris-network

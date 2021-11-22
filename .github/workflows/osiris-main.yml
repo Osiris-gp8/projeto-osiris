@@ -9,78 +9,26 @@ on:
 
 env:
   REGISTRY: ghcr.io
+  USER_REPO: osiris-gp8
 
 jobs:
-
-#   testes:
-#     runs-on: ubuntu-latest
-#     steps:
-
-#       - uses: actions/checkout@v2
-
-#       - name: Configurando versão do Java 
-#         uses: actions/setup-java@v1
-#         with:
-#           java-version: '8'
-
-#       - name: Configurando versão do Node.js
-#         uses: actions/setup-node@v1
-#         with:
-#           node-version: '14.x'
-
-#       - name: Executando testes do back-end
-#         working-directory: osiris-api/
-#         run: mvn clean install
-
-#       - name: Executando testes do front-end
-#         working-directory: front-end-osiris/
-#         run: |
-#           npm install
-#           npm test --if-present
-
-  build-teste:
+  confirmando-repositorio: 
     runs-on: ubuntu-latest
-#     needs: testes
-    steps:
-
-      - uses: actions/checkout@v2
-
-      - name: Confirmando Repositório
-        run: echo ${{ secrets.CONFIRM_REPO }}
-
-      - name: Configurando versão do Java
-        uses: actions/setup-java@v1
-        with:
-          java-version: '8'
-
-      - name: Configurando versão do Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
-
-      - name: Build do back-end
-        working-directory: osiris-api/
-        run: mvn clean package -Dmaven.test.skip
-
-      - name: Build do front-end
-        working-directory: front-end-osiris/
-        run: |
-          npm install
-          npm run build
+    if: ${{ github.repository == secrets.CONFIRM_REPO }}
 
   build-imagens:
     runs-on: ubuntu-latest
-    # needs: build-teste
+    needs: confirmando-repositorio
     steps:
       - uses: actions/checkout@v2
 
       - name: Build imagem Back-end
         env:
           REGISTRY: ghcr.io
-        run: docker build --no-cache -f ./docker/springboot.dockerfile -t ${{ env.REGISTRY }}/osiris-gp8/backend:latest-ti .
+        run: docker build --no-cache -f ./docker/springboot.dockerfile -t ${{ env.REGISTRY }}/${{ env.USER_REPO }}/backend:latest-ti .
 
       - name: Build imagem Front-end
-        run: docker build --no-cache -f ./docker/server.dockerfile -t ${{ env.REGISTRY }}/osiris-gp8/server:latest-ti .
+        run: docker build --no-cache -f ./docker/server.dockerfile -t ${{ env.REGISTRY }}/${{ env.USER_REPO }}/server:latest-ti .
         
       - name: Login no Github Packages
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
@@ -91,8 +39,8 @@ jobs:
 
       - name: Push da imagem
         run: |
-          docker push ${{ env.REGISTRY }}/osiris-gp8/backend:latest-ti
-          docker push ${{ env.REGISTRY }}/osiris-gp8/server:latest-ti
+          docker push ${{ env.REGISTRY }}/${{ env.USER_REPO }}/backend:latest-ti
+          docker push ${{ env.REGISTRY }}/${{ env.USER_REPO }}/server:latest-ti
 
   deploy-dev:
     runs-on: ubuntu-latest
@@ -108,14 +56,5 @@ jobs:
           PRIVATE_KEY: ${{ secrets.CHAVE_SSH }}
           HOSTNAME: ${{ secrets.AWS_ADRESS }}
           USER: ${{ secrets.AWS_USER }}
-          USER_REPO: osiris-gp8
 
-        run: |
-          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-          ssh -o StrictHostKeyChecking=no -i private_key ${USER}@${HOSTNAME} '
-            cd /home/ubuntu/3CCO-2021-1-Grupo-08 &&
-            git pull &&
-            docker pull $REGISTRY/$USER_REPO/back-loadbalance:latest-ti
-            docker pull $REGISTRY/$USER_REPO/backend:latest-ti
-            docker-compose up -d --scale springboot=2
-          '
+        run: source ./docker/deploy-script.sh
