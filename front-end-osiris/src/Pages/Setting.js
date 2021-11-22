@@ -88,7 +88,7 @@ export default () =>{
  
     function handleMetas(m){
         const newMeta = {...meta};
-        newMeta[m.target.id] = e.target.value;
+        newMeta[m.target.id] = m.target.value;
         setUser(newMeta);
     }
     function atualizarUser(e){
