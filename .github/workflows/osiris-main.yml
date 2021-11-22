@@ -12,15 +12,15 @@ env:
   USER_REPO: osiris-gp8
 
 jobs:
-  confirmando-repositorio: 
-    runs-on: ubuntu-latest
-    if: ${{ github.repository == secrets.CONFIRM_REPO }}
-
   build-imagens:
     runs-on: ubuntu-latest
-    needs: confirmando-repositorio
     steps:
+      
       - uses: actions/checkout@v2
+
+      - name: Confirmando repositório
+        if: ${{ github.repository == secrets.CONFIRM_REPO }}
+        run: echo ${{ github.repository }}
 
       - name: Build imagem Back-end
         env:
