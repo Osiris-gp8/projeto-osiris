@@ -44,7 +44,7 @@ jobs:
     needs: build-imagens
     environment:
       name: TI
-      url: osiris-ti.ddns.net
+      url: http://osiris-ti.ddns.net
     steps:
 
       - uses: actions/checkout@v2
@@ -56,8 +56,8 @@ jobs:
           USER: ${{ secrets.AWS_USER }}
 
         run: |
-          echo "$PRIVATE_KEY" > private_key && chmod 400 private_key
-          scp -o StrictHostKeyChecking=no ./docker/docker-compose.yml -i private_key ${USER}@${HOSTNAME}:/home/ubuntu/docker-compose.yml
+          echo "$PRIVATE_KEY" > private_key.pem && chmod 400 private_key.pem
+          scp -o StrictHostKeyChecking=no ./docker/docker-compose.yml -i "private_key.pem" ${USER}@${HOSTNAME}:/home/ubuntu/docker-compose.yml
           ssh -o StrictHostKeyChecking=no -i private_key ${USER}@${HOSTNAME} '
             docker-compose up -d --scale springboot=2
           '
