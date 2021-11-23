@@ -9,6 +9,7 @@ import br.com.bandtec.osirisapi.domain.Cupom;
 import br.com.bandtec.osirisapi.domain.Ecommerce;
 import br.com.bandtec.osirisapi.domain.Evento;
 import br.com.bandtec.osirisapi.dto.request.ExportacaoRequest;
+import br.com.bandtec.osirisapi.dto.response.ContagemArquivosComErroResponse;
 import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.layout.LayoutCupom;
 import br.com.bandtec.osirisapi.layout.LayoutEvento;
@@ -232,7 +233,9 @@ public class ArquivoService {
         return paths;
     }
 
-    public List<Arquivo> buscarArquivosComErro() {
-        return arquivoRepository.findByStatus(arquivoStatusConstants.STATUS_ERRO);
+    public ContagemArquivosComErroResponse buscarArquivosComErroCount() {
+        return ContagemArquivosComErroResponse.builder()
+                .contagem(arquivoRepository.countAllByStatus(arquivoStatusConstants.STATUS_ERRO))
+                .build();
     }
 }

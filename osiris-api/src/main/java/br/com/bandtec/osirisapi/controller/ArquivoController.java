@@ -5,6 +5,7 @@ import br.com.bandtec.osirisapi.converter.S3converter;
 import br.com.bandtec.osirisapi.domain.Arquivo;
 import br.com.bandtec.osirisapi.dto.request.ExportacaoRequest;
 import br.com.bandtec.osirisapi.dto.request.FileS3Request;
+import br.com.bandtec.osirisapi.dto.response.ContagemArquivosComErroResponse;
 import br.com.bandtec.osirisapi.dto.response.S3ArquivoDownloadResponse;
 import br.com.bandtec.osirisapi.repository.ArquivoRepository;
 import br.com.bandtec.osirisapi.service.ArquivoService;
@@ -93,9 +94,9 @@ public class ArquivoController {
         return ResponseEntity.status(200).body(s3ArquivoDownloadResponse);
     }
 
-    @GetMapping("/com-erro")
-    public ResponseEntity<List<Arquivo>> getArquivosComErro(){
-        return ResponseEntity.status(200).body(arquivoService.buscarArquivosComErro());
+    @GetMapping("/com-erro/contagem")
+    public ResponseEntity<ContagemArquivosComErroResponse> getArquivosComErro(){
+        return ResponseEntity.status(200).body(arquivoService.buscarArquivosComErroCount());
     }
 
 }

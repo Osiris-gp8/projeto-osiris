@@ -8,4 +8,6 @@ import java.util.List;
 public interface ArquivoRepository extends JpaRepository<Arquivo, Integer> {
 
     List<Arquivo> findByStatus(String status);
+
+    Integer countAllByStatus(String status);
 }
