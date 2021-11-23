@@ -10,6 +10,7 @@ import br.com.bandtec.osirisapi.domain.Ecommerce;
 import br.com.bandtec.osirisapi.domain.Evento;
 import br.com.bandtec.osirisapi.dto.request.ExportacaoRequest;
 import br.com.bandtec.osirisapi.dto.response.ContagemArquivosComErroResponse;
+import br.com.bandtec.osirisapi.dto.response.TamanhoArquivoBytesResponse;
 import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.layout.LayoutCupom;
 import br.com.bandtec.osirisapi.layout.LayoutEvento;
@@ -236,6 +237,13 @@ public class ArquivoService {
     public ContagemArquivosComErroResponse buscarArquivosComErroCount() {
         return ContagemArquivosComErroResponse.builder()
                 .contagem(arquivoRepository.countAllByStatus(arquivoStatusConstants.STATUS_ERRO))
+                .build();
+    }
+
+    public TamanhoArquivoBytesResponse buscarTamanhoBytesArquivos() {
+        return TamanhoArquivoBytesResponse
+                .builder()
+                .tamanhoEmBytes(arquivoRepository.sumTamanhoEmBytes())
                 .build();
     }
 }

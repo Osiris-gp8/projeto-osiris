@@ -7,6 +7,7 @@ import br.com.bandtec.osirisapi.dto.request.ExportacaoRequest;
 import br.com.bandtec.osirisapi.dto.request.FileS3Request;
 import br.com.bandtec.osirisapi.dto.response.ContagemArquivosComErroResponse;
 import br.com.bandtec.osirisapi.dto.response.S3ArquivoDownloadResponse;
+import br.com.bandtec.osirisapi.dto.response.TamanhoArquivoBytesResponse;
 import br.com.bandtec.osirisapi.repository.ArquivoRepository;
 import br.com.bandtec.osirisapi.service.ArquivoService;
 import br.com.bandtec.osirisapi.utils.ArquivoStatusConstants;
@@ -97,6 +98,11 @@ public class ArquivoController {
     @GetMapping("/com-erro/contagem")
     public ResponseEntity<ContagemArquivosComErroResponse> getArquivosComErro(){
         return ResponseEntity.status(200).body(arquivoService.buscarArquivosComErroCount());
+    }
+
+    @GetMapping("/tamanho-bytes")
+    public ResponseEntity<TamanhoArquivoBytesResponse> getTamanhoBytes(){
+        return ResponseEntity.status(200).body(arquivoService.buscarTamanhoBytesArquivos());
     }
 
 }

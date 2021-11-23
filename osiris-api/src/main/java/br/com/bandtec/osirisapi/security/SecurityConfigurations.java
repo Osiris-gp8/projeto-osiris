@@ -67,7 +67,8 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
                     "/swagger-ui.html",
                     "/webjars/**",
                     "/ping",
-                    "/arquivos/com-erro/contagem"
+                    "/arquivos/com-erro/contagem",
+                    "/arquivos/tamanho-bytes"
             ).permitAll()
             .anyRequest().authenticated();
 
