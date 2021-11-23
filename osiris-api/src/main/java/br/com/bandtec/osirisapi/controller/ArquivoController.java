@@ -63,7 +63,8 @@ public class ArquivoController {
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
             BufferedReader bufferedInputStream = new BufferedReader(inputStreamReader);
 
-            arquivoService.importarTXT(bufferedInputStream);
+            arquivoService.importarTXT(bufferedInputStream, arquivoEntity);
+            arquivoEntity.setStatus(arquivoStatusConstants.STATUS_SUCESSO);
 
         } catch (IOException e) {
             arquivoEntity.setStatus(arquivoStatusConstants.STATUS_ERRO);
@@ -72,10 +73,10 @@ public class ArquivoController {
         } catch (StringIndexOutOfBoundsException e){
             arquivoEntity.setStatus(arquivoStatusConstants.STATUS_ERRO);
             return ResponseEntity.status(400).body("Layout inválido");
+        }finally {
+            arquivoRepository.saveAndFlush(arquivoEntity);
         }
 
-        arquivoEntity.setStatus(arquivoStatusConstants.STATUS_SUCESSO);
-        arquivoRepository.saveAndFlush(arquivoEntity);
 
         hashTable.insere(arquivo);
 

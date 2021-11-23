@@ -23,6 +23,6 @@ public class Arquivo {
     private String status;
 
     @ManyToOne
-    @JoinColumn(name = "ecommerce_id_ecommerce")
+    @JoinColumn(name = "fk_ecommerce")
     private Ecommerce ecommerce;
 }

@@ -171,13 +171,13 @@ public class ArquivoService {
     }
 
 
-    public void importarTXT(BufferedReader conteudo){
+    public void importarTXT(BufferedReader conteudo, Arquivo arquivoEntity){
         LayoutGenerico layoutGenerico = new LayoutGenerico();
 
         try {
             layoutGenerico.importarLinhas(conteudo);
         } catch (IOException e) {
-
+            arquivoEntity.setStatus(arquivoStatusConstants.STATUS_ERRO);
             e.printStackTrace();
         }
 
@@ -190,6 +190,8 @@ public class ArquivoService {
             cupomRepository.saveAll(
                     layoutCupomToCupom.convertFromList( layoutGenerico.getLayoutCupomList() ) );
         }
+
+        arquivoRepository.saveAndFlush(arquivoEntity);
 
     }
 
