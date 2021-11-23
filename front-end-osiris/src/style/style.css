@@ -492,6 +492,10 @@ html{
     margin-left: 80%;
 }
 
+.metrica .not-found {
+    font-size: 25px;
+}
+
 /* Charts */
 
 .chart-area{

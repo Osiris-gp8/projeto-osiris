@@ -34,7 +34,6 @@ function UploadFiles(props) {
     if (uploaded)
       return
     let newFile = file
-    console.log("Quebrei")
     newFile['file'] = fileUploaded
     newFile['nomeArquivo'] = fileUploaded.name
     newFile['tamanho'] = fileUploaded.size
@@ -42,7 +41,6 @@ function UploadFiles(props) {
     newFile['conteudoDoArquivo'] = await readFile(fileUploaded)
     setUploaded(true)
     setFile(newFile)
-    console.log(newFile)
 
   }
   const readFile = (file) => {
@@ -94,10 +92,10 @@ function UploadFiles(props) {
         setFile(newFile)
         toast.success("Importação realizada com Sucesso.")
       })
-      .catch(() => {
+      .catch((e) => {
         setFile(newFile)
         toast.error("Erro de importação")
-        console.log("Deu erro no arquivo " + file.nomeArquivo)
+        console.log(e)
       });
   };
 
@@ -113,15 +111,10 @@ function UploadFiles(props) {
     })
   }
 
-  useEffect(() => {
-    console.log(`Você clicou ${file.uploaded} vezes`);
-  }, [uploaded]);
-
   const handleChange = (e) =>{
     const newParameters = exportacao;
     newParameters[e.target.id] = e.target.value
     setExportacao(newParameters)
-    console.log(exportacao)
   }
 
   return (

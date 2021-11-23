@@ -1,9 +1,9 @@
 import api from '../api';
 
-export function getRankingSell(endpoint, header){
+export function getRankingSell(endpoint, header, params){
     const rankList = []
 
-    api.get(endpoint, {headers:header, params: { dataInicio: '2021-04-01', dataFinal: '2021-09-11' }}).then(res => {
+    api.get(endpoint, {headers:header, params: params}).then(res => {
         rankList.push(['Nome calçado', 'Quantidade']);
         res.data.forEach(e => {
             rankList.push([e.produto, e.quantidade]);

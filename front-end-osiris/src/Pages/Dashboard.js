@@ -9,10 +9,10 @@ import { useHistory } from 'react-router-dom';
 import api from '../api';
 import {getAllEvents,getCountUser, getCountAccess} from '../services/textData'
 import {getRankingSell, getCountSell} from '../services/dashData'
-import {getIntervalMonthDays, getIntervalSixMonths} from '../services/utils'
+import {countEventos} from '../services/EventoService';
+import { getMetas } from '../services/MetaService';
 
 const Dashboard = () =>{ 
-
     const dateNow = new Date()
 
     const [loading, setLoading] = useState({
@@ -46,33 +46,25 @@ const Dashboard = () =>{
         };
     }, []); 
 
-    useEffect(() =>{
+
+    useEffect(() => {
         if(!sessionStorage.getItem("token")){
             return history.push('/login');
         }
-
-        setCalcados(getRankingSell("/metricas/ranque-categoria", header))
+        const filters = { dataInicio: filtroInicio, dataFinal: filtroFinal };
+        setCalcados(getRankingSell("/metricas/ranque-categoria", header, filters))
         
-        getAllEvents(header).then(
-            data => setEventos(data.data.length)
-        );
-    }, [header, history]);
-
-    useEffect(() => {
-        function getMetas(){
-            // const interval = getIntervalMonthDays();
-            const interval = [filtroInicio, filtroFinal];
-            return api.get('/metas', {
-                headers: header,
-                params: { dataInicio: interval[0], dataFinal: interval[1] }
+        countEventos(header, filters)
+            .then(result => {
+                setEventos(result)
             });
-        }
-        getMetas()
+
+        getMetas(header, filters)
             .then(resposta => {
                 setLoading({
                     vendas: false, clientes: false, acessos: false
                 })
-                setMetas(resposta.data)
+                setMetas(resposta)
             });
 
         getCountSell(header, filtroInicio, filtroFinal)
@@ -93,7 +85,7 @@ const Dashboard = () =>{
                 setCountAccess(data)
             })
 
-    }, [header]);
+    }, [filtroFinal, filtroInicio, header]);
 
     useEffect(() => {
         const interval = { 
@@ -111,7 +103,7 @@ const Dashboard = () =>{
             })
             setWeekData(arrayData)
         })
-    }, [header, translate_day]);
+    }, [filtroFinal, filtroInicio, header, translate_day]);
 
     const cores = ["#666BC2", "#8CA8D1", "#B3C8E1", "#D9E2F0", "#ECF0F7"];
     const dados = [
@@ -205,30 +197,6 @@ const Dashboard = () =>{
                 </div>
             </div>
 
-            {/* <div className="chart-area">
-                <div className="charts-pie">
-                    <div>
-                        <h2>Vendas com Cupons</h2>
-                        <ChartPie
-                            width="100%"
-                            data={cupons}
-                            title="Tipo de Venda"
-                            pieHole= {0.4}
-                            colors={cores}
-                        />
-                    </div>
-                    <div>
-                        <h2>Calçados mais vendidos</h2>
-                        <ChartPie
-                            title="Tipo de Venda"
-                            width="100%"
-                            data={calcados}
-                            pieHole= {0.4}
-                            colors={cores}
-                        />
-                    </div>
-                </div>
-            </div> */}
         </>
     );
 }

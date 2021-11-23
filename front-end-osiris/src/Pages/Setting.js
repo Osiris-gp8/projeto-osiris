@@ -71,7 +71,6 @@ export default () =>{
         e.preventDefault();
         api.post(`/usuarios/${JSON.parse(sessionStorage.getItem("usuario")).idUsuario}`, user, {headers: header })
             .then(res => {
-                console.log(res)
                 toast.success("Usuário alterado com sucesso");
                 sessionStorage.setItem("usuario", JSON.stringify(user));
             }).catch(err => {
@@ -84,7 +83,6 @@ export default () =>{
         e.preventDefault();
         api.post(`/ecommerces/${JSON.parse(sessionStorage.getItem("usuario")).ecommerce.idEcommerce}`, ecommerce, {headers: header} )
             .then(res => {
-                console.log(res)
                 toast.success("Ecommerce alterado com sucesso");
                 user.ecommerce = ecommerce;
                 sessionStorage.setItem("usuario", JSON.stringify(user));
