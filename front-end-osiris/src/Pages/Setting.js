@@ -86,7 +86,7 @@ export default () =>{
         setEcommerce(newEcommerce);
     }
  
-    function handleMetas(m){
+    function handleMeta(m){
         const newMeta = {...meta};
         newMeta[m.target.id] = m.target.value;
         setUser(newMeta);
@@ -268,10 +268,10 @@ export default () =>{
                                         className="input-settings"
                                         id="data"
                                         type="date"
-                                        value={ecommerce.dataInicio}
-                                        defaultValue={ecommerce.dataInicio}
-                                        disabled={editEcommerce.dataInicio}
-                                        onChange={handleEcommerce}
+                                        value={meta.dataInicio}
+                                        defaultValue={meta.dataInicio}
+                                        disabled={editMeta.dataInicio}
+                                        onChange={handleMeta}
                                     />
                                 </div>
 
@@ -281,10 +281,10 @@ export default () =>{
                                         className="input-settings"
                                         id="valor"
                                         type="Integer"
-                                        vvalue={ecommerce.valor}
-                                        defaultValue={ecommerce.valor}
-                                        disabled={editEcommerce.valor}
-                                        onChange={handleEcommerce}
+                                        vvalue={meta.valor}
+                                        defaultValue={meta.valor}
+                                        disabled={editMeta.valor}
+                                        onChange={handleMeta}
                                     />
                                 </div>
 
@@ -294,10 +294,10 @@ export default () =>{
                                         className="input-settings"
                                         id="Tipo"
                                         type="?"
-                                        vvalue={ecommerce.tipo}
-                                        defaultValue={ecommerce.tipo}
-                                        disabled={editEcommerce.tipo}
-                                        onChange={handleEcommerce}
+                                        vvalue={meta.tipo}
+                                        defaultValue={meta.tipo}
+                                        disabled={editMeta.tipo}
+                                        onChange={handleMeta}
                                     />
                                 </div>
 
@@ -307,10 +307,10 @@ export default () =>{
                                         className="input-settings"
                                         id="data"
                                         type="date"
-                                        value={ecommerce.dataFim}
-                                        defaultValue={ecommerce.dataFim}
-                                        disabled={editEcommerce.dataFim}
-                                        onChange={handleEcommerce}
+                                        value={meta.dataFim}
+                                        defaultValue={meta.dataFim}
+                                        disabled={editMeta.dataFim}
+                                        onChange={handleMeta}
                                     />
                                 </div>
 
