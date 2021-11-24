@@ -14,6 +14,7 @@ env:
 jobs:
   build-teste:
     runs-on: ubuntu-latest
+    if: contains(github.repository, 'Osiris-gp8') == true
     steps: 
       - uses: actions/checkout@v2
 
