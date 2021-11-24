@@ -21,7 +21,7 @@ extractions = {
 config = {
     "username": "root",
     "password": "bandtec",
-    "host": "18.211.88.253",
+    "host": "3.94.235.84",
     "db": "osiris"
 }
 

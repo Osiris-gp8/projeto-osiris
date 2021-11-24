@@ -42,7 +42,7 @@ fkcupom <- popular(c(0:4))
 
 status <- rbinom(n,1,0.3) + 1
 
-id_consumidor <- abs(round(rnorm(n, 500, 10),0))
+id_consumidor <- abs(round(rnorm(n, 5000, 100),0))
 
 time <- popular(c("Palmeiras","Corinthians", 
                   "Sao Paulo", "Santos",

@@ -6,7 +6,7 @@ set.seed(500)
 pop = 10000
 n = 1000
 ## Acessos
-id_consumidor <- abs(round(rnorm(n, 500, 10),0))
+id_consumidor <- abs(round(rnorm(n, 5000, 100),0))
 
 hora_compra.pop <- abs(round(rnorm(pop, 4800, 600),0))
 hora_compra <- hora_compra.pop[ sample( which(hora_compra.pop > 500), n) ]
