@@ -81,7 +81,7 @@ jobs:
             git fetch --all &&
             git reset --hard origin/feature/esteira &&
             git pull origin feature/esteira &&
-            git pull ghcr.io/osiris-gp8/backend:latest-ti &&
-            git pull ghcr.io/osiris-gp8/server:latest-ti &&
+            docker pull ghcr.io/osiris-gp8/backend:latest-ti &&
+            docker pull ghcr.io/osiris-gp8/server:latest-ti &&
             docker-compose -f ./docker/docker-compose.yml up -d --scale springboot=2
           '
