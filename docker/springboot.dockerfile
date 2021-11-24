@@ -8,7 +8,7 @@ COPY ./osiris-api/ /var/www/
 WORKDIR /var/www/
 
 # Gerando pacote
-RUN mvn clean package -Dmaven.test.skip
+RUN mvn clean package
 
 #Comando de entrada para rodar a aplicação
 ENTRYPOINT java -jar ./target/osiris-api-0.0.1-SNAPSHOT.jar
