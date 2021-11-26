@@ -4,16 +4,21 @@ import br.com.bandtec.osirisapi.converter.CupomToLayoutCupom;
 import br.com.bandtec.osirisapi.converter.EventoToLayoutEvento;
 import br.com.bandtec.osirisapi.converter.LayoutCupomToCupom;
 import br.com.bandtec.osirisapi.converter.LayoutEventoToEvento;
+import br.com.bandtec.osirisapi.domain.Arquivo;
 import br.com.bandtec.osirisapi.domain.Cupom;
 import br.com.bandtec.osirisapi.domain.Ecommerce;
 import br.com.bandtec.osirisapi.domain.Evento;
 import br.com.bandtec.osirisapi.dto.request.ExportacaoRequest;
+import br.com.bandtec.osirisapi.dto.response.ContagemArquivosComErroResponse;
+import br.com.bandtec.osirisapi.dto.response.TamanhoArquivoBytesResponse;
 import br.com.bandtec.osirisapi.exception.ApiRequestException;
 import br.com.bandtec.osirisapi.layout.LayoutCupom;
 import br.com.bandtec.osirisapi.layout.LayoutEvento;
 import br.com.bandtec.osirisapi.layout.LayoutGenerico;
+import br.com.bandtec.osirisapi.repository.ArquivoRepository;
 import br.com.bandtec.osirisapi.repository.CupomRepository;
 import br.com.bandtec.osirisapi.repository.EventoRepository;
+import br.com.bandtec.osirisapi.utils.ArquivoStatusConstants;
 import br.com.bandtec.osirisapi.utils.BucketService;
 import br.com.bandtec.osirisapi.utils.hashing.ListaLigada;
 import br.com.bandtec.osirisapi.utils.hashing.Node;
@@ -38,6 +43,7 @@ public class ArquivoService {
 
     private final EventoRepository eventoRepository;
     private final CupomRepository cupomRepository;
+    private final ArquivoRepository arquivoRepository;
 
     private final EventoToLayoutEvento eventoToLayoutEvento;
     private final LayoutEventoToEvento layoutEventoToEvento;
@@ -49,6 +55,8 @@ public class ArquivoService {
     private final BucketService bucket;
 
     private final UserInfo userInfo;
+
+    private final ArquivoStatusConstants arquivoStatusConstants;
 
     //TODO refatorar exportação para usar 'LayoutGenerico'
     public String gerarCsv() {
@@ -165,12 +173,13 @@ public class ArquivoService {
     }
 
 
-    public void importarTXT(BufferedReader conteudo){
+    public void importarTXT(BufferedReader conteudo, Arquivo arquivoEntity){
         LayoutGenerico layoutGenerico = new LayoutGenerico();
 
         try {
             layoutGenerico.importarLinhas(conteudo);
         } catch (IOException e) {
+            arquivoEntity.setStatus(arquivoStatusConstants.STATUS_ERRO);
             e.printStackTrace();
         }
 
@@ -183,6 +192,8 @@ public class ArquivoService {
             cupomRepository.saveAll(
                     layoutCupomToCupom.convertFromList( layoutGenerico.getLayoutCupomList() ) );
         }
+
+        arquivoRepository.saveAndFlush(arquivoEntity);
 
     }
 
@@ -221,5 +232,18 @@ public class ArquivoService {
         }while (hasNext);
 
         return paths;
+    }
+
+    public ContagemArquivosComErroResponse buscarArquivosComErroCount() {
+        return ContagemArquivosComErroResponse.builder()
+                .contagem(arquivoRepository.countAllByStatus(arquivoStatusConstants.STATUS_ERRO))
+                .build();
+    }
+
+    public TamanhoArquivoBytesResponse buscarTamanhoBytesArquivos() {
+        return TamanhoArquivoBytesResponse
+                .builder()
+                .tamanhoEmBytes(arquivoRepository.sumTamanhoEmBytes())
+                .build();
     }
 }

@@ -1,14 +1,13 @@
 package br.com.bandtec.osirisapi.converter.implementation;
 
 import br.com.bandtec.osirisapi.converter.DashConverter;
-import br.com.bandtec.osirisapi.domain.Evento;
 import br.com.bandtec.osirisapi.dto.response.dash.AcessosVendasDiasResponse;
 import br.com.bandtec.osirisapi.dto.response.dash.RanqueCategoriaResponse;
 import br.com.bandtec.osirisapi.dto.response.dash.RanqueProdutoResponse;
 import br.com.bandtec.osirisapi.views.RanqueCategoriaView;
 import br.com.bandtec.osirisapi.views.RanqueProdutoView;
-import com.sun.org.apache.bcel.internal.generic.RETURN;
 import org.springframework.stereotype.Component;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
