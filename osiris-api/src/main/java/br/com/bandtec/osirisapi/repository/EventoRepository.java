@@ -16,10 +16,10 @@ import java.util.List;
 
 public interface EventoRepository extends JpaRepository<Evento, Integer> {
     @Query(value = "with top_products as (\n" +
-            "\tselect e.nome_produto as evento, count(*) as quantidade \n" +
+            "\tselect e.nome_produto as nome, count(*) as quantidade \n" +
             "\tfrom evento e, ecommerce ec \n" +
             "\twhere e.ecommerce_id_ecommerce = ?1 and e.ecommerce_id_ecommerce = ec.id_ecommerce \n" +
-            "\tand date(data_compra) between '2020-03-01' and '2021-10-20'\n" +
+            "\tand date(data_compra) between ?2 and ?3\n" +
             "\tgroup by e.nome_produto order by quantidade desc limit 5\n" +
             ")\n" +
             "select DENSE_RANK()\n" +

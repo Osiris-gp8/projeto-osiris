@@ -63,7 +63,6 @@ const MapChart = ({ setTooltipContent }) => {
           {({ geographies }) =>
             geographies.map((geo) => {
               const cur = dados.find((s) => s.uf === geo.id);
-              console.log(cur);
               return (
                 <Geography
                   key={geo.rsmKey}

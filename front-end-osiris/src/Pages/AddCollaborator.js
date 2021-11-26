@@ -20,18 +20,8 @@ export default () => {
         if(!sessionStorage.getItem("token")){
             return history.push('/login');
         }
-        // }else{
-        //     setHeader({
-        //         "Authorization": `${sessionStorage.getItem("tipo")} ${sessionStorage.getItem("token")}`
-        //     })
-    
-        //     console.log(header)
-        //     setIdEcommerce(JSON.parse(sessionStorage.getItem("usuario")).ecommerce.idEcommerce)
-        //     console.log(idEcommerce)
-        // }
 
         api.get("/usuarios/ecommerce/"+idEcommerce, {headers: header}).then(res => {
-            console.log(res)
             setRows(res.data);
         }).catch(err => {
             console.log(err)
@@ -58,7 +48,6 @@ export default () => {
     function addInList(e){
         e.preventDefault();
         api.post("/usuarios/colaborador", collaboratorData, {headers: header}).then( res => {
-            console.log(res)
             const newCollaborator = {...collaboratorData};
             newCollaborator.idUsuario = res.data.idUsuario
             setRows([...rows, newCollaborator])

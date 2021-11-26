@@ -7,8 +7,7 @@ export async function getData(endpoint, header){
 }
 
 export async function getDataMonth(endpoint, header){
-    // const intervalDays = getIntervalMonthDays()
-    const intervalDays = ['2021-07-01', '2021-07-30'];
+    const intervalDays = getIntervalMonthDays()
     return await getData(`${endpoint}?dataInicio=${intervalDays[0]}&dataFinal=${intervalDays[1]}`, header)
 }
 
@@ -21,8 +20,8 @@ export  async  function getAllEvents(header){
     return (await getData("/eventos",header))
 }
 
-export async function getCountUser(header){
-    let data = getData("/eventos/countClientes?dataFinal=2021-10-10&dataInicio=2021-10-01", header)
+export async function getCountUser(header, dataInicio, dataFinal){
+    let data = getData(`/eventos/countClientes?dataFinal=${dataFinal}&dataInicio=${dataInicio}`, header)
     return (await data).data
 }
 

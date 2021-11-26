@@ -7,7 +7,7 @@ public interface RanqueCategoriaView {
     @Value("#{target.ranque}")
     Integer getRanque();
 
-    @Value("#{target.evento}")
+    @Value("#{target.nome}")
     String getNome();
 
     @Value("#{target.quantidade}")
