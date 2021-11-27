@@ -28,7 +28,7 @@ jobs:
         working-directory: front-end-osiris/
         run: |
           npm install
-          npx jest --passWithNoTests
+          npm run build
 
   build-imagens:
     runs-on: ubuntu-latest
