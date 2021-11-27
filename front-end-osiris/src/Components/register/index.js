@@ -29,7 +29,6 @@ export default () => {
         const newUsuario = { ...usuarioData }
         newUsuario[e.target.id] = e.target.value;
         setUsuarioData(newUsuario);
-        console.log(newUsuario);
     }
 
     function enviar(e) {
@@ -42,33 +41,24 @@ export default () => {
                 idEcommerce: id
             }
         }
-        console.log(usuarioPost)
         api.post("/usuarios", usuarioPost).then((resposta) => {
-            console.log("teste")
-            console.log("post ok", resposta);
             history.push("/login");
         });
     }
 
     function receberEcommerce(cnpj, nomeEcommerce) {    
-        console.log(cnpj);
         api.get(`/ecommerces/id`, { params: { cnpj: cnpj, nomeEcommerce: nomeEcommerce}}).then((resposta) => {
-            console.log(resposta);
             setId(resposta.data);
-            console.log(id);
             return resposta.data;
         }).catch((error) => { 
             console.log(error);
             setNext(false); 
-            console.log(error)    
         });
     }
 
     function changeForm(e){
         receberEcommerce(cnpj, nomeEcommerce)
-        console.log(next);
         setNext(e.target.id != 'first')
-        console.log(next);
     }
 
     return (
