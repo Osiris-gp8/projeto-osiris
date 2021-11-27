@@ -6,7 +6,7 @@ export function getRankingSell(endpoint, header, params){
     api.get(endpoint, {headers:header, params: params}).then(res => {
         rankList.push(['Nome calçado', 'Quantidade']);
         res.data.forEach(e => {
-            rankList.push([e.produto, e.quantidade]);
+            rankList.push([e.categoria, e.quantidade]);
         });
         
     });
@@ -15,7 +15,7 @@ export function getRankingSell(endpoint, header, params){
 
 export async function getCountSell( header, dataInicio, dataFinal){
     let data
-    await api.get(`/eventos/com-sem-cupom?dataFinal=${dataInicio}&dataInicio=${dataFinal}`, {headers:header}).then(res => {
+    await api.get(`/eventos/com-sem-cupom?dataInicio=${dataInicio}&dataFinal=${dataFinal}`, {headers:header}).then(res => {
         data = ([
             ['cupom', 'valor'], 
             ['Vendas com cupom', res.data.contagemEventosComCupom],
