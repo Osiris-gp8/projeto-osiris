@@ -47,7 +47,6 @@ export default () => {
         e.preventDefault();
         api.get(`/usuarios/recuperar-senha/solicitacao/${email}`)
             .then(res => {
-                console.log(res)
                 setDisplayEmail({display: "none"})
                 const newDisplaySent = {...displayEmailSent}
                 newDisplaySent.display = "block"
@@ -72,7 +71,6 @@ export default () => {
         }
         api.post(`/usuarios/recuperar-senha/${token}`, {senha: password.senha})
             .then(res => {
-                console.log(res)
                 history.push("/login/true")
             }).catch(err => {
                 console.log(err)

@@ -36,18 +36,20 @@ function Metricas(props){
                 <span>Carregando</span>
             </div>
         )
+    } else{
+        return(
+            <div className="metrica">
+                <span className="titulo-metrica">{props.metrica}</span>
+                <span className="valor-metrica" style={color}>{
+                    Number.isNaN(props.valor) || props.valor === 0 ? 
+                    <p class="not-found">Valor não encontrado</p> : props.valor
+                }</span>
+                {!Number.isNaN(props.meta) && <span>Sua meta é de: {props.meta}</span>}
+                <Icon className="icon-metrica" icon={props.icon}/>
+            </div>
+        );
     }
 
-    return(
-        <div className="metrica">
-            <span className="titulo-metrica">{props.metrica}</span>
-            <span className="valor-metrica" style={color}>
-                {Number.isNaN(props.valor) || props.valor === 0 ? 'Valor não encontrado' : props.valor}
-            </span>
-            {!Number.isNaN(props.meta) && <span>Sua meta é de: {props.meta}</span>}
-            <Icon className="icon-metrica" icon={props.icon}/>
-        </div>
-    );
 }
 
 export default Metricas;

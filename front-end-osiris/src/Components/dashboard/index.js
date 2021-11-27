@@ -51,13 +51,11 @@ function MetricsFinal(props) {
 
 async function getVendas(){
             const resposta = await api.get("/eventos");
-            console.log("Resposta: ", resposta);
             return resposta;
         }
 
 async function getCountVendas() {
         const resposta = await getVendas();
-        console.log("Vendas data", resposta.data.length);
         return resposta.status == 204 ? 0 : resposta.data.length;
 }
 

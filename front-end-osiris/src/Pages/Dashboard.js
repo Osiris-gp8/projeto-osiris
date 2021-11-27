@@ -9,9 +9,11 @@ import { useHistory } from 'react-router-dom';
 import api from '../api';
 import {getAllEvents,getCountUser, getCountAccess} from '../services/textData'
 import {getRankingSell, getCountSell} from '../services/dashData'
-import {getIntervalMonthDays, getIntervalSixMonths} from '../services/utils'
+import {countEventos} from '../services/EventoService';
+import { getMetas } from '../services/MetaService';
 
 const Dashboard = () =>{ 
+    const dateNow = new Date()
 
     const [loading, setLoading] = useState({
         clientes: true,
@@ -27,6 +29,8 @@ const Dashboard = () =>{
     const [eventos, setEventos] = useState(0);
     const [countUsers, setCountUsers] = useState(0);
     const [countAccess, setCountAccess] = useState(0);
+    const [filtroInicio, setFiltroInicio] = useState(`${dateNow.getFullYear()}-01-01`);
+    const [filtroFinal, setFiltroFinal] = useState(`${dateNow.getFullYear()}-${dateNow.getMonth() + 1}-${dateNow.getDate() < 10 ? "0" + dateNow.getDate() : dateNow.getDate()}`);
     const header = useMemo(() => {
         return {"Authorization": `${sessionStorage.getItem("tipo")} ${sessionStorage.getItem("token")}`}
     }, []);
@@ -42,42 +46,36 @@ const Dashboard = () =>{
         };
     }, []); 
 
-    useEffect(() =>{
+
+    useEffect(() => {
         if(!sessionStorage.getItem("token")){
             return history.push('/login');
         }
-
-        setCalcados(getRankingSell("/metricas/ranque-categoria", header))
+        const filters = { dataInicio: filtroInicio, dataFinal: filtroFinal };
+        sessionStorage.setItem("dataInicio", filtroInicio);
+        sessionStorage.setItem("dataFinal", filtroFinal);
+        setCalcados(getRankingSell("/metricas/ranque-categoria", header, filters))
         
-        getAllEvents(header).then(
-            data => setEventos(data.data.length)
-        );
-    }, [header, history]);
-
-    useEffect(() => {
-        function getMetas(){
-            // const interval = getIntervalMonthDays();
-            const interval = ['2021-07-01', '2021-07-30'];
-            return api.get('/metas', {
-                headers: header,
-                params: { dataInicio: interval[0], dataFinal: interval[1] }
+        countEventos(header, filters)
+            .then(result => {
+                setEventos(result)
             });
-        }
-        getMetas()
+
+        getMetas(header, filters)
             .then(resposta => {
                 setLoading({
                     vendas: false, clientes: false, acessos: false
                 })
-                setMetas(resposta.data)
+                setMetas(resposta)
             });
 
-        getCountSell(header)
+        getCountSell(header, filtroInicio, filtroFinal)
             .then(data => {
                 setLoading({vendas: false})
                 setCupons(data)
             });
 
-        getCountUser(header)
+        getCountUser(header, filtroInicio, filtroFinal)
             .then(data => {
                 setLoading({clientes: false})
                 setCountUsers(data)
@@ -89,10 +87,13 @@ const Dashboard = () =>{
                 setCountAccess(data)
             })
 
-    }, [header]);
+    }, [filtroFinal, filtroInicio, header]);
 
     useEffect(() => {
-        const interval = getIntervalSixMonths()
+        const interval = { 
+            dataInicio: filtroInicio, 
+            dataFinal: filtroFinal 
+        }
 
         api.get("/dash/contagem-acessos-vendas", { 
             headers: header,
@@ -104,7 +105,7 @@ const Dashboard = () =>{
             })
             setWeekData(arrayData)
         })
-    }, [header, translate_day]);
+    }, [filtroFinal, filtroInicio, header, translate_day]);
 
     const cores = ["#666BC2", "#8CA8D1", "#B3C8E1", "#D9E2F0", "#ECF0F7"];
     const dados = [
@@ -112,11 +113,21 @@ const Dashboard = () =>{
         ...weekData
     ];
 
+    function definirDataInicio(e){
+        setFiltroInicio(e.target.value);
+        sessionStorage.setItem("dataInicio", filtroInicio);
+    }
+
+    function definirDataFinal(e){
+        setFiltroFinal(e.target.value);
+        sessionStorage.setItem("dataFinal", filtroFinal);
+    }
+
     return (
         <>
             <MenuNovo/>
             <div className="metricas">
-                <Metricas 
+            <Metricas 
                     metrica="Vendas"
                     valor={eventos} 
                     meta={Math.floor(metas[0]?.valor)}
@@ -141,10 +152,23 @@ const Dashboard = () =>{
                 />
             </div>
 
-            <div className="chart-area">
+            <div className="chart-area position-relative">
+                <div className="filtro d-flex flex-colum justify-content-between position-absolute">
+                    <div className="d-flex flex-column">
+                        <label>Data inicial:</label>
+                        <input type="date" onChange={definirDataInicio} value={filtroInicio} className="date-picker"/>
+                    </div>
+
+                    <div className="d-flex flex-column">
+                        <label>Data final:</label>
+                        <input type="date" onChange={definirDataFinal} value={filtroFinal} className="date-picker"/>
+                    </div>
+
+                </div>
+                
                 <ChartBar
                     id="chart-acessos"
-                    width="95%"
+                    width="100%"
                     height="30vh"
                     data={dados}
                     title="Acessos da Semana"
@@ -152,14 +176,12 @@ const Dashboard = () =>{
                     titleX="Dias da semana"
                     titleY="Acessos x Vendas"
                 />
-            </div>
 
-            <div className="chart-area">
                 <div className="charts-pie">
                     <div>
                         <h2>Vendas com Cupons</h2>
                         <ChartPie
-                            width="100%"
+                            width="98%"
                             data={cupons}
                             title="Tipo de Venda"
                             pieHole= {0.4}
@@ -178,6 +200,7 @@ const Dashboard = () =>{
                     </div>
                 </div>
             </div>
+
         </>
     );
 }
