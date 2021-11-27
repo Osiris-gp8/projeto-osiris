@@ -31,6 +31,7 @@ html{
     font-size: 20px;
     font-weight: 600;
     cursor: pointer;
+    padding: 0;
 }
 
 .btn-preenchido{
@@ -609,7 +610,7 @@ html{
     height: 30px;
     font-size: 20px;
     border: 2px solid #666BC2;
-    padding: 5px;
+    padding-left: 5px;
     background-color: #ECF0F7;
     border-radius: 5px;
 }

@@ -33,7 +33,7 @@ public class MetaController {
         return ResponseEntity.status(201).body(metaService.inserirMeta(novaMeta));
     }
 
-    @PutMapping("/{idMeta}")
+    @PostMapping("/{idMeta}")
     public ResponseEntity putMeta(
             @PathVariable Integer idMeta,
             @RequestBody @Valid Meta meta) {

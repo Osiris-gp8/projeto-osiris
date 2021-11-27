@@ -29,7 +29,7 @@ const Dashboard = () =>{
     const [eventos, setEventos] = useState(0);
     const [countUsers, setCountUsers] = useState(0);
     const [countAccess, setCountAccess] = useState(0);
-    const [filtroInicio, setFiltroInicio] = useState(`${dateNow.getFullYear()}-${dateNow.getMonth() + 1}-01`);
+    const [filtroInicio, setFiltroInicio] = useState(`${dateNow.getFullYear()}-01-01`);
     const [filtroFinal, setFiltroFinal] = useState(`${dateNow.getFullYear()}-${dateNow.getMonth() + 1}-${dateNow.getDate() < 10 ? "0" + dateNow.getDate() : dateNow.getDate()}`);
     const header = useMemo(() => {
         return {"Authorization": `${sessionStorage.getItem("tipo")} ${sessionStorage.getItem("token")}`}
@@ -52,6 +52,8 @@ const Dashboard = () =>{
             return history.push('/login');
         }
         const filters = { dataInicio: filtroInicio, dataFinal: filtroFinal };
+        sessionStorage.setItem("dataInicio", filtroInicio);
+        sessionStorage.setItem("dataFinal", filtroFinal);
         setCalcados(getRankingSell("/metricas/ranque-categoria", header, filters))
         
         countEventos(header, filters)
@@ -113,10 +115,12 @@ const Dashboard = () =>{
 
     function definirDataInicio(e){
         setFiltroInicio(e.target.value);
+        sessionStorage.setItem("dataInicio", filtroInicio);
     }
 
     function definirDataFinal(e){
         setFiltroFinal(e.target.value);
+        sessionStorage.setItem("dataFinal", filtroFinal);
     }
 
     return (

@@ -1,13 +1,14 @@
-import {React, useEffect, useState} from 'react'
+import {React, useEffect, useState, useMemo} from 'react'
 import { useHistory } from 'react-router-dom'
 import MenuNovo from '../Components/MenuNovo/MenuNovo'
 import Input from '../Components/Input/Input'
 import Icon from '@iconify/react'
 import pencilIcon from '@iconify-icons/akar-icons/pencil';
-import {ButtonNoLink, ButtonForm} from '../Components/Button'
+import {Button, ButtonForm} from '../Components/Button'
 import api from '../api';
 import { ToastContainerTop } from '../Components/Toast';
 import { toast } from 'react-toastify';
+import { getMetas } from '../services/MetaService';
 
 export default () =>{ 
 
@@ -15,8 +16,20 @@ export default () =>{
 
     const [user, setUser] = useState({});
     const [ecommerce, setEcommerce] = useState({});
-    const [header, setHeader] = useState({});
-    const [meta,setMeta] = useState({});
+    const [meta, setMeta] = useState([{}, {}]);
+    const [metaParaUpdate, setMetaParaUpdate] = useState({});
+
+    const header = useMemo(() => {
+        return {"Authorization": `${sessionStorage.getItem("tipo")} ${sessionStorage.getItem("token")}`}
+    }, []);
+
+    const filtros = useMemo(() => {
+        return {
+            dataInicio: sessionStorage.getItem("dataInicio"),
+            dataFinal: sessionStorage.getItem("dataFinal")
+        }
+    });
+    
 
     const [editUser, setEditUser] = useState({
         nome: true,
@@ -40,26 +53,22 @@ export default () =>{
 
     function editEcommerceClick(){
         setEditEcommerce({
-            dataInicio: false,
-            valor: false,
-            tipo: false,
-            dataFim: false,
+            nome: false,
+            cnpj: false,
             button: "block"
         })
     }
 
     const [editMeta, setEditMeta] = useState({
-        dataInicio: true,
         valor: true,
         tipo: true,
-        dataFim: true,
         button: "none"
     });
 
     function editMetaClick(){
         setEditMeta({
-            nome: false,
-            cnpj: false,
+            valor: false,
+            tipo: false,
             button: "block"
         })
     }    
@@ -69,9 +78,14 @@ export default () =>{
             return history.push('/login');
         }
 
-        setHeader({"Authorization": `${sessionStorage.getItem("tipo")} ${sessionStorage.getItem("token")}`})
         setUser(JSON.parse(sessionStorage.getItem("usuario")));
         setEcommerce(JSON.parse(sessionStorage.getItem("usuario")).ecommerce);
+        getMetas(header, filtros)
+            .then(res => {
+                setMeta(res);
+                setMetaParaUpdate({...res[0]});
+                console.log(metaParaUpdate);
+            });
     }, []);
 
     function handleUser(e){
@@ -86,11 +100,17 @@ export default () =>{
         setEcommerce(newEcommerce);
     }
  
-    function handleMeta(m){
-        const newMeta = {...meta};
-        newMeta[m.target.id] = m.target.value;
-        setUser(newMeta);
+    function handleMeta(e){
+        const newMeta = {...metaParaUpdate};
+        newMeta[e.target.id] = e.target.value == "" ? 0 : parseInt(e.target.value);
+        setMetaParaUpdate(newMeta);
     }
+
+    function trocarMeta(e){
+        setMetaParaUpdate(meta[e.target.value]);
+        console.log(metaParaUpdate);
+    }
+
     function atualizarUser(e){
         e.preventDefault();
         api.post(`/usuarios/${JSON.parse(sessionStorage.getItem("usuario")).idUsuario}`, user, {headers: header })
@@ -116,14 +136,15 @@ export default () =>{
             })
     }
 
-    function atualizarMeta(m){
-        m.preventDefault();
-        api.post(`/meta/${JSON.parse(sessionStorage.getItem("meta")).idMeta}`, meta, {headers: header} )
+    function atualizarMeta(e){
+        e.preventDefault();
+        const newMeta = {...metaParaUpdate};
+        newMeta["dataInicio"] = newMeta["dataInicio"].replace(" ", "T");
+        newMeta["dataFim"] = newMeta["dataFim"].replace(" ", "T");
+        api.post(`/metas/${newMeta.idMeta}`, newMeta, {headers: header} )
             .then(res => {
                 console.log(res)
                 toast.success("Meta alterada com sucesso");
-                user.ecommerce = ecommerce;
-                sessionStorage.setItem("meta", JSON.stringify(meta));
             }).catch(err => {
                 console.log(err);
                 toast.error("Desculpe tivemos um erro. Tente mais tarde.")
@@ -210,7 +231,7 @@ export default () =>{
                                         className="input-settings"
                                         id="cnpj"
                                         type="text"
-                                        vvalue={ecommerce.cnpj}
+                                        value={ecommerce.cnpj}
                                         defaultValue={ecommerce.cnpj}
                                         disabled={editEcommerce.cnpj}
                                         onChange={handleEcommerce}
@@ -230,93 +251,42 @@ export default () =>{
                         
                     </div>
 
-                    {/* <div className="user-config">
-                        <div className="configs-head">
-                            <h2>Conexão</h2>
-                        </div>
-                        <div className="row-configs">
-                            <Input
-                                id="uriConnection"
-                                width="61%"
-                                label="Url:"
-                                type="text"
-                                value="http://osiris/netshoes/WJNjs5"
-                                defaultValue="http://osiris/netshoes/WJNjs5"
-                            />
-                        </div>
-                    </div> */}
-
-                    {/* <ButtonNoLink
-                        type="btn-preenchido"
-                        style={{width: "30%"}}
-                    >
-                        Adicionar Colaborador
-                    </ButtonNoLink> */}
                     <div className="user-config">
                         <div className="configs-head">
                             <h2>Metas</h2>
-                            <span onClick={editEcommerceClick}><Icon icon={pencilIcon}/> Editar</span>
+                            <span onClick={editMetaClick}><Icon icon={pencilIcon}/> Editar</span>
                         </div>
-                        <form onSubmit={(e) => atualizarEcommerce(e)}>
+                        <form onSubmit={(e) => atualizarMeta(e)}>
                             <div className="row-configs">
-                                
-                                <div style={{width: "28%"}} className="col-settings">
-                                    <label className="label-settings">Data Inicio</label>
-                                    <input 
-                                        className="input-settings"
-                                        id="data"
-                                        type="date"
-                                        value={meta.dataInicio}
-                                        defaultValue={meta.dataInicio}
-                                        disabled={editMeta.dataInicio}
-                                        onChange={handleMeta}
-                                    />
-                                </div>
 
                                 <div style={{width: "28%"}} className="col-settings">
                                     <label className="label-settings">Valor</label>
                                     <input 
                                         className="input-settings"
                                         id="valor"
-                                        type="Integer"
-                                        vvalue={meta.valor}
-                                        defaultValue={meta.valor}
+                                        value="lalal"
+                                        defaultValue="lalal"
+                                        value={Math.floor(metaParaUpdate.valor)}
+                                        defaultValue={Math.floor(metaParaUpdate?.valor)}
                                         disabled={editMeta.valor}
                                         onChange={handleMeta}
                                     />
                                 </div>
 
                                 <div style={{width: "28%"}} className="col-settings">
-                                    <label className="label-settings">Tipo</label>
-                                    <input 
-                                        className="input-settings"
-                                        id="Tipo"
-                                        type="?"
-                                        vvalue={meta.tipo}
-                                        defaultValue={meta.tipo}
-                                        disabled={editMeta.tipo}
-                                        onChange={handleMeta}
-                                    />
-                                </div>
-
-                                <div style={{width: "28%"}} className="col-settings">
-                                    <label className="label-settings">Data Fim</label>
-                                    <input 
-                                        className="input-settings"
-                                        id="data"
-                                        type="date"
-                                        value={meta.dataFim}
-                                        defaultValue={meta.dataFim}
-                                        disabled={editMeta.dataFim}
-                                        onChange={handleMeta}
-                                    />
+                                    <label className="label-settings">Tipo: </label>
+                                    <select onChange={trocarMeta} className="input-settings" disabled={editMeta.tipo}>
+                                        <option value={0}>Vendas</option>
+                                        <option value={1}>Clientes</option>
+                                        <option value={2}>Acessos</option>
+                                    </select>
                                 </div>
 
                                 <ButtonForm
                                     type="btn-preenchido"
                                     style={{width: "15%", 
                                             marginTop: "20px",
-                                            display: editEcommerce.button
+                                            display: editMeta.button
                                         }}>
                                     Editar
                                 </ButtonForm>
@@ -324,6 +294,14 @@ export default () =>{
                         </form>
                         
                     </div>
+
+                    <Button
+                        uri="/addCollaborator"
+                        type="btn-preenchido"
+                        style={{width: "30%"}}
+                    >
+                        Adicionar Colaborador
+                    </Button>
 
 
                 </div>
