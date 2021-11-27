@@ -15,6 +15,7 @@ COPY --from=build /var/www/html/build /usr/share/nginx/html
 COPY ./docker/nginx/server-nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 85
+EXPOSE 90
 
 ENTRYPOINT ["nginx"]
 CMD ["-g", "daemon off;"]

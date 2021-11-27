@@ -5,11 +5,11 @@ networks:
     driver: bridge
 
 services:
-
   server:
     image: ghcr.io/osiris-gp8/server:latest-ti
     ports:
       - 80:85
+      - 82:90
     networks:
       - osiris-network
     depends_on:
