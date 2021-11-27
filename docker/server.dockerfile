@@ -5,6 +5,7 @@ COPY ./front-end-osiris /var/www/html
 WORKDIR /var/www/html
 
 RUN npm install
+RUN npm install --save-dev jest
 RUN npm run build
 
 
