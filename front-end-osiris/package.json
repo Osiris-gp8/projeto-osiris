@@ -52,6 +52,7 @@
     "@iconify-icons/bi": "^1.1.4",
     "@iconify-icons/bx": "^1.1.0",
     "@iconify-icons/cil": "^1.1.0",
-    "@iconify/react": "^1.1.4"
+    "@iconify/react": "^1.1.4",
+    "jest": "^27.3.1"
   }
 }
