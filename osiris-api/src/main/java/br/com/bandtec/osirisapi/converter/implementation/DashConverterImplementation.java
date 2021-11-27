@@ -1,7 +1,6 @@
 package br.com.bandtec.osirisapi.converter.implementation;
 
 import br.com.bandtec.osirisapi.converter.DashConverter;
-import br.com.bandtec.osirisapi.domain.Evento;
 import br.com.bandtec.osirisapi.dto.response.dash.AcessosVendasDiasResponse;
 import br.com.bandtec.osirisapi.dto.response.dash.RanqueCategoriaResponse;
 import br.com.bandtec.osirisapi.dto.response.dash.RanqueProdutoResponse;
@@ -12,6 +11,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class DashConverterImplementation implements DashConverter {
@@ -26,22 +26,14 @@ public class DashConverterImplementation implements DashConverter {
     }
 
     @Override
-    public List<RanqueCategoriaResponse> integerListToRanqueCategoriaResponse(List<Integer> ranque, List<RanqueCategoriaView> nomes) {
+    public List<RanqueCategoriaResponse> integerListToRanqueCategoriaResponse(List<RanqueCategoriaView> nomes) {
 
-        List<String> posicoes = getPosicoes();
-        List<RanqueCategoriaResponse> ranqueCategoriaResponseList = new ArrayList<>();
 
-        for (Integer i = 0; i < posicoes.size(); i++){
-            RanqueCategoriaResponse ranqueCategoriaResponse =
-                    RanqueCategoriaResponse.builder()
-                            .quantidade(ranque.get(i))
-                            .categoria(nomes.get(i).getNome())
-                            .posisao(posicoes.get(i))
-                            .build();
-            ranqueCategoriaResponseList.add(ranqueCategoriaResponse);
-        }
-
-        return ranqueCategoriaResponseList;
+       return nomes.stream().map(ranqueCategoriaView -> RanqueCategoriaResponse.builder()
+          .posisao(String.valueOf(ranqueCategoriaView.getRanque()))
+          .categoria(ranqueCategoriaView.getNome())
+          .quantidade(ranqueCategoriaView.getQuantidades())
+          .build()).collect(Collectors.toList());
     }
 
     @Override

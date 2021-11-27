@@ -31,6 +31,7 @@ html{
     font-size: 20px;
     font-weight: 600;
     cursor: pointer;
+    padding: 0;
 }
 
 .btn-preenchido{
@@ -466,7 +467,7 @@ html{
 
 .metrica{
     width: 25%;
-    height: 13vh;
+    height: 15vh;
     background-color: #ECF0F7;
     display: flex;
     flex-direction: column;
@@ -492,11 +493,15 @@ html{
     margin-left: 80%;
 }
 
+.metrica .not-found {
+    font-size: 25px;
+}
+
 /* Charts */
 
 .chart-area{
     width: 65%;
-    min-height: 35vh;
+    height: 77vh;
     background-color: #ECF0F7;
     float: right;
     margin-right: 2%;
@@ -504,6 +509,7 @@ html{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .charts-pie{
@@ -525,6 +531,25 @@ html{
 .charts-pie div h2{
     margin-left: 10%;
     margin-bottom: 5%;
+}
+
+/* Date Picker*/
+
+.filtro{
+    width: 30%;
+    top: 2%;
+    right: 2%;
+    z-index: 999;
+}
+
+.date-picker{
+    width: 90%;
+    border: 1px solid #666BC2;
+    height: 35px;
+    padding-left: 5px;
+    border-radius: 5px;
+    background-color: #ECF0F7;
+    margin-top: 5px;
 }
 
 /* settings */
@@ -585,7 +610,7 @@ html{
     height: 30px;
     font-size: 20px;
     border: 2px solid #666BC2;
-    padding: 5px;
+    padding-left: 5px;
     background-color: #ECF0F7;
     border-radius: 5px;
 }
@@ -619,4 +644,27 @@ html{
 
 .error-valid{
     color: red;
+}
+
+.styledTable{
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid black;
+    height: 8vh;
+}
+
+.styledTable th{
+    border-collapse: collapse;
+    border: 1px solid black;
+    vertical-align: middle;
+
+    font-size: 1.2rem;
+}
+
+.styledTable td{
+    border-collapse: collapse;
+    border: 1px solid black;
+    vertical-align: middle;
+
+    font-size: 1rem;
 }

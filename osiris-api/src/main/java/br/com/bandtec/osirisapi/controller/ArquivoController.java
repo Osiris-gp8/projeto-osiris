@@ -1,10 +1,16 @@
 package br.com.bandtec.osirisapi.controller;
 
+import br.com.bandtec.osirisapi.converter.ArquivoConverter;
 import br.com.bandtec.osirisapi.converter.S3converter;
+import br.com.bandtec.osirisapi.domain.Arquivo;
 import br.com.bandtec.osirisapi.dto.request.ExportacaoRequest;
 import br.com.bandtec.osirisapi.dto.request.FileS3Request;
+import br.com.bandtec.osirisapi.dto.response.ContagemArquivosComErroResponse;
 import br.com.bandtec.osirisapi.dto.response.S3ArquivoDownloadResponse;
+import br.com.bandtec.osirisapi.dto.response.TamanhoArquivoBytesResponse;
+import br.com.bandtec.osirisapi.repository.ArquivoRepository;
 import br.com.bandtec.osirisapi.service.ArquivoService;
+import br.com.bandtec.osirisapi.utils.ArquivoStatusConstants;
 import br.com.bandtec.osirisapi.utils.hashing.HashTable;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpHeaders;
@@ -27,6 +33,9 @@ public class ArquivoController {
     private final ArquivoService arquivoService;
     private final S3converter s3converter;
     private final HashTable hashTable;
+    private final ArquivoConverter arquivoConverter;
+    private final ArquivoStatusConstants arquivoStatusConstants;
+    private final ArquivoRepository arquivoRepository;
 
     @GetMapping(value = "/relatorio-csv", produces = "text/csv")
     @ResponseBody
@@ -49,21 +58,27 @@ public class ArquivoController {
     @PostMapping("/importacao-txt")
     public ResponseEntity importarTXT(@RequestParam MultipartFile arquivo){
 
+        Arquivo arquivoEntity = arquivoRepository.save(arquivoConverter.multipartFileToArquivo(arquivo));
 
         try {
             InputStream inputStream = arquivo.getInputStream();
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
             BufferedReader bufferedInputStream = new BufferedReader(inputStreamReader);
 
-
-            arquivoService.importarTXT(bufferedInputStream);
+            arquivoService.importarTXT(bufferedInputStream, arquivoEntity);
+            arquivoEntity.setStatus(arquivoStatusConstants.STATUS_SUCESSO);
 
         } catch (IOException e) {
+            arquivoEntity.setStatus(arquivoStatusConstants.STATUS_ERRO);
             e.printStackTrace();
             return ResponseEntity.status(400).build();
         } catch (StringIndexOutOfBoundsException e){
+            arquivoEntity.setStatus(arquivoStatusConstants.STATUS_ERRO);
             return ResponseEntity.status(400).body("Layout inválido");
+        }finally {
+            arquivoRepository.saveAndFlush(arquivoEntity);
         }
+
 
         hashTable.insere(arquivo);
 
@@ -78,6 +93,16 @@ public class ArquivoController {
                         arquivoService.buscarArquivoS3(hashTable.buscar(request.getData())));
 
         return ResponseEntity.status(200).body(s3ArquivoDownloadResponse);
+    }
+
+    @GetMapping("/com-erro/contagem")
+    public ResponseEntity<ContagemArquivosComErroResponse> getArquivosComErro(){
+        return ResponseEntity.status(200).body(arquivoService.buscarArquivosComErroCount());
+    }
+
+    @GetMapping("/tamanho-bytes")
+    public ResponseEntity<TamanhoArquivoBytesResponse> getTamanhoBytes(){
+        return ResponseEntity.status(200).body(arquivoService.buscarTamanhoBytesArquivos());
     }
 
 }

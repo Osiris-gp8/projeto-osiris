@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Value;
 
 public interface RanqueCategoriaView {
 
-    @Value("#{target.categoria}")
+    @Value("#{target.ranque}")
+    Integer getRanque();
+
+    @Value("#{target.nome}")
     String getNome();
 
     @Value("#{target.quantidade}")

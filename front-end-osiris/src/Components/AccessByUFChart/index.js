@@ -25,7 +25,6 @@ export function AccessByUFChart(){
                 while(i < e.data.length){
                     let arrayUfAcessos = [e.data[i].uf, e.data[i].contagem]
                     dados.push(arrayUfAcessos)
-                    console.log(dados)
                     i++
                 }
                 
@@ -52,8 +51,3 @@ export function AccessByUFChart(){
         </>
     )
 }
-
-// [
-//     ["UF", "Acessos"],
-//     ["MT", 20]
-// ]

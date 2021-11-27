@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from 'react';
+import { React, useEffect, useState, useMemo } from 'react';
 import MenuNovo from '../Components/MenuNovo/MenuNovo';
 import Metricas from '../Components/Metricas/Metricas';
 import arrowUpCircleFill from '@iconify-icons/bi/arrow-up-circle-fill';
@@ -7,11 +7,19 @@ import ChartBar from '../Components/ChartBar/ChartBar';
 import ChartPie from '../Components/ChartPie/ChartPie';
 import { useHistory } from 'react-router-dom';
 import api from '../api';
-import {getDataWeek,getAllEvents,getCountUser, getCountAccess} from '../services/textData'
+import {getAllEvents,getCountUser, getCountAccess} from '../services/textData'
 import {getRankingSell, getCountSell} from '../services/dashData'
-import {getIntervalSixMonths} from '../services/utils'
+import {countEventos} from '../services/EventoService';
+import { getMetas } from '../services/MetaService';
 
-export default () =>{ 
+const Dashboard = () =>{ 
+    const dateNow = new Date()
+
+    const [loading, setLoading] = useState({
+        clientes: true,
+        vendas: true,
+        acessos: true
+    });
 
     const history = useHistory();
     const [calcados, setCalcados] = useState([]);
@@ -21,102 +29,146 @@ export default () =>{
     const [eventos, setEventos] = useState(0);
     const [countUsers, setCountUsers] = useState(0);
     const [countAccess, setCountAccess] = useState(0);
-    const [header, setHeader] = useState({
-        "Authorization": `${sessionStorage.getItem("tipo")} ${sessionStorage.getItem("token")}`
-    });
+    const [filtroInicio, setFiltroInicio] = useState(`${dateNow.getFullYear()}-01-01`);
+    const [filtroFinal, setFiltroFinal] = useState(`${dateNow.getFullYear()}-${dateNow.getMonth() + 1}-${dateNow.getDate() < 10 ? "0" + dateNow.getDate() : dateNow.getDate()}`);
+    const header = useMemo(() => {
+        return {"Authorization": `${sessionStorage.getItem("tipo")} ${sessionStorage.getItem("token")}`}
+    }, []);
+    const translate_day = useMemo(() => {
+        return {
+            'MONDAY': 'Segunda',
+            'TUESDAY': 'Terça',
+            'WEDNESDAY':'Quarta',
+            'THURSDAY':'Quinta',
+            'FRIDAY':'Sexta',
+            'SATURDAY':'Sabádo',
+            'SUNDAY':'Domingo',
+        };
+    }, []); 
 
-    useEffect(async () =>{
+
+    useEffect(() => {
         if(!sessionStorage.getItem("token")){
             return history.push('/login');
         }
+        const filters = { dataInicio: filtroInicio, dataFinal: filtroFinal };
+        sessionStorage.setItem("dataInicio", filtroInicio);
+        sessionStorage.setItem("dataFinal", filtroFinal);
+        setCalcados(getRankingSell("/metricas/ranque-categoria", header, filters))
+        
+        countEventos(header, filters)
+            .then(result => {
+                setEventos(result)
+            });
 
-        setCalcados(getRankingSell("/metricas/ranque-produtos", header))
-        
-        
-        const eventos = (await getAllEvents(header));
-        setEventos(eventos.data.length);
-        
-        
+        getMetas(header, filters)
+            .then(resposta => {
+                setLoading({
+                    vendas: false, clientes: false, acessos: false
+                })
+                setMetas(resposta)
+            });
 
-    }, []);
+        getCountSell(header, filtroInicio, filtroFinal)
+            .then(data => {
+                setLoading({vendas: false})
+                setCupons(data)
+            });
 
-    useEffect(async() => {
-        const dateNow = new Date()
-        const dateFormat = `${dateNow.getFullYear()}-${dateNow.getMonth() + 1}-${dateNow.getDate()}`
-        const intervalDays = [dateFormat, `2021-${dateNow.getMonth() + 1}-01`]
-        async function getMetas(){
-            const resposta = await api.get(`/metas?dataFinal=${intervalDays[0]}&dataInicio=${intervalDays[1]}`,
-             {headers: header});
-            setMetas(resposta.data);
-            console.log(resposta.data);
+        getCountUser(header, filtroInicio, filtroFinal)
+            .then(data => {
+                setLoading({clientes: false})
+                setCountUsers(data)
+            })
+
+        getCountAccess(header)
+            .then(data => {
+                setLoading({acessos: false})
+                setCountAccess(data)
+            })
+
+    }, [filtroFinal, filtroInicio, header]);
+
+    useEffect(() => {
+        const interval = { 
+            dataInicio: filtroInicio, 
+            dataFinal: filtroFinal 
         }
-        getMetas();
-        setCupons(await getCountSell(header))
-        setCountUsers(await getCountUser(header))
-        setCountAccess(await getCountAccess(header))
-    }, []);
 
-    useEffect(async () => {
-        const interval = getIntervalSixMonths()
-        const data = await api.get("/dash/contagem-acessos-vendas", { 
+        api.get("/dash/contagem-acessos-vendas", { 
             headers: header,
             params: interval
+        }).then(data => {
+            const arrayData = []
+            data.data.forEach((value) => {
+                arrayData.push([translate_day[value['diaDaSemana'].toUpperCase()],value['vendas'], value['acessos']])
+            })
+            setWeekData(arrayData)
         })
-        const arrayData = []
-        data.data.forEach((value) => {
-            arrayData.push([translate_day[value['diaDaSemana'].toUpperCase()],value['vendas'], value['acessos']])
-        })
-        setWeekData(arrayData)
-    }, []);
+    }, [filtroFinal, filtroInicio, header, translate_day]);
 
     const cores = ["#666BC2", "#8CA8D1", "#B3C8E1", "#D9E2F0", "#ECF0F7"];
-    
-    const translate_day = {
-        'MONDAY': 'Segunda',
-        'TUESDAY': 'Terça',
-        'WEDNESDAY':'Quarta',
-        'THURSDAY':'Quinta',
-        'FRIDAY':'Sexta',
-        'SATURDAY':'Sabádo',
-        'SUNDAY':'Domingo',
-
-    }
-
     const dados = [
         ['Dia da semana', 'Acessos', 'Vendas'],
         ...weekData
     ];
 
+    function definirDataInicio(e){
+        setFiltroInicio(e.target.value);
+        sessionStorage.setItem("dataInicio", filtroInicio);
+    }
+
+    function definirDataFinal(e){
+        setFiltroFinal(e.target.value);
+        sessionStorage.setItem("dataFinal", filtroFinal);
+    }
+
     return (
         <>
             <MenuNovo/>
             <div className="metricas">
-                <Metricas 
-                    metrica={metas[0].labelTipo}
-                    valor={eventos > 0 ? eventos : "Carregando"} 
-                    meta={Math.floor(metas[0].valor)}
+            <Metricas 
+                    metrica="Vendas"
+                    valor={eventos} 
+                    meta={Math.floor(metas[0]?.valor)}
                     icon={arrowUpCircleFill}
+                    isLoading={loading.vendas}
                 />
 
                 <Metricas 
-                    metrica={metas[1].labelTipo} 
-                    valor={countUsers > 0 ? countUsers : "Carregando"}
-                    meta={Math.floor(metas[1].valor)}
+                    metrica="Clientes"
+                    valor={countUsers}
+                    meta={Math.floor(metas[1]?.valor)}
                     icon={arrowUpCircleFill}
+                    isLoading={loading.clientes}
                 />
 
                 <Metricas 
                     metrica="Acessos" 
-                    valor={countAccess > 0 ? countAccess : "Carregando"}
-                    meta={metas[2] == null ? "Carregando" : Math.floor(metas[2].valor)}
+                    valor={countAccess}
+                    meta={Math.floor(metas[2]?.valor)}
                     icon={clockCircleFilled}
+                    isLoading={loading.acessos}
                 />
             </div>
 
-            <div className="chart-area">
+            <div className="chart-area position-relative">
+                <div className="filtro d-flex flex-colum justify-content-between position-absolute">
+                    <div className="d-flex flex-column">
+                        <label>Data inicial:</label>
+                        <input type="date" onChange={definirDataInicio} value={filtroInicio} className="date-picker"/>
+                    </div>
+
+                    <div className="d-flex flex-column">
+                        <label>Data final:</label>
+                        <input type="date" onChange={definirDataFinal} value={filtroFinal} className="date-picker"/>
+                    </div>
+
+                </div>
+                
                 <ChartBar
                     id="chart-acessos"
-                    width="95%"
+                    width="100%"
                     height="30vh"
                     data={dados}
                     title="Acessos da Semana"
@@ -124,14 +176,12 @@ export default () =>{
                     titleX="Dias da semana"
                     titleY="Acessos x Vendas"
                 />
-            </div>
 
-            <div className="chart-area">
                 <div className="charts-pie">
                     <div>
                         <h2>Vendas com Cupons</h2>
                         <ChartPie
-                            width="100%"
+                            width="98%"
                             data={cupons}
                             title="Tipo de Venda"
                             pieHole= {0.4}
@@ -150,6 +200,9 @@ export default () =>{
                     </div>
                 </div>
             </div>
+
         </>
     );
 }
+
+export default Dashboard;
