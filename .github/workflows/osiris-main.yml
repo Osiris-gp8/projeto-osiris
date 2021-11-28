@@ -33,24 +33,13 @@ jobs:
           
 
       - name: Build imagem back-end
-        run: ' docker build -f ./docker/springboot.dockerfile \
-              --build-arg DATABASE_IP=${{ secrets.DATABASE_IP }} \
-              --build-arg DATABASE_PORT=${{ secrets.DATABASE_PORT }} \
-              --build-arg DATABASE_NAME=${{ secrets.DATABASE_NAME }} \
-              --build-arg DATABASE_PASS=${{ secrets.DATABASE_PASS }} \
-              --build-arg DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }} \
-              --build-arg AWS_BUCKET_NAME=${{ secrets.AWS_BUCKET_NAME }} \
-              --build-arg DATABASE_DATASOURCE_NAME=${{ secrets.DATABASE_DATASOURCE_NAME }} \
-              --build-arg OSIRIS_FRONT_URL=${{ secrets.OSIRIS_FRONT_URL }} \
-              -t ${{ env.REGISTRY }}/${{ env.USER_REPO }}/backend:latest-ti . '
+        run: docker build -f ./docker/springboot.dockerfile --build-arg DATABASE_IP=${{ secrets.DATABASE_IP }} --build-arg DATABASE_PORT=${{ secrets.DATABASE_PORT }} --build-arg DATABASE_NAME=${{ secrets.DATABASE_NAME }} --build-arg DATABASE_PASS=${{ secrets.DATABASE_PASS }} --build-arg DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }} --build-arg AWS_BUCKET_NAME=${{ secrets.AWS_BUCKET_NAME }} --build-arg DATABASE_DATASOURCE_NAME=${{ secrets.DATABASE_DATASOURCE_NAME }} --build-arg OSIRIS_FRONT_URL=${{ secrets.OSIRIS_FRONT_URL }} -t ${{ env.REGISTRY }}/${{ env.USER_REPO }}/backend:latest-ti .
 
       - name: Build imagem balanceador front-end
         run: docker build -f ./docker/frontend-nginx.dockerfile -t ${{ env.REGISTRY }}/${{ env.USER_REPO }}/front-loadbalance:latest-ti .
           
       - name: Build imagem balanceador front-end
-        run: ' docker build -f ./docker/react.dockerfile \
-              --build-arg OSIRIS_BACK_URL=${{ secrets.OSIRIS_BACK_URL }} \
-              -t ${{ env.REGISTRY }}/${{ env.USER_REPO }}/frontend:latest-ti . '
+        run: docker build -f ./docker/react.dockerfile --build-arg OSIRIS_BACK_URL=${{ secrets.OSIRIS_BACK_URL }} -t ${{ env.REGISTRY }}/${{ env.USER_REPO }}/frontend:latest-ti .
         
       - name: Login no Github Packages
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
