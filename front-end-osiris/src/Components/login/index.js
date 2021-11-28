@@ -72,7 +72,7 @@ export default () => {
                     <label></label>
                     <h2>Login</h2>
                     <div>
-                        <label for='cnpj'>Login usuário</label>
+                        <label for='cnpj'>Usuário</label>
                         <input id="login" type="text" onBlur={handle}/>
                     </div>
                     <div>
