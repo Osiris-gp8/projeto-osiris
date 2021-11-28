@@ -12,15 +12,6 @@ env:
   USER_REPO: osiris-gp8
 
 jobs:
-  testes:
-    runs-on: ubuntu-latest
-    if: contains(github.repository, 'Osiris-gp8') == true
-    steps: 
-      - uses: actions/checkout@v2
-
-      - name: Testando Back-end
-        run: echo ${{ github.head_ref }}
-
   build-imagens:
     runs-on: ubuntu-latest
     if: contains(github.repository, 'Osiris-gp8') == true

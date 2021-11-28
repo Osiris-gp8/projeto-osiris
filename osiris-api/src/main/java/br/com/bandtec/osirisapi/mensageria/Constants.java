@@ -1,5 +1,6 @@
 package br.com.bandtec.osirisapi.mensageria;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
