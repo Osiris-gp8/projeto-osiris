@@ -5,7 +5,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class Constants {
 
-    private String frontUrl = "http://3.95.60.151";
+    @Value("${osiris.front.url}")
+    private String frontUrl;
 
     public String ASSUNTO_RECUPERAR_SENHA = "Recuperar senha";
     public String ASSUNTO_PRIMEIRO_LOGIN = "Osiris primerio login";
