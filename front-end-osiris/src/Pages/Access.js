@@ -21,7 +21,7 @@ export default () =>{
             <MenuNovo />
             <div className="body-config">
             <div className="container">
-                <h1>Acessos</h1>
+                <h1 style={{"margin-bottom": 0 }}>Acessos</h1>
                 <MapChart setTooltipContent={setContent}/>
                 <ReactToolTip  multiline={true} html={true}>{content}</ReactToolTip>
             </div>

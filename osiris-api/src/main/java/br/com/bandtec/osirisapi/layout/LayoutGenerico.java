@@ -35,7 +35,7 @@ public class LayoutGenerico{
 
     public void importarLinhas(BufferedReader reader) throws IOException {
         String linha = reader.readLine();
-        if(linha == null){
+        if(linha == null || linha.isEmpty()){
             return;
         }
 
