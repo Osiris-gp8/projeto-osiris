@@ -11,6 +11,7 @@ import {getAllEvents,getCountUser, getCountAccess} from '../services/textData'
 import {getRankingSell, getCountSell} from '../services/dashData'
 import {countEventos} from '../services/EventoService';
 import { getMetas } from '../services/MetaService';
+import { count } from '../services/AcessoService';
 
 const Dashboard = () =>{ 
     const dateNow = new Date()
@@ -80,8 +81,7 @@ const Dashboard = () =>{
                 setLoading({clientes: false})
                 setCountUsers(data)
             })
-
-        getCountAccess(header)
+        count(header, {dataInicio: filtroInicio, dataFinal: filtroFinal})
             .then(data => {
                 setLoading({acessos: false})
                 setCountAccess(data)

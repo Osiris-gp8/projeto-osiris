@@ -24,7 +24,7 @@ public interface EventoRepository extends JpaRepository<Evento, Integer> {
             ")\n" +
             "select DENSE_RANK()\n" +
             "over ( order by quantidade desc ) as ranque,\n" +
-            "evento, quantidade \n" +
+            "nome, quantidade \n" +
             "from top_products", nativeQuery = true)
     List<RanqueCategoriaView> ranqueNomeCategoriaView(Integer idEcommerce, LocalDate inicio, LocalDate fim);
 
@@ -87,7 +87,7 @@ public interface EventoRepository extends JpaRepository<Evento, Integer> {
     @Query(value = "select count(cupom_id_cupom) from evento ", nativeQuery = true)
     Integer countAllByEventoQuantidadeCuponsUsados();
 
-    @Query(value = "select count(id_consumidor_ecommerce) from evento where id_consumidor_ecommerce = ?3" +
+    @Query(value = "select count(id_consumidor_ecommerce) from evento where ecommerce_id_ecommerce = ?3" +
             " and data_compra between ?1 and ?2 ", nativeQuery = true)
     Integer countAcessosDeterminadoDia(LocalDateTime inicioDia, LocalDateTime fimDia,Integer ecommerce);
 
