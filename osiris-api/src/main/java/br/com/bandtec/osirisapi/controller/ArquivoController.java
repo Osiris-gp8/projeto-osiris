@@ -65,7 +65,7 @@ public class ArquivoController {
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
             BufferedReader bufferedInputStream = new BufferedReader(inputStreamReader);
 
-            arquivoService.importarTXT(bufferedInputStream, arquivoEntity);
+            arquivoService.importarTXT(bufferedInputStream);
             arquivoEntity.setStatus(arquivoStatusConstants.STATUS_SUCESSO);
 
         } catch (IOException e) {

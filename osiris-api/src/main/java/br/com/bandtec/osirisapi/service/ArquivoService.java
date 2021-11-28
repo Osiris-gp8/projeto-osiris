@@ -173,13 +173,12 @@ public class ArquivoService {
     }
 
 
-    public void importarTXT(BufferedReader conteudo, Arquivo arquivoEntity){
+    public void importarTXT(BufferedReader conteudo){
         LayoutGenerico layoutGenerico = new LayoutGenerico();
 
         try {
             layoutGenerico.importarLinhas(conteudo);
         } catch (IOException e) {
-            arquivoEntity.setStatus(arquivoStatusConstants.STATUS_ERRO);
             e.printStackTrace();
         }
 
@@ -192,9 +191,6 @@ public class ArquivoService {
             cupomRepository.saveAll(
                     layoutCupomToCupom.convertFromList( layoutGenerico.getLayoutCupomList() ) );
         }
-
-        arquivoRepository.saveAndFlush(arquivoEntity);
-
     }
 
     public List<S3Object> buscarArquivoS3(ListaLigada<String> listaLigada) {
