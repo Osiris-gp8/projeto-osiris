@@ -22,14 +22,13 @@ jobs:
       - name: Build imagem balanceador back-end
         run: docker build -f ./docker/backend-nginx.dockerfile -t ${{ env.REGISTRY }}/${{ env.USER_REPO }}/back-loadbalance:latest-ti .
           
-
       - name: Build imagem back-end
         run: docker build -f ./docker/springboot.dockerfile --build-arg DATABASE_IP=${{ secrets.DATABASE_IP }} --build-arg DATABASE_PORT=${{ secrets.DATABASE_PORT }} --build-arg DATABASE_NAME=${{ secrets.DATABASE_NAME }} --build-arg DATABASE_PASS=${{ secrets.DATABASE_PASS }} --build-arg DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }} --build-arg AWS_BUCKET_NAME=${{ secrets.AWS_BUCKET_NAME }} --build-arg DATABASE_DATASOURCE_NAME=${{ secrets.DATABASE_DATASOURCE_NAME }} --build-arg OSIRIS_FRONT_URL=${{ secrets.OSIRIS_FRONT_URL }} -t ${{ env.REGISTRY }}/${{ env.USER_REPO }}/backend:latest-ti .
 
       - name: Build imagem balanceador front-end
         run: docker build -f ./docker/frontend-nginx.dockerfile -t ${{ env.REGISTRY }}/${{ env.USER_REPO }}/front-loadbalance:latest-ti .
           
-      - name: Build imagem balanceador front-end
+      - name: Build imagem front-end
         run: docker build -f ./docker/react.dockerfile --build-arg OSIRIS_BACK_URL=${{ secrets.OSIRIS_BACK_URL }} -t ${{ env.REGISTRY }}/${{ env.USER_REPO }}/frontend:latest-ti .
         
       - name: Login no Github Packages
@@ -76,6 +75,89 @@ jobs:
           '
 
       - name: Entrega do frontend em TI
+        env:
+          PRIVATE_KEY: ${{ secrets.CHAVE_SSH }}
+          HOSTNAME: ${{ secrets.AWS_ADRESS_FRONT }}
+          USER: ${{ secrets.AWS_USER }}
+        run: |
+          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key ${USER}@${HOSTNAME} '
+
+            cd /home/ubuntu/projeto-osiris &&
+            git checkout refactor/esteira &&
+            git fetch --all &&
+            git reset --hard origin/refactor/esteira &&
+            git pull origin refactor/esteira &&
+            docker pull ghcr.io/osiris-gp8/front-loadbalance:latest-ti &&
+            docker pull ghcr.io/osiris-gp8/frontend:latest-ti &&
+            docker-compose -f ./docker-compose-front.yml up -d --scale react=2
+          '
+
+  build-hml:
+    runs-on: ubuntu-latest
+    needs: deploy-dev
+    environment:
+      name: HML
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - name: Build imagem balanceador back-end
+        run: docker build -f ./docker/backend-nginx.dockerfile -t ${{ env.REGISTRY }}/${{ env.USER_REPO }}/back-loadbalance:latest-ti .
+          
+      - name: Build imagem back-end
+        run: docker build -f ./docker/springboot.dockerfile --build-arg DATABASE_IP=${{ secrets.DATABASE_IP }} --build-arg DATABASE_PORT=${{ secrets.DATABASE_PORT }} --build-arg DATABASE_NAME=${{ secrets.DATABASE_NAME }} --build-arg DATABASE_PASS=${{ secrets.DATABASE_PASS }} --build-arg DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }} --build-arg AWS_BUCKET_NAME=${{ secrets.AWS_BUCKET_NAME }} --build-arg DATABASE_DATASOURCE_NAME=${{ secrets.DATABASE_DATASOURCE_NAME }} --build-arg OSIRIS_FRONT_URL=${{ secrets.OSIRIS_FRONT_URL }} -t ${{ env.REGISTRY }}/${{ env.USER_REPO }}/backend:latest-ti .
+
+      - name: Build imagem balanceador front-end
+        run: docker build -f ./docker/frontend-nginx.dockerfile -t ${{ env.REGISTRY }}/${{ env.USER_REPO }}/front-loadbalance:latest-ti .
+          
+      - name: Build imagem front-end
+        run: docker build -f ./docker/react.dockerfile --build-arg OSIRIS_BACK_URL=${{ secrets.OSIRIS_BACK_URL }} -t ${{ env.REGISTRY }}/${{ env.USER_REPO }}/frontend:latest-ti .
+        
+      - name: Login no Github Packages
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Push da imagem
+        run: |
+          docker push ${{ env.REGISTRY }}/${{ env.USER_REPO }}/back-loadbalance:latest-ti
+          docker push ${{ env.REGISTRY }}/${{ env.USER_REPO }}/backend:latest-ti
+          docker push ${{ env.REGISTRY }}/${{ env.USER_REPO }}/front-loadbalance:latest-ti
+          docker push ${{ env.REGISTRY }}/${{ env.USER_REPO }}/frontend:latest-ti
+          
+  deploy-hml:
+    runs-on: ubuntu-latest
+    needs: deploy-dev
+    environment:
+      name: HML
+      # url: http://osiris-ti.ddns.net, http://backend-ti.ddns.net
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - name: Entrega do backend em HML
+        env:
+          PRIVATE_KEY: ${{ secrets.CHAVE_SSH }}
+          HOSTNAME: ${{ secrets.AWS_ADRESS_BACK }}
+          USER: ${{ secrets.AWS_USER }}
+        run: |
+          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key ${USER}@${HOSTNAME} '
+
+            cd /home/ubuntu/projeto-osiris &&
+            git checkout refactor/esteira &&
+            git fetch --all &&
+            git reset --hard origin/refactor/esteira &&
+            git pull origin refactor/esteira &&
+            docker pull ghcr.io/osiris-gp8/back-loadbalance:latest-ti &&
+            docker pull ghcr.io/osiris-gp8/backend:latest-ti &&
+            docker-compose -f ./docker-compose-back.yml up -d --scale springboot=2
+          '
+
+      - name: Entrega do frontend em HML
         env:
           PRIVATE_KEY: ${{ secrets.CHAVE_SSH }}
           HOSTNAME: ${{ secrets.AWS_ADRESS_FRONT }}
